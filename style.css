@@ -84,3 +84,38 @@ body {
 }
 
 /* ヘッダー */
+#header {
+  width: 100%;
+  background-color: #000;
+  position: fixed;
+  z-index: 10;
+}
+
+#header .header-inner {
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+#navi ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#navi a {
+  height: 44px;
+  line-height: 44px;
+  display: inline-block;
+  color: #f5f5f7;
+  font-size: 14px;
+  padding: 0 10px;
+  opacity: 0.8;
+  transition: all 0.5s;
+}
+
+#navi a:hover {
+  opacity: 1;
+}
+.hamburger {
+  display: none;
+}
