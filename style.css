@@ -57,3 +57,22 @@ body {
 
 /* ヘッダー */
 
+justify-content:flex-end; を指定.menu{
+  margin-bottom: 50px;
+}
+.logo{
+  margin:10px 0 0 30px;
+  float:left;
+}
+.logo img{
+  width:50px;
+}
+ul.list {
+display: flex;
+justify-content: flex-end;
+list-style: none;
+}
+li {
+  padding: 0 10px;
+  margin-top:30px;
+}
