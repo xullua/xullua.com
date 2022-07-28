@@ -112,6 +112,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: right;
+  list-style: none;
 }
 
 #navi a {
