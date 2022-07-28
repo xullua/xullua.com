@@ -22,8 +22,11 @@
 }
 
 /* フォント */
-.googlefonts {
+.fonts1 {
   font-family: 'Noto Sans JP', sans-serif;
+}
+.fonts2 {
+  font-family: 'Edu VIC WA NT Beginner', cursive;
 }
 body {
   font-family: 'Noto Sans JP', sans-serif;
