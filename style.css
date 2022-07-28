@@ -39,7 +39,7 @@
     border-radius: 3px;
     border-radius: 50px;
 }
-.button_solid002 a:after {
+.button_1 a:after {
     position: absolute;
     top: 50%;
     right: 20px;
@@ -49,7 +49,7 @@
     font-weight: 900;
     transform: translateY(-50%);
 }
-.button_solid002 a:hover {
+.button_1 a:hover {
     transform: translateY(-2px);
     box-shadow: 0 15px 30px -5px rgb(0 0 0 / 15%), 0 0 5px rgb(0 0 0 / 10%);
 }
