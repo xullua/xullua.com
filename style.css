@@ -96,6 +96,18 @@ body {
   display: flex;
   align-items: center;
 }
+
+#header .header-inner .logo {
+  flex-shrink: 0;
+  width: 16px;
+  line-height: 1px;
+  margin-right: 9%;
+}
+
+#navi {
+  width: 100%;
+}
+
 #navi ul {
   display: flex;
   align-items: center;
@@ -117,5 +129,5 @@ body {
   opacity: 1;
 }
 .hamburger {
-  display: none;
+ display: none;
 }
