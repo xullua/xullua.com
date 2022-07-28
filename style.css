@@ -132,3 +132,9 @@ body {
 .hamburger {
  display: none;
 }
+
+@media (max-width:450px) {
+  #navi {
+    margin-left: 10;
+  }
+}
