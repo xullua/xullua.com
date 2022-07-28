@@ -135,6 +135,6 @@ body {
 
 @media (max-width:450px) {
   #navi {
-    margin-left: 10;
+    margin-left: 10%;
   }
 }
