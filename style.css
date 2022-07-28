@@ -60,6 +60,9 @@ nav {
   padding-top: 10px;
   paddong-left: 10px;
   box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 ul {
   display: flex;
