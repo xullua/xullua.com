@@ -21,6 +21,11 @@
   object-fit: cover;
 }
 
+/* フォント */
+p.googlefonts {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
 /* ボタン */
 /* 浮き上がるボタン */
 .button_1 a {
