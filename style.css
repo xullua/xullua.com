@@ -57,15 +57,18 @@ menu {
   padding-top: 5px;
   box-sizing: border-box;
 }
+
 ul {
   display: flex;
 }
+
 li {
   list-style: none;
 }
+
 a {
   display: block;
   text-decoration: none;
-  color: ffffff;
+  color: white;
   margin-right: 35px;
 }
