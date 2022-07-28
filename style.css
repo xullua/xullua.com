@@ -61,7 +61,6 @@ body {
   margin: 0;
 }
 
-/* ボタン */
 /* 浮き上がるボタン */
 .button_1 a {
     position: relative;
@@ -116,6 +115,7 @@ body {
 }
 
 #navi a {
+  text-decoration: none;
   height: 44px;
   line-height: 44px;
   display: inline-block;
