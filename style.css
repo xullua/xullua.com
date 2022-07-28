@@ -25,6 +25,9 @@
 .googlefonts {
   font-family: 'Noto Sans JP', sans-serif;
 }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+}
 
 /* ボタン */
 /* 浮き上がるボタン */
