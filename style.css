@@ -103,7 +103,7 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 15px 30px -5px rgb(0 0 0 / 15%), 0 0 5px rgb(0 0 0 / 10%);
 }
-.button_1 a {
+.button_2 a {
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -120,7 +120,7 @@ body {
   border-radius: 50px;
   text-decoration: none;
 }
-.button_1 a:hover {
+.button_2 a:hover {
   transform: translateY(-2px);
   box-shadow: 0 15px 30px -5px rgb(0 0 0 / 15%), 0 0 5px rgb(0 0 0 / 10%);
 }
