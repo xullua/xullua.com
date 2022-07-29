@@ -184,7 +184,7 @@ body {
 #header {
   width: 100%;
   background-color: #000;
-  position: initial;
+  position: fixed;
   z-index: 10;
 }
 
