@@ -129,7 +129,7 @@ body {
   width: 48%;
   margin-bottom: 50px;
   transition: .3s;
-  padding-left: 25px;
+  padding-left: 50px;
 }
 .skils:hover {
   transform: scale(1.03, 1.03);
