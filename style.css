@@ -340,7 +340,7 @@ body {
   font-size: 12px;
   position: static;
   bottom: 0;
-  padding: 25px 45px 35px 25px;
+  padding: 35px 25px 45px 25px;
 }
 
 
@@ -360,7 +360,7 @@ body {
 }
 
 #footer .footer-menu .menu {
-  width: 33%;
+  width: 40%;
 }
 
 #footer .footer-menu .title {
