@@ -163,6 +163,9 @@ body {
     width: 100%;
     margin-bottom: 35px;
   }
+  .skill-img {
+    margin-right: 10px;
+  }
   .skill-item:last-child {
     margin-bottom: 0;
   }
