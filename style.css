@@ -121,7 +121,7 @@ body {
   flex-wrap: wrap;
   margin-bottom: -50px;
   justify-content: space-between;
-  padding: 40px 50px 0px 50px;
+  padding: 40px 0px 0px 0px;
 }
 .skills {
   display: flex;
