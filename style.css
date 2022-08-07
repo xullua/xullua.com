@@ -1,0 +1,645 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.head-1 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.img-wrap {
+  max-width: 1500px;
+  margin: 15 auto;
+}
+
+.img-wrap img{
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.wrapper {
+  max-width: 1280px;
+  padding: 0 22px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.line {
+  border-top: 1px solid #b5b5b5;
+  margin: 0 auto;
+}
+
+
+.link-more {
+  font-size: 14px;
+  position: relative;
+}
+.link-more::after {
+  position: absolute;
+  top: 54%;
+  right: -12px;
+  width: 7px;
+  height: 7px;
+  transform: translateY(-50%) rotate(45deg);
+  border-right: 2px solid currentColor;
+  border-top: 2px solid currentColor;
+  content: "";
+}
+.link-more:hover {
+ text-decoration: underline;
+}
+
+/* フォント */
+html {
+  font-size: 100%;
+}
+.fonts1 {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.fonts21 {
+  font-family: 'Edu VIC WA NT Beginner', cursive;
+  font-size: 80px;
+}
+.fonts22 {
+  font-family: 'Edu VIC WA NT Beginner', cursive;
+  font-size: 25px;
+}
+.fontsgradationYP {
+  display: inline-block;
+  background: linear-gradient(45deg, #f200ff 16%, rgb(0, 255, 110) 90%);
+  background: -webkit-linear-gradient(45deg, #f200ff 16%, #fbff00 90%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientEffect 8s infinite alternate;
+  transition: 1s;
+}
+.fontsgradationYP:hover {
+  transform: scale(1.1, 1.1);
+}
+ 
+@keyframes gradientEffect {
+  from {background-position: left}
+  to {background-position: right}
+}
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  margin: 0;
+}
+
+
+/* メイン */
+.title1 {
+  font-family: 'Edu VIC WA NT Beginner', cursive;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  background-size: 200% 100%;
+  border-radius: 1000px;
+    margin: 0 auto;
+    padding: 8px 5px;
+    width: 180px;
+    background: linear-gradient(90deg, rgb(219, 105, 215) 0%, rgb(219, 217, 107) 100%);
+    transition: 0.3s;
+}
+.title1:hover {
+  transform: scale(1.05, 1.05);
+  letter-spacing: 0.1em;
+}
+
+
+/* スキル */
+.skill-block {
+  padding-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -50px;
+  justify-content: space-between;
+  padding: 40px 0px 0px 0px;
+}
+.skills {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 48%;
+  margin-bottom: 50px;
+  transition: 1s;
+}
+.skills:hover {
+  transform: scale(1.03, 1.03);
+}
+.skills:nth-of-type(3n) {
+  margin-right: 0;
+}
+.skill-img {
+  width: 60px;
+  height: 53px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.skill-more {
+  flex: 1;
+}
+.skill-title {
+  margin-bottom: 10px;
+}
+.skill-text {
+  font-size: 14px;
+  line-height: 1.8;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+@media screen and (max-width: 767px) {
+  .skill-block {
+    display: block;
+    margin-bottom: 0;
+  }
+  .skills {
+    width: 100%;
+    margin-bottom: 35px;
+  }
+  .skill-img {
+    width: 60px;
+    height: 53px;
+    margin-right: 10px;
+  }
+  .skill-item:last-child {
+    margin-bottom: 0;
+  }
+  .skill-title {
+    margin-bottom: 5px;
+  }
+  .skill-text {
+    font-size: 14px;
+    line-height: 1.7;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+  }
+}
+
+
+
+
+/* 浮き上がるボタン */
+.button_1 a {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #FFF;
+    transition: 0.5s ease-in-out;
+    font-weight: 600;
+    background: #6bb6ff;
+    filter: drop-shadow(0px 2px 4px #ccc);
+    border-radius: 3px;
+    border-radius: 50px;
+    text-decoration: none;
+}
+.button_1 a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px -5px rgb(0 0 0 / 15%), 0 0 5px rgb(0 0 0 / 10%);
+}
+
+
+/* ヘッダー */
+#header {
+  width: 100%;
+  background-color: #000;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+
+#header .header-inner {
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+#header .header-inner .logo {
+  flex-shrink: 0;
+  width: 16px;
+  line-height: 1px;
+  margin-right: 9%;
+}
+
+#navi {
+  width: 100%;
+}
+
+#navi ul {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  list-style: none;
+}
+
+#navi a {
+  text-decoration: none;
+  height: 44px;
+  line-height: 44px;
+  display: inline-block;
+  color: #f5f5f7;
+  font-size: 14px;
+  padding: 0 10px;
+  opacity: 0.8;
+  transition: all 0.5s;
+}
+
+#navi a:hover {
+  opacity: 1;
+}
+.hamburger {
+ display: none;
+}
+
+
+/* ヘッダー ハンバーガー */
+@media screen and (max-width: 767px) {
+  .hamburger {
+    width: 44px;
+    height: 44px;
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 8px;
+    z-index: 20;
+    cursor: pointer;
+  }
+  .hamburger span {
+    width: 16px;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    left: 14px;
+    transition: 0.3s ease-in-out;
+  }
+  .hamburger span:nth-child(1) {
+    top: 19px;
+  }
+  .hamburger span:nth-child(2) {
+    top: 25px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .hamburger.active span:nth-child(1) {
+    top: 22px;
+    transform: rotate(-135deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    top: 22px;
+    transform: rotate(-225deg);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #header .header-inner .logo {
+    z-index: 20;
+  }
+  #navi {
+    position: fixed;
+    background: #000;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    transition: all 0.4s;
+    z-index: 10;
+  }
+  #navi a {
+    font-size: 15px;
+    padding-left: 50;
+  }
+  #navi ul {
+    flex-direction: column;
+    padding: 44px 40px 15px 40px;
+    text-align: left;
+  }
+  #navi ul li {
+    width: 100%;
+    border-bottom: solid 0.5px #585858;
+  }
+  #navi ul li:last-child {
+    border-bottom: none;
+  }
+  #navi.active {
+    transform: translateY(0%);
+  }
+} 
+
+
+
+/* フッター */
+#footer {
+  width: 100%;
+  background-color: #f5f5f7;
+  color: #86868b;
+  font-size: 12px;
+  position: static;
+  bottom: 0;
+  padding: 25px 45px 35px 25px;
+}
+
+
+#footer .footer-logo {
+  flex-shrink: 0;
+  width: 16px;
+  line-height: 1px;
+  margin-right: 9%;
+}
+
+#footer .footer-menu {
+  display: flex;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+#footer .footer-menu .menu {
+  width: 33%;
+}
+
+#footer .footer-menu .title {
+  color: #1d1d1f;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+#footer .footer-menu li {
+  margin-top: 10px;
+  list-style: none;
+  line-height: 8px;
+}
+
+#footer .footer-menu a {
+  color: #86868b;
+  text-decoration: none;
+}
+
+#footer .footer-menu a:hover {
+  color: rgb(97, 97, 255);
+}
+
+#footer .footer-under {
+  display: flex;
+  justify-content: space-between;
+}
+
+#footer .copyright {
+  font-size: 12px;
+}
+
+#footer text2s {
+  display: flex;
+  margin: 0 auto;
+}
+
+#footer .text2 {
+  font-size: 12px;
+  color: #696991;
+  list-style: none;
+  text-decoration: none;
+}
+#footer .text2:hover {
+  color: rgb(97, 97, 255);
+}
+
+#footer .text1 {
+  font-size: 8px;
+  color: #afafaf;
+}
+
+
+/* ストア */
+.store-hello {
+  margin: 90px 20px 0px 20px;
+  text-align: center;
+}
+.store-title {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-family: 'Edu VIC WA NT Beginner', cursive;
+  font-size: 70px;
+  line-height: 1.5;
+  background: linear-gradient(45deg, #f200ff 16%, rgb(0, 255, 110) 90%);
+  background: -webkit-linear-gradient(45deg, #f200ff 16%, #fbff00 90%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientEffect 8s infinite alternate;
+  transition: 1s;
+}
+.store-title:hover {
+  transform: scale(1.1, 1.1);
+}
+@keyframes gradientEffect {
+  from {background-position: left}
+  to {background-position: right}
+}
+
+.store-subtitle {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 23px;
+  background: linear-gradient(45deg, #f200ff 16%, rgb(0, 255, 110) 90%);
+  background: -webkit-linear-gradient(45deg, #f200ff 16%, #fbff00 90%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientEffect 8s infinite alternate;
+  transition: 1s;
+}
+.store-subtitle:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.store2 {
+  margin: 90px 20px 0px 20px;
+  text-align: center;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.store2-box {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+.store2-boximg {
+  max-width: 100%;
+  clip-path: inset(20px 20px 20px 20px round 15px);
+}
+.store2-title {
+  color: #1d1d1f;
+}
+.store2-title-gradation {
+  background: linear-gradient(45deg, #f200ff 16%, rgb(0, 255, 110) 90%);
+  background: -webkit-linear-gradient(45deg, #f200ff 16%, #fbff00 90%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientEffect 8s infinite alternate;
+  transition: 1s;
+}
+
+.store2-text1 {
+  position: absolute;
+  text-align: right;
+  right: 5%;
+  bottom: 8%;
+  line-height: 1;
+}
+
+
+/* お問い合わせ */
+.Form {
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 720px;
+}
+@media screen and (max-width: 767px) {
+  .Form {
+    margin-top: 40px;
+  }
+}
+.Form-Item {
+
+  padding-top: 24px;
+  padding-bottom: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 767px) {
+  .Form-Item {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+}
+.Form-Item:nth-child(5) {
+
+}
+.Form-Item-Label {
+  width: 100%;
+  max-width: 248px;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+  font-size: 18px;
+}
+@media screen and (max-width: 767px) {
+  .Form-Item-Label {
+    max-width: inherit;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+  }
+}
+.Form-Item-Label.isMsg {
+  margin-top: 8px;
+  margin-bottom: auto;
+}
+@media screen and (max-width: 767px) {
+  .Form-Item-Label.isMsg {
+    margin-top: 0;
+  }
+}
+.Form-Item-Label-Required {
+  border-radius: 6px;
+  margin-right: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 48px;
+  display: inline-block;
+  text-align: center;
+  background: #545454;
+  color: #fff;
+  font-size: 14px;
+}
+@media screen and (max-width: 767px) {
+  .Form-Item-Label-Required {
+    border-radius: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: 32px;
+    font-size: 10px;
+  }
+}
+.Form-Item-Input {
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 6px;
+  margin-left: 40px;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 48px;
+  flex: 1;
+  width: 100%;
+  max-width: 410px;
+  background: #f1f1f1;
+  font-size: 18px;
+}
+@media screen and (max-width: 767px) {
+  .Form-Item-Input {
+    margin-left: 0;
+    margin-top: 18px;
+    height: 40px;
+    flex: inherit;
+    font-size: 15px;
+  }
+}
+.Form-Item-Textarea {
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 6px;
+  margin-left: 40px;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 216px;
+  flex: 1;
+  width: 100%;
+  max-width: 410px;
+  background: #f1f1f1;
+  font-size: 18px;
+}
+@media screen and (max-width: 767px) {
+  .Form-Item-Textarea {
+    margin-top: 18px;
+    margin-left: 0;
+    height: 200px;
+    flex: inherit;
+    font-size: 15px;
+  }
+}
+.Form-Btn {
+  border-radius: 100px;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 280px;
+  display: block;
+  letter-spacing: 0.05em;
+  background: #545454;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+}
+@media screen and (max-width: 767px) {
+  .Form-Btn {
+    margin-top: 24px;
+    padding-top: 8px;
+    padding-bottom: 8;
+  }
