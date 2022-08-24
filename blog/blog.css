@@ -57,6 +57,9 @@
 .text {
     margin-bottom: 0;
 }
+.url {
+    text-decoration: none;
+}
 
 .img {
     max-width: 100%;
@@ -571,9 +574,8 @@ html {
 }
 
 .ad {
-    align-items: center;
+    margin: 30px auto;
     max-width: 60%;
-    margin: 30px 0;
 }
 @media screen and (max-width: 767px) {
     .ad {
@@ -581,10 +583,17 @@ html {
     }
 }
 
+.yt {
+    max-width: 95%;
+    width: 720;
+    margin: 20px auto;
+    text-align: center;
+}
+
 /* 404 */
 .nf {
     text-align: center;
-    margin-top: 200px;
+    margin-top: 150px;
 }
 
 .nf-btns {
