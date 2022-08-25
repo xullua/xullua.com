@@ -1195,6 +1195,78 @@ input[type="checkbox"]:checked+label:before {
   color: rgb(101, 77, 223);
 }
 
+.game-blog {}
+
+.game-blog-top {
+  margin: 30px auto 10px auto;
+  text-align: center;
+}
+
+.game-blog-top-text {
+  font-size: 12px;
+}
+
+.blog-slide {
+  display: flex;
+  max-width: 100%;
+  margin: 0 auto 20px auto;
+}
+
+.blog-slide ul {
+  display: flex;
+  overflow-x: scroll;
+  padding: 0;
+}
+
+.blog-slide li {
+  min-width: 40%;
+  margin: 5px;
+  padding: 0;
+  list-style: none;
+}
+
+.blog-box {
+  border-radius: 10px;
+  background-color: rgb(240, 240, 240);
+  height: 100%;
+}
+
+.blog-box-url {
+  text-decoration: none;
+}
+
+.blog-box-img {
+  border-radius: 10px 10px 0 0;
+  max-width: 100%;
+}
+
+.blog-box-more {
+  margin: 5px 10px 10px 10px;
+}
+
+.blog-box-more-title {
+  font-weight: bold;
+  color: #000;
+}
+
+.blog-box-more-text {
+  font-size: 12px;
+  color: rgb(129, 129, 129);
+}
+
+
+@media screen and (max-width: 767px) {
+  .blog-slide li {
+    min-width: 80%;
+  }
+  .blog-box-more-title {
+    font-size: 14px;
+  }
+  .blog-box-more-text {
+    font-size: 11px;
+  }
+}
+
 .faq-btn {
   background-color: #333;
   border-radius: 50px;
@@ -1215,6 +1287,7 @@ input[type="checkbox"]:checked+label:before {
   border: 1px solid;
   border-color: #000;
 }
+
 .faq-btns {
   margin-bottom: 40px;
 }
@@ -1225,6 +1298,7 @@ input[type="checkbox"]:checked+label:before {
   padding: 0;
   border: 0;
 }
+
 .faq-btn2 {
   background-color: rgb(126, 126, 126);
   border-radius: 50px;
@@ -1237,9 +1311,11 @@ input[type="checkbox"]:checked+label:before {
   transition: 0.5s;
   width: 110px;
 }
+
 .faq-btn2:hover {
   background-color: rgb(118, 102, 175);
 }
+
 .faq-btn2-c {
   text-align: center;
 }
@@ -1250,6 +1326,7 @@ input[type="checkbox"]:checked+label:before {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
 .link {
   border-radius: 15px;
   margin: 8px auto;
@@ -1257,48 +1334,59 @@ input[type="checkbox"]:checked+label:before {
   max-width: 49%;
   width: 1280px;
 }
+
 .link-face {
   display: flex;
   justify-content: space-between;
 }
+
 .link-ico {
   width: 70px;
 }
+
 .link-icon {
   border-radius: 50%;
   max-width: 100%;
   width: 70px;
 }
+
 .link-main {
   display: flex;
   justify-content: space-between;
   max-width: 100%;
 }
+
 .link-names {
   margin: auto 0;
   margin-left: 10px;
 }
+
 .link-name {
   font-size: 18px;
   font-weight: bold;
 }
+
 .link-at {
   font-size: 10px;
 }
+
 .link-ca {
   transform: skewX(-10deg);
   color: #FFF;
   margin-right: 10px;
 }
+
 .link-ca-name {
   padding: 1px 10px;
   font-size: 16px;
 }
+
 .link-un {
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
 }
+
 .link-un-l {
   max-width: 35%;
   width: 300px;
@@ -1308,10 +1396,12 @@ input[type="checkbox"]:checked+label:before {
   margin: auto 0;
   padding: 2px 0;
 }
+
 .link-sns-name {
   font-weight: bold;
   font-size: 16px;
 }
+
 .link-sns-url {
   font-size: 10px;
   color: rgb(121, 121, 121);
@@ -1319,6 +1409,7 @@ input[type="checkbox"]:checked+label:before {
   line-height: 0.8;
   margin-bottom: 5px;
 }
+
 .link-un-r {
   max-width: 65%;
   width: 400px;
@@ -1329,32 +1420,40 @@ input[type="checkbox"]:checked+label:before {
   font-size: 16px;
   transition: 0.3s;
 }
+
 .link-btn {
   text-decoration: none;
 }
+
 .link-go {
   font-weight: 700;
   color: #FFF;
   transform: skewX(-10deg);
 }
+
 .link-un-r:hover {
   font-size: 20px;
   padding: 4px;
 }
+
 @media screen and (max-width: 767px) {
   .link {
     max-width: 100%;
     padding: 15px;
   }
+
   .link-ico {
     width: 55px;
   }
+
   .link-ca-name {
     font-size: 13px;
   }
+
   .link-sns-name {
     font-size: 14px;
   }
+
   .link-sns-url {
     font-size: 9px;
   }
@@ -1366,6 +1465,7 @@ input[type="checkbox"]:checked+label:before {
   text-align: center;
   transform: skewX(-10deg);
 }
+
 .mokuji {
   background-color: #dff7ff;
   border-left: solid 3px #8991ff;
@@ -1375,6 +1475,7 @@ input[type="checkbox"]:checked+label:before {
   padding: 0 10px 0 8px;
   transition: 0.5s;
 }
+
 .mokuji:hover {
   background-color: #27273f;
   color: #FFF;
