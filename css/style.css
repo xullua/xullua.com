@@ -1015,6 +1015,35 @@ input[type="checkbox"]:checked+label:before {
   margin-bottom: 20px;
 }
 
+.pre-a-top {
+  margin-top: 80px;
+}
+
+.pre-a-top-title {
+  text-align: center;
+}
+
+.pre-a-top-text {
+  text-align: center;
+  text-decoration: none;
+}
+
+.pre-a-howto {
+  margin-top: 30px;
+}
+
+.pre-a-img {
+  width: 500px;
+  max-width: 90%;
+  border-radius: 10px;
+  margin-top: 15px;
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.26));
+}
+.pre-a-un {
+  margin: 30px auto;
+  text-align: center;
+}
+
 /* ゲーム */
 .game-box {
   border-radius: 15px;
