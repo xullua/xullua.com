@@ -55,6 +55,16 @@
   text-decoration: underline;
 }
 
+.ad {
+  margin: 30px auto;
+  max-width: 100%;
+}
+@media screen and (max-width: 767px) {
+  .ad {
+    max-width: 90%;
+  }
+}
+
 /* フォント */
 html {
   font-size: 100%;
@@ -1039,6 +1049,7 @@ input[type="checkbox"]:checked+label:before {
   margin-top: 15px;
   filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.26));
 }
+
 .pre-a-un {
   margin: 30px auto;
   text-align: center;
@@ -1288,9 +1299,11 @@ input[type="checkbox"]:checked+label:before {
   .blog-slide li {
     min-width: 80%;
   }
+
   .blog-box-more-title {
     font-size: 14px;
   }
+
   .blog-box-more-text {
     font-size: 11px;
   }
@@ -1510,4 +1523,173 @@ input[type="checkbox"]:checked+label:before {
   color: #FFF;
   border-left: solid 11px #27273f;
   padding: 0 10px 0 0;
+}
+
+/* デバイス */
+.device-wrapper {
+  width: 1280px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.device-top {
+  margin-top: 80px;
+}
+
+.kodawari {
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 95%;
+  background-color: #dff7ff;
+  border-radius: 10px;
+  width: 500px;
+}
+
+.kdwr-text {
+  text-align: center;
+}
+
+.device-ca {
+  margin: 30px auto;
+}
+
+.device-ca-top {
+  background-color: #dff7ff;
+  border-left: solid 10px #8991ff;
+  padding: 5px 10px;
+  max-width: 100%;
+  margin: 0 auto 0 10px;
+}
+.device-ca-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.device-ca-text {
+  font-size: 14px;
+}
+
+.devices {
+  max-width: 100%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.device {
+  background-color: #dff7ff;
+  border-radius: 10px;
+  max-width: 32.5%;
+  transition: 0.5s;
+  margin: 10px auto 0 auto;
+}
+
+.device:hover {
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.534));
+}
+
+.devices2 {
+  display: flex;
+  max-width: 100%;
+  margin: 0 auto 20px auto;
+}
+
+.devices2 ul {
+  display: flex;
+  overflow-x: scroll;
+  padding: 0;
+}
+
+.devices2 li {
+  min-width: 25%;
+  margin: 5px;
+  padding: 0;
+  list-style: none;
+}
+
+.device2 {
+  background-color: #dff7ff;
+  border-radius: 10px;
+  transition: 0.5s;
+  margin: 10px auto 0 auto;
+}
+.device2:hover {
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.534));
+}
+
+
+
+.device-box-url {
+  text-decoration: none;
+}
+
+.device-img {
+  max-width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.device-texts {
+  padding: 0 10px 10px 10px;
+}
+
+.device-category-name {
+  font-size: 10px;
+  color: rgb(119, 119, 119);
+}
+
+.device-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #000;
+}
+
+.device-text {
+  font-size: 14px;
+  color: rgb(80, 80, 80);
+}
+
+.device-price {
+  font-size: 16px;
+  color: rgb(16, 20, 73);
+  margin-top: 10px;
+}
+
+.buy-device-btn {
+  background-color: #8991ff;
+  border-radius: 5px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 5px 0;
+  transition: 0.3s;
+}
+
+.buy-device-btn:hover {
+  background-color: #9aa1ff;
+}
+
+.buy-device-url {
+  text-decoration: none
+}
+
+.buy-device-text {
+  color: #fff;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 767px) {
+  .kdwr-text2 {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  .device {
+    max-width: 100%;
+  }
+  .devices {
+    max-width: 95%;
+  }
+  .devices2 li {
+    min-width: 75%;
 }
