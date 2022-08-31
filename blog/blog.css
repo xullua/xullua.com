@@ -460,6 +460,13 @@ html {
     font-weight: bold;
 }
 
+.blog-wrapper {
+    width: 1280px;
+    max-width: 95%;
+    margin: 0 auto;
+    position: relative;
+}
+
 .blogs {
     padding: 30px 10px;
 }
@@ -510,6 +517,10 @@ html {
     padding-right: 10px;
     font-size: 12px;
     color: rgb(56, 56, 56);
+}
+
+.blogbox2 .blogbox-text {
+    display: none
 }
 
 @media screen and (max-width: 767px) {
