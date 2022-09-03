@@ -130,9 +130,11 @@
 /* 画像横並び */
 .slide ul {
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
     margin: 15px 0;
     padding: 0;
+    scroll-snap-type: x mandatory;
+    
 }
 
 .slide li {
@@ -140,6 +142,8 @@
     margin: 5px;
     padding: 0;
     list-style: none;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
 }
 
 @media screen and (max-width: 767px) {
