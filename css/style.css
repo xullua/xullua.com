@@ -394,7 +394,7 @@ body {
   font-size: 12px;
   position: static;
   bottom: 0;
-  padding: 25px 45px 35px 25px;
+  padding: 35px 25px 35px 25px;
 }
 
 
@@ -1506,6 +1506,9 @@ input[type="checkbox"]:checked+label:before {
   margin: 30px auto;
   text-align: center;
   transform: skewX(-10deg);
+  position: sticky;
+  top: 50px;
+  z-index: 10;
 }
 
 .mokuji {
