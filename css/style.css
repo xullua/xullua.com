@@ -59,6 +59,7 @@
   margin: 30px auto;
   max-width: 100%;
 }
+
 @media screen and (max-width: 767px) {
   .ad {
     max-width: 90%;
@@ -68,6 +69,7 @@
 /* フォント */
 html {
   font-size: 100%;
+  scroll-behavior: smooth;
 }
 
 .fonts1 {
@@ -415,7 +417,7 @@ body {
 #footer .sns-icons {
   height: 20px;
   margin-top: 20px;
-  
+
 }
 
 #footer .icon {
@@ -1274,20 +1276,25 @@ input[type="checkbox"]:checked+label:before {
 .blog-slide {
   display: flex;
   max-width: 100%;
+  width: 1280px;
   margin: 0 auto 20px auto;
 }
 
 .blog-slide ul {
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
   padding: 0;
+  scroll-snap-type: x mandatory;
+  margin: 0 auto;
 }
 
 .blog-slide li {
   min-width: 40%;
+  max-width: 50%;
   margin: 5px;
   padding: 0;
   list-style: none;
+  scroll-snap-align: center;
 }
 
 .blog-box {
@@ -1559,6 +1566,7 @@ input[type="checkbox"]:checked+label:before {
   max-width: 100%;
   margin: 0 auto;
 }
+
 .device-top {
   margin-top: 80px;
 }
@@ -1587,6 +1595,7 @@ input[type="checkbox"]:checked+label:before {
   max-width: 100%;
   margin: 0 auto 0 10px;
 }
+
 .device-ca-name {
   font-size: 24px;
   font-weight: bold;
@@ -1642,6 +1651,7 @@ input[type="checkbox"]:checked+label:before {
   transition: 0.5s;
   margin: 10px auto 0 auto;
 }
+
 .device2:hover {
   filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.534));
 }
@@ -1715,9 +1725,13 @@ input[type="checkbox"]:checked+label:before {
   .device {
     max-width: 100%;
   }
+
   .devices {
     max-width: 95%;
   }
+
   .devices2 li {
     min-width: 75%;
+  }
 }
+
