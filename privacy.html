@@ -34,43 +34,38 @@
 
 
 <body>
-    <!-- ヘッダー -->
-    <div id="header">
-        <div id="header">
-            <div class="header-inner wrapper">
-                <h1 class="logo"><a href="https://xullua.com"><img src="img/xullualogowhite.webp" alt="" width="600%"
-                            height="500%"></a>
-                </h1>
-
-                <nav id="navi">
-                    <ul>
-                        <li><a href="https://xullua.com">Home</a></li>
-                        <li><a href="contact">Contact</a></li>
-                        <li><a href="https://xla.jp/store"><span>Store</span></a></li>
-                        <li><a href="blog">Blog</a></li>
-                        <li><a href="https://twitter.com/xullua">Twitter</a></li>
-                    </ul>
-                </nav>
-
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                </div>
+    <header id="header">
+        <div class="header-inner wrapper">
+            <h1 class="logo"><a href="https://xullua.com">
+                    <img src="https://xullua.com/img/xullualogowhite.webp" alt="" width="600%" height="500%">
+                </a></h1>
+            <nav id="navi">
+                <ul>
+                    <li><a href="https://xullua.com">Home</a></li>
+                    <li><a href="https://xullua.com/contact">Contact</a></li>
+                    <li><a href="https://xullua.com/blog">Blog</a></li>
+                    <li><a href="https://xla.jp/store">Store</a></li>
+                    <li><a href="https://twitter.com/xullua">Twitter</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
             </div>
-            <script>
-                $(function () {
-                    $('.hamburger').click(function () {
-                        $(this).toggleClass('active');
-                        if ($(this).hasClass('active')) {
-                            $('#navi').addClass('active');
-                        } else {
-                            $('#navi').removeClass('active');
-                        }
-                    });
-                });
-            </script>
         </div>
-    </div>
+        <script>
+            $(function () {
+                $('.hamburger').click(function () {
+                    $(this).toggleClass('active');
+                    if ($(this).hasClass('active')) {
+                        $('#navi').addClass('active');
+                    } else {
+                        $('#navi').removeClass('active');
+                    }
+                });
+            });
+        </script>
+    </header>
 
     <!-- メイン -->
     <div class="warapper">

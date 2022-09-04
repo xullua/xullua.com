@@ -32,42 +32,38 @@
 </head>
 
 <body>
-    <!-- ヘッダー -->
-    <div id="header">
-        <div id="header">
-            <div class="header-inner wrapper">
-                <h1 class="logo"><a href=""><img src="https://xullua.com/img/xullualogowhite.webp" alt="" width="600%"
-                            height="500%"></a></h1>
-
-                <nav id="navi">
-                    <ul>
-                        <li><a href="https://xullua.com">Home</a></li>
-                        <li><a href="https://xullua.com/contact">Contact</a></li>
-                        <li><a href="https://xla.jp/store"><span>Store</span></a></li>
-                        <li><a href="https://xla.jp/blog">Blog</a></li>
-                        <li><a href="https://twitter.com/xullua">Twitter</a></li>
-                    </ul>
-                </nav>
-
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                </div>
+    <header id="header">
+        <div class="header-inner wrapper">
+            <h1 class="logo"><a href="https://xullua.com">
+                    <img src="https://xullua.com/img/xullualogowhite.webp" alt="" width="600%" height="500%">
+                </a></h1>
+            <nav id="navi">
+                <ul>
+                    <li><a href="https://xullua.com">Home</a></li>
+                    <li><a href="https://xullua.com/contact">Contact</a></li>
+                    <li><a href="https://xullua.com/blog">Blog</a></li>
+                    <li><a href="https://xla.jp/store">Store</a></li>
+                    <li><a href="https://twitter.com/xullua">Twitter</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
             </div>
-            <script>
-                $(function () {
-                    $('.hamburger').click(function () {
-                        $(this).toggleClass('active');
-                        if ($(this).hasClass('active')) {
-                            $('#navi').addClass('active');
-                        } else {
-                            $('#navi').removeClass('active');
-                        }
-                    });
-                });
-            </script>
         </div>
-    </div>
+        <script>
+            $(function () {
+                $('.hamburger').click(function () {
+                    $(this).toggleClass('active');
+                    if ($(this).hasClass('active')) {
+                        $('#navi').addClass('active');
+                    } else {
+                        $('#navi').removeClass('active');
+                    }
+                });
+            });
+        </script>
+    </header>
 
     <!-- お問い合わせ -->
     <div class="warapper">
@@ -116,14 +112,15 @@
                     <h3 class="game-blog-top-title">おすすめのゲーム関連記事</h3>
                     <p class="game-blog-top-text">ゲームに関係する記事をまとめてみました。横にスライドできます。</p>
                 </div>
-    
+
                 <div class="blog-slide">
-    
+
                     <ul>
                         <li>
                             <div class="blog-box">
                                 <a href="blog/Where-is-the-best-place-to-buy-Splatoon3" class="blog-box-url">
-                                    <img src="blog/img/Where-is-the-best-place-to-buy-Splatoon3/1.webp" class="blog-box-img">
+                                    <img src="blog/img/Where-is-the-best-place-to-buy-Splatoon3/1.webp"
+                                        class="blog-box-img">
                                     <div class="blog-box-more">
                                         <div class="blog-box-more-title">スプラトゥーン3はどこで買うのが一番いいの？</div>
                                         <div class="blog-box-more-text">スプラトゥーン3はどこで買うのが一番いいのかお求め別に解説。</div>
@@ -131,7 +128,7 @@
                                 </a>
                             </div>
                         </li>
-    
+
                         <li>
                             <div class="blog-box">
                                 <a href="blog/DualSenseEdge" class="blog-box-url">
@@ -143,7 +140,7 @@
                                 </a>
                             </div>
                         </li>
-    
+
                         <li>
                             <div class="blog-box">
                                 <a href="blog/DualSenseEdge.html" class="blog-box-url">
@@ -156,132 +153,136 @@
                             </div>
                         </li>
                     </ul>
-    
+
                 </div>
 
-            <div class="game-box">
-                <h3 class="game-title2">よくある質問</h3>
-                <p class="game-text2">フォロバされないのはなぜ。使用デバイスは。60fpsで撮る方法は。</p>
-                <div class="faq-btn2-c"><a class="faq-btn2" href="#faq">よくある質問</a></div>
-            </div>
+                <div class="game-box">
+                    <h3 class="game-title2">よくある質問</h3>
+                    <p class="game-text2">フォロバされないのはなぜ。使用デバイスは。60fpsで撮る方法は。</p>
+                    <div class="faq-btn2-c"><a class="faq-btn2" href="#faq">よくある質問</a></div>
+                </div>
 
-            <div class="game-box">
-                <h3 class="game-title2">2つのゲームアカウント</h3><br>
-                <h4 class="game-title2">@XlaPlay</h4>
-                <p class="game-text2">このアカウントではフォートナイトなどのヘビーゲーマーがプレイしているようなゲームを投稿していきます。ただ最近は勉強が忙しくてあまりできていません</p>
-                <p class="game-fb">Fortnite / FallGuys / Maincraft / CitiesSkylines / Apex / Valorant</p>
-                <a href="https://twitter.com/xlaplay" class="game-btn">@XlaPlay</a><br><br>
-                <h4 class="game-title2">@XlaGame</h4>
-                <p class="game-text2">このアカウントではスプラトゥーンなどのライトゲーマーや任天堂のゲームを投稿していきます。現在は主にスプラトゥーンの予定です。</p>
-                <p class="game-fb">Splatoon2 / Splatoon3</p>
-                <a href="https://twitter.com/xlagame" class="game-btn">@XlaGame</a>
-            </div>
-        </div>
-
-        <div class="game-faq" id="faq">
-            <div class="game-faq-titles">
-                <h3 class="game-faq-title">よくある質問</h3>
-                <p class="game-faq-text">解決しなかった場合はお気軽に<a href="contact" class="game-faq-url">お問い合わせ</a>ください</p>
-            </div>
-
-            <div class="game-faq-box">
-                <a class="game-q">60fpsでの録画はどのようにしていますか</a>
-                <p class="game-a">キャプチャーボードを使用してPCで保存をしています。<a href="https://amzn.to/3A0aTsE"
-                        class="game-a-url">このキャプチャーボード</a>を使用しています。発熱と音の遅延が少なくて気に入っています</p>
-                <div class="faq-btns">
-                    <a class="faq-btn" href="https://amzn.to/3A0aTsE">キャプチャーボード</a>
+                <div class="game-box">
+                    <h3 class="game-title2">2つのゲームアカウント</h3><br>
+                    <h4 class="game-title2">@XlaPlay</h4>
+                    <p class="game-text2">このアカウントではフォートナイトなどのヘビーゲーマーがプレイしているようなゲームを投稿していきます。ただ最近は勉強が忙しくてあまりできていません</p>
+                    <p class="game-fb">Fortnite / FallGuys / Maincraft / CitiesSkylines / Apex / Valorant</p>
+                    <a href="https://twitter.com/xlaplay" class="game-btn">@XlaPlay</a><br><br>
+                    <h4 class="game-title2">@XlaGame</h4>
+                    <p class="game-text2">このアカウントではスプラトゥーンなどのライトゲーマーや任天堂のゲームを投稿していきます。現在は主にスプラトゥーンの予定です。</p>
+                    <p class="game-fb">Splatoon2 / Splatoon3</p>
+                    <a href="https://twitter.com/xlagame" class="game-btn">@XlaGame</a>
                 </div>
             </div>
-            <hr class="faq-hr">
 
-            <div class="game-faq-box">
-                <a class="game-q">どのような環境でプレイしていますか</a>
-                <p class="game-a">Switchはキャプチャーボードに繋ぎ、そこからメインモニターとPCに映像を出力しています。</p>
-                <div class="faq-btns">
-                    <a class="faq-btn" href="https://xla.jp/device">所持デバイス</a>
-                    <a class="faq-btn" href="https://youtu.be/RDhj-KpdWjE">デスク紹介</a>
+            <div class="game-faq" id="faq">
+                <div class="game-faq-titles">
+                    <h3 class="game-faq-title">よくある質問</h3>
+                    <p class="game-faq-text">解決しなかった場合はお気軽に<a href="contact" class="game-faq-url">お問い合わせ</a>ください</p>
                 </div>
+
+                <div class="game-faq-box">
+                    <a class="game-q">60fpsでの録画はどのようにしていますか</a>
+                    <p class="game-a">キャプチャーボードを使用してPCで保存をしています。<a href="https://amzn.to/3A0aTsE"
+                            class="game-a-url">このキャプチャーボード</a>を使用しています。発熱と音の遅延が少なくて気に入っています</p>
+                    <div class="faq-btns">
+                        <a class="faq-btn" href="https://amzn.to/3A0aTsE">キャプチャーボード</a>
+                    </div>
+                </div>
+                <hr class="faq-hr">
+
+                <div class="game-faq-box">
+                    <a class="game-q">どのような環境でプレイしていますか</a>
+                    <p class="game-a">Switchはキャプチャーボードに繋ぎ、そこからメインモニターとPCに映像を出力しています。</p>
+                    <div class="faq-btns">
+                        <a class="faq-btn" href="https://xla.jp/device">所持デバイス</a>
+                        <a class="faq-btn" href="https://youtu.be/RDhj-KpdWjE">デスク紹介</a>
+                    </div>
+                </div>
+                <hr class="faq-hr">
+
+                <div class="game-faq-box">
+                    <a class="game-q">フォロバされません。なぜですか</a>
+                    <p class="game-a">
+                        それぞれのアカウントの趣旨に合ったアカウントのみをフォロバしています。プロフィールにご自身と一致している箇所があるかご確認ください。またスパム垢を弾く為にFF比が1.4を超えているアカウントとフォロワー数が20人以下のアカウントはフォロバしていません。
+                    </p>
+                </div>
+                <hr class="faq-hr">
+
+                <div class="game-faq-titles">
+                    <p class="game-faq-text">解決しなかった場合はお気軽に<a href="contact" class="game-faq-url">お問い合わせ</a>ください</p>
+                </div><br><br>
             </div>
-            <hr class="faq-hr">
 
-            <div class="game-faq-box">
-                <a class="game-q">フォロバされません。なぜですか</a>
-                <p class="game-a">
-                    それぞれのアカウントの趣旨に合ったアカウントのみをフォロバしています。プロフィールにご自身と一致している箇所があるかご確認ください。またスパム垢を弾く為にFF比が1.4を超えているアカウントとフォロワー数が20人以下のアカウントはフォロバしていません。
-                </p>
-            </div>
-            <hr class="faq-hr">
 
-            <div class="game-faq-titles">
-                <p class="game-faq-text">解決しなかった場合はお気軽に<a href="contact" class="game-faq-url">お問い合わせ</a>ください</p>
-            </div><br><br>
-        </div>
-
-        
 
         </div>
 
     </div>
 
-        <!-- フッター -->
-        <footer id="footer">
-            <div class="wrapper">
-              <h1 class="footer-logo">
+    <!-- フッター -->
+    <footer id="footer">
+        <div class="wrapper">
+            <h1 class="footer-logo">
                 <a href="https://xullua.com">
-                  <img src="https://xullua.com/img/xullualogoblack.webp" alt="" width="600%" height="600%">
+                    <img src="https://xullua.com/img/xullualogoblack.webp" alt="" width="600%" height="600%">
                 </a>
-              </h1>
-      
-              <div class="footer-sns">
+            </h1>
+
+            <div class="footer-sns">
                 <div class="sns-icons">
-                  <a href="https://twitter.com/xullua"><img class="icon" src="https://xullua.com/img/twitter.webp"></a>
-                  <a href="https://youtube.com/c/xullua"><img class="icon" src="https://xullua.com/img/youtube.webp"></a>
-                  <a href="https://instagram.com/xullua"><img class="icon" src="https://xullua.com/img/instagram.webp"></a>
-                  <a href="https://tiktok.com/@xlagame"><img class="icon" src="https://xullua.com/img/tiktok.webp"></a>
+                    <a href="https://twitter.com/xullua"><img class="icon"
+                            src="https://xullua.com/img/twitter.webp"></a>
+                    <a href="https://youtube.com/c/xullua"><img class="icon"
+                            src="https://xullua.com/img/youtube.webp"></a>
+                    <a href="https://instagram.com/xullua"><img class="icon"
+                            src="https://xullua.com/img/instagram.webp"></a>
+                    <a href="https://tiktok.com/@xlagame"><img class="icon"
+                            src="https://xullua.com/img/tiktok.webp"></a>
                 </div>
-              </div>
-              <div class="footer-menu">
+            </div>
+            <div class="footer-menu">
                 <div class="menu">
-                  <p class="title">SNS</p>
-                  <ul>
-                    <li><a href="https://twitter.com/xullua">Twitter(メイン)</a></li>
-                    <li><a href="https://twitter.com/xlagame">Twitter(スプラ)</a></li>
-                    <li><a href="https://youtube.com/c/xullua">YouTube</a></li>
-                    <li><a href="https://instagram.com/xullua">Instagram</a></li>
-                  </ul>
-                </div>
-                <div class="menu">
-                  <p class="title">サイト
-                  <ul>
-                    <li><a href="https://xla.jp/store">ストア</a></li>
-                    <li><a href="https://xullua.com/blog">ブログ</a></li>
-                    <li><a href="https://xullua.com/game">ゲーム</a></li>
-                    <li><a href="https://xullua.com/device">使用デバイス</a></li>
-                  </ul>
-                  </p>
+                    <p class="title">SNS</p>
+                    <ul>
+                        <li><a href="https://twitter.com/xullua">Twitter(メイン)</a></li>
+                        <li><a href="https://twitter.com/xlagame">Twitter(スプラ)</a></li>
+                        <li><a href="https://youtube.com/c/xullua">YouTube</a></li>
+                        <li><a href="https://instagram.com/xullua">Instagram</a></li>
+                    </ul>
                 </div>
                 <div class="menu">
-                  <p class="title">マップ
-                  <ul>
-                    <li><a href="https://xullua.com">ホーム</a></li>
-                    <li><a href="https://xullua.com/privacy">プライバシー</a></li>
-                    <li><a href="https://xullua.com/contact">お問い合わせ</a></li>
-                    <li><a href="https://xullua.com/map">サイトマップ</a></li>
-                  </ul>
-                  </p>
+                    <p class="title">サイト
+                    <ul>
+                        <li><a href="https://xla.jp/store">ストア</a></li>
+                        <li><a href="https://xullua.com/blog">ブログ</a></li>
+                        <li><a href="https://xullua.com/game">ゲーム</a></li>
+                        <li><a href="https://xullua.com/device">使用デバイス</a></li>
+                    </ul>
+                    </p>
                 </div>
-              </div>
-              <div class="line"></div>
-              <div class="footer-under">
+                <div class="menu">
+                    <p class="title">マップ
+                    <ul>
+                        <li><a href="https://xullua.com">ホーム</a></li>
+                        <li><a href="https://xullua.com/privacy">プライバシー</a></li>
+                        <li><a href="https://xullua.com/contact">お問い合わせ</a></li>
+                        <li><a href="https://xullua.com/map">サイトマップ</a></li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="footer-under">
                 <div class="copyright">©Xullua</div>
                 <div class="text2s">
-                  <a class="text2" href="https://xullua.com/privacy">プライバシーポリシー</a>
-                  <a class="text2" href="https://xullua.com/contact">お問い合わせ</a>
+                    <a class="text2" href="https://xullua.com/privacy">プライバシーポリシー</a>
+                    <a class="text2" href="https://xullua.com/contact">お問い合わせ</a>
                 </div>
-              </div>
-              <div class="text1">サイト内で使用されている画像や映像は著作物です。無断での使用は認めません。</div>
             </div>
-          </footer>
+            <div class="text1">サイト内で使用されている画像や映像は著作物です。無断での使用は認めません。</div>
+        </div>
+    </footer>
 </body>
 
 </html>
