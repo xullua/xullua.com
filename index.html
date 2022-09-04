@@ -12,6 +12,7 @@
   <meta name="description" content="一般人のぞるあのWebページ">
   <meta name="twitter:image" content="https://at.xullua.com/img/xullualogo1.png">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/main.js" async></script>
   <link rel="shortcut icon" href="img/favicon.ico">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/2.css">
@@ -81,13 +82,13 @@
     <a href="https://twitter.com/xullua">Twitter</a>
   </div>
 
-  <div class="wrapper">
-    <div class="mokujies">
-      <a href="#skill" class="mokuji">スキル</a>
-      <a href="#profile" class="mokuji">プロフィール</a>
-      <a href="#link" class="mokuji">リンク</a>
-    </div>
+
+  <div class="mokujies">
+    <a href="#skill" class="mokuji">スキル</a>
+    <a href="#profile" class="mokuji">プロフィール</a>
+    <a href="#link" class="mokuji">リンク</a>
   </div>
+
 
   <div class="line"><br>
 
@@ -125,11 +126,9 @@
             <p class="skill-text">何かを作り上げるのが好きです。特段うまいことがあるわけではないですが。</p>
           </div>
         </div>
-      </div>
-    </div><br><br><br>
+      </div><br><br><br>
 
-    <!-- プロフィール -->
-    <div class="wrapper">
+      <!-- プロフィール -->
       <h2 class="title1" id="profile">PROFILE</h2>
       <div class="skill-block">
 
@@ -173,9 +172,7 @@
           </div>
         </div>
       </div><br><br>
-    </div>
 
-    <div class="wrapper">
       <h2 class="title1" id="link">LINK</h2>
       <div class="links">
 
@@ -218,7 +215,8 @@
           <div class="link-un">
             <div class="link-un-l">
               <div class="link-sns-name">Twitter</div>
-              <div class="link-sns-url"><a class="link-sns-url" href="https://twitter.com/xlagame">twitter.com/xlagame</a>
+              <div class="link-sns-url"><a class="link-sns-url"
+                  href="https://twitter.com/xlagame">twitter.com/xlagame</a>
               </div>
             </div>
             <div class="link-un-r" style="background-color: rgb(71, 83, 255);">
@@ -243,7 +241,8 @@
           <div class="link-un">
             <div class="link-un-l">
               <div class="link-sns-name">Twitter</div>
-              <div class="link-sns-url"><a class="link-sns-url" href="https://twitter.com/xlaplay">twitter.com/xlaplay</a>
+              <div class="link-sns-url"><a class="link-sns-url"
+                  href="https://twitter.com/xlaplay">twitter.com/xlaplay</a>
               </div>
             </div>
             <div class="link-un-r" style="background-color: rgb(71, 83, 255);">
@@ -285,52 +284,60 @@
     <!-- フッター -->
     <footer id="footer">
       <div class="wrapper">
-        <h1 class="footer-logo"><a href=""><img src="img/xullualogoblack.webp" alt="" width="600%" height="600%"></a>
+        <h1 class="footer-logo">
+          <a href="https://xullua.com">
+            <img src="https://xullua.com/img/xullualogoblack.webp" alt="" width="600%" height="600%">
+          </a>
         </h1>
 
+        <div class="footer-sns">
+          <div class="sns-icons">
+            <a href="https://twitter.com/xullua"><img class="icon" src="https://xullua.com/img/twitter.webp"></a>
+            <a href="https://youtube.com/c/xullua"><img class="icon" src="https://xullua.com/img/youtube.webp"></a>
+            <a href="https://instagram.com/xullua"><img class="icon" src="https://xullua.com/img/instagram.webp"></a>
+            <a href="https://tiktok.com/@xlagame"><img class="icon" src="https://xullua.com/img/tiktok.webp"></a>
+          </div>
+        </div>
         <div class="footer-menu">
           <div class="menu">
             <p class="title">SNS</p>
             <ul>
-              <li><a href="https://twitter.com/xullua">Twitter</a></li>
+              <li><a href="https://twitter.com/xullua">Twitter(メイン)</a></li>
+              <li><a href="https://twitter.com/xlagame">Twitter(スプラ)</a></li>
               <li><a href="https://youtube.com/c/xullua">YouTube</a></li>
               <li><a href="https://instagram.com/xullua">Instagram</a></li>
             </ul>
           </div>
-
           <div class="menu">
             <p class="title">サイト
             <ul>
-              <li><a href="https://xla.jp/store">Store</a></li>
-              <li><a href="https://xla.jp/blog">Blog</a></li>
-              <li><a href="https://xla.jp/help">Help</a></li>
+              <li><a href="https://xla.jp/store">ストア</a></li>
+              <li><a href="https://xullua.com/blog">ブログ</a></li>
+              <li><a href="https://xullua.com/game">ゲーム</a></li>
+              <li><a href="https://xullua.com/device">使用デバイス</a></li>
             </ul>
             </p>
           </div>
-
           <div class="menu">
             <p class="title">マップ
             <ul>
-              <li><a href="https://at.xullua.com">Home</a></li>
-              <li><a href="privacy">Privacy</a></li>
-              <li><a href="contact">Contact</a></li>
+              <li><a href="https://xullua.com">ホーム</a></li>
+              <li><a href="https://xullua.com/privacy">プライバシー</a></li>
+              <li><a href="https://xullua.com/contact">お問い合わせ</a></li>
+              <li><a href="https://xullua.com/map">サイトマップ</a></li>
             </ul>
             </p>
           </div>
         </div>
-
-        <div class="line"><br>
-          <div class="footer-under">
-            <div class="copyright">©Xullua</div>
-            <div class="text2s">
-              <a class="text2" href="https://xullua.com/help">ヘルプ</a><a class="text2">&emsp;</a><a class="text2"
-                href="privacy">プライバシー</a><a class="text2">&emsp;</a><a class="text2" href="contact">お問い合わせ</a>
-            </div>
+        <div class="line"></div>
+        <div class="footer-under">
+          <div class="copyright">©Xullua</div>
+          <div class="text2s">
+            <a class="text2" href="https://xullua.com/privacy">プライバシーポリシー</a>
+            <a class="text2" href="https://xullua.com/contact">お問い合わせ</a>
           </div>
-
-
-          <div class="text1">サイト内で使用されている画像や映像は著作物です。無断での使用は認めません。</div>
         </div>
+        <div class="text1">サイト内で使用されている画像や映像は著作物です。無断での使用は認めません。</div>
       </div>
     </footer>
 
