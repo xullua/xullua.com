@@ -389,12 +389,15 @@ body {
 /* フッター */
 #footer {
   width: 100%;
-  background-color: #f5f5f7;
+  background-color: #ffffff;
   color: #86868b;
   font-size: 12px;
   position: static;
   bottom: 0;
-  padding: 35px 25px 35px 25px;
+  padding: 45px 20px 45px 20px;
+  margin-top: 40px;
+  border-radius: 20px 20px 0 0;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.205));
 }
 
 
@@ -405,12 +408,31 @@ body {
   margin-right: 9%;
 }
 
+#footer .footer-sns {
+  width: 100%;
+}
+
+#footer .sns-icons {
+  height: 20px;
+  margin-top: 20px;
+  
+}
+
+#footer .icon {
+  max-height: 100%;
+  margin-right: 5px;
+}
+
+#footer .icon:hover {
+  transform: scale(1.1, 1.1);
+}
+
 #footer .footer-menu {
   display: flex;
   padding-bottom: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   margin: 0 auto;
-  max-width: 1280px;
+  max-width: 100%;
 }
 
 #footer .footer-menu .menu {
@@ -441,15 +463,17 @@ body {
 #footer .footer-under {
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
 #footer .copyright {
   font-size: 12px;
 }
 
-#footer text2s {
+#footer .text2s {
   display: flex;
-  margin: 0 auto;
+  text-align: right;
+  display: flex;
 }
 
 #footer .text2 {
@@ -457,10 +481,11 @@ body {
   color: #696991;
   list-style: none;
   text-decoration: none;
+  margin-left: 10px;
 }
 
 #footer .text2:hover {
-  color: rgb(97, 97, 255);
+  color: #8991ff;
 }
 
 #footer .text1 {
@@ -1508,7 +1533,7 @@ input[type="checkbox"]:checked+label:before {
   transform: skewX(-10deg);
   position: sticky;
   top: 50px;
-  z-index: 10;
+  z-index: 5;
 }
 
 .mokuji {
