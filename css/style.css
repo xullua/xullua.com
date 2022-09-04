@@ -346,7 +346,7 @@ body {
 
 @media screen and (max-width: 767px) {
   #header .header-inner .logo {
-    z-index: 20;
+    z-index: 11;
   }
 
   #navi {
