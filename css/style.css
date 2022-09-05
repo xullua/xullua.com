@@ -456,6 +456,7 @@ body {
   letter-spacing: 0.05em;
   font-weight: bold;
   font-size: 18px;
+  color: var(--main-text);
 }
 
 @media screen and (max-width: 767px) {
@@ -509,7 +510,7 @@ body {
   width: 48px;
   display: inline-block;
   text-align: center;
-  background: #545454;
+  background: var(--blue-1);
   color: #fff;
   font-size: 14px;
 }
@@ -525,7 +526,7 @@ body {
 }
 
 .Form-Item-Input {
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid var(--sub-back);
   border-radius: 6px;
   margin-left: 40px;
   padding-left: 1em;
@@ -534,7 +535,7 @@ body {
   flex: 1;
   width: 100%;
   max-width: 410px;
-  background: #f1f1f1;
+  background: var(--sub-back);
   font-size: 18px;
 }
 
@@ -549,7 +550,7 @@ body {
 }
 
 .Form-Item-Textarea {
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid var(--sub-back);
   border-radius: 6px;
   padding-left: 1em;
   padding-right: 1em;
@@ -558,7 +559,7 @@ body {
   flex: 1;
   width: 100%;
   max-width: 410px;
-  background: #f1f1f1;
+  background: var(--sub-back);
   font-size: 18px;
 }
 
@@ -583,18 +584,17 @@ body {
   width: 280px;
   display: block;
   letter-spacing: 0.05em;
-  background: #545454;
-  color: #fff;
+  background: var(--blue-1);
+  color: #FFF;
   font-weight: bold;
   font-size: 20px;
   cursor: pointer;
   border: 0px;
+  transition: 0.2s;
 }
 
 .Form-Btn:hover {
-  background-color: #ffffff;
-  color: #545454;
-  border: 1px solid;
+  background-color: var(--blue-3);
 }
 
 @media screen and (max-width: 767px) {
@@ -609,7 +609,7 @@ body {
   margin-left: 15px;
   margin-right: 15px;
   border-radius: 15px;
-  background-color: #f7f7f7;
+  background-color: var(--sub-back);
   padding: 50px;
 }
 
@@ -623,7 +623,7 @@ input[type="checkbox"]+label {
   padding-left: 35px;
   margin-bottom: 20px;
   font: 14px/20px 'Open Sans', Arial, sans-serif;
-  color: #333;
+  color: var(--main-text);
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -639,7 +639,7 @@ input[type="checkbox"]+label:before {
   display: block;
   width: 20px;
   height: 20px;
-  border: 1px solid #353ad6;
+  border: 1px solid var(--blue-1);
   position: absolute;
   left: 0;
   top: 0;
@@ -669,7 +669,7 @@ input[type="checkbox"]:checked+label:before {
 /* お問い合わせ完了 */
 .thanks-box {
   border-radius: 15px;
-  background-color: #f7f7f7;
+  background-color: var(--sub-back);
   width: 650px;
   margin: 0 auto;
   margin-top: 30px;
@@ -680,7 +680,7 @@ input[type="checkbox"]:checked+label:before {
 
 .thanks-box-title {
   text-align: center;
-  color: #535353;
+  color: var(--main-text);
   font-size: 18px;
 }
 
@@ -689,7 +689,7 @@ input[type="checkbox"]:checked+label:before {
   font-size: 14px;
   margin-left: 10px;
   margin-right: 10px;
-  color: #86868b;
+  color: var(--sub-text);
 }
 
 /* 404 */
@@ -698,13 +698,17 @@ input[type="checkbox"]:checked+label:before {
   margin-top: 150px;
 }
 
+.nf-text {
+  color: var(--main-text);
+}
+
 .nf-btns {
   margin: 30px auto;
 }
 
 .nf-btn {
   text-decoration: none;
-  background-color: #e6e6e6;
+  background-color: var(--sub-text);
   color: #000;
   border-radius: 50px;
   padding: 5px 30px;
@@ -723,6 +727,7 @@ input[type="checkbox"]:checked+label:before {
   margin-left: 25px;
   margin-bottom: 50px;
   text-align: center;
+  color: var(--main-text);
 }
 
 .present-title1 {
@@ -734,10 +739,10 @@ input[type="checkbox"]:checked+label:before {
 }
 
 .present-howto {
-  background-color: rgb(243, 243, 243);
+  background-color: var(--sub-back);
   border-radius: 25px;
   font-family: 'Zen Kaku Gothic New', sans-serif;
-  color: rgb(24, 24, 24);
+  color: var(--main-text);
   text-align: center;
   max-width: 90%;
   width: 500px;
@@ -753,7 +758,7 @@ input[type="checkbox"]:checked+label:before {
 
 .present-howto-text {
   font-size: 16px;
-  color: rgb(24, 24, 24);
+  color: var(--sub-text);
 }
 
 .present-text-mini {
@@ -838,14 +843,16 @@ input[type="checkbox"]:checked+label:before {
   text-align: center;
   font-size: 23px;
   margin-bottom: 10px;
+  color: var(--main-text);
 }
 
 .present-a-text {
   font-size: 14px;
+  color: var(--sub-text);
 }
 
 .present-ex {
-  background-color: #e9e9e9;
+  background-color: var(--main-back);
   text-align: left;
   padding: 15px;
   width: 180px;
@@ -910,7 +917,7 @@ input[type="checkbox"]:checked+label:before {
 /* ゲーム */
 .game-box {
   border-radius: 15px;
-  background-color: #f7f7f7;
+  background-color: var(--sub-back);
   width: 720px;
   margin: 0 auto;
   margin-top: 30px;
@@ -922,7 +929,7 @@ input[type="checkbox"]:checked+label:before {
 
 .game-box:hover {
   transform: scale(1.03, 1.03);
-  background-color: #27273f;
+  background-color: var(--blue-2);
   color: #fff;
 }
 
@@ -945,11 +952,13 @@ input[type="checkbox"]:checked+label:before {
 .game-title {
   margin-bottom: 5px;
   font-family: 'Edu VIC WA NT Beginner', cursive;
+  color: var(--main-text);
 }
 
 .game-text {
   font-size: 14px;
   font-family: 'Zen Kaku Gothic New', sans-serif;
+  color: var(--sub-text);
 }
 
 .game-btn {
@@ -963,7 +972,7 @@ input[type="checkbox"]:checked+label:before {
   text-align: center;
   text-decoration: none;
   color: #ffffff;
-  background: rgb(159, 161, 250);
+  background: var(--blue-1);
   border-radius: 30px;
   border: 0px;
   -webkit-backface-visibility: hidden;
@@ -978,7 +987,7 @@ input[type="checkbox"]:checked+label:before {
   -webkit-animation: game-btn 0.5s both;
   -moz-animation: game-btn 0.5s both;
   animation: game-btn 0.5s both;
-  background-color: #4e4e64;
+  background-color: var(--blue-3);
   color: #fff;
 }
 
@@ -1029,12 +1038,14 @@ input[type="checkbox"]:checked+label:before {
   margin-bottom: 5px;
   text-align: center;
   font-family: 'Zen Kaku Gothic New', sans-serif;
+  color: var(--main-text);
 }
 
 .game-text2 {
   font-size: 14px;
   text-align: center;
   font-family: 'Zen Kaku Gothic New', sans-serif;
+  color: var(--sub-text);
 }
 
 .game-faq {
@@ -1053,16 +1064,17 @@ input[type="checkbox"]:checked+label:before {
 .game-faq-title {
   font-family: 'Zen Kaku Gothic New', sans-serif;
   margin-bottom: 5px;
+  color: var(--main-text);
 }
 
 .game-faq-text {
   font-size: 10px;
-  color: #858585;
+  color: var(--sub-text);
 }
 
 .game-faq-url {
   font-size: 10px;
-  color: #434285;
+  color: var(url);
   text-decoration: none;
 }
 
@@ -1075,16 +1087,18 @@ input[type="checkbox"]:checked+label:before {
   background: linear-gradient(transparent 60%, rgba(255, 255, 102, 0.425) 30%);
   font-weight: bold;
   font-family: 'Zen Kaku Gothic New', sans-serif;
+  color: var(--main-text);
 }
 
 .game-a {
   font-size: 14px;
+  color: var(--sub-text);
 }
 
 .game-a-url {
   text-decoration: none;
   font-size: 14px;
-  color: rgb(101, 77, 223);
+  color: var(url);
 }
 
 .game-blog {}
@@ -1094,8 +1108,13 @@ input[type="checkbox"]:checked+label:before {
   text-align: center;
 }
 
+.game-blog-top-title {
+  color: var(--main-text);
+}
+
 .game-blog-top-text {
   font-size: 12px;
+  color: var(--sub-text);
 }
 
 .blog-slide {
@@ -1103,6 +1122,15 @@ input[type="checkbox"]:checked+label:before {
   max-width: 100%;
   width: 1280px;
   margin: 0 auto 20px auto;
+  /* IE, Edge 対応 */
+  -ms-overflow-style: none;
+  /* Firefox 対応 */
+  scrollbar-width: none;
+}
+
+/* Chrome, Safari 対応 */
+.blog-slide::-webkit-scrollbar {
+  display: none;
 }
 
 .blog-slide ul {
@@ -1120,11 +1148,17 @@ input[type="checkbox"]:checked+label:before {
   padding: 0;
   list-style: none;
   scroll-snap-align: center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-margin-left: 20px;
+  display: flex;
+  padding: 0 10px;
 }
+
 
 .blog-box {
   border-radius: 10px;
-  background-color: rgb(240, 240, 240);
+  background-color: var(--sub-back);
   height: 100%;
 }
 
@@ -1143,12 +1177,12 @@ input[type="checkbox"]:checked+label:before {
 
 .blog-box-more-title {
   font-weight: bold;
-  color: #000;
+  color: var(--main-text);
 }
 
 .blog-box-more-text {
   font-size: 12px;
-  color: rgb(129, 129, 129);
+  color: var(--sub-text);
 }
 
 
@@ -1167,9 +1201,9 @@ input[type="checkbox"]:checked+label:before {
 }
 
 .faq-btn {
-  background-color: #333;
+  background-color: var(--blue-2);
   border-radius: 50px;
-  color: #fff;
+  color: var(--main-text);
   padding: 5px 20px;
   text-decoration: none;
   font-size: 11px;
@@ -1181,10 +1215,8 @@ input[type="checkbox"]:checked+label:before {
 }
 
 .faq-btn:hover {
-  background-color: rgb(255, 255, 255);
-  color: #27273f;
-  border: 1px solid;
-  border-color: #000;
+  background-color: var(--blue-3);
+  color: #FFFFFF;
 }
 
 .faq-btns {
@@ -1400,13 +1432,18 @@ input[type="checkbox"]:checked+label:before {
   margin: 30px auto;
   padding: 20px;
   max-width: 95%;
-  background-color: #dff7ff;
+  background-color: var(--sub-back);
   border-radius: 10px;
   width: 500px;
 }
 
 .kdwr-text {
   text-align: center;
+  color: var(--main-text);
+}
+
+.kdwr-text2 {
+  color: var(--sub-text);
 }
 
 .device-ca {
@@ -1414,8 +1451,8 @@ input[type="checkbox"]:checked+label:before {
 }
 
 .device-ca-top {
-  background-color: #dff7ff;
-  border-left: solid 10px #8991ff;
+  background-color: var(--blue-2);
+  border-left: solid 10px var(--blue-1);
   padding: 5px 10px;
   max-width: 100%;
   margin: 0 auto 0 10px;
@@ -1424,10 +1461,12 @@ input[type="checkbox"]:checked+label:before {
 .device-ca-name {
   font-size: 24px;
   font-weight: bold;
+  color: var(--main-text);
 }
 
 .device-ca-text {
   font-size: 14px;
+  color: var(--sub-text);
 }
 
 .devices {
@@ -1440,7 +1479,7 @@ input[type="checkbox"]:checked+label:before {
 }
 
 .device {
-  background-color: #dff7ff;
+  background-color: var(--sub-back);
   border-radius: 10px;
   max-width: 32.5%;
   transition: 0.5s;
@@ -1448,7 +1487,7 @@ input[type="checkbox"]:checked+label:before {
 }
 
 .device:hover {
-  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.534));
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.315));
 }
 
 .devices2 {
@@ -1471,14 +1510,14 @@ input[type="checkbox"]:checked+label:before {
 }
 
 .device2 {
-  background-color: #dff7ff;
+  background-color: var(--sub-back);
   border-radius: 10px;
   transition: 0.5s;
   margin: 10px auto 0 auto;
 }
 
 .device2:hover {
-  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.534));
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.295));
 }
 
 
@@ -1504,22 +1543,22 @@ input[type="checkbox"]:checked+label:before {
 .device-name {
   font-size: 22px;
   font-weight: bold;
-  color: #000;
+  color: var(--main-text);
 }
 
 .device-text {
   font-size: 14px;
-  color: rgb(80, 80, 80);
+  color: var(--sub-text);
 }
 
 .device-price {
   font-size: 16px;
-  color: rgb(16, 20, 73);
+  color: var(--yellow-1);
   margin-top: 10px;
 }
 
 .buy-device-btn {
-  background-color: #8991ff;
+  background-color: var(--blue-1);
   border-radius: 5px;
   max-width: 100%;
   margin: 0 auto;
@@ -1528,7 +1567,7 @@ input[type="checkbox"]:checked+label:before {
 }
 
 .buy-device-btn:hover {
-  background-color: #9aa1ff;
+  opacity: 0.9;
 }
 
 .buy-device-url {

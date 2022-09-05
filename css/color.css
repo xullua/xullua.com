@@ -1,7 +1,7 @@
 /* カラー設定 */
 :root {
     --main-back: #FFF;
-    --sub-back: #f1f1f1;
+    --sub-back: #f3f3f3;
     --third-back: #FFFFFF;
     --main-text: #000000;
     --sub-text: #6e6e6e;
@@ -24,4 +24,4 @@
         --blue-3: #4d4dff;
         --yellow-1: #FFFF00;
     }
-}
+}rgba(0, 0, 0, 0.219)
