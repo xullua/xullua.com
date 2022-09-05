@@ -1,0 +1,26 @@
+/* カラー設定 */
+:root {
+    --main-back: #FFF;
+    --sub-back: #f1f1f1;
+    --third-back: #FFFFFF;
+    --main-text: #000000;
+    --sub-text: #6e6e6e;
+    --blue-1: #8991ff;
+    --blue-2: #eaeaff;
+    --blue-3: #3232aa;
+    --yellow-1: #bdbd00;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-back: #1f1f1f;
+        --sub-back: #000000;
+        --third-back: #000000;
+        --main-text: #eeeeee;
+        --sub-text: #bebebe;
+        --blue-1: #8991ff;
+        --blue-2: #000030;
+        --blue-3: #4d4dff;
+        --yellow-1: #FFFF00;
+    }
+}
