@@ -411,6 +411,12 @@ body {
   padding-left: 20px;
   padding-right: 20px;
   font-size: 90%;
+  color: var(--main-text);
+}
+
+.privacy a {
+  text-decoration: none;
+  color: var(--url);
 }
 
 
@@ -1074,7 +1080,7 @@ input[type="checkbox"]:checked+label:before {
 
 .game-faq-url {
   font-size: 10px;
-  color: var(url);
+  color: var(--url);
   text-decoration: none;
 }
 
