@@ -66,6 +66,7 @@
 
 .url {
     text-decoration: none;
+    color: var(--url);
 }
 
 .url-btn {
