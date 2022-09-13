@@ -96,10 +96,6 @@
     transition: 0.3s;
 }
 
-.img:hover {
-    transform: scale(1.02, 1.02);
-}
-
 .img-c {
     text-align: center;
     margin: 20px 0 10px 0;
