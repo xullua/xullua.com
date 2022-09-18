@@ -1613,9 +1613,13 @@ input[type="checkbox"]:checked+label:before {
 
 /* アバウト */
 .about-ad .video {
+  text-align: center;
+}
+.about-ad .video video {
   width: 1280px;
   max-width: 100%;
   margin: 50px auto 10px auto;
+  border-radius: 10px;
 }
 
 .about-ad .texts {
