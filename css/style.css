@@ -79,6 +79,10 @@ a {
   color: var(--url);
 }
 
+.en {
+  font-family: 'Noto Sans', sans-serif;
+}
+
 .fonts1 {
   font-family: 'Noto Sans JP', sans-serif;
 }
@@ -1636,8 +1640,9 @@ input[type="checkbox"]:checked+label:before {
 .about-ad .yt a {
   background-color: #eb2929;
   color: #FFF;
-  padding: 5px 20px;
+  padding: 3px 15px;
   border-radius: 20px;
+  font-size: 12px;
 }
 
 .about-ad .mini {
