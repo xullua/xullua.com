@@ -207,6 +207,12 @@
     margin-top: 20px;
 }
 
+#footer .footer-menu .title2 {
+    color: var(--main-text);
+    font-weight: bold;
+    margin-top: 20px;
+}
+
 #footer .footer-menu li {
     margin-top: 10px;
     list-style: none;
