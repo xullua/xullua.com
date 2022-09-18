@@ -6,6 +6,7 @@
     --main-text: #000000;
     --sub-text: #6e6e6e;
     --url: #0066c0;
+    --header-back: rgba(255, 255, 255, 0.5);
     --blue-1: #8991ff;
     --blue-2: #eaeaff;
     --blue-3: #3232aa;
@@ -20,6 +21,7 @@
         --main-text: #eeeeee;
         --sub-text: #bebebe;
         --url: #40a6ff;
+        --header-back: rgba(0, 0, 0, 0.65);
         --blue-1: #8991ff;
         --blue-2: #000030;
         --blue-3: #4d4dff;

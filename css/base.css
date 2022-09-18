@@ -1,12 +1,13 @@
 /* ヘッダー */
 #header {
     width: 100%;
-    background-color: var(--third-back);
+    background-color: var(--header-back);
     position: fixed;
     z-index: 10;
     top: 0;
     left: 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
+    backdrop-filter: blur(20px);
 }
 
 #header .header-inner {
