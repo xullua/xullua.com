@@ -151,6 +151,233 @@ body {
   letter-spacing: 0.1em;
 }
 
+.top-news {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* アクセス */ 
+.connect {
+  margin: 20px 0 60px 0;
+}
+
+.connect .texts {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.connect .texts p {
+  color: var(--sub-text);
+  font-size: 12px;
+}
+
+.connect .texts p::after {
+  content: "マウスをお使いの方はマウスホイールを押し込むことで右に移動できます。";
+}
+
+.connect .boxes {
+  display: flex;
+  padding: 0 calc((100% - 1200px)/2);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.connect .box {
+  background: var(--sub-back);
+  border-radius: 10px;
+  width: 400px;
+  height: 300px;
+  min-width: 400px;
+  margin: 20px 10px;
+  position: relative;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+.connect .boxes::-webkit-scrollbar{
+  display: none;
+}
+
+.connect .img {
+  background: #f3f3f3;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 50%;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .connect .img {
+    background-color: #FFF;
+  }
+}
+
+.connect .img img {
+  width: 100%;
+}
+
+.connect .box h2 {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.connect .box p {
+  margin: 10px 20px;
+}
+
+.connect .btn {
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.connect .btn a {
+  background: var(--blue-1);
+  border-radius: 20px;
+  width: 100%;
+  color: #FFF;
+  padding: 5px 40%;
+  transition: 0.2s;
+}
+
+.connect .btn a:hover {
+  background: #8873ff;
+}
+
+@media screen and (max-width: 1280px) {
+  .connect .boxes {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .connect .boxes {
+    padding: 0 calc((100% - 640px) / 2);
+  }
+
+  .connect .texts p::after {
+    content: "";
+  }
+  
+  .connect .box {
+    height: 350px;
+    min-width: 300px;
+  }
+
+  .connect .btn a {
+    padding: 5px 35%;
+  }
+
+  .connect .texts {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .connect .boxes {
+    padding: 0 calc((100% - 320px) / 2);
+  }
+}
+
+
+/* お知らせ */
+.news {
+  margin: 60px 0 60px 0;
+}
+
+.news .texts {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.news .texts p {
+  color: var(--sub-text);
+  font-size: 12px;
+}
+
+.news .texts p::after {
+  content: "マウスをお使いの方はマウスホイールを押し込むことで右に移動できます。";
+}
+
+.news .boxes {
+  padding: 0 calc((100% - 1200px)/2);
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 0 0 calc((100%-1200px)/2);
+}
+
+.news .boxes::-webkit-scrollbar{
+  display: none;
+}
+
+.news .box {
+  background: var(--sub-back);
+  border-radius: 10px;
+  min-width: 400px;
+  width: 400px;
+  height: 250px;
+  margin: 20px 10px;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  padding: 20px;
+}
+
+.news date {
+  font-size: 12px;
+  color: var(--sub-text);
+}
+
+.news .box p {
+  font-size: 16px;
+  color: var(--sub-text);
+  margin-top: 15px;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 1280px) {
+  .news .boxes {
+    padding: 0 30px;
+    scroll-padding: 0 0 0 40px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .news .texts {
+    padding: 0 20px;
+  }
+
+  .news .texts p::after {
+    content: "";
+  }
+
+  .news .boxes {
+    scroll-padding: 0 0 0 20px;
+  }
+
+  .news .box {
+    width: 300px;
+    min-width: 300px;
+  }
+
+  .news .box p {
+    font-size: 14px;
+  }
+}
+
+
 
 /* スキル */
 .skill-block {
@@ -243,32 +470,6 @@ body {
   }
 }
 
-
-
-
-/* 浮き上がるボタン */
-.button_1 a {
-  position: relative;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 auto;
-  max-width: 240px;
-  padding: 10px 25px;
-  color: #FFF;
-  transition: 0.5s ease-in-out;
-  font-weight: 600;
-  background: #6bb6ff;
-  filter: drop-shadow(0px 2px 4px #ccc);
-  border-radius: 3px;
-  border-radius: 50px;
-  text-decoration: none;
-}
-
-.button_1 a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 30px -5px rgb(0 0 0 / 15%), 0 0 5px rgb(0 0 0 / 10%);
-}
 
 /* ストア */
 .store-hello {
