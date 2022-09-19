@@ -186,14 +186,14 @@ body {
 }
 
 .connect .box {
-  background: var(--sub-back);
+  background: var(--third-back);
   border-radius: 10px;
   width: 400px;
   height: 300px;
   min-width: 400px;
   margin: 20px 10px;
   position: relative;
-  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1));
   scroll-snap-align: center;
   scroll-snap-stop: always;
 }
@@ -323,13 +323,13 @@ body {
 }
 
 .news .box {
-  background: var(--sub-back);
+  background: var(--third-back);
   border-radius: 10px;
   min-width: 400px;
   width: 400px;
   height: 250px;
   margin: 20px 10px;
-  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1));
   scroll-snap-align: start;
   scroll-snap-stop: always;
   padding: 20px;
