@@ -159,7 +159,7 @@ body {
 
 /* アクセス */ 
 .connect {
-  margin: 20px 0 60px 0;
+  margin: 100px 0 80px 0;
 }
 
 .connect .texts {
@@ -230,6 +230,7 @@ body {
 
 .connect .box p {
   margin: 10px 20px;
+  font-size: 14px;
 }
 
 .connect .btn {
@@ -291,7 +292,7 @@ body {
 
 /* お知らせ */
 .news {
-  margin: 60px 0 60px 0;
+  margin: 80px 0 80px 0;
 }
 
 .news .texts {
