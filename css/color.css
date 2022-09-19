@@ -13,7 +13,7 @@
     --yellow-1: #bdbd00;
 
     /* 黒画像をダークモードで白くする */
-    --img-change-white:none;
+    --img-change-white: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,6 +31,6 @@
         --yellow-1: #FFFF00;
 
         /* 黒画像をダークモードで白くする */
-        --img-change-white:invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+        --img-change-white: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
     }
 }
