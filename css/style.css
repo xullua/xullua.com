@@ -262,7 +262,7 @@ body {
 
 @media screen and (max-width: 767px) {
   .connect .boxes {
-    padding: 0 calc((100% - 640px) / 2);
+    padding: 0 10px;
   }
 
   .connect .texts p::after {
@@ -280,12 +280,6 @@ body {
 
   .connect .texts {
     padding: 0 20px;
-  }
-}
-
-@media screen and (max-width: 650px) {
-  .connect .boxes {
-    padding: 0 calc((100% - 320px) / 2);
   }
 }
 
