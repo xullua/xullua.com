@@ -187,19 +187,22 @@ body {
 
 .connect .boxes {
   display: flex;
-  padding: 0 calc((100% - 1200px)/2);
+  padding: 0 calc((100% - 1240px)/2);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
 }
 
 .connect .box {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 4px;
+  padding: 7px;
   background: var(--third-back);
   border-radius: 10px;
   width: 400px;
   height: 300px;
   min-width: 400px;
   margin: 20px 10px;
-  position: relative;
   filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1));
   scroll-snap-align: center;
   scroll-snap-stop: always;
@@ -212,9 +215,8 @@ body {
 .connect .img {
   width: 30px;
   text-align: center;
-  margin-top: 25px;
-  margin-left: 20px;
   filter: var(--img-change-white);
+  margin: 15px 0 0 15px;
 }
 
 .connect .img img {
@@ -222,38 +224,47 @@ body {
 }
 
 .connect .box h2 {
-  margin-left: 20px;
+  margin-left: 15px;
 }
 
 .connect .box p {
-  margin: 10px 20px;
+  margin: 0 15px;
   font-size: 14px;
+  color: var(--sub-text);
+  overflow-y: auto;
 }
 
-.connect .btn {
-  position: absolute;
-  bottom: 20px;
+.connect .box p::-webkit-scrollbar {
+  display: none;
+}
+
+.connect button {
   text-align: center;
-  width: 100%;
-  padding: 0 10px;
-}
-
-.connect .btn a {
-  background: var(--blue-1);
-  border-radius: 20px;
-  width: 100%;
+  font-size: 16px;
+  font-weight: 700;
   color: #FFF;
-  padding: 5px 40%;
+  cursor: pointer;
+  width: 100%;
+  background: var(--blue-1);
+  border-radius: 6px;
+  height: 35px;
   transition: 0.2s;
+  border: none;
 }
 
-.connect .btn a:hover {
+.connect button:hover {
   background: #8873ff;
 }
 
 @media screen and (max-width: 1280px) {
   .connect .boxes {
     padding: 0 calc((100% - 840px)/2);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .connect .boxes {
+    padding: 0 calc((100% - 420px)/2);
   }
 }
 
@@ -477,7 +488,96 @@ body {
   }
 }
 
+/* ポリシー */
+.policy {
+  width: 1280px;
+  max-width: 100%;
+  margin: 80px auto;
+}
 
+.policy .texts {
+  padding: 0 40px;
+}
+
+.policy .boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 600px);
+  grid-auto-rows: 130px;
+  justify-content: center;
+  gap: 20px;
+  max-width: 100%;
+  padding: 20px 0;
+  margin: 0 30px;
+}
+
+.policy .box {
+  background: var(--third-back);
+  padding: 10px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1));
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.policy .box h3 {
+  margin: 10px 10px 0 10px;
+}
+
+.policy .box p {
+  margin: 0 10px 10px 10px;
+  color: var(--sub-text);
+  font-size: 14px;
+}
+
+.policy .box button {
+  background: var(--blue-1);
+  border-radius: 7px;
+  border: none;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: bold;
+  height: 30px;
+}
+
+.policy .box button:hover {
+  cursor: pointer;
+  background: #8873ff;
+}
+
+@media screen and (max-width: 1300px) {
+  .policy .boxes {
+    grid-template-columns: repeat(auto-fit, 500px);
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .policy .boxes {
+    grid-template-columns: repeat(auto-fit, 400px);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .policy .boxes {
+    grid-template-columns: repeat(auto-fit, 700px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .policy .texts {
+    padding: 0 20px;
+  }
+
+  .policy .boxes {
+    grid-template-columns: repeat(auto-fit, 500px);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .policy .boxes {
+    grid-template-columns: repeat(auto-fit, 350px);
+    grid-auto-rows: 150px;
+  }
+}
 
 /* スキル */
 .skill-block {
