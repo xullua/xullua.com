@@ -177,17 +177,7 @@
     max-height: 100%;
     margin-right: 5px;
     padding: 4px;
-}
-
-@media (prefers-color-scheme: dark) {
-    #footer .icon {
-        background: var(--sub-text);
-        border-radius: 7px;
-    }
-}
-
-#footer .icon:hover {
-    transform: scale(1.1, 1.1);
+    filter: var(--img-change-white);
 }
 
 #footer .footer-menu {

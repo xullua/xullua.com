@@ -72,11 +72,16 @@ html {
   scroll-behavior: smooth;
   background-color: var(--main-back);
   color: var(--main-text);
+  max-width: 100%;
 }
 
 a {
   text-decoration: none;
   color: var(--url);
+}
+
+a:hover {
+  opacity: 0.9;
 }
 
 .en {
@@ -336,16 +341,50 @@ body {
   text-align: center;
 }
 
-.profile .sns img {
-  filter: var(--img-change-white);
+.profile .box .sns a {
   width: 20px;
+  height: 20px;
   margin: 0 10px;
 }
 
+.profile .sns img {
+  filter: var(--img-change-white);
+  width: 20px;
+  transition: 0.4s;
+}
+
+.profile .box .sns img:hover {
+  filter: var(--img-change-skyblue)
+}
+
+.profile .box hr {
+  border: none;
+  border-bottom: 1px solid var(--line);
+  margin: 25px auto;
+  width: calc(100% - 60px);
+}
+
+.profile .contact {
+  text-align: center;
+}
+
+.profile .contact p {
+  margin: 0 15px 30px 15px;
+  font-size: 15px;
+}
 
 @media screen and (max-width: 767px) {
   .profile .box p {
     margin: 15px 5px;
+  }
+
+  .profile .box hr {
+    width: 100%
+  }
+
+  .profile .contact p {
+    margin: 0 15px 30px 15px;
+    font-size: 14px;
   }
 }
 
@@ -375,7 +414,7 @@ body {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-padding: 0 0 0 calc((100%-1200px)/2);
+  scroll-padding: 0 0 0 calc((100% - 1200px)/2);
 }
 
 .news .boxes::-webkit-scrollbar {
