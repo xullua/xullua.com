@@ -3,6 +3,7 @@
     --main-back: #FFF;
     --sub-back: #f3f3f3;
     --third-back: #FFFFFF;
+    --four-back: #f3f3f3;
     --main-text: #000000;
     --sub-text: #6e6e6e;
     --url: #0066c0;
@@ -30,6 +31,7 @@
         --main-back: #1f1f1f;
         --sub-back: #000000;
         --third-back: #000000;
+        --four-back: #1f1f1f;
         --main-text: #eeeeee;
         --sub-text: #bebebe;
         --url: #40a6ff;

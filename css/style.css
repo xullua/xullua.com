@@ -495,88 +495,54 @@ body {
   margin: 80px auto;
 }
 
-.policy .texts {
-  padding: 0 40px;
-}
-
-.policy .boxes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 600px);
-  grid-auto-rows: 130px;
-  justify-content: center;
-  gap: 20px;
-  max-width: 100%;
-  padding: 20px 0;
-  margin: 0 30px;
-}
-
 .policy .box {
   background: var(--third-back);
-  padding: 10px;
   border-radius: 10px;
+  width: 720px;
+  max-width: 90%;
+  margin: 20px auto;
+  padding: 25px 30px;
   filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1));
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+}
+
+.policy .box .section {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  margin: 5px 0;
+  transition: 0.3s;
+  background: var(--third-back);
+  border-radius: 5px;
+}
+
+.policy .box .section:hover {
+  background: var(--four-back);
+}
+
+.policy .box hr {
+  border: none;
+  border-bottom: 1px solid var(--line);
+  margin-left: 60px;
+}
+
+.policy .box .icon {
+  border-radius: 7px;
+  width: 45px;
+  height: 45px;
+  padding: 5px;
+  text-align: center;
+  margin: auto 0 auto 2px;
+}
+
+.policy .box img {
+  width: 100%;
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);;
 }
 
 .policy .box h3 {
-  margin: 10px 10px 0 10px;
-}
-
-.policy .box p {
-  margin: 0 10px 10px 10px;
-  color: var(--sub-text);
-  font-size: 14px;
-}
-
-.policy .box button {
-  background: var(--blue-1);
-  border-radius: 7px;
-  border: none;
-  color: #FFF;
-  font-size: 14px;
-  font-weight: bold;
-  height: 30px;
-}
-
-.policy .box button:hover {
-  cursor: pointer;
-  background: #8873ff;
-}
-
-@media screen and (max-width: 1300px) {
-  .policy .boxes {
-    grid-template-columns: repeat(auto-fit, 500px);
-  }
-}
-
-@media screen and (max-width: 1100px) {
-  .policy .boxes {
-    grid-template-columns: repeat(auto-fit, 400px);
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .policy .boxes {
-    grid-template-columns: repeat(auto-fit, 700px);
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .policy .texts {
-    padding: 0 20px;
-  }
-
-  .policy .boxes {
-    grid-template-columns: repeat(auto-fit, 500px);
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .policy .boxes {
-    grid-template-columns: repeat(auto-fit, 350px);
-    grid-auto-rows: 150px;
-  }
+  margin: auto 0 auto 20px;
+  font-size: 16px;
+  color: var(--main-text);
 }
 
 /* スキル */
