@@ -200,7 +200,7 @@ body {
   background: var(--third-back);
   border-radius: 10px;
   width: 400px;
-  height: 300px;
+  height: 270px;
   min-width: 400px;
   margin: 20px 10px;
   filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1));
@@ -213,17 +213,22 @@ body {
 }
 
 .connect .img {
-  width: 30px;
+  width: 40px;
+  height: 40px;
+  padding: 7px;
+  border-radius: 50%;
   text-align: center;
-  filter: var(--img-change-white);
   margin: 15px 0 0 15px;
 }
 
 .connect .img img {
   width: 100%;
+  margin: auto;
+  filter: var(--img-change-white);
 }
 
 .connect .box h2 {
+  margin-top: 10px;
   margin-left: 15px;
 }
 
@@ -269,6 +274,10 @@ body {
 }
 
 @media screen and (max-width: 767px) {
+  .connect {
+    margin: 80px 0 60px 0;
+  }
+
   .connect .boxes {
     padding: 0 calc((100% - 640px)/2);
   }
@@ -278,7 +287,7 @@ body {
   }
 
   .connect .box {
-    height: 350px;
+    height: 300px;
     min-width: 300px;
   }
 
@@ -385,6 +394,10 @@ body {
 }
 
 @media screen and (max-width: 767px) {
+  .profile {
+    margin: 60px 0;
+  }
+
   .profile .box p {
     margin: 15px 5px;
   }
@@ -401,7 +414,7 @@ body {
 
 /* お知らせ */
 .news {
-  margin: 80px 0 80px 0;
+  margin: 80px 0;
 }
 
 .news .texts {
@@ -466,6 +479,10 @@ body {
 }
 
 @media screen and (max-width: 767px) {
+  .news {
+    margin: 60px 0;
+  }
+
   .news .texts {
     padding: 0 20px;
   }
@@ -543,6 +560,22 @@ body {
   margin: auto 0 auto 20px;
   font-size: 16px;
   color: var(--main-text);
+}
+
+.policy p {
+  text-align: center;
+  font-size: 10px;
+  color: var(--sub-text);
+}
+
+.policy p::after {
+  content: "一部アクセスができないページがあります。";
+}
+
+@media screen and (max-width: 767px) {
+  .policy {
+    margin: 60px auto;
+  }
 }
 
 /* スキル */
@@ -781,6 +814,8 @@ body {
   transform: scale(1.1, 1.1);
 }
 
+/* プライバシーポリシー */
+
 .privacy {
   max-width: 1280px;
   margin: 0 auto;
@@ -791,9 +826,8 @@ body {
   color: var(--main-text);
 }
 
-.privacy a {
-  text-decoration: none;
-  color: var(--url);
+.privacy p {
+  color: var(--sub-text);
 }
 
 
@@ -1638,10 +1672,11 @@ input[type="checkbox"]:checked+label:before {
 .mokujies {
   margin: 30px auto;
   text-align: center;
-  transform: skewX(-10deg);
   position: sticky;
   top: 50px;
   z-index: 5;
+  transform: skewX(-10deg);
+  width: 99%;
 }
 
 .mokuji {
@@ -1652,6 +1687,7 @@ input[type="checkbox"]:checked+label:before {
   margin: 0 3px;
   padding: 0 10px 0 8px;
   transition: 0.5s;
+  
 }
 
 .mokuji:hover {

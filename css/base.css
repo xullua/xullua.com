@@ -128,7 +128,7 @@
 
     #navi ul li {
         width: 100%;
-        border-bottom: solid 0.5px var(--sub-text);
+        border-bottom: solid 0.5px var(--line);
     }
 
     #navi ul li:last-child {
