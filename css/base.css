@@ -219,6 +219,11 @@
     color: var(--blue-1);
 }
 
+#footer .line {
+    border-top: 1px solid var(--line);
+    margin: 0 auto;
+}
+
 #footer .footer-under {
     display: flex;
     justify-content: space-between;

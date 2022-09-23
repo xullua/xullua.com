@@ -42,6 +42,9 @@
         --blue-3: #4d4dff;
         --yellow-1: #FFFF00;
 
+        /* スクロールバーダークモード化 */
+        color-scheme: dark;
+
         /* 黒画像の色変化 */
         --img-change-white: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
         --img-change-gray: invert(50%) sepia(0%) saturate(11%) hue-rotate(143deg) brightness(101%) contrast(93%);
