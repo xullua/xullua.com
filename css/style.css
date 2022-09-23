@@ -208,14 +208,10 @@ body {
   scroll-snap-stop: always;
 }
 
-.connect .boxes::-webkit-scrollbar {
-  display: none;
-}
-
 .connect .img {
-  width: 40px;
-  height: 40px;
-  padding: 7px;
+  width: 46px;
+  height: 46px;
+  padding: 10px;
   border-radius: 50%;
   text-align: center;
   margin: 15px 0 0 15px;
@@ -224,7 +220,7 @@ body {
 .connect .img img {
   width: 100%;
   margin: auto;
-  filter: var(--img-change-white);
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
 }
 
 .connect .box h2 {
