@@ -49,6 +49,7 @@
         /* スクロールバーカラー */
         --bar-back: rgba(0, 0, 0, 0.15);
         --bar-track: rgba(80, 80, 80, 0.5);
+        color-scheme: dark;
 
         /* 黒画像の色変化 */
         --img-change-white: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);

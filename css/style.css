@@ -452,6 +452,16 @@ body {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   padding: 20px;
+  overflow-y: auto;
+}
+
+.news .box {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.news .box::-webkit-scrollbar {
+  display: none;
 }
 
 .news date {
@@ -461,10 +471,10 @@ body {
 }
 
 .news .box p {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--sub-text);
   margin-top: 15px;
-  overflow-y: auto;
+
 }
 
 @media screen and (max-width: 1280px) {
@@ -549,7 +559,8 @@ body {
 
 .policy .box img {
   width: 100%;
-  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);;
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+  ;
 }
 
 .policy .box h3 {
@@ -1683,7 +1694,7 @@ input[type="checkbox"]:checked+label:before {
   margin: 0 3px;
   padding: 0 10px 0 8px;
   transition: 0.5s;
-  
+
 }
 
 .mokuji:hover {
