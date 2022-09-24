@@ -1,3 +1,17 @@
+/* リンク */
+a {
+    text-decoration: none;
+    color: var(--url);
+}
+
+a:hover {
+    opacity: 0.9;
+}
+
+a:active {
+    color: var(--url-active);
+}
+
 /* スクロールバー */
 ::-webkit-scrollbar {
     width: 13px;
@@ -17,9 +31,12 @@
     -webkit-backdrop-filter: blur(20px);
 }
 
-@media screen and (max-width: 767px) {
-    ::-webkit-scrollbar {
-    }
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bar-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: var(--bar-active);
 }
 
 /* ヘッダー */
