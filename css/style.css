@@ -218,10 +218,11 @@ body {
   color: var(--sub-text);
   font-size: 12px;
   opacity: 0.7;
+  display: none;
 }
 
 .connect .texts p::after {
-  content: "マウスをお使いの方はマウスホイールを押し込むことで右に移動できます。";
+  content: "";
 }
 
 .connect .boxes {
@@ -317,8 +318,12 @@ body {
     padding: 0 calc((100% - 640px)/2);
   }
 
+  .connect .texts p {
+    display: block;
+  }
+
   .connect .texts p::after {
-    content: "";
+    content: "横にスクロールできます。";
   }
 
   .connect .box {
@@ -465,7 +470,7 @@ body {
 }
 
 .news .texts p::after {
-  content: "マウスをお使いの方はマウスホイールを押し込むことで右に移動できます。";
+  content: "横にスクロールできます。マウスをお使いの方はマウスホイールを押し込むことで右に移動できます。";
 }
 
 .news .boxes {
@@ -533,7 +538,7 @@ body {
   }
 
   .news .texts p::after {
-    content: "";
+    content: "横にスクロールできます。";
   }
 
   .news .boxes {
