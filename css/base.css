@@ -47,6 +47,7 @@ a:active {
     z-index: 10;
     top: 0;
     left: 0;
+    height: 44px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
