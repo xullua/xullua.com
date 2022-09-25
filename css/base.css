@@ -51,6 +51,20 @@ a:active {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+}
+
+#header {
+    width: 100%;
+    background-color: var(--header-back);
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
 }
 
 #header .header-inner {

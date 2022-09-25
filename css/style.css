@@ -205,12 +205,6 @@ body {
   }  
 }
 
-.top-hello-end {
-  background: #000;
-  height: 20px;
-  border-radius: 0 0 20px 20px;
-}
-
 /* アクセス */
 .connect {
   margin: 100px 0 80px 0;
