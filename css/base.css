@@ -40,7 +40,7 @@ a:active {
 }
 
 /* ヘッダー */
-#header {
+.header {
     width: 100%;
     background-color: var(--header-back);
     position: fixed;
