@@ -35,46 +35,19 @@
         nonce="jvuRCa-d0QId7kT_AZFpMA"></script>
     <script
         nonce="jvuRCa-d0QId7kT_AZFpMA">(function () { function signalGooglefcPresent() { if (!window.frames['googlefcPresent']) { if (document.body) { const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe); } else { setTimeout(signalGooglefcPresent, 0); } } } signalGooglefcPresent(); })();</script>
+    <!-- 共通部分 -->
+    <script>
+        $(function () {
+            $("#header").load("header.html");
+            $("#footer").load("footer.html");
+        });
+    </script>
 </head>
 
 
 <body>
     <!-- ヘッダー -->
-    <header id="header">
-        <div class="header-inner wrapper">
-            <a class="logo" href="https://xullua.com/blog">
-                <picture>
-                    <source srcset="img/xulluabloglogowhite.webp" media="(prefers-color-scheme: dark)">
-                    <img src="img/xulluabloglogoblack.webp" width="1000%">
-                </picture>
-            </a>
-            <nav id="navi">
-                <ul>
-                    <li><a href="https://xullua.com">Home</a></li>
-                    <li><a href="https://xullua.com/contact">Contact</a></li>
-                    <li><a href="https://xullua.com/blog">Blog</a></li>
-                    <li><a href="https://xla.jp/store">Store</a></li>
-                    <li><a href="https://twitter.com/xullua">Twitter</a></li>
-                </ul>
-            </nav>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        <script>
-            $(function () {
-                $('.hamburger').click(function () {
-                    $(this).toggleClass('active');
-                    if ($(this).hasClass('active')) {
-                        $('#navi').addClass('active');
-                    } else {
-                        $('#navi').removeClass('active');
-                    }
-                });
-            });
-        </script>
-    </header>
+    <header class="header" id="header"></header>
 
     <div class="main-titles">
         <picture class="main-logo">
@@ -179,69 +152,7 @@
     </div>
 
     <!-- フッター -->
-    <footer id="footer">
-        <div class="wrapper">
-            <h1 class="footer-logo">
-            <a href="https://xullua.com/blog">
-                <picture>
-                    <source srcset="img/xulluabloglogowhite.webp" media="(prefers-color-scheme: dark)">
-                    <img src="img/xulluabloglogoblack.webp" alt="" width="1000%">
-                </picture>
-            </a></h1>
-            <div class="footer-sns">
-                <div class="sns-icons">
-                    <a href="https://twitter.com/xullua"><img class="icon"
-                            src="https://xullua.com/img/twitter.webp"></a>
-                    <a href="https://youtube.com/c/xullua"><img class="icon"
-                            src="https://xullua.com/img/youtube.webp"></a>
-                    <a href="https://instagram.com/xullua"><img class="icon"
-                            src="https://xullua.com/img/instagram.webp"></a>
-                    <a href="https://tiktok.com/@xlagame"><img class="icon"
-                            src="https://xullua.com/img/tiktok.webp"></a>
-                </div>
-            </div>
-            <div class="footer-menu">
-                <div class="menu">
-                    <p class="title2">SNS</p>
-                    <ul>
-                        <li><a href="https://twitter.com/xullua">Twitter(メイン)</a></li>
-                        <li><a href="https://twitter.com/xlagame">Twitter(スプラ)</a></li>
-                        <li><a href="https://youtube.com/c/xullua">YouTube</a></li>
-                        <li><a href="https://instagram.com/xullua">Instagram</a></li>
-                    </ul>
-                </div>
-                <div class="menu">
-                    <p class="title2">サイト
-                    <ul>
-                        <li><a href="https://xla.jp/store">ストア</a></li>
-                        <li><a href="https://xullua.com/blog">ブログ</a></li>
-                        <li><a href="https://xullua.com/game">ゲーム</a></li>
-                        <li><a href="https://xullua.com/device">使用デバイス</a></li>
-                    </ul>
-                    </p>
-                </div>
-                <div class="menu">
-                    <p class="title2">マップ
-                    <ul>
-                        <li><a href="https://xullua.com">ホーム</a></li>
-                        <li><a href="https://xullua.com/privacy">プライバシー</a></li>
-                        <li><a href="https://xullua.com/contact">お問い合わせ</a></li>
-                        <li><a href="https://xullua.com/map">サイトマップ</a></li>
-                    </ul>
-                    </p>
-                </div>
-            </div>
-            <div class="line"></div>
-            <div class="footer-under">
-                <div class="copyright">©Xullua</div>
-                <div class="text2s">
-                    <a class="text2" href="https://xullua.com/privacy">プライバシーポリシー</a>
-                    <a class="text2" href="https://xullua.com/contact">お問い合わせ</a>
-                </div>
-            </div>
-            <div class="text1">サイト内で使用されている画像や映像は著作物です。無断での使用は認めません。</div>
-        </div>
-    </footer>
+    <footer id="footer"></footer>
 
 </body>
 
