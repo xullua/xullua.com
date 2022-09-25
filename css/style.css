@@ -154,17 +154,26 @@ body {
 }
 
 /* トップ */
-.top-hello {
-  background: #000;
-  border-radius: 0 0 30px 30px;
-  padding-bottom: 80px;
+.top-hello .contents {
+  margin: calc((100vh - 172px)/2) auto;
+  text-align: center;
+}
+
+.top-hello .contents img {
+  display: block;
+  margin: 0 auto;
+  width: 120px;
+  z-index: 10;
 }
 
 .top-hello .video {
-  position: relative;
+  position: absolute;
   overflow: hidden;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
+  z-index: -1;
 }
 
 .top-hello .video video {
@@ -190,15 +199,16 @@ body {
   .top-hello .video .pc {
     display: none;
   }
+
   .top-hello .video .sp {
     display: block;
-  }
+  }  
 }
 
-.top-hello p {
-  text-align: center;
-  color: #FFF;
-  padding: 0 20px;
+.top-hello-end {
+  background: #000;
+  height: 20px;
+  border-radius: 0 0 20px 20px;
 }
 
 /* アクセス */
@@ -263,7 +273,7 @@ body {
   filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
 }
 
-.connect .box h2 {
+.connect .box h3 {
   margin-top: 10px;
   margin-left: 15px;
 }
@@ -585,6 +595,7 @@ body {
 .policy .box .section:hover {
   background: var(--four-back);
 }
+
 
 .policy .box hr {
   border: none;
