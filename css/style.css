@@ -1590,10 +1590,13 @@ input[type="checkbox"]:checked+label:before {
   color: var(--sub-text);
 }
 
+.game-blog-top-text::after {
+  content: "横にスクロールできます。";
+}
+
 .blog-slide {
   display: flex;
   max-width: 100%;
-  width: 1280px;
   margin: 0 auto 20px auto;
   /* IE, Edge 対応 */
   -ms-overflow-style: none;
@@ -1609,13 +1612,13 @@ input[type="checkbox"]:checked+label:before {
 .blog-slide ul {
   display: flex;
   overflow-x: auto;
-  padding: 0;
+  padding: 0 calc((100% - 720px)/2);
   scroll-snap-type: x mandatory;
   margin: 0 auto;
 }
 
 .blog-slide li {
-  min-width: 40%;
+  min-width: 45%;
   max-width: 50%;
   margin: 5px;
   padding: 0;
@@ -1625,7 +1628,6 @@ input[type="checkbox"]:checked+label:before {
   scroll-snap-type: x mandatory;
   scroll-margin-left: 20px;
   display: flex;
-  padding: 0 10px;
 }
 
 
@@ -1660,8 +1662,16 @@ input[type="checkbox"]:checked+label:before {
 
 
 @media screen and (max-width: 767px) {
+  .game-blog-top-text::after {
+    content: "横にスワイプできます。";
+  }
+  
+  .blog-slide ul {
+    padding: 0 calc((100vw - 80vw)/2);
+  }
+
   .blog-slide li {
-    min-width: 80%;
+    min-width: 100%;
   }
 
   .blog-box-more-title {
