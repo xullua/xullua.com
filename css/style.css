@@ -250,6 +250,16 @@ body {
   filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1));
   scroll-snap-align: center;
   scroll-snap-stop: always;
+  transition: 0.3s all;
+}
+
+.connect .box:hover {
+  transform:scale(1.01,1.01);
+  filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.2));
+}
+
+.connect .box:active {
+  opacity: 0.75;
 }
 
 .connect .img {
@@ -871,19 +881,29 @@ body {
 }
 
 /* プライバシーポリシー */
-
-.privacy {
-  max-width: 1280px;
-  margin: 0 auto;
-  margin-bottom: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 90%;
-  color: var(--main-text);
+.policies {
+  width: 1280px;
+  max-width: 90%;
+  margin: 60px auto;
 }
 
-.privacy p {
+.policies section {
+  margin: 30px 0;
+}
+
+.policies section h3 {
+  margin-bottom: 7px;
+}
+
+.policies section p {
   color: var(--sub-text);
+  font-size: 14px;
+}
+
+.policies section hr {
+  border: none;
+  border-bottom: 1px solid var(--line);
+  margin: 30px 0;
 }
 
 
