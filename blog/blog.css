@@ -1,4 +1,4 @@
-.blog-wrapper {
+main {
     margin: 90px auto 50px auto;
     width: 1000px;
     max-width: 90%;
@@ -7,7 +7,7 @@
 
 .top {}
 
-.samune {
+main .top img {
     max-width: 100%;
     border-radius: 15px;
 }
@@ -36,16 +36,16 @@
     padding: 1px 5px;
 }
 
-.title {
+article {
+    margin-top: 20px;
+}
+
+h1 {
     margin-bottom: 20px;
     font-size: 26px;
 }
 
-.main {
-    margin-top: 20px;
-}
-
-.h2 {
+h2 {
     font-size: 24px;
     margin-bottom: 10px;
     margin-top: 40px;
@@ -54,13 +54,13 @@
     padding: 0.75rem 1.5rem;
 }
 
-.h3 {
+h3 {
     padding: 5px 20px;
     background-color: var(--blue-2);
     margin-top: 20px;
 }
 
-.text {
+article p {
     margin-bottom: 0;
     font-size: 16px;
     line-height: 1.8;
@@ -88,7 +88,7 @@
     background-color: #8991ff;
 }
 
-.img {
+img {
     max-width: 100%;
     width: 750px;
     border-radius: 10px;
