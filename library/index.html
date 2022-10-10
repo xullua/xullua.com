@@ -15,6 +15,8 @@
     <script src="js/main.js" async></script>
     <link rel="shortcut icon" href="https://xullua.com/img/favicon.ico">
     <link rel="stylesheet" href="library.css">
+    <link rel="stylesheet" href="https://xullua.com/css/base.css">
+    <link rel="stylesheet" href="https://xullua.com/css/color.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap"
@@ -30,152 +32,116 @@
 
         gtag('config', 'G-JDKGJ1E005');
     </script>
+    <!-- 共通部分 -->
+    <script>
+        $(function () {
+            $("#header").load("header.html");
+            $("#footer").load("footer.html");
+        });
+    </script>
 </head>
 
 
 <body>
     <!-- ヘッダー -->
-    <header id="header">
-        <div class="header-inner wrapper">
-            <h1 class="logo"><a href="https://xullua.com">
-                    <img src="https://xullua.com/img/xullualogowhite.webp" alt="" width="600%" height="500%">
-                </a></h1>
-            <nav id="navi">
-                <ul>
-                    <li><a href="https://xullua.com">Home</a></li>
-                    <li><a href="https://xullua.com/contact">Contact</a></li>
-                    <li><a href="https://xullua.com/blog">Blog</a></li>
-                    <li><a href="https://xla.jp/store">Store</a></li>
-                    <li><a href="https://twitter.com/xullua">Twitter</a></li>
-                </ul>
-            </nav>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        <script>
-            $(function () {
-                $('.hamburger').click(function () {
-                    $(this).toggleClass('active');
-                    if ($(this).hasClass('active')) {
-                        $('#navi').addClass('active');
-                    } else {
-                        $('#navi').removeClass('active');
-                    }
-                });
-            });
-        </script>
-    </header>
+    <header class="header" id="header"></header>
 
     <!-- メイン -->
-    <div class="library-wrapper">
-        <div class="library-top">
-            <img src="https://xullua.com/img/xullualogoblack.webp" class="library-top-img">
-            <div class="library-top-title">ライブラリ</div>
-            <p style="color: red; text-align: center;"><b style="font-size: 20px;">注意</b><br>現在準備中で掲載内容は暫定内容です。サービス開始までお待ちください。</p>
-        </div>
-
-        <div class="library-about">
-            <h2 class="library-about-title">ライブラリとは</h2>
-            <div class="library-about-scroll">
-                <div class="library-about-box">
-                    <div class="library-about-box-icon-back"><img src="https://xullua.com/img/apple.webp" class="library-about-box-icon"></div>
-                    <div class="library-about-box-title">良質</div>
-                    <div class="library-about-box-text">良質な素材を配布しています。ここにあるほとんどのものは他のところではないものです。</div>
-                </div>
-                <div class="library-about-box">
-                    <div class="library-about-box-icon-back"><img src="https://xullua.com/img/apple.webp" class="library-about-box-icon"></div>
-                    <div class="library-about-box-title">無料</div>
-                    <div class="library-about-box-text">誰でも全て無料で制限なく使用できます。どこにもお金はかかりません。</div>
-                </div>
-                <div class="library-about-box">
-                    <div class="library-about-box-icon-back"><img src="https://xullua.com/img/apple.webp" class="library-about-box-icon"></div>
-                    <div class="library-about-box-title">高画質</div>
-                    <div class="library-about-box-text">動画なら1080p60fps。画像なら最大4Kで配布しています。画質が高いと使いやすい。</div>
-                </div>
-                <div class="library-about-box">
-                    <div class="library-about-box-icon-back"><img src="https://xullua.com/img/apple.webp" class="library-about-box-icon"></div>
-                    <div class="library-about-box-title">収益化OK</div>
-                    <div class="library-about-box-text">収益化をしてコンテンツを配信していても使用できます。(利用規約の範囲に限ります)</div>
-                </div>
-                <div class="library-about-box">
-                    <div class="library-about-box-icon-back"><img src="https://xullua.com/img/apple.webp" class="library-about-box-icon"></div>
-                    <div class="library-about-box-title">利用規約</div>
-                    <div class="library-about-box-text">利用に関する全ては利用規約以内に限ります。以上に上げているものでも例外があります。必ず確認してください。</div>
-                    <a href="library-policy" class="library-btn1"><div class="library-btn2">利用規約</div></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="library-howto">
-            <h2 class="library-howto-title">ダウンロードまでの流れ</h2>
-        </div>
+    <div class="library-top">
+        <div class="library-top-title">ライブラリ</div>
+        <p style="color: red; text-align: center;"><b
+                style="font-size: 20px;">注意</b><br>現在準備中で掲載内容は暫定内容です。サービス開始までお待ちください。</p>
     </div>
 
-    <!-- フッター -->
-    <footer id="footer">
-        <div class="wrapper">
-            <h1 class="footer-logo">
-                <a href="https://xullua.com">
-                    <img src="https://xullua.com/img/xullualogoblack.webp" alt="" width="600%" height="600%">
-                </a>
-            </h1>
+    <section class="material">
+        <h2>見つける</h2>
+        <div class="materials">
+            <article>
+                <img src="https://xullua.com/img/xullualogo1.png">
+                <h3>ぞるあのサムネ画像</h3>
+                <p>ぞるあWebページのサムネイル画像</p>
+                <input type="checkbox" name="tab-name" id="test1">
+                <label class="tab" for="test1">ダウンロード</label>
+                <div class="download">
+                    <div class="main">
+                        <label class="close" for="test1">×</label>
+                        <h3>ぞるあのサムネ画像</h3>
+                        <img src="https://xullua.com/img/xullualogo1.png">
+                        <p class="explain">
+                            ぞるあWebページのサムネイル画像です。シンプルすぎて手抜きを疑いますね。
+                        </p>
+                        <p class="agreement">ダウンロードすることで<a href="library-policy">利用規約</a>に同意したことになります。</p>
+                        <a href="https://xullua.com/img/xullualogo1.png" download class="dl-btn">ダウンロード</a>
+                    </div>
+                </div>
+            </article>
 
-            <div class="footer-sns">
-                <div class="sns-icons">
-                    <a href="https://twitter.com/xullua"><img class="icon"
-                            src="https://xullua.com/img/twitter.webp"></a>
-                    <a href="https://youtube.com/c/xullua"><img class="icon"
-                            src="https://xullua.com/img/youtube.webp"></a>
-                    <a href="https://instagram.com/xullua"><img class="icon"
-                            src="https://xullua.com/img/instagram.webp"></a>
-                    <a href="https://tiktok.com/@xlagame"><img class="icon"
-                            src="https://xullua.com/img/tiktok.webp"></a>
+            <article>
+                <video src="https://xullua.com/img/xulluaad7.mp4" controls loop playsinline></video>
+                <h3>ぞるあCM7</h3>
+                <p>ぞるあCM7</p>
+                <input type="checkbox" name="tab-name" id="test2">
+                <label class="tab" for="test2">ダウンロード</label>
+                <div class="download">
+                    <div class="main">
+                        <label class="close" for="test2">×</label>
+                        <h3>ぞるあCM7</h3>
+                        <video src="https://xullua.com/img/xulluaad7.mp4" controls muted autoplay loop playsinline></video>
+                        <p class="explain">
+                            ぞるあが作る、Twitterの固定ツイート用の映像です。私にできること超個人的。が次回のテーマです。
+                        </p>
+                        <p class="agreement">ダウンロードすることで<a href="library-policy">利用規約</a>に同意したことになります。</p>
+                        <a href="https://xullua.com/img/xulluaad7.mp4" download class="dl-btn">ダウンロード</a>
+                    </div>
                 </div>
-            </div>
-            <div class="footer-menu">
-                <div class="menu">
-                    <p class="title">SNS</p>
-                    <ul>
-                        <li><a href="https://twitter.com/xullua">Twitter(メイン)</a></li>
-                        <li><a href="https://twitter.com/xlagame">Twitter(スプラ)</a></li>
-                        <li><a href="https://youtube.com/c/xullua">YouTube</a></li>
-                        <li><a href="https://instagram.com/xullua">Instagram</a></li>
-                    </ul>
+            </article>
+
+            <article>
+                <img src="https://xullua.com/img/xullualogo1.png">
+                <h3>素材3</h3>
+                <p></p>
+                <input type="checkbox" name="tab-name" id="test3">
+                <label class="tab" for="test3">ダウンロード</label>
+                <div class="download">
+                    <div class="main">
+                        <label class="close" for="test3">×</label>
+                        <h3>ダウンロード不可</h3>
+                        <img src="https://xullua.com/img/xullualogo1.png">
+                        <p class="explain">
+                            準備中
+                        </p>
+                        <p class="agreement">ダウンロードすることで<a href="library-policy">利用規約</a>に同意したことになります。</p>
+                        <a href="" download class="dl-btn">ダウンロード</a>
+                    </div>
                 </div>
-                <div class="menu">
-                    <p class="title">サイト
-                    <ul>
-                        <li><a href="https://xla.jp/store">ストア</a></li>
-                        <li><a href="https://xullua.com/blog">ブログ</a></li>
-                        <li><a href="https://xullua.com/game">ゲーム</a></li>
-                        <li><a href="https://xullua.com/device">使用デバイス</a></li>
-                    </ul>
-                    </p>
+            </article>
+
+            <article>
+                <img src="https://xullua.com/img/xullualogo1.png">
+                <h3>素材4</h3>
+                <p></p>
+                <input type="checkbox" name="tab-name" id="test4">
+                <label class="tab" for="test4">ダウンロード</label>
+                <div class="download">
+                    <div class="main">
+                        <label class="close" for="test43">×</label>
+                        <h3>ダウンロード不可</h3>
+                        <img src="https://xullua.com/img/xullualogo1.png">
+                        <p class="explain">
+                            準備中
+                        </p>
+                        <p class="agreement">ダウンロードすることで<a href="library-policy">利用規約</a>に同意したことになります。</p>
+                        <a href="" download class="dl-btn">ダウンロード</a>
+                    </div>
                 </div>
-                <div class="menu">
-                    <p class="title">マップ
-                    <ul>
-                        <li><a href="https://xullua.com">ホーム</a></li>
-                        <li><a href="https://xullua.com/privacy">プライバシー</a></li>
-                        <li><a href="https://xullua.com/contact">お問い合わせ</a></li>
-                        <li><a href="https://xullua.com/map">サイトマップ</a></li>
-                    </ul>
-                    </p>
-                </div>
-            </div>
-            <div class="line"></div>
-            <div class="footer-under">
-                <div class="copyright">©Xullua</div>
-                <div class="text2s">
-                    <a class="text2" href="https://xullua.com/privacy">プライバシーポリシー</a>
-                    <a class="text2" href="https://xullua.com/contact">お問い合わせ</a>
-                </div>
-            </div>
-            <div class="text1">サイト内で使用されている画像や映像は著作物です。無断での使用は認めません。</div>
+            </article>
         </div>
-    </footer>
+
+
+    </section>
+
+    <!-- フッター -->
+    <footer id="footer"></footer>
 
 </body>
 
