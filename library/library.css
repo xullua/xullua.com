@@ -7,11 +7,14 @@
 html {
     font-size: 100%;
     scroll-behavior: smooth;
+    background-color: var(--main-back);
+    color: var(--main-text);
 }
 
 body {
     font-family: 'Noto Sans JP', sans-serif;
     margin: 0;
+    
 }
 
 .ad {
