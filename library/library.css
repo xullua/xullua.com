@@ -14,7 +14,7 @@ html {
 body {
     font-family: 'Noto Sans JP', sans-serif;
     margin: 0;
-    
+
 }
 
 .ad {
@@ -54,6 +54,154 @@ body {
     }
 }
 
+/* アバウト */
+.about {
+    text-align: center;
+}
+
+.about .open-btn {
+    margin: auto;
+    padding: 5px 25px;
+    background: var(--blue-1);
+    border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #FFF;
+    transition: .2s;
+}
+
+.about .open-btn:hover {
+    background: var(--blue-3);
+}
+
+.about input[name="about-name"] {
+    display: none;
+}
+
+.about .content {
+    display: none;
+}
+
+input:checked+.about-btn+.content {
+    display: block;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    color: #FFF;
+    background-color: #3d1068f5;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(100px);
+
+}
+
+.area {
+    width: 720px;
+    max-width: 90%;
+    margin: 50px auto;
+}
+
+.about .content .close-btn {
+    display: block;
+    position: fixed;
+    bottom: 50px;
+    text-align: center;
+    width: 720px;
+    max-width: 90%;
+    border: 1.5px solid #FFF;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 5px auto;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.about .content .close-btn:hover {
+    background: #FFF;
+    color: #000;
+}
+
+.about .content h2 {
+    margin: 50px 0 0 0;
+    font-weight: 900;
+    font-size: 34px;
+}
+
+.about .content .welcome {
+    margin: 0 0 40px 0;
+    font-size: 14px;
+}
+
+.about .content .sec {
+    margin: 20px auto;
+    display: flex;
+    cursor: default;
+    transition: .5s;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.about .content .sec:hover {
+    background: #FFFFFF11;
+}
+
+.about .content .sec img {
+    filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+    width: 50px;
+    height: 50px;
+}
+
+.about .content .sec .text {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.about .content .text h3 {
+    font-size: 20px;
+}
+
+.about .content .text p {
+    color: #ddd;
+}
+
+@media screen and (max-width: 767px) {
+    .area {
+        margin: 20px auto;
+    }
+
+    .about .content h2 {
+        margin: 40px 0 0 0;
+        font-size: 28px;
+    }
+    .about .content .welcome {
+        margin: 0 0 20px 0;
+    }
+
+    .about .content .sec {
+        margin: 10px auto;
+    }
+
+    .about .content .close-btn {
+        bottom: 30px;
+    }
+
+    .about .content .sec img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .about .content .text h3 {
+        font-size: 18px;
+    }
+
+    .about .content .text p {
+        font-size: 14px;
+    }
+}
+
+
 /* ダウンロード */
 .material {
     margin: 40px 0;
@@ -63,7 +211,54 @@ body {
     padding: 0 calc((100vw - 1280px + 20px)/2);
     font-size: 26px;
     font-weight: 900;
-    margin-bottom: 10px;
+}
+
+.material .search {
+    padding: 0 calc((100vw - 1280px + 20px)/2);
+    position: sticky;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    top: 40px;
+    z-index: 5;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.material .search::-webkit-scrollbar {
+    display: none;
+}
+
+.material .search a {
+    margin-right: 3px;
+    padding: 2px 15px;
+    font-size: 14px;
+    border-radius: 20px;
+    border: 1px solid #FFF;
+    background: #FFF;
+    color: #000;
+    filter: drop-shadow(0 0 5px #0000005e);
+    transition: .3s;
+
+}
+
+.material .search a:hover {
+    background: #222;
+    border: 1px solid #222;
+    color: #FFF;
+    padding: 2px 20px;
+}
+
+.material .search a:active {
+    font-weight: bold;
+    background: rgba(128, 128, 128, 0.5);
+}
+
+.material .sec-title {
+    padding: 0 calc((100vw - 1280px + 20px)/2);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px 0 5px 0;
 }
 
 .materials {
@@ -74,8 +269,6 @@ body {
     scroll-snap-type: x mandatory;
     scroll-padding: calc(((100vw - 1280px + 10px)/2));
 }
-
-
 
 .materials article {
     width: calc((1280px - 20px - 20px*3)/3);
@@ -131,7 +324,14 @@ body {
 @media screen and (max-width: 1280px) {
     .material h2 {
         padding: 0 20px;
-        font-size: 26px;
+    }
+
+    .material .search {
+        padding: 0 20px;
+    }
+
+    .material .sec-title {
+        padding: 0 20px;
     }
 
     .materials {
@@ -199,7 +399,7 @@ input:checked+.tab+.download {
     background-color: var(--main-back);
     border-radius: 10px;
     display: grid;
-    grid-template-rows: auto auto 1fr auto auto;
+    grid-template-rows: auto auto 1fr auto auto auto;
     position: fixed;
     top: 50vh;
     left: 50vw;
@@ -229,8 +429,23 @@ input:checked+.tab+.download {
 
 .materials article .main .explain {
     padding-top: 10px;
-    margin: 0 0 5px 0;
+    margin: 0;
     overflow-y: auto;
+}
+
+.materials article .main .detail {
+    margin: 0;
+    padding: 0 0 10px 0;
+}
+
+.materials article .main .detail a {
+    color: var(--sub-back);
+    background: var(--main-text);
+    border-radius: 20px;
+    padding: 2px 12px;
+    margin-right: 4px;
+    font-size: 12px;
+    cursor: default;
 }
 
 .materials article .main .agreement {
@@ -242,7 +457,7 @@ input:checked+.tab+.download {
 
 .materials article .main .dl-btn {
     width: 100%;
-    padding: 5px 0;
+    padding: 8px 0;
     text-align: center;
     background-color: var(--main-back);
     color: var(--main-text);
@@ -255,7 +470,6 @@ input:checked+.tab+.download {
 .materials article .main .dl-btn:hover {
     background: var(--main-text);
     color: var(--third-back);
-    padding: 8px 0;
 }
 
 /* 基本 */
