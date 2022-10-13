@@ -16,7 +16,6 @@
     <link rel="shortcut icon" href="https://xullua.com/img/favicon.ico">
     <link rel="stylesheet" href="library.css">
     <link rel="stylesheet" href="https://xullua.com/css/base.css">
-    <link rel="stylesheet" href="https://xullua.com/css/color.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap"
@@ -39,6 +38,26 @@
             $("#footer").load("https://xullua.com/footer.html");
         });
     </script>
+    <!-- アバウトCookie -->
+    <script>
+        var save_values = [];
+
+        $("input[type=checkbox][name=about-name]").each(function () {
+            this.checked && save_values.push(encodeURIComponent(this.value));
+        });
+
+        $.cookie("chk_selected_value", save_values.join(","));
+
+        var load_values = $.cookie("chk_selected_value").split(",");
+
+        for (var i = 0; i < load_values.length; ++i) {
+            load_values[i] = decodeURIComponent(load_values[i]);
+        }
+
+        $("input[type=checkbox][name=about-name]").each(function () {
+            this.checked = $.inArray(this.value, load_values) != -1;
+        });
+    </script>
 </head>
 
 
@@ -49,8 +68,6 @@
     <!-- メイン -->
     <div class="library-top">
         <div class="library-top-title">ライブラリ</div>
-        <p style="color: red; text-align: center;"><b
-                style="font-size: 20px;">注意</b><br>現在準備中で掲載内容は暫定内容です。サービス開始までお待ちください。</p>
     </div>
 
     <section class="about">
@@ -218,27 +235,6 @@
 
     <!-- フッター -->
     <footer id="footer"></footer>
-
-    <!-- アバウトCookie -->
-    <script>
-        var save_values = [];
-
-        $("input[type=checkbox][name=about-name]").each(function () {
-            this.checked && save_values.push(encodeURIComponent(this.value));
-        });
-
-        $.cookie("chk_selected_value", save_values.join(","));
-
-        var load_values = $.cookie("chk_selected_value").split(",");
-
-        for (var i = 0; i < load_values.length; ++i) {
-            load_values[i] = decodeURIComponent(load_values[i]);
-        }
-
-        $("input[type=checkbox][name=about-name]").each(function () {
-            this.checked = $.inArray(this.value, load_values) != -1;
-        });
-    </script>
 </body>
 
 </html>
