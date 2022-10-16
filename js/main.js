@@ -1,3 +1,5 @@
+document.getElementById('header').classList.add('active')
+
 $(function () {
     var hd_size = $('header').innerHeight();
     var pos = 0;
@@ -25,3 +27,4 @@ $(function () {
         pos = current_pos;
     });
 });
+
