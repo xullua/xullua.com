@@ -1793,17 +1793,22 @@ input[type="checkbox"]:checked+label:before {
 }
 
 /* メインページ目次 */
-.mokujies {
+#mokuji {
   margin: 30px auto;
   text-align: center;
   position: sticky;
   top: 50px;
   z-index: 5;
-  transform: skewX(-10deg);
+  transform: skewX(-10deg) translateY(-150%) translateX(-1.5%);
   width: 99%;
+  transition: 0.2s;
 }
 
-.mokuji {
+#mokuji.active {
+  transform: skewX(-10deg) translateY(0) translateX(0);
+}
+
+#mokuji .mokuji{
   background-color: var(--blue-2);
   border-left: solid 3px var(--blue-1);
   text-decoration: none;
@@ -1813,7 +1818,7 @@ input[type="checkbox"]:checked+label:before {
   transition: 0.5s;
 }
 
-.mokuji:hover {
+#mokuji .mokuji:hover {
   background-color: var(--blue-3);
   color: #FFF;
   border-left: solid 11px var(--blue-3);
