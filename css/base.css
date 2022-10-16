@@ -40,7 +40,7 @@ a:active {
 }
 
 /* ヘッダー */
-.header {
+header {
     width: 100%;
     background-color: var(--header-back);
     position: fixed;
@@ -51,16 +51,21 @@ a:active {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    transition: all 0.3s ease;
+    transform: translateY(-100%);
+    transition: 0.2s;
 }
 
-#header .header-inner {
+header.active {
+    transform: none;
+}
+
+header .header-inner {
     height: 44px;
     display: flex;
     align-items: center;
 }
 
-#header .header-inner .logo {
+header .header-inner .logo {
     flex-shrink: 0;
     width: 18px;
     line-height: 1px;
@@ -143,17 +148,17 @@ a:active {
 }
 
 @media screen and (max-width: 767px) {
-    #header .header-inner .logo {
+    header .header-inner .logo {
         z-index: 11;
     }
 
-    #navi {
+    nav {
         position: fixed;
         background: var(--third-back);
         top: 0;
         left: 0;
         transform: translateY(-100%);
-        transition: all 0.4s;
+        transition: 0.3s;
         z-index: 10;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
     }
