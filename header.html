@@ -28,6 +28,7 @@
             if ($(this).hasClass('active')) {
                 $('#navi').addClass('active');
                 $('.header-back').addClass('active');
+                $('header').addClass('active');
                 $('html').addClass('header-noscroll');
                 document.addEventListener('touchmove', disableScroll, { passive: false });
                 document.body.classList.add('header-noscroll');
