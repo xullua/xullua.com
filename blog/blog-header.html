@@ -35,6 +35,7 @@
             } else {
                 $('#navi').removeClass('active');
                 $('.header-back').removeClass('active');
+                $('header').addClass('active');
                 $('html').removeClass('header-noscroll');
                 document.removeEventListener('touchmove', disableScroll, { passive: false });
                 document.body.classList.remove('header-noscroll');
