@@ -87,6 +87,7 @@ header .header-inner .logo {
 
 #navi {
     width: 100%;
+
 }
 
 #navi ul {
@@ -197,7 +198,7 @@ header .header-inner .logo {
         transform: translateY(-100%);
         transition: .6s cubic-bezier(0, 1, 1, 1);
         z-index: 10;
-        box-shadow: var(--shadow-blackwhite1);
+        box-shadow: none;
     }
 
     #navi a {
@@ -231,6 +232,7 @@ header .header-inner .logo {
 
     #navi.active {
         transform: translateY(0%);
+        box-shadow: var(--shadow-blackwhite1);
     }
 }
 
