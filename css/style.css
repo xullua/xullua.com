@@ -1787,15 +1787,11 @@ input[type="checkbox"]:checked+label:before {
   margin: 30px auto;
   text-align: center;
   position: sticky;
-  top: 50px;
+  top: 10px;
   z-index: 5;
-  transform: skewX(-10deg) translateY(-150%) translateX(-5px);
-  width: 99%;
-  transition: 0.2s;
-}
-
-#mokuji.active {
-  transform: skewX(-10deg) translateY(0) translateX(0);
+  transform: skewX(-10deg);
+  width: 90%;
+  transition: 0.4s;
 }
 
 #mokuji .mokuji{

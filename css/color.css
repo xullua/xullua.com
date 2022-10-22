@@ -15,6 +15,14 @@
     --blue-3: #3232aa;
     --yellow-1: #bdbd00;
 
+    /* 影 */
+    --shadow-blackwhite1: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    /* イージング */
+    --easing27: cubic-bezier(0,1,1,1);/* 徐々に減速 */
+    --easing26: cubic-bezier(1,0,1,1);/* 徐々に加速 */
+    --easing8: cubic-bezier(.6,0,.4,1);/* 最初と最後がゆっくり*/
+
     /* スクロールバーカラー */
     --bar-back: rgba(200, 200, 201, 0.2);
     --bar-track: rgba(150, 150, 150, 0.2);
@@ -49,6 +57,9 @@
         --blue-2: #000030;
         --blue-3: #4d4dff;
         --yellow-1: #FFFF00;
+
+        /* 影 */
+        --shadow-blackwhite1: 0 0 10px rgba(185, 185, 185, 0.2);
 
         /* スクロールバーカラー */
         --bar-back: rgba(0, 0, 0, 0.15);

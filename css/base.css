@@ -12,6 +12,10 @@ a:active {
     color: var(--url-active);
 }
 
+.header-noscroll {
+    overflow: hidden;
+}
+
 /* スクロールバー */
 ::-webkit-scrollbar {
     width: 13px;
@@ -41,7 +45,6 @@ a:active {
 
 .base-wrapper {
     max-width: 1280px;
-    padding: 0 22px;
     margin: 0 auto;
     position: relative;
 }
@@ -55,15 +58,16 @@ header {
     top: 0;
     left: 0;
     height: 44px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     transform: translateY(-100%);
+    box-shadow: none;
     transition: 0.4s;
 }
 
 header.active {
     transform: none;
+    box-shadow: var(--shadow-blackwhite1);
 }
 
 header .header-inner {
@@ -73,10 +77,11 @@ header .header-inner {
 }
 
 header .header-inner .logo {
+    display: block;
     flex-shrink: 0;
-    width: 18px;
+    height: 35px;
     line-height: 1px;
-    margin-right: 9%;
+    margin-left: 20px;
 }
 
 #navi {
@@ -90,10 +95,6 @@ header .header-inner .logo {
     list-style: none;
 }
 
-#navi li {
-    margin: 0 8px;
-}
-
 #navi a {
     display: flex;
     width: 100%;
@@ -102,19 +103,21 @@ header .header-inner .logo {
     line-height: 44px;
     color: var(--main-text);
     font-size: 14px;
+    padding: 0 8px;
     opacity: 0.8;
     transition: 0.2s;
 }
 
 #navi a:hover {
     opacity: 1;
+    background: var(--four-back);
 }
 
 #navi img {
     margin-right: 3px;
     height: 15px;
     filter: var(--img-change-white);
-    align-self:center;
+    align-self: center;
     opacity: 0.7;
 }
 
@@ -142,7 +145,7 @@ header .header-inner .logo {
         background: var(--main-text);
         position: absolute;
         left: 14px;
-        transition: 0.3s ease-in-out;
+        transition: 0.6s;
     }
 
     .hamburger span:nth-child(1) {
@@ -171,20 +174,31 @@ header .header-inner .logo {
         z-index: 11;
     }
 
+    .header-back.active {
+        display: block;
+        position: absolute;
+        background: #00000036;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        right: 0;
+        transition: 0.5s var(--easing27);
+    }
+
     nav {
         position: fixed;
         background: var(--third-back);
         top: 0;
         left: 0;
         transform: translateY(-100%);
-        transition: 0.3s;
+        transition: .6s cubic-bezier(0, 1, 1, 1);
         z-index: 10;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
+        box-shadow: var(--shadow-blackwhite1);
     }
 
     #navi a {
         font-size: 15px;
-        padding-left: 50;
+        padding: 0;
     }
 
     #navi ul {
