@@ -79,6 +79,7 @@ header .header-inner {
 header .header-inner .logo {
     display: block;
     flex-shrink: 0;
+    max-width: 200px;
     height: 35px;
     line-height: 1px;
     margin-left: 20px;
@@ -93,6 +94,7 @@ header .header-inner .logo {
     align-items: center;
     justify-content: right;
     list-style: none;
+    margin-right: 12px;
 }
 
 #navi a {
@@ -106,11 +108,13 @@ header .header-inner .logo {
     padding: 0 8px;
     opacity: 0.8;
     transition: 0.2s;
+    border-bottom:  none;
 }
 
 #navi a:hover {
     opacity: 1;
     background: var(--four-back);
+    border-bottom: 1px solid #FFF;
 }
 
 #navi img {
