@@ -114,7 +114,7 @@ header .header-inner .logo {
 #navi a:hover {
     opacity: 1;
     background: var(--four-back);
-    border-bottom: 1px solid #FFF;
+    border-bottom: 1px solid var(--main-text);
 }
 
 #navi img {
@@ -203,6 +203,10 @@ header .header-inner .logo {
     #navi a {
         font-size: 15px;
         padding: 0;
+    }
+
+    #navi a:hover {
+        border-bottom: none;
     }
 
     #navi ul {
