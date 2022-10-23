@@ -212,7 +212,8 @@ header .header-inner .logo {
 
     #navi ul {
         flex-direction: column;
-        padding: 44px 20px 15px 20px;
+        padding: 44px 30px 15px 30px;
+        margin: 0;
         text-align: left;
     }
 
@@ -246,7 +247,7 @@ header .header-inner .logo {
     font-size: 12px;
     position: static;
     bottom: 0;
-    padding: 45px 20px;
+    padding: 45px 40px;
     margin-top: 40px;
     border-radius: 20px 20px 0 0;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.205));
