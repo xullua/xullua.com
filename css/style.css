@@ -160,17 +160,28 @@ body {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  backdrop-filter: brightness(60%);
+  opacity: 0;
+  animation: top-hello-fade-img 1.5s var(--easing27) .5s forwards;
+  margin: 0 0 100px 0;
 }
 
 .top-hello .back {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: var(--top-hello-gradation);
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: top-hello-fade 2s forwards;
+}
+
+@keyframes top-hello-fade-img {
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+  }
 }
 
 .top-hello .content {
@@ -185,14 +196,14 @@ body {
   width: 120px;
   z-index: 10;
   opacity: 0;
-  animation: top-hello-fadeUp 1.2s var(--easing27) forwards;
+  animation: top-hello-fadeUp 1.5s var(--easing27) .5s forwards;
 }
 
 .top-hello .content .greeting {
   font-weight: 900;
   font-size: 60px;
   transform: scale(0);
-  animation: top-hello-fadeBig 1s var(--easing27) 0.2s forwards;
+  animation: top-hello-fadeBig 1.5s var(--easing27) 0.5s forwards;
 }
 
 @keyframes top-hello-fadeBig {
@@ -208,10 +219,11 @@ body {
   font-family: 'Edu VIC WA NT Beginner', cursive;
   font-size: 25px;
   opacity: 0;
+  height: 0;
 }
 
 .shortmessage {
-  animation: top-hello-fadeUp 0.5s var(--easing27) 0.7s forwards;
+  animation: top-hello-fadeUp 1.3s var(--easing27) 0.7s forwards;
   opacity: 0;
 }
 
@@ -225,6 +237,12 @@ body {
       opacity: 1;
       transform: translateY(0);
   }
+}
+
+.top-hello .explain {
+  font-size: 12px;
+  color: var(--sub-text);
+  opacity: .7;
 }
 
 /* アクセス */
