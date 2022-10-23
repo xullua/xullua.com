@@ -53,21 +53,29 @@
   <header class="header" id="header"></header>
 
   <!-- トップ -->
-  <section class="top-hello top" id="top">
-    <div class="contents">
-      <img src="img/xullualogowhite.webp">
-      <p class="fonts21"><a class="fontsgradationYP">Welcome</a></p>
-      <h1 class="fonts22">Xullua Web Site</h1>
-    </div>
-    <div class="video">
-      <video class="pc" src="img/top-move-pc.mp4" autoplay muted playsinline></video>
-      <video class="sp" src="img/top-move.mp4" autoplay muted playsinline></video>
+  <section class="top-hello" id="top">
+    <div class="back">
+      <div class="content">
+        <img src="img/xullualogowhite.webp">
+        <p class="greeting" id="greeting"></p>
+        <p class="shortmessage">
+          <script>
+          var msg = new Array();
+          msg[0] = '後ろに何かいますけど大丈夫ですか';
+          msg[1] = 'しょうもない人生がもしかしたら最高なのかもしれない';
+          msg[2] = '人生山あり谷あり、、？谷しかないけど。。。';
+          msg[3] = '可愛いは正義';
+          msg[4] = '顔なんて努力すればよくなる、、、？僕と顔交換しますか？';
+          var no = Math.floor(Math.random() * msg.length);
+          document.write(msg[no]);
+        </script>
+        </p>
+        <h1>Xullua</h1>
+      </div>
     </div>
   </section>
 
-  <br><br>
-  <p style="text-align: center;">現在サイトはリニューアルしています。<br>進行は<a href="#news">お知らせ</a>より確認できます。</p>
-
+  <br>
   <!-- 目次 -->
   <section class="mokujies" id="mokuji">
     <a href="#connect" class="mokuji">アクセス</a>
