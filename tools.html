@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ツール - ぞるあ</title>
+    <meta name="description" content="ぞるあが作成したちょっとしたWebツールをまとめています。">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@xullua">
+    <meta name="twitter:title" content="ツール - ぞるあ">
+    <meta name="twitter:description" content="ぞるあが作成したちょっとしたWebツールをまとめています。">
+    <meta name="twitter:image" content="https://xullua.com/img/xullualogo1.png">
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <!-- フォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/color.css">
+    <link rel="stylesheet" href="css/base.css">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js" async></script>
+    <!-- アナリティクス -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JDKGJ1E005');
+    </script>
+    <!-- 共通部分 -->
+    <script>
+        $(function () {
+            $("#header").load("header.html");
+            $("#footer").load("footer.html");
+        });
+    </script>
+</head>
+
+
+<body>
+    <!-- ヘッダー -->
+    <header class="header" id="header"></header>
+    <main class="tools">
+        <section class="top">
+            <h1>ツール</h1>
+            <h2>Made By Xullua</h2>
+        </section>
+        <section class="content calculator">
+            <div class="back">
+                <div class="text">
+                    <h2>電卓 - iPhone風</h2>
+                    <p>
+                        iPhoneの電卓のデザインを忠実に再現したWeb電卓です。<br>
+                        Android端末で使って「iPhoneだぜ」と遊んでみたり。。。色々な遊び方ができます。
+                    </p>
+                    <a class="btn" href="https://calculator.xullua.com">使う</a>
+                </div>
+            </div>
+        </section>
+        <section class="end">
+            <p class="end-text"></p>
+        </section>
+        
+    </main>
+    <footer id="footer"></footer>
+</body>
