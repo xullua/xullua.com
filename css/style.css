@@ -154,54 +154,76 @@ body {
 }
 
 /* トップ */
-.top-hello .contents {
-  margin: calc((100vh - 172px)/2) auto;
+.top-hello {
+  height: 100vh;
   text-align: center;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: brightness(60%);
 }
 
-.top-hello .contents img {
+.top-hello .back {
+  width: 100vw;
+  height: 100vh;
+  background: var(--top-hello-gradation);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: top-hello-fade 2s forwards;
+}
+
+.top-hello .content {
+  color: #FFF;
+  margin: 0 20px;
+  filter: drop-shadow(0 0 10px #00000099);
+}
+
+.top-hello .content img {
   display: block;
   margin: 0 auto;
   width: 120px;
   z-index: 10;
+  opacity: 0;
+  animation: top-hello-fadeUp 1.2s var(--easing27) forwards;
 }
 
-.top-hello .video {
-  position: absolute;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: -1;
+.top-hello .content .greeting {
+  font-weight: 900;
+  font-size: 60px;
+  transform: scale(0);
+  animation: top-hello-fadeBig 1s var(--easing27) 0.2s forwards;
 }
 
-.top-hello .video video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+@keyframes top-hello-fadeBig {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
-.top-hello .video .pc {
-  display: block;
+.top-hello h1 {
+  font-family: 'Edu VIC WA NT Beginner', cursive;
+  font-size: 25px;
+  opacity: 0;
 }
 
-.top-hello .video .sp {
-  display: none;
+.shortmessage {
+  animation: top-hello-fadeUp 0.5s var(--easing27) 0.7s forwards;
+  opacity: 0;
 }
 
-@media screen and (max-width: 767px) {
-  .top-hello .video .pc {
-    display: none;
+@keyframes top-hello-fadeUp {
+  from {
+      opacity: 0;
+      transform: translateY(50px);
   }
 
-  .top-hello .video .sp {
-    display: block;
+  to {
+      opacity: 1;
+      transform: translateY(0);
   }
 }
 
@@ -253,7 +275,7 @@ body {
 }
 
 .connect .box:hover {
-  transform:scale(1.01,1.01);
+  transform: scale(1.01, 1.01);
   filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.2));
 }
 
@@ -1794,7 +1816,7 @@ input[type="checkbox"]:checked+label:before {
   transition: 0.4s;
 }
 
-#mokuji .mokuji{
+#mokuji .mokuji {
   background-color: var(--blue-2);
   border-left: solid 3px var(--blue-1);
   text-decoration: none;
@@ -1933,7 +1955,8 @@ input[type="checkbox"]:checked+label:before {
     padding: 0 15px;
   }
 
-  .devices .main , .devices .peripheral{
+  .devices .main,
+  .devices .peripheral {
     padding: 0 10px;
   }
 
@@ -1972,7 +1995,7 @@ input[type="checkbox"]:checked+label:before {
     width: 75vw;
   }
 
-  .devices .peripheral{
+  .devices .peripheral {
     padding: 0 calc(100vw - 75vw) 0 10px;
   }
 }

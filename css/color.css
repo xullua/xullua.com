@@ -14,6 +14,7 @@
     --blue-2: #eaeaff;
     --blue-3: #3232aa;
     --yellow-1: #bdbd00;
+    --top-hello-gradation: linear-gradient(#00000046 70%, #ffffff);
 
     /* 影 */
     --shadow-blackwhite1: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -57,6 +58,7 @@
         --blue-2: #000030;
         --blue-3: #4d4dff;
         --yellow-1: #FFFF00;
+        --top-hello-gradation: linear-gradient(#00000033 70%, #1f1f1f);
 
         /* 影 */
         --shadow-blackwhite1: 0 0 10px rgba(185, 185, 185, 0.2);
