@@ -2068,3 +2068,106 @@ input[type="checkbox"]:checked+label:before {
   white-space: nowrap;
   overflow-x: auto;
 }
+
+/* ツール */
+.tools {
+  margin: 60px auto;
+  width: 100%;
+}
+
+.tools .top {
+  width: 1280px;
+  max-width: 90%;
+  margin: 0 auto 30px auto;
+}
+
+.tools h1 {
+  font-weight: 900;
+  font-size: 46px;
+}
+
+.tools .top h2 {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--sub-text);
+}
+
+.tools .content {
+  width: 100%;
+  height: 100vh;
+  border-top: 5px solid var(--main-back);
+  border-bottom: 5px solid var(--main-back);
+}
+
+.tools .content .back {
+  width: 100%;
+  height: 100%;
+  background: #00000044;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 1s;
+}
+
+.tools .content .back:hover {
+  background: #00000077;
+  transition: .2s;
+}
+
+.tools .content .back:active {
+  opacity: 0;
+}
+
+.tools .content .text {
+  max-width: 90%;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 10px #00000077);
+}
+
+.tools .content .text h2 {
+  font-weight: 700;
+  font-size: 30px;
+  color: #FFF;
+}
+
+.tools .content p {
+  margin: 0 0 20px 0;
+  color: #FFF;
+}
+
+.tools .content a {
+  height: 30px;
+  padding: 0 30px;
+  border-radius: 50px;
+  border: 2px solid #fff;
+  color: #FFF;
+  transition: 1s;
+}
+
+.tools .content a:hover {
+  opacity: 1;
+  color: #000;
+  background: #FFF;
+  transition: .2s;
+}
+
+.tools .calculator {
+  background-position: center center;
+  background-size: cover;
+  background-image: url(https://calculator.xullua.com/calculatorsamune.png);
+}
+
+.tools .end {
+  margin: 40px auto;
+}
+
+.tools .end-text {
+  text-align: center;
+  color: var(--sub-text);
+  font-size: 14px;
+}
+
+.tools .end-text::after {
+  content: "今後も追加予定です！";
+}
