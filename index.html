@@ -153,6 +153,64 @@
     </div>
   </section>
 
+  <!-- トップワード応募 -->
+  <section class="vote-top-words" id="vote-top-words">
+    <div class="back">
+      <h2>トップに表示される文を送る</h2>
+      <div class="what">
+        <div class="img">
+          <img src="img/vote-top-words-page1.png">
+        </div>
+        <p>
+          ぞるあのサイトのトップページにランダムで表示される言葉を応募できます。名前を入力するとby.○○と表示されます。
+          ぞるあのワードセンスが壊滅的なのでよければ送ってください。
+        </p>
+      </div>
+      <input type="radio" name="vote-top-words-page" id="vote-top-words-page">
+      <label for="vote-top-words-page" class="open">応募する</label>
+      <div class="form">
+        <form
+          action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScDg2tD6J3400xH1kOslT9pEYbj_reaOMBUcqSRUtxoZmx3Mg/formResponse"
+          method="post" target="hidden_iframe" onsubmit="submitted=true;">
+
+          <p class="title">お名前<span class="box" style="background: #896fff;">任意</span></p>
+          <p class="explain">テキストの下側に名前が表示されます。表示されたくない方は未記入にしてください。10字以内です。</p>
+          <input class="name" type="text" name="entry.123140293" placeholder="@Xullua" title="名前を入力">
+
+          <p class="title">言葉<span class="box" style="background: #ff5757;">必須</span></p>
+          <p class="explain">この部分が表示されます。50字以内です。</p>
+          <textarea class="text" type="text" name="entry.681018563" placeholder="布団が吹っ飛んだ" title="面白い言葉や名言を入力"
+            maxlength="50" required></textarea>
+
+          <div class="agreement">
+            <p class="title">確認してチェックをつけてください</p>
+            <p style="color: var(--sub-text); font-size: 12px;">チェックをつけていない場合は送信できません</p>
+            <input type="checkbox" id="vote-top-words-agreement1" required>
+            <label for="vote-top-words-agreement1">下品、他人を中傷、個人情報や自己を過剰に宣伝する内容は含まれていません</label>
+            <input type="checkbox" id="vote-top-words-agreement2" required>
+            <label for="vote-top-words-agreement2">利用規約に同意します</label>
+            <input type="checkbox" id="vote-top-words-agreement3" required>
+            <label for="vote-top-words-agreement3">送信された内容はぞるあの独断の判断で掲載期間を決め、勝手に削除できる物とします</label>
+            <input type="checkbox" id="vote-top-words-agreement4" required>
+            <label for="vote-top-words-agreement4">名前を入力している場合は自身の名前(ネット名可)です</label>
+          </div>
+
+          <button type="submit" title="クリックして送信">送信</button>
+          <p style="color: var(--sub-text); font-size: 12px; margin-top: 5px;">正しく送信されるとリダイレクトされます</p>
+        </form>
+      </div>
+    </div>
+    <script>
+      let submitted = false;
+      const page_transition = function () {
+        if (submitted) {
+          window.location = 'https://xullua.com';
+        }
+      }
+    </script>
+    <iframe name="hidden_iframe" style="display:none;" onload="page_transition()"></iframe>
+  </section>
+
   <!-- 自己紹介 -->
   <section class="profile" id="profile">
     <div class="box">
