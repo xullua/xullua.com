@@ -520,7 +520,7 @@ input[name="vote-top-words-page"]:checked+label {
   border-radius: 5px;
   padding: 2px 5px;
   margin-left: 5px;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: lighter;
   color: #FFF;
   text-align: center;
@@ -541,7 +541,7 @@ input[name="vote-top-words-page"]:checked+label {
   border: none;
   outline: none;
   margin: 5px 0;
-  padding: 5px 10px;
+  padding: 7px 10px;
   font-family: 'Noto Sans JP', sans-serif;
 }
 
@@ -562,6 +562,7 @@ input[name="vote-top-words-page"]:checked+label {
   border: 2px solid var(--main-text);
   border-radius: 40px;
   cursor: pointer;
+  font-size: 16px;
   font-weight: bold;
   transition: 1s;
 }
@@ -591,6 +592,12 @@ input[name="vote-top-words-page"]:checked+label {
 
 .vote-top-words .agreement label {
   margin: 5px 0;
+}
+
+@media screen and (max-width: 767px) {
+  .vote-top-words h2 {
+    font-size: 20px;
+  }
 }
 
 /* 自己紹介 */
