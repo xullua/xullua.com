@@ -190,26 +190,27 @@ body {
   color: #FFF;
   margin: 0 20px;
   filter: drop-shadow(0 0 10px #00000099);
+  transform:translateY(-50px);
 }
 
 .top-hello .content img {
   display: block;
   margin: 0 auto;
-  width: 120px;
+  width: 360px;
   z-index: 10;
-  transform: scale(2.7) translateY(40%);
+  transform: scale(1) translateY(100px);
   animation: top-hello-fadein 5s var(--easing8) 1s forwards;
 }
 
 @keyframes top-hello-fadein {
   0% {
-    transform: scale(2.7) translateY(40%);
+    transform: scale(1) translateY(100px);
   }
   20% {
-    transform: scale(3) translateY(37%);
+    transform: scale(1.2) translateY(85px);
   }
   100% {
-    transform: scale(1) translateY(0);
+    transform: scale(.4) translateY(100px);
   }
 }
 
@@ -434,9 +435,168 @@ body {
   }
 }
 
+/* 投票する */
+
+.vote-top-words {
+  margin: 80px 0;
+}
+
+.vote-top-words .back {
+  margin: 0 auto;
+  width: 720px;
+  max-width: 90%;
+  background: var(--third-back);
+  border-radius: 15px;
+  padding: 30px;
+  filter: drop-shadow(0 0 8px #0000001f);
+}
+
+.vote-top-words h2 {
+  margin: 0 0 15px 0;
+}
+
+.vote-top-words .what .img {
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.vote-top-words .what img {
+  width: 100%;
+  transition: 1.5s var(--easing8);
+}
+
+.vote-top-words .what img:hover {
+  transform: scale(3);
+  transition: .5s var(--easing27);
+}
+
+.vote-top-words .what {
+  margin: 10px 0 20px 0;
+}
+
+.vote-top-words .open {
+  color: var(--main-text);
+  cursor: pointer;
+  border-radius: 50px;
+  padding: 3px 20px;
+  margin: 10px 0;
+  font-weight: bold;
+  transition: 1s;
+  border: 2px solid var(--main-text);
+}
+
+.vote-top-words .open:hover {
+  background: var(--main-text);
+  color: var(--third-back);
+  transition: .2s;
+}
+
+.vote-top-words .form,
+input[name="vote-top-words-page"] {
+  display: none;
+}
+
+input:checked+.open+.form {
+  display: block;
+  border-top: 1px solid var(--line);
+}
+
+input[name="vote-top-words-page"]:checked+label {
+  display: none;
+}
+
+.vote-top-words #form.active {
+  display: none;
+}
+
+.vote-top-words .title {
+  margin: 15px 0 0 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.vote-top-words span {
+  border-radius: 5px;
+  padding: 2px 5px;
+  margin-left: 5px;
+  font-size: 12px;
+  font-weight: lighter;
+  color: #FFF;
+  text-align: center;
+}
+
+.vote-top-words .explain {
+  font-size: 14px;
+  opacity: .9s;
+}
+
+.vote-top-words .name,.vote-top-words textarea {
+  background: var(--four-back);
+  max-width: 100%;
+  min-height: 35px;
+  max-height: 100px;
+  height: 35px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  margin: 5px 0;
+  padding: 5px 10px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.vote-top-words .name {
+  width: 200px;
+}
+
+.vote-top-words .text {
+  width: 100%;
+  min-width: 100%;
+}
+
+.vote-top-words button {
+  display: block;
+  margin: 20px 0 0 0;
+  padding: 5px 40px;
+  background: none;
+  border: 2px solid var(--main-text);
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 1s;
+}
+
+.vote-top-words button::before {
+  content: '';
+  background-image: url(../img/send.svg);
+  filter: var(--img-change-white);
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  vertical-align: middle;
+  transform: translateX(-5px);
+}
+
+.vote-top-words button:hover {
+  background: var(--third-back);
+  transition: .2s;
+  border: 2px solid var(--third-back);
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+}
+
+.vote-top-words .agreement {
+  margin: 10px 0;
+}
+
+.vote-top-words .agreement label {
+  margin: 5px 0;
+}
+
 /* 自己紹介 */
 .profile {
   margin: 80px 0;
+  z-index: 0;
 }
 
 .profile .box {
