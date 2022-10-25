@@ -167,11 +167,11 @@ body {
 
 @keyframes top-hello-fade-img {
   from {
-      opacity: 0;
+    opacity: 0;
   }
 
   to {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
@@ -190,7 +190,7 @@ body {
   color: #FFF;
   margin: 0 20px;
   filter: drop-shadow(0 0 10px #00000099);
-  transform:translateY(-50px);
+  transform: translateY(-50px);
 }
 
 .top-hello .content img {
@@ -199,16 +199,18 @@ body {
   width: 360px;
   z-index: 10;
   transform: scale(1) translateY(100px);
-  animation: top-hello-fadein 5s var(--easing8) 1s forwards;
+  animation: top-hello-fadein 4s var(--easing8) 1s forwards;
 }
 
 @keyframes top-hello-fadein {
   0% {
     transform: scale(1) translateY(100px);
   }
+
   20% {
-    transform: scale(1.2) translateY(85px);
+    transform: scale(1.1) translateY(92px);
   }
+
   100% {
     transform: scale(.4) translateY(100px);
   }
@@ -218,14 +220,15 @@ body {
   font-weight: 900;
   font-size: 60px;
   transform: scale(0);
-  animation: top-hello-fadeBig 2.5s var(--easing27) 3.5s forwards;
+  animation: top-hello-fadeBig 1.5s var(--easing27) 3.5s forwards;
 }
 
 @keyframes top-hello-fadeBig {
   from {
     opacity: 0;
-    transform: scale(2) translateY(200px);
+    transform: scale(1.5) translateY(200px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -240,19 +243,19 @@ body {
 }
 
 .shortmessage {
-  animation: top-hello-fadeUp 2s var(--easing27) 4s forwards;
+  animation: top-hello-fadeUp 1s 4s forwards;
   opacity: 0;
 }
 
 @keyframes top-hello-fadeUp {
   from {
-      opacity: 0;
-      transform: translateY(300px);
+    opacity: 0;
+    transform: translateY(-10px);
   }
 
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -531,7 +534,8 @@ input[name="vote-top-words-page"]:checked+label {
   opacity: .9s;
 }
 
-.vote-top-words .name,.vote-top-words textarea {
+.vote-top-words .name,
+.vote-top-words textarea {
   background: var(--four-back);
   max-width: 100%;
   min-height: 35px;
