@@ -8,7 +8,7 @@
 @font-face {
     font-family: 'LSeedJP';
     src: url(http://xullua.com/font/LSeedJPRg.woff) format(woff);
-    font-weight: 500;
+    font-weight: 500,normal;
     font-style: normal;
 }
 
