@@ -1,30 +1,30 @@
 @font-face {
     font-family: 'LSeedJP';
-    src: url(https://xullua.com/font/LSeedJPTh.woff) format(woff);
+    src: url(http://xullua.com/font/LSeedJPTh.woff) format(woff);
     font-weight: 100;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'LSeedJP';
-    src: url(https://xullua.com/font/LSeedJPRg.woff) format(woff);
-    font-weight: 400;
+    src: url(http://xullua.com/font/LSeedJPRg.woff) format(woff);
+    font-weight: 500;
+    font-style: normal;
+}
+
+/*@font-face {
+    font-family: 'LSeedJP';
+    src: url(http://xullua.com/font/LSeedJPBd.woff) format(woff);
+    font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'LSeedJP';
-    src: url(https://xullua.com/font/LSeedJPBd.woff) format(woff);
-    font-weight: 600;
+    src: url(http://xullua.com/font/LSeedJPEd.woff) format(woff);
+    font-weight: 900;
     font-style: normal;
-}
-
-@font-face {
-    font-family: 'LSeedJP';
-    src: url(https://xullua.com/font/LSeedJPEd.woff) format(woff);
-    font-weight: 800;
-    font-style: normal;
-}
+}*/
 
 /* リンク */
 a {
