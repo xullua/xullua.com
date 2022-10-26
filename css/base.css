@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'LSeedJP';
+    src: url(../font/LSeedJPRg.woff2) format(woff2),
+    url(../font/LSeedJPBd.woff2) format(woff2),
+    url(../font/LSeedJPEd.woff2) format(woff2),
+    url(../font/LSeedJPTh.woff2) format(woff2);
+}
+
 /* リンク */
 a {
     text-decoration: none;
