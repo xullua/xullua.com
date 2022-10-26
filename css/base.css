@@ -7,13 +7,13 @@
 @font-face {
     font-family: 'LSeedJP';
     src: url(https://xullua.com/font/LSeedJPRg.woff2) format(woff2);
-    font-weight: 300,400;
+    font-weight: 300,400,500;
 }
 
 @font-face {
     font-family: 'LSeedJP';
     src: url(https://xullua.com/font/LSeedJPBd.woff2) format(woff2);
-    font-weight: 500,600,700;
+    font-weight: 600,700,bold;
 }
 
 @font-face {
