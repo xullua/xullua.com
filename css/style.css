@@ -280,6 +280,10 @@ body {
   margin: 100px 0 80px 0;
 }
 
+.connect h2 {
+  font-weight: 700;
+}
+
 .connect .texts {
   width: 100%;
   max-width: 1280px;
