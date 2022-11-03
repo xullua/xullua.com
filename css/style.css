@@ -745,12 +745,12 @@ input[name="vote-top-words-page"]:checked+label {
   display: flex;
   overflow-y: auto;
   scroll-snap-type: x mandatory;
-  
+  scroll-padding: 0 calc((100% - 260px*2)/2);
   padding: 0 calc((100% - 260px*2)/2);
 }
 
 .store-ad .slide::-webkit-scrollbar{
-  display: none;
+  display: block;
 }
 
 .store-ad .type {
@@ -763,6 +763,10 @@ input[name="vote-top-words-page"]:checked+label {
     padding: 0 calc((100% - 240px)/2);
     scroll-padding: 0 calc((100% - 240px)/2);
   }
+
+  .store-ad .slide::-webkit-scrollbar{
+    display: none;
+  }
   
   .store-ad .type {
     min-width: 240px;
@@ -774,7 +778,8 @@ input[name="vote-top-words-page"]:checked+label {
 }
 
 input[name="store-ad"],
-input[name="store-overlap"]{
+input[name="store-overlap"],
+input[name="store-Wave"]{
   display: none;
 }
 
