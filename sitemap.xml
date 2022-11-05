@@ -51,11 +51,6 @@
 
 <!-- 基本 -->
 <url>
-  <loc>https://xullua.com/zenly-change</loc>
-  <lastmod>2022-10-31</lastmod>
-</url>
-
-<url>
   <loc>https://xullua.com/blog</loc>
   <lastmod>2022-10-31</lastmod>
 </url>
@@ -96,10 +91,21 @@
 </url>
 
 
+<!-- 外部サイト -->
+<url>
+  <loc>https://calculator.xullua.com/</loc>
+  <lastmod>2022-10-31</lastmod>
+</url>
+
+
 <!-- ポリシー -->
+<url>
+  <loc>https://xullua.com/policy</loc>
+  <lastmod>2022-11-5</lastmod>
+</url>
 
 <url>
-  <loc>https://xullua.com/privacy</loc>
+  <loc>https://xullua.com/policy/privacy</loc>
   <lastmod>2022-10-31</lastmod>
 </url>
 
