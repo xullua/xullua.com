@@ -54,3 +54,97 @@ hr {
     border-bottom: 1px solid var(--line);
     margin: 30px 0;
 }
+
+/* index */
+.policy {
+    width: 1280px;
+    max-width: 100%;
+    margin: 100px auto;
+}
+
+.policy .box {
+    width: 360px;
+    max-width: 90%;
+    margin: 20px auto;
+}
+
+.policy hr {
+    margin: 0;
+}
+
+.policy .box .section {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.policy .box .section:hover {
+    background: var(--third-back);
+}
+
+
+.policy .box hr {
+    border: none;
+    border-bottom: 1px solid var(--line);
+    margin-left: 60px;
+}
+
+.policy .box .icon {
+    border-radius: 7px;
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+    text-align: center;
+    margin: auto 0 auto 2px;
+}
+
+.policy .box img {
+    width: 100%;
+    filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+    ;
+}
+
+.policy .box h3 {
+    margin: auto 0 auto 20px;
+    font-size: 16px;
+    color: var(--main-text);
+}
+
+.policy p {
+    text-align: center;
+    font-size: 10px;
+    color: var(--sub-text);
+}
+
+.policy p::after {
+    content: "一部アクセスができないページがあります。";
+}
+
+@media screen and (max-width: 767px) {
+    .policy {
+        margin: 60px auto;
+    }
+}
+
+.policy .btn {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.policy .btn a {
+    border: 2px solid var(--main-text);
+    border-radius: 40px;
+    font-weight: bold;
+    transition: .2s;
+    font-size: 14px;
+    padding: 5px 25px;
+    margin: 0 5px;
+    color: var(--main-text);
+}
+
+.policy .btn a:hover {
+    background: var(--main-text);
+    color: var(--third-back);
+}
