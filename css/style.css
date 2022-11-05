@@ -455,7 +455,7 @@ body {
 /* 投票する */
 
 .vote-top-words {
-  margin: 80px 0;
+  margin: 60px 0;
 }
 
 .vote-top-words .back {
@@ -731,7 +731,7 @@ input[name="vote-top-words-page"]:checked+label {
   border-radius: 15px;
   width: 720px;
   max-width: 90%;
-  margin: 0 auto;
+  margin: 60px auto;
   padding: 40px 0;
   filter: drop-shadow(0 0 7px #0000002c);
 }
@@ -776,7 +776,7 @@ input[name="vote-top-words-page"]:checked+label {
 .store-ad .area {
   width: 100%;
 }
-
+input[name="store-glowwiper"],
 input[name="store-ad"],
 input[name="store-overlap"],
 input[name="store-Wave"]{
@@ -846,8 +846,17 @@ input:checked+label+.content {
   color: var(--main-text);
 }
 
+.store-ad .all-buy {
+  display: block;
+  width: 60px;
+  text-align: center;
+  margin: 10px auto 0 auto;
+  font-size: 13px;
+  color: var(--blue-1);
+}
+
 .store-ad .btn {
-  margin: 30px 0 10px 0;
+  margin: 10px 0 10px 0;
   width: 100%;
   height: 30px;
   display: flex;
