@@ -22,9 +22,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500&display=swap" rel="stylesheet">
   <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/color.css">
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/style.css">
 
   <!-- JS -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -255,7 +255,75 @@
     <h2>あなたのスマホに</h2>
     <h2 style="font-size: 32px;">新しい壁紙を</h2>
     <div class="slide">
-      <div class="type">
+      <div class="type" id="GlowWiper">
+        <div class="area">
+          
+          <input type="radio" id="glowwiper-purple" name="store-glowwiper" checked>
+          <label for="glowwiper-purple"></label>
+          <div class="content">
+            <img src="img/GlowWiper-purple.webp">
+            <h3>GlowWiperパープル</h3>
+            <p>￥60</p>
+            <a href="https://xullua.stores.jp/items/636522094292bf56ea4c59fc">購入</a>
+          </div>
+          
+          <input type="radio" id="glowwiper-green" name="store-glowwiper">
+          <label for="glowwiper-green"></label>
+          <div class="content">
+            <img src="img/GlowWiper-green.webp">
+            <h3>GlowWiperグリーン</h3>
+            <p>￥60</p>
+            <a href="https://xullua.stores.jp/items/636521c2abc35c538d09a7cc">購入</a>
+          </div>
+
+          <input type="radio" id="glowwiper-blue" name="store-glowwiper">
+          <label for="glowwiper-blue"></label>
+          <div class="content">
+            <img src="img/GlowWiper-blue.webp">
+            <h3>GlowWiperブルー</h3>
+            <p>￥60</p>
+            <a href="https://xullua.stores.jp/items/636520d5211ac34d586f1e2f">購入</a>
+          </div>
+
+          <input type="radio" id="glowwiper-white" name="store-glowwiper">
+          <label for="glowwiper-white"></label>
+          <div class="content">
+            <img src="img/GlowWiper-white.webp">
+            <h3>GlowWiperホワイト</h3>
+            <p>￥60</p>
+            <a href="https://xullua.stores.jp/items/63652131211ac33f4d6f2bdd">購入</a>
+          </div>
+
+          <input type="radio" id="glowwiper-orange" name="store-glowwiper">
+          <label for="glowwiper-orange"></label>
+          <div class="content">
+            <img src="img/GlowWiper-orange.webp">
+            <h3>GlowWiperオレンジ</h3>
+            <p>￥60</p>
+            <a href="https://xullua.stores.jp/items/636521964ff8c26fee3a188b">購入</a>
+          </div>
+
+          <input type="radio" id="glowwiper-red" name="store-glowwiper">
+          <label for="glowwiper-red"></label>
+          <div class="content">
+            <img src="img/GlowWiper-red.webp">
+            <h3>GlowWiperレッド</h3>
+            <p>￥60</p>
+            <a href="https://xullua.stores.jp/items/6365216bc15c5a28402ab3f9">購入</a>
+          </div>
+
+        </div>
+        <a class="all-buy" href="https://xullua.stores.jp/items/63652499abc35c538d09a852">全色購入</a>
+        <div class="btn">
+          <label for="glowwiper-purple" style="background: #bf2aec;" title="パープル"></label>
+          <label for="glowwiper-green" style="background: #0ebeb5;" title="グリーン"></label>
+          <label for="glowwiper-blue" style="background: #074de4;" title="ブルー"></label>
+          <label for="glowwiper-white" style="background: #dddddd;" title="ホワイト"></label>
+          <label for="glowwiper-orange" style="background: #e68e1b;" title="オレンジ"></label>
+          <label for="glowwiper-red" style="background: #ff0000;" title="レッド"></label>
+        </div>
+      </div>
+      <div class="type" id="FUTURE">
         <div class="area">
           <input type="radio" id="wp-black" name="store-ad" checked>
           <label for="wp-black"></label>
@@ -329,6 +397,7 @@
             <a href="https://xullua.stores.jp/items/6241e045047a9d09d838fb1a">購入</a>
           </div>
         </div>
+        <a class="all-buy"><br></a>
         <div class="btn">
           <label for="wp-black" style="background: #141414;" title="ブラック"></label>
           <label for="wp-blue" style="background: #4c85ff;" title="ブルー"></label>
@@ -340,7 +409,7 @@
           <label for="wp-green" style="background: #0ebe26;" title="グリーン"></label>
         </div>
       </div>
-      <div class="type">
+      <div class="type" id="overlap">
         <div class="area">
           <input type="radio" id="overlap-purple" name="store-overlap" checked>
           <label for="overlap-purple"></label>
@@ -378,6 +447,7 @@
             <a href="https://xullua.stores.jp/items/62f1e2332144253a2165e01c">購入</a>
           </div>
         </div>
+        <a class="all-buy" href="https://xullua.stores.jp/items/62f1e6c5ac36611fd2ea83d8">全色購入</a>
         <div class="btn">
           <label for="overlap-purple" style="background: #b920ff;" title="パープル"></label>
           <label for="overlap-black" style="background: #222222;" title="ブラック"></label>
@@ -385,7 +455,7 @@
           <label for="overlap-orange" style="background: #ec9f57;" title="オレンジ"></label>
         </div>
       </div>
-      <div class="type">
+      <div class="type" id="Wave">
         <div class="area">
           <input type="radio" id="Wave-purple" name="store-Wave" checked>
           <label for="Wave-purple"></label>
@@ -432,6 +502,7 @@
             <a href="https://xullua.stores.jp/items/62f09910d8893759e84bf458">購入</a>
           </div>
         </div>
+        <a class="all-buy" href="https://xullua.stores.jp/items/62f1e858a7e560131991737f">全色購入</a>
         <div class="btn">
           <label for="Wave-purple" style="background: #b920ff;" title="パープル"></label>
           <label for="Wave-red" style="background: #d12929;" title="レッド"></label>
@@ -555,7 +626,7 @@
   <!-- ポリシー -->
   <section class="policy" id="policy">
     <div class="box">
-      <a class="section" href="privacy">
+      <a class="section" href="policy/privacy">
         <div class="icon" style="background: #cc0;"><img src="img/privacy-policy.svg"></div>
         <h3>プライバシーポリシー</h3>
       </a>
@@ -570,7 +641,7 @@
         <h3>サイトポリシー</h3>
       </a>
       <hr>
-      <a class="section" href="sns-policy">
+      <a class="section" href="policy/sns">
         <div class="icon" style="background: rgb(223, 111, 37);"><img src="img/sns-policy.svg"></div>
         <h3>SNS運用ポリシー</h3>
       </a>
