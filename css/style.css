@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "LSeedJP" , Noto Sans JP, sans-serif;
+  font-family: "LSeedJP", Noto Sans JP, sans-serif;
 }
 
 .head-1 {
@@ -669,8 +669,8 @@ input[name="vote-top-words-page"]:checked+label {
 }
 
 .profile .box .sns {
-  display: flex;
-  margin: 20px calc((100% - 40px * 2)/2);
+  align-items: center;
+  margin: 20px auto;
   text-align: center;
 }
 
@@ -686,10 +686,6 @@ input[name="vote-top-words-page"]:checked+label {
   transition: 0.4s;
 }
 
-.profile .box .sns img:hover {
-  filter: var(--img-change-skyblue)
-}
-
 .profile .box hr {
   border: none;
   border-bottom: 1px solid var(--line);
@@ -699,11 +695,23 @@ input[name="vote-top-words-page"]:checked+label {
 
 .profile .contact {
   text-align: center;
+  margin: 0 15px 30px 15px;
 }
 
-.profile .contact p {
-  margin: 0 15px 30px 15px;
-  font-size: 15px;
+.profile .contact a {
+  border: 1px solid var(--sub-text);
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 3px 15px;
+  color: var(--sub-text);
+  transition: .2s;
+}
+
+.profile .contact a:hover {
+  opacity: 1;
+  background: var(--sub-text);
+  color: var(--third-back);
 }
 
 @media screen and (max-width: 767px) {
@@ -749,7 +757,7 @@ input[name="vote-top-words-page"]:checked+label {
   padding: 0 calc((100% - 260px*2)/2);
 }
 
-.store-ad .slide::-webkit-scrollbar{
+.store-ad .slide::-webkit-scrollbar {
   display: block;
 }
 
@@ -764,10 +772,10 @@ input[name="vote-top-words-page"]:checked+label {
     scroll-padding: 0 calc((100% - 240px)/2);
   }
 
-  .store-ad .slide::-webkit-scrollbar{
+  .store-ad .slide::-webkit-scrollbar {
     display: none;
   }
-  
+
   .store-ad .type {
     min-width: 240px;
   }
@@ -776,10 +784,11 @@ input[name="vote-top-words-page"]:checked+label {
 .store-ad .area {
   width: 100%;
 }
+
 input[name="store-glowwiper"],
 input[name="store-ad"],
 input[name="store-overlap"],
-input[name="store-Wave"]{
+input[name="store-Wave"] {
   display: none;
 }
 
@@ -796,13 +805,14 @@ input:checked+label+.content {
 .store-ad .area .content img {
   width: 200px;
   border-radius: 20px;
-  animation: store-ad-img .8s cubic-bezier(0,1.1,1,1);
+  animation: store-ad-img .8s cubic-bezier(0, 1.1, 1, 1);
 }
 
 @keyframes store-ad-img {
   from {
     transform: scale(.8) translateY(75px);
   }
+
   to {
     transform: scale(1) translateY(0);
   }
@@ -810,13 +820,13 @@ input:checked+label+.content {
 
 .store-ad .area .content h3 {
   opacity: 0;
-  animation: store-ad-text .7s cubic-bezier(0,1.1,1,1) .1s forwards;
+  animation: store-ad-text .7s cubic-bezier(0, 1.1, 1, 1) .1s forwards;
 }
 
 .store-ad .area .content p {
   margin: 0 0 10px 0;
   opacity: 0;
-  animation: store-ad-text .5s cubic-bezier(0,1.1,1,1) .3s forwards;
+  animation: store-ad-text .5s cubic-bezier(0, 1.1, 1, 1) .3s forwards;
 }
 
 @keyframes store-ad-text {
@@ -824,6 +834,7 @@ input:checked+label+.content {
     opacity: 0;
     transform: translateX(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0)
@@ -945,7 +956,6 @@ input:checked+label+.content {
 .news date {
   font-size: 12px;
   color: var(--sub-text);
-  font-family: 'Noto Sans', sans-serif;
 }
 
 .news .box p {
@@ -1119,7 +1129,6 @@ input:checked+label+.content {
 .skill-text {
   font-size: 14px;
   line-height: 1.8;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
   color: var(--sub-text);
 }
 
@@ -1151,7 +1160,6 @@ input:checked+label+.content {
   .skill-text {
     font-size: 14px;
     line-height: 1.7;
-    font-family: 'Zen Kaku Gothic New', sans-serif;
   }
 }
 
@@ -1547,42 +1555,22 @@ input[type="checkbox"]:checked+label:before {
   color: var(--sub-text);
 }
 
-/* 404 */
-.nf {
-  text-align: center;
-  margin-top: 150px;
-}
-
-.nf p {
-  font-size: 12px;
-  color: var(--sub-text);
-}
-
-.nf-btns {
-  margin: 30px auto;
-}
-
-.nf-btn {
-  text-decoration: none;
-  background-color: var(--sub-text);
-  color: #000;
-  border-radius: 50px;
-  padding: 5px 30px;
-  transition: 0.3s;
-}
-
-.nf-btn:hover {
-  background-color: #1e1e41;
-  color: #fff;
-  padding: 5px 40px;
-}
-
 /* サイトマップ */
 .sitemap {
   margin: 50px auto;
   width: 1280px;
   max-width: 100%;
   padding: 20px;
+}
+
+.sitemap h1 {
+  display: inline-block;
+  font-size: 30px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #553686, #e967ee);
+  background: -webkit-linear-gradient(45deg, #8752db, #eba3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .sitemap hr {
