@@ -10,6 +10,8 @@ html {
     scroll-behavior: smooth;
     max-width: 100%;
     color: #FFF;
+    background: #4f1174;
+    overflow: hidden;
 }
 
 @font-face {
@@ -36,6 +38,10 @@ html {
 .top {
     text-align: center;
     margin: 20px auto 0 auto;
+}
+
+h1 {
+    line-height: 1;
 }
 
 .top img {
@@ -123,21 +129,17 @@ html {
     top: 50%;
     bottom: 0;
     right: 25px;
-    font-size: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 6px;
     height: 6px;
-    border-top: solid 2px currentColor;
-    border-right: solid 2px currentColor;
+    border-top: solid 2px #FFF;
+    border-right: solid 2px #FFF;
     transform: translateY(-50%) rotate(45deg);
     transition: 1s;
 }
 
 .btn a:hover::after {
-    right: 20px;
-    transition: .22s;
+    right: 18px;
+    transition: .2s;
 }
 
 .btn img {
