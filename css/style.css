@@ -1163,110 +1163,6 @@ input:checked+label+.content {
   }
 }
 
-
-/* ストア */
-.store-hello {
-  margin: 90px 20px 0px 20px;
-  text-align: center;
-}
-
-.store-title {
-  display: inline-block;
-  margin-bottom: 10px;
-  font-family: 'Edu VIC WA NT Beginner', cursive;
-  font-size: 70px;
-  line-height: 1.5;
-  background: linear-gradient(45deg, #f200ff 16%, rgb(0, 255, 110) 90%);
-  background: -webkit-linear-gradient(45deg, #f200ff 16%, #fbff00 90%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientEffect 8s infinite alternate;
-  transition: 1s;
-}
-
-.store-title:hover {
-  transform: scale(1.1, 1.1);
-}
-
-@keyframes gradientEffect {
-  from {
-    background-position: left
-  }
-
-  to {
-    background-position: right
-  }
-}
-
-.store-subtitle {
-  display: inline-block;
-  margin-bottom: 10px;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 23px;
-  background: linear-gradient(45deg, #f200ff 16%, rgb(0, 255, 110) 90%);
-  background: -webkit-linear-gradient(45deg, #f200ff 16%, #fbff00 90%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientEffect 8s infinite alternate;
-  transition: 1s;
-}
-
-.store-subtitle:hover {
-  transform: scale(1.1, 1.1);
-}
-
-.store2 {
-  margin: 90px 20px 0px 20px;
-  text-align: center;
-  font-family: 'Noto Sans JP', sans-serif;
-}
-
-.store2-title-gradation {
-  background: linear-gradient(45deg, #f200ff 16%, rgb(0, 255, 110) 90%);
-  background: -webkit-linear-gradient(45deg, #f200ff 16%, #fbff00 90%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientEffect 8s infinite alternate;
-  transition: 1s;
-}
-
-.hello {
-  margin: 90px 20px 0px 20px;
-  text-align: center;
-}
-
-.hello-title {
-  display: inline-block;
-  margin-bottom: 10px;
-  font-family: 'Edu VIC WA NT Beginner', cursive;
-  font-size: 70px;
-  line-height: 1.5;
-  background: linear-gradient(45deg, #f200ff 16%, rgb(0, 255, 110) 90%);
-  background: -webkit-linear-gradient(45deg, #f200ff 16%, #fbff00 90%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientEffect 8s infinite alternate;
-  transition: 1s;
-}
-
-.hello-title:hover {
-  transform: scale(1.1, 1.1);
-}
-
-@keyframes gradientEffect {
-  from {
-    background-position: left
-  }
-
-  to {
-    background-position: right
-  }
-}
-
 .hello-subtitle {
   display: inline-block;
   margin-bottom: 10px;
@@ -1286,11 +1182,40 @@ input:checked+label+.content {
 }
 
 /* お問い合わせ */
+.contact {
+  margin: 80px 0 0 0;
+}
+
+.contact .top {
+  width: 720px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.contact h2 {
+  line-height: 1.2;
+  font-size: 40px;
+}
+
+.contact h1 {
+  line-height: 1.2;
+  font-size: 24px;
+}
+
+.contact .top p {
+  color: var(--sub-text);
+  font-size: 14px;
+  margin: 20px 0 0 0;
+}
+
 .Form {
-  margin-top: 80px;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 767px;
+  margin: 40px auto 80px auto;
+  width: 720px;
+  max-width: 90%;
+  background: var(--third-back);
+  padding: 10px 25px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 10px #0003);
 }
 
 @media screen and (max-width: 767px) {
@@ -1300,9 +1225,7 @@ input:checked+label+.content {
 }
 
 .Form-Item {
-
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding: 24px 0;
   width: 100%;
   display: flex;
   align-items: center;
@@ -1310,24 +1233,16 @@ input:checked+label+.content {
 
 @media screen and (max-width: 767px) {
   .Form-Item {
-    padding-left: 14px;
-    padding-right: 14px;
-    padding-top: 16px;
-    padding-bottom: 16px;
     margin: 0 auto;
     flex-wrap: wrap;
   }
 }
 
-.Form-Item:nth-child(5) {}
-
 .Form-Item-Label {
   width: 100%;
   max-width: 248px;
-  letter-spacing: 0.05em;
   font-weight: bold;
-  font-size: 18px;
-  margin-left: 25px;
+  font-size: 16px;
   color: var(--main-text);
 }
 
@@ -1355,11 +1270,7 @@ input:checked+label+.content {
 .Form-Item-Label-Required {
   border-radius: 6px;
   margin-right: 8px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  width: 48px;
-  display: inline-block;
-  text-align: center;
+  padding: 5px 10px;
   background: #eb2929;
   color: #fff;
   font-size: 14px;
@@ -1368,20 +1279,15 @@ input:checked+label+.content {
 @media screen and (max-width: 767px) {
   .Form-Item-Label-Required {
     border-radius: 4px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    width: 32px;
-    font-size: 10px;
+    padding: 3px 7px;
+    font-size: 11px;
   }
 }
 
 .Form-Item-Label-n {
   border-radius: 6px;
   margin-right: 8px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  width: 48px;
-  display: inline-block;
+  padding: 5px 10px;
   text-align: center;
   background: var(--blue-1);
   color: #fff;
@@ -1391,30 +1297,27 @@ input:checked+label+.content {
 @media screen and (max-width: 767px) {
   .Form-Item-Label-n {
     border-radius: 4px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    width: 32px;
+    padding: 3px 7px;
     font-size: 10px;
   }
 }
 
 .Form-Item-Input {
   border: none;
-  border-radius: 6px;
-  margin-right: 15px;
+  border-radius: 10px;
   padding: 0 1em;
   height: 48px;
   flex: 1;
   width: 100%;
-  background: var(--sub-back);
-  font-size: 18px;
+  background: var(--four-back);
+  font-size: 16px;
   outline: none;
 }
 
 @media screen and (max-width: 767px) {
   .Form-Item-Input {
     margin-right: 0;
-    margin-top: 14px;
+    margin-top: 10px;
     height: 40px;
     flex: inherit;
     font-size: 15px;
@@ -1423,57 +1326,54 @@ input:checked+label+.content {
 }
 
 .Form-Item-Textarea {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'LSeedJP', sans-serif;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   padding: 10px 15px;
-  margin-right: 15px;
-  height: 216px;
+  min-height: 220px;
   flex: 1;
-  width: 100%;
-  background: var(--sub-back);
+  min-width: none;
+  background: var(--four-back);
   font-size: 18px;
   outline: none;
 }
 
 @media screen and (max-width: 767px) {
   .Form-Item-Textarea {
-    margin-top: 14px;
+    margin-top: 10px;
     margin-right: 0;
     height: 200px;
     flex: inherit;
     font-size: 15px;
+    min-width: 100%;
     max-width: 100%;
   }
 }
 
 .Form-Btn {
   border-radius: 100px;
-  margin: 30px auto 50px auto;
-  padding: 10px 0;
-  width: calc(100% - 30px);
+  margin: 30px 0;
+  padding: 8px 0;
+  width: 200px;
   display: block;
   letter-spacing: 0.05em;
   border: 2px solid var(--main-text);
   background: #0000;
   color: var(--main-text);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 16px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 1s;
 }
 
 .Form-Btn:hover {
   background-color: var(--main-text);
   color: var(--third-back);
+  transition: .2s;
 }
 
 .checkbox1 {
-  margin-left: 15px;
-  margin-right: 15px;
-  border-radius: 15px;
-  background-color: var(--sub-back);
-  padding: 50px;
+  margin: 20px 0;
 }
 
 input[type="checkbox"] {
@@ -1524,35 +1424,52 @@ input[type="checkbox"]:checked+label:before {
 }
 
 .checkbox-text {
-  text-align: center;
   font-size: 14px;
-  color: #86868b;
+  color: var(--sub-text);
 }
 
 /* お問い合わせ完了 */
-.thanks-box {
-  border-radius: 15px;
-  background-color: var(--sub-back);
-  width: 650px;
-  margin: 0 auto;
-  margin-top: 30px;
-  margin-bottom: 50px;
+.thanks {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
+.thanks .content {
+  width: 720px;
   max-width: 90%;
-  padding: 15px;
+  margin: 0 auto 10px auto;
 }
 
-.thanks-box-title {
-  text-align: center;
-  color: var(--main-text);
-  font-size: 18px;
-}
-
-.thanks-box-text {
-  text-align: center;
-  font-size: 14px;
-  margin-left: 10px;
-  margin-right: 10px;
+.thanks p {
+  margin: 20px 0 10px 0;
   color: var(--sub-text);
+}
+
+.thanks a {
+  color: var(--main-text);
+  border: 2px solid var(--main-text);
+  font-size: 14px;
+  font-weight: bold;
+  padding: 3px 20px;
+  border-radius: 50px;
+  transition: .3s;
+}
+
+.thanks a:hover {
+  color: var(--third-back);
+  background: var(--main-text);
+}
+
+.thanks h2 {
+  font-size: 40px;
+  line-height: 1.2;
+}
+
+.thanks h1 {
+  font-size: 24px;
 }
 
 /* サイトマップ */

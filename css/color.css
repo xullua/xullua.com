@@ -20,9 +20,12 @@
     --shadow-blackwhite1: 0 0 10px rgba(0, 0, 0, 0.2);
 
     /* イージング */
-    --easing27: cubic-bezier(0,1,1,1);/* 徐々に減速 */
-    --easing26: cubic-bezier(1,0,1,1);/* 徐々に加速 */
-    --easing8: cubic-bezier(.6,0,.4,1);/* 最初と最後がゆっくり*/
+    --easing27: cubic-bezier(0, 1, 1, 1);
+    /* 徐々に減速 */
+    --easing26: cubic-bezier(1, 0, 1, 1);
+    /* 徐々に加速 */
+    --easing8: cubic-bezier(.6, 0, .4, 1);
+    /* 最初と最後がゆっくり*/
 
     /* スクロールバーカラー */
     --bar-back: rgba(200, 200, 201, 0.2);
@@ -83,4 +86,12 @@
         --img-change-orange: invert(72%) sepia(26%) saturate(6428%) hue-rotate(1deg) brightness(105%) contrast(102%);
         --img-change-yellow: invert(81%) sepia(81%) saturate(633%) hue-rotate(359deg) brightness(106%) contrast(105%);
     }
+}
+
+/* グラデーションテキスト */
+.gradation-text-1 {
+    background: linear-gradient(45deg, #fa91f1, #5248a7);
+    background: -webkit-linear-gradient(45deg, #fa91f1, #5248a7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
