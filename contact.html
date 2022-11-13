@@ -13,7 +13,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="shortcut icon" href="https://xullua.com/img/favicon.ico">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://xullua.com/css/color.css">
+  <link rel="stylesheet" href="css/color.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500&display=swap" rel="stylesheet">
   <title>ぞるあ-お問い合わせ</title>
-  <meta  name="description" content="ぞるあへのお問い合わせフォームです。誤字脱字の指摘や案件など様々な連絡はこちらから。">
+  <meta name="description" content="ぞるあへのお問い合わせフォームです。誤字脱字の指摘や案件など様々な連絡はこちらから。">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
   <script src="js/main.js" async></script>
   <script>
@@ -46,48 +46,47 @@
   </header>
 
   <!-- お問い合わせ -->
-  <div class="warapper">
-    <div class="store-hello">
-      <h1 class="store-title">Contact</h1><br>
+  <main class="contact">
+    <div class="top">
+      <h2 class="gradation-text-1">Contact</h2>
+      <h1 class="gradation-text-1">お問い合わせ</h1>
+      <p>
+        返信には時間がかかる場合があります。また返信がない場合もあります。予めご了承ください。<br>
+        動画編集や画像編集の依頼、誹謗中傷を含む内容、クラン活動や宗教、アフィリエイトなどは受け付けていません。
+      </p>
     </div>
-    <div class="thanks-box">
-      <h2 class="thanks-box-title">ご注意ください</h2>
-      <p class="thanks-box-text">返信には時間がかかる場合があります。また返信がない場合もあります。予めご了承ください。</p>
-      <p class="thanks-box-text">動画編集や画像編集の依頼、誹謗中傷を含む内容、クラン活動や宗教、アフィリエイトなどのあらゆる勧誘は受け付けていません。</p>
-    </div>
-  </div>
 
-  <form class="Form"
-    action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSerfPT-DxiwGCMINFZFlwshlHNVLxeoxAGIoSzqJcbnN1rWnw/formResponse"
-    method="post" target="hidden_iframe" onsubmit="submitted=true">
-    <div class="Form-Item">
-      <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>お名前</p>
-      <input required type="text" class="Form-Item-Input" placeholder="ぞるあ" name="entry.641528066">
-    </div>
-    <div class="Form-Item">
-      <p class="Form-Item-Label"><span class="Form-Item-Label-n">任意</span>TwitterID</p>
-      <input type="text" class="Form-Item-Input" placeholder="@Xullua" name="entry.480452968">
-    </div>
-    <div class="Form-Item">
-      <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>メールアドレス</p>
-      <input required type="email" class="Form-Item-Input" placeholder="example@xullua.com" name="entry.157478435">
-    </div>
-    <div class="Form-Item">
-      <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>お問い合わせ内容</p>
-      <textarea required class="Form-Item-Textarea" name="entry.1895529346"></textarea>
-    </div>
-    <div class="checkbox1">
-      <input type="checkbox" id="box-1">
-      <label for="box-1">お問い合わせ内容は正しいです</label>
-      <input type="checkbox" id="box-2">
-      <label for="box-2">プライバシーポリシーに同意します</label>
-      <input type="checkbox" id="box-3">
-      <label for="box-3">必須項目は埋めました</label>
-      <p class="checkbox-text">必須項目が未入力の場合は送信されません。</p>
-      <p class="checkbox-text">正しく送信されると新しいページに飛ばされ、入力したメールアドレスにメールが届きます。</p>
-    </div>
-    <input type="submit" class="Form-Btn" value="送信">
-  </form>
+    <form class="Form"
+      action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSerfPT-DxiwGCMINFZFlwshlHNVLxeoxAGIoSzqJcbnN1rWnw/formResponse"
+      method="post" target="hidden_iframe" onsubmit="submitted=true">
+      <div class="Form-Item">
+        <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>お名前</p>
+        <input required type="text" class="Form-Item-Input" placeholder="ぞるあ" name="entry.641528066">
+      </div>
+      <div class="Form-Item">
+        <p class="Form-Item-Label"><span class="Form-Item-Label-n">任意</span>TwitterID</p>
+        <input type="text" class="Form-Item-Input" placeholder="@Xullua" name="entry.480452968">
+      </div>
+      <div class="Form-Item">
+        <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>メールアドレス</p>
+        <input required type="email" class="Form-Item-Input" placeholder="example@xullua.com" name="entry.157478435">
+      </div>
+      <div class="Form-Item">
+        <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>お問い合わせ内容</p>
+        <textarea required class="Form-Item-Textarea" name="entry.1895529346"></textarea>
+      </div>
+      <div class="checkbox1">
+        <input type="checkbox" id="box-1">
+        <label for="box-1">お問い合わせ内容は正しいです</label>
+        <input type="checkbox" id="box-2">
+        <label for="box-2">プライバシーポリシーに同意します</label>
+        <input type="checkbox" id="box-3">
+        <label for="box-3">必須項目は埋めました</label>
+        <p class="checkbox-text">必須項目が未入力の場合は送信されません。<br>正しく送信されると新しいページに飛ばされ、入力したメールアドレスにメールが届きます。</p>
+      </div>
+      <input type="submit" class="Form-Btn" value="送信">
+    </form>
+  </main>
 
   <!-- フッター -->
   <footer id="footer"></footer>
