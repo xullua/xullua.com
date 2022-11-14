@@ -32,7 +32,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "LSeedJP", Noto Sans JP, sans-serif;
+    font-family: "LSeedJP", sans-serif;
 }
 
 html {
@@ -227,12 +227,12 @@ header .header-inner .logo {
     .header-back.active {
         display: block;
         position: absolute;
-        background: #00000036;
+        background: #00000088;
         width: 100vw;
         height: 100vh;
         top: 0;
         right: 0;
-        transition: 0.5s var(--easing27);
+        transition: 1s var(--easing27);
     }
 
     nav {
