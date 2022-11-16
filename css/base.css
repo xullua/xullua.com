@@ -126,15 +126,12 @@ header .header-inner {
 header .header-inner .logo {
     display: block;
     flex-shrink: 0;
-    max-width: 200px;
-    height: 35px;
-    line-height: 1px;
+    line-height: 1;
     margin-left: 20px;
 }
 
 #navi {
     width: 100%;
-
 }
 
 #navi ul {
@@ -304,6 +301,7 @@ header .header-inner .logo {
     flex-shrink: 0;
     width: 16px;
     line-height: 1;
+    margin: 0;
 }
 
 #footer .footer-sns {
@@ -368,9 +366,10 @@ header .header-inner .logo {
     color: var(--blue-1);
 }
 
-#footer .line {
+#footer hr {
+    border: none;
     border-top: 1px solid var(--line);
-    margin: 0 auto;
+    margin: 0;
 }
 
 #footer .footer-under {
