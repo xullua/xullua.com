@@ -1,0 +1,31 @@
+<div class="content">
+    <div class="logo">
+        <a href="https://xullua.com/splatoon">Splatoon3DataBase</a>
+    </div>
+    <nav id="navi">
+        <a href="main-weapon">メインウェポン</a>
+        <a href="sub-weapon">サブウェポン</a>
+        <a href="special-weapon">スペシャルウェポン</a>
+        <a href="brand">ブランド</a>
+    </nav>
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('.hamburger').click(function () {
+            $(this).toggleClass('active');
+            if ($(this).hasClass('active')) {
+                $('#navi').addClass('active');
+                $('header').addClass('active');
+                document.addEventListener('touchmove', disableScroll, { passive: false });
+            } else {
+                $('#navi').removeClass('active');
+                $('header').addClass('active');
+                document.removeEventListener('touchmove', disableScroll, { passive: false });
+            }
+        });
+    });
+</script>
