@@ -48,14 +48,14 @@
 * {
     margin: 0;
     padding: 0;
-	box-sizing: border-box;
-    font-family: "LSeedJP" , sans-serif;
+    box-sizing: border-box;
+    font-family: "LSeedJP", sans-serif;
 }
 
 html {
     scroll-behavior: smooth;
-	background: var(--main-back);
-	color: var(--main-text);
+    background: var(--main-back);
+    color: var(--main-text);
 }
 
 header {
@@ -188,7 +188,7 @@ header nav a {
 .about-top {
     width: 1280px;
     max-width: 90%;
-    margin: 80px auto 40px auto;
+    margin: 80px auto 20px auto;
 }
 
 .about-top h1 {
@@ -208,18 +208,19 @@ header nav a {
 
 .search {
     width: 100%;
+    max-width: 400px;
     display: flex;
     height: 40px;
     background: var(--sub-back);
-    border-radius: 5px;
-    margin: 20px 0;
-    padding: 5px 5px 5px 10px;
+    border-radius: 10px;
+    margin: 40px 0 0 auto;
+    padding: 5px 5px 5px 15px;
 }
 
 .search input:first-child {
     width: calc(100% - 30px);
     height: 100%;
-    background: none;
+    background: var(--sub-back);
     border: none;
     outline: none;
 }
@@ -246,14 +247,42 @@ header nav a {
 }
 
 .main-weapon .area {
-	background: var(--third-back);
-	border-radius: 10px;
-	width: 1280px;
+    background: var(--third-back);
+    border-radius: 10px;
+    width: 1280px;
     max-width: 90%;
-	margin: 10px auto;
+    margin: 10px auto;
     filter: drop-shadow(0 0 8px #0002);
     transition: 1s;
     cursor: default;
+}
+
+#page_top {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    background: var(--line);
+    border-radius: 50%;
+    z-index: 100;
+    padding: 21px 18px 15px 18px;
+    transition: .4s;
+}
+
+#page_top span {
+    position: relative;
+    display: flex;
+    width: 14px;
+    height: 14px;
+    text-decoration: none;
+    border-top: 2px solid #FFF;
+    border-left: 2px solid #FFF;
+    transform: rotate(45deg);
+}
+
+#page_top:hover {
+    background: var(--sub-text);
 }
 
 .main-weapon .area:hover {
@@ -262,13 +291,13 @@ header nav a {
 }
 
 .main-weapon .top {
-	display: flex;
+    display: flex;
     justify-self: center;
     align-items: center;
 }
 
 .main-weapon .top img {
-	display: block;
+    display: block;
     width: 100px;
     margin: 20px 20px 0 20px;
 }
