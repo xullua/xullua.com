@@ -224,6 +224,7 @@ header nav a {
     background: var(--sub-back);
     border: none;
     outline: none;
+    font-size: 16px;
 }
 
 .search input:last-child {
