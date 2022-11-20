@@ -77,6 +77,6 @@
         return result;
     }
     
-    document.getElementById("search").onchange = e => Search(e.target.value);
+    document.getElementById("search").oninput = e => Search(e.target.value);
 })();
 
