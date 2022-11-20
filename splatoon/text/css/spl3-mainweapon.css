@@ -1,0 +1,141 @@
+.main-weapon .area {
+    background: var(--third-back);
+    border-radius: 10px;
+    width: 1280px;
+    max-width: 90%;
+    margin: 10px auto;
+    filter: drop-shadow(0 0 8px #0002);
+    transition: 1s;
+    cursor: default;
+}
+
+.main-weapon .area:hover {
+    background: var(--blue-2);
+    transition: .2s;
+}
+
+.main-weapon .top {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+
+.main-weapon .top img {
+    display: block;
+    width: 100px;
+    margin: 20px 20px 0 20px;
+}
+
+.main-weapon .top .name {
+    margin: 20px 0 0 0;
+}
+
+.main-weapon .top p {
+    color: var(--sub-text);
+}
+
+.main-weapon .top h3 {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.main-weapon .info {
+    display: flex;
+    width: calc(100% - 30px);
+    margin: 0 auto;
+}
+
+.main-weapon .box {
+    background: var(--main-back);
+    width: 100%;
+    margin: 10px 5px 20px 5px;
+    padding: 20px 0;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    box-shadow: inset 0px 0px 15px #0001;
+    transition: 1s;
+}
+
+.main-weapon .box:hover {
+    background: var(--blue-3);
+    color: #FFF;
+    transition: .2s;
+}
+
+.main-weapon .box .in {
+    margin: 0 auto;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.main-weapon .box .core {
+    margin: 0 auto;
+}
+
+.main-weapon .box img {
+    display: block;
+    width: 70px;
+    margin: 0 0 0 auto;
+    transition: 1s;
+}
+
+.main-weapon .box:hover img {
+    transition: .2s;
+    transform: scale(1.1);
+}
+
+.main-weapon .box .text {
+    margin: 0 auto 0 10px;
+    text-align: left;
+}
+
+.main-weapon .box .text p {
+    font-size: 12px;
+    line-height: 1;
+    color: var(--sub-text);
+    transition: 1s;
+}
+
+.main-weapon .box:hover .text p {
+    color: #FFF;
+    transition: .2s;
+}
+
+.main-weapon .box .in p {
+    font-size: 14px;
+    text-align: left;
+}
+
+.main-weapon .box h4 {
+    font-size: 16px;
+}
+
+
+@media screen and (max-width: 767px) {
+    .main-weapon .info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 5px;
+        width: 100%;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .main-weapon .box {
+        display: block;
+        margin: 0;
+    }
+
+    .main-weapon .box img {
+        margin: 0 auto;
+    }
+
+    .main-weapon .box .text {
+        margin: 0;
+        text-align: center;
+    }
+}
