@@ -16,9 +16,10 @@
 
 	<link rel="shortcut icon" href="../img/favicon.ico">
 	<link rel="stylesheet" href="text/css/spl3.css">
+	<link rel="stylesheet" href="text/css/spl3-index.css">
 	<link rel="stylesheet" href="../css/color.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="text/js/spl3.js" async></script>
+	<script src="text/js/spl3-base.js" async></script>
 
 	<script>
 		$(function () {
@@ -37,9 +38,37 @@
 </head>
 
 <body>
+
+	<header id="header"></header>
+	<main>
+		<div class="content">
+			<h1 class="gradation-text-1">
+				<span style="font-size: 34px;">スプラトゥーン3</span><br>
+				<span style="font-size: 24px;">の詳細情報にアクセス</span>
+			</h1>
+			<div class="menu">
+				<a href="main-weapon">
+					<img src="img/mainweapon/supurasyu-ta-.webp">
+					<h3>メインウェポン</h3>
+					<p>簡単に武器のサブやスペシャル、射程やダメージや連射速度などの情報にアクセスできます。</p>
+				</a>
+				<a href="brand">
+					<img src="img/brand/hokkori-.png">
+					<h3>ブランド</h3>
+					<p>簡単にブランドごとの付きやすい/付きにくいギアの情報を見れます。</p>
+				</a>
+			</div>
+			<div class="connect">
+				<a href="../contact">お問い合わせ</a>
+				<a href="../policy/privacy">プライバシーポリシー</a>
+			</div>
+		</div>
+	</main>
+	<!--
 	<script>
 		window.location.href = 'main-weapon';
 	</script>
+	-->
 </body>
 
 </html>
