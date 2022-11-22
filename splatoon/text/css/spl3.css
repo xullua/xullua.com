@@ -327,7 +327,6 @@ footer .menu .box {
 }
 
 footer .menu a {
-    display: block;
     font-size: 13px;
     text-decoration: none;
     color: var(--sub-text);
@@ -336,6 +335,10 @@ footer .menu a {
 footer .menu a:hover {
     color: var(--main-text);
     background: var(--main-back);
+}
+
+footer .menu ul {
+    list-style: none;
 }
 
 footer .copyright {
