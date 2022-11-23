@@ -15,7 +15,7 @@
     <link rel="shortcut icon" href="https://xullua.com/img/favicon.ico">
     <link rel="stylesheet" href="blog.css">
     <link rel="stylesheet" href="https://xullua.com/css/color.css">
-    <link rel="stylesheet" href="https://xullua.com/css/base.css">
+    <link rel="stylesheet" href="../css/base.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
@@ -24,6 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500&display=swap" rel="stylesheet">
     <title>ぞるあブログ</title>
     <script src="https://xullua.com/js/main.js" async></script>
+    <script src="blog.js" async></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -62,103 +63,10 @@
     <div class="blogswrapper">
         <dvi class="blogs">
             <div class="blogs-text">オススメの記事</div>
+            <input type="text" id="search" placeholder="検索">
         </dvi>
 
-        <div class="blogboxes">
-
-            <div class="blogbox">
-                <a href="youtube-handle" class="blogbox-url">
-                    <img class="blogbox-img" src="img/youtube-handle/IMG_5254.PNG">
-                    <div class="blogbox-more">
-                        <div class="blogbox-title">YouTubeに新機能のハンドルがきた。</div>
-                        <div class="blogbox-text">実際にサポートを受けてみた</div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="blogbox">
-                <a href="Logicool-Support" class="blogbox-url">
-                    <img class="blogbox-img" src="img/Logicool-Support/samune.png">
-                    <div class="blogbox-more">
-                        <div class="blogbox-title">Logicoolの製品が故障したときにサポートを受けて交換してもらう流れ</div>
-                        <div class="blogbox-text">固有のユーザーネーム</div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="blogbox2">
-                <a href="ios16" class="blogbox-url">
-                    <img class="blogbox-img" src="img/ios16/1.webp">
-                    <div class="blogbox-more">
-                        <div class="blogbox-title">iOS16のあまり知られていないアップデート内容を紹介</div>
-                        <div class="blogbox-text"></div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="blogbox2">
-                <a href="splatoon3-3day-best" class="blogbox-url">
-                    <img class="blogbox-img" src="img/splatoon3-3day-best/1.webp">
-                    <div class="blogbox-more">
-                        <div class="blogbox-title">スプラトゥーン3が発売後3日間で最高売り上げを記録！</div>
-                        <div class="blogbox-text">スプラトゥーン3が発売後3日間でSwitch向けソフトの国内販売本数として過去最高記録を更新</div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="blogbox2">
-                <a href="Where-is-the-best-place-to-buy-Splatoon3" class="blogbox-url">
-                    <img class="blogbox-img" src="img/splatoon3-3day-best/1.webp">
-                    <div class="blogbox-more">
-                        <div class="blogbox-title">スプラトゥーン3はどこで買うのが一番いいの？</div>
-                        <div class="blogbox-text">スプラトゥーン3はどこで買うのが一番いいのかお求め別に解説。</div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="blogbox2">
-                <a href="zenly-change" class="blogbox-url">
-                    <img class="blogbox-img" src="img/zenly-change/1.webp">
-                    <div class="blogbox-more">
-                        <div class="blogbox-title">Zenlyの代わりに使えるApple純正のアプリを紹介</div>
-                        <div class="blogbox-text">サービス終了を発表したZenlyの代替アプリを探す</div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="blogbox2">
-                <a href="DualSenseEdge" class="blogbox-url">
-                    <img class="blogbox-img" src="img/DualSenseEdge/1.webp">
-                    <div class="blogbox-more">
-                        <div class="blogbox-title">PS5向け上位互換の新コントローラー「DualSense Edge」発表。</div>
-                        <div class="blogbox-text">背面ボタン、スティックの交換対応など様々な新機能搭載。</div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="blogbox2">
-                <a href="HomePodmini-review" class="blogbox-url">
-                    <img class="blogbox-img" src="img/HomePodmini-review/1.webp">
-                    <div class="blogbox-more">
-                        <div class="blogbox-title">HomePod miniをレビュー</div>
-                        <div class="blogbox-text">AppleのHomePod miniが着弾！素人目線からのレビュー。開封/設置/使用/感想</div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="blogbox2">
-                <a href="TwitterDM-distrust-message" class="blogbox-url">
-                    <img class="blogbox-img" src="img/TwitterDM-distrust-message/1.webp">
-                    <div class="blogbox-more">
-                        <div class="blogbox-title">Twitterの不審なDMはどう対処するべき？</div>
-                        <div class="blogbox-text">最近よくTwitterのDMに送られてくる変なメッセージはどう対処するのが安全？</div>
-                    </div>
-                </a>
-            </div>
-
-
-
-        </div>
+        <div class="blogboxes" id="output"></div>
 
         <div class="ad">
             <script async
