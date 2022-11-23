@@ -36,8 +36,14 @@ fetch("data/mainweapon.json")
 								<p><b>射程 : </b>${main.range}</p>
 								<p><b>ダメージ : </b>${main.damage}</p>
 								<p><b>連射速度 : </b>${main.speed}</p>
-								<p><b>スぺシャルP : </b>${main.specialpoint}</p>
+								<p><b>スぺシャル : </b>${main.specialpoint}P</p>
 							</div>
+                            <div class="core">
+                                <p><b>DPS : </b></p>
+                                <p><b>TKK : </b>秒</p>
+                                <p><b>確キル : </b>${main.killshot}発</p>
+                                <p><b>入手 : </b>${main.lebel}レベル</p>
+                            </div>
 						</div>
 					</div>
 				</div>
@@ -82,6 +88,10 @@ fetch("data/mainweapon.json")
                 Info.category = Highlight(Info.category, text);
                 matched = true;
             }
+            if (Info.killshot.includes(text)) {
+                Info.killshot = Highlight(Info.killshot, text);
+                matched = true;
+            }
             if (matched) Matched.push(Info);
             else Others.push(Info);
         }
@@ -117,12 +127,18 @@ fetch("data/mainweapon.json")
         </div>
         <div class="box">
             <div class="in">
-                <div class="core">
-                    <p><b>射程 : </b>${info.range}</p>
-                    <p><b>ダメージ : </b>${info.damage}</p>
-                    <p><b>連射速度 : </b>${info.speed}</p>
-                    <p><b>スぺシャルP : </b>${info.specialpoint}</p>
-                </div>
+            <div class="core">
+            <p><b>射程 : </b>${info.range}</p>
+            <p><b>ダメージ : </b>${info.damage}</p>
+            <p><b>連射速度 : </b>${info.speed}</p>
+            <p><b>スぺシャル : </b>${info.specialpoint}P</p>
+        </div>
+        <div class="core">
+            <p><b>DPS : </b></p>
+            <p><b>TKK : </b>秒</p>
+            <p><b>確キル : </b>${info.killshot}発</p>
+            <p><b>入手 : </b>${info.lebel}レベル</p>
+        </div>
             </div>
         </div>
     </div>`
