@@ -254,6 +254,19 @@ header nav a {
     }
 }
 
+form+.explain {
+    margin: 5px 0;
+    font-size: 11px;
+    text-align: right;
+}
+
+@media screen and (max-width: 767px) {
+    form+.explain {
+        font-size: 10px;
+        text-align: left;
+    }
+}
+
 #page_top {
     width: 50px;
     height: 50px;
