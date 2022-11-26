@@ -6,16 +6,22 @@
 
 main {
     margin: 90px auto 50px auto;
-    width: 1000px;
-    max-width: 90%;
+    width: 100%;
     color: var(--main-text);
 }
 
-.top {}
+.top {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
 
 main .top img {
+    display: block;
     max-width: 100%;
-    border-radius: 15px;
+    border-radius: 5px;
+    margin: 0 auto;
+    filter: drop-shadow(0 0 15px #0003);
 }
 
 .info {
@@ -43,7 +49,7 @@ main .top img {
 }
 
 article {
-    margin-top: 20px;
+    margin: 20px auto;
 }
 
 .top h1 {
@@ -52,24 +58,49 @@ article {
 }
 
 article h2 {
+    margin: 40px auto 10px auto;
     font-size: 24px;
-    margin-bottom: 10px;
-    margin-top: 40px;
     background: var(--blue-2);
     border-left: solid 10px var(--blue-1);
-    padding: 0.75rem 1.5rem;
+    padding: 10px 20px;
+    width: 1000px;
+    max-width: calc(100% - 60px);
 }
 
 article h3 {
-    padding: 5px 20px;
-    background-color: var(--blue-2);
-    margin-top: 20px;
+    margin: 30px auto 10px auto;
+    font-size: 18px;
+    background: var(--blue-2);
+    padding: 10px 20px;
+    width: 1000px;
+    max-width: calc(100% - 60px);
 }
 
 article p {
+    width: 1060px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 30px;
     margin-bottom: 0;
     font-size: 16px;
     line-height: 1.8;
+    color: var(--third-text);
+}
+
+article img {
+    display: block;
+    width: 720px;
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 0 30px;
+    filter: drop-shadow(0 0 12px #0003);
+    border-radius: 8px;
+    transition: 1s;
+}
+
+article img:hover {
+    transform: scale(1.02);
+    transition: .2s
 }
 
 .url {
@@ -94,14 +125,6 @@ article p {
     background-color: #8991ff;
 }
 
-article img {
-    max-width: 100%;
-    width: 750px;
-    border-radius: 10px;
-    margin: 0 auto;
-    transition: 0.3s;
-}
-
 .img-c {
     text-align: center;
     margin: 20px 0 10px 0;
@@ -109,16 +132,11 @@ article img {
 
 
 
-.youyaku ul {
-    margin: 20px;
-    padding: 0;
-}
-
-.youyaku li {
-    list-style-type: circle;
-}
-
 @media screen and (max-width: 767px) {
+    .top {
+        padding: 15px;
+    }
+
     .top h1 {
         font-size: 21px;
     }
@@ -126,25 +144,35 @@ article img {
     article h2 {
         font-size: 18px;
         padding: 0.75rem 1rem;
+        max-width: calc(100% - 30px);
+    }
+
+    article h3 {
+        font-size: 16px;
+        max-width: calc(100% - 30px);
     }
 
     article p {
-        font-size: 14px;
+        font-size: 15px;
+        padding: 0 15px;
+    }
+
+    article img {
+        padding: 0 15px;
     }
 }
 
 /* 画像横並び */
-.slide ul {
+.slide {
     display: flex;
     overflow-x: auto;
-    margin: 15px 0;
-    padding: 0;
+    margin: 0 auto 5px auto;
+    padding: 20px calc((100% - 1000px)/2);
     scroll-snap-type: x mandatory;
-
 }
 
-.slide li {
-    min-width: 60%;
+.slide img {
+    height: 405px;
     margin: 5px;
     padding: 0;
     list-style: none;
@@ -152,18 +180,58 @@ article img {
     scroll-snap-stop: always;
 }
 
-@media screen and (max-width: 767px) {
-    .slide li {
-        min-width: 80%;
+.youyaku ul {
+    margin: 20px calc((100% - 1000px)/2);
+    padding: 0 30px;
+}
+
+.youyaku li {
+    list-style-type: circle;
+    font-size: 17px;
+}
+
+.youyaku p {
+    padding: 0;
+}
+
+@media screen and (max-width: 1060px) {
+    .slide {
+        padding: 20px 30px;
+    }
+
+    .slide img {
+        height: 370px;
+    }
+
+    .youyaku ul {
+        margin: 20px 30px;
     }
 }
 
+@media screen and (max-width: 767px) {
+    .slide {
+        padding: 20px 10px 10px 10px;
+    }
 
+    .slide img {
+        height: 250px;
+    }
 
+    .youyaku ul {
+        margin: 20px auto 0 15px;
+        padding: 0 30px;
+    }
 
+    .youyaku li {
+        font-size: 16px;
+    }
+}
 
-
-
+@media screen and (max-width: 500px) {
+    .slide img {
+        height: 200px;
+    }
+}
 
 * {
     margin: 0;
@@ -271,7 +339,7 @@ html {
     width: 300px;
     background: var(--third-back);
     border-radius: 5px;
-    filter: drop-shadow(0 0 8px #0003);
+    filter: drop-shadow(0 0 10px #0003);
     border: none;
     outline: none;
     padding: 5px 10px;
@@ -305,7 +373,7 @@ html {
 .blogbox {
     background: var(--third-back);
     border-radius: 5px;
-    filter: drop-shadow(0 0 8px #0003);
+    filter: drop-shadow(0 0 10px #0003);
     transition: 1s;
 }
 
@@ -333,6 +401,7 @@ html {
     content: "";
     background: linear-gradient(#0000 70%, #000b 100%);
     transition: 1s;
+    border-radius: 5px;
 }
 
 .blogbox a:hover {
@@ -396,6 +465,10 @@ html {
         position: static;
         color: var(--main-text);
     }
+
+    .blogbox a:hover {
+        color: var(--main-text);
+    }
     
     .blogbox a::after {
         background: none;
@@ -434,8 +507,6 @@ html {
         grid-column: 1/7;
     }
 
-    
-
     .blogbox:nth-child(n+1) a {
         display: flex;
         align-items: center;
@@ -473,7 +544,9 @@ html {
     background-color: var(--sub-back);
     border-radius: 15px;
     padding: 20px;
-    margin-top: 50px;
+    width: 1000px;
+    max-width: calc(100% - 60px);
+    margin: 30px auto;
 }
 
 .end-btn-s {
@@ -502,6 +575,10 @@ html {
 @media screen and (max-width: 767px) {
     .ad {
         max-width: 90%;
+    }
+
+    .end-box {
+        max-width: calc(100% - 30px);
     }
 }
 
