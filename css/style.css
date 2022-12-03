@@ -1329,7 +1329,7 @@ input:checked+label+.content {
   font-family: 'LSeedJP', sans-serif;
   border: none;
   border-radius: 10px;
-  padding: 10px 15px;
+  padding: 10px;
   min-height: 220px;
   flex: 1;
   min-width: none;
@@ -1354,7 +1354,7 @@ input:checked+label+.content {
   border-radius: 100px;
   margin: 30px 0;
   padding: 8px 0;
-  width: 200px;
+  width: 150px;
   display: block;
   letter-spacing: 0.05em;
   border: 2px solid var(--main-text);
@@ -2329,15 +2329,39 @@ input[type="checkbox"]:checked+label:before {
 .tools .top h2 {
   font-family: 'Noto Sans', sans-serif;
   font-size: 24px;
-  font-weight: 300;
+  font-weight: lighter;
   color: var(--sub-text);
+}
+
+.tools .area {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 10px;
 }
 
 .tools .content {
   width: 100%;
-  height: 100vh;
-  border-top: 5px solid var(--main-back);
-  border-bottom: 5px solid var(--main-back);
+  height: 600px;
+}
+
+@media screen and (max-width: 1000px) {
+  .tools .content {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .tools .area {
+    gap: 0;
+    margin: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .tools .content {
+    border-top: 5px solid var(--main-back);
+    border-bottom: 5px solid var(--main-back);
+  }
 }
 
 .tools .content .back {
@@ -2353,10 +2377,6 @@ input[type="checkbox"]:checked+label:before {
 .tools .content .back:hover {
   background: #00000077;
   transition: .2s;
-}
-
-.tools .content .back:active {
-  opacity: 0;
 }
 
 .tools .content .text {
@@ -2392,10 +2412,17 @@ input[type="checkbox"]:checked+label:before {
   transition: .2s;
 }
 
+/* 個々の設定 */
 .tools .calculator {
   background-position: center center;
   background-size: cover;
   background-image: url(https://calculator.xullua.com/calculatorsamune.png);
+}
+
+.tools .countdown {
+  background-position: center center;
+  background-size: cover;
+  background-image: url(https://countdown.xullua.com/countdown.png);
 }
 
 .tools .end {
