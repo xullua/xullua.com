@@ -2329,7 +2329,7 @@ input[type="checkbox"]:checked+label:before {
 .tools .top h2 {
   font-family: 'Noto Sans', sans-serif;
   font-size: 24px;
-  font-weight: lighter;
+  font-weight: 500;
   color: var(--sub-text);
 }
 
