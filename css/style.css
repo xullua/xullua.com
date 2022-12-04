@@ -2398,11 +2398,13 @@ input[type="checkbox"]:checked+label:before {
 
 .tools .content a {
   height: 30px;
-  padding: 0 30px;
+  padding: 2px 30px;
   border-radius: 50px;
   border: 2px solid #fff;
   color: #FFF;
   transition: 1s;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .tools .content a:hover {
@@ -2423,6 +2425,12 @@ input[type="checkbox"]:checked+label:before {
   background-position: center center;
   background-size: cover;
   background-image: url(https://countdown.xullua.com/countdown.png);
+}
+
+.tools .splatoon {
+  background-position: center center;
+  background-size: cover;
+  background-image: url(https://xullua.com/splatoon/img/pic/gear.png);
 }
 
 .tools .end {
