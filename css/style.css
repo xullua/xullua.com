@@ -2427,6 +2427,12 @@ input[type="checkbox"]:checked+label:before {
   background-image: url(https://countdown.xullua.com/countdown.png);
 }
 
+.tools .fortnite-countdown {
+  background-position: center center;
+  background-size: cover;
+  background-image: url(https://countdown.xullua.com/fortnite-ch4s1.jpg);
+}
+
 .tools .splatoon {
   background-position: center center;
   background-size: cover;
