@@ -327,7 +327,6 @@ body {
 }
 
 .connect .box:hover {
-  transform: scale(1.01, 1.01);
   filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.2));
 }
 
@@ -373,7 +372,6 @@ body {
   color: #FFF;
   cursor: pointer;
   width: 100%;
-  background: var(--blue-1);
   border-radius: 6px;
   height: 35px;
   transition: 0.2s;
@@ -381,7 +379,7 @@ body {
 }
 
 .connect button:hover {
-  background: #8873ff;
+  opacity: .9;
 }
 
 @media screen and (max-width: 1280px) {
@@ -452,10 +450,26 @@ body {
   }
 }
 
+/* トップグリッド */
+.top-grid {
+  display: grid;
+  grid-template-columns: 640px 640px;
+  margin: 0 calc((100% - 1280px)/2);
+  width: 100%;
+}
+
+@media screen and (max-width: 1280px) {
+  .top-grid {
+    display: block;
+    margin: 0 auto;
+  }
+
+}
+
 /* 投票する */
 
 .vote-top-words {
-  margin: 60px 0;
+  margin: 60px 0 0 0;
 }
 
 .vote-top-words .back {
@@ -465,7 +479,7 @@ body {
   background: var(--third-back);
   border-radius: 15px;
   padding: 30px;
-  filter: drop-shadow(0 0 8px #0000001f);
+  filter: drop-shadow(0 0 10px #0000001a);
 }
 
 .vote-top-words h2 {
@@ -560,7 +574,7 @@ input[name="vote-top-words-page"]:checked+label {
   outline: none;
   margin: 5px 0;
   padding: 7px 10px;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'LSeedJP', sans-serif;
 }
 
 .vote-top-words .name {
@@ -620,7 +634,7 @@ input[name="vote-top-words-page"]:checked+label {
 
 /* 自己紹介 */
 .profile {
-  margin: 80px 0;
+  margin: 60px 0 0 0;
   z-index: 0;
 }
 
@@ -629,9 +643,9 @@ input[name="vote-top-words-page"]:checked+label {
   border-radius: 15px;
   width: 720px;
   max-width: 90%;
-  margin: 20px auto;
+  margin: 0 auto;
   padding: 20px;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 0 10px #0000001a);
 }
 
 .profile .icon {
@@ -733,15 +747,90 @@ input[name="vote-top-words-page"]:checked+label {
   }
 }
 
+/* ポリシー */
+.policy {
+  width: 1280px;
+  max-width: 100%;
+  margin: 60px auto 0 auto;
+}
+
+.policy .box {
+  background: var(--third-back);
+  border-radius: 10px;
+  width: 720px;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 25px 30px;
+  filter: drop-shadow(0 0 10px #0000001a);
+}
+
+.policy .box .section {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  margin: 5px 0;
+  transition: 0.3s;
+  background: var(--third-back);
+  border-radius: 5px;
+}
+
+.policy .box .section:hover {
+  background: var(--four-back);
+}
+
+
+.policy .box hr {
+  border: none;
+  border-bottom: 1px solid var(--line);
+  margin-left: 60px;
+}
+
+.policy .box .icon {
+  border-radius: 7px;
+  width: 45px;
+  height: 45px;
+  padding: 5px;
+  text-align: center;
+  margin: auto 0 auto 2px;
+}
+
+.policy .box img {
+  width: 100%;
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+  ;
+}
+
+.policy .box h3 {
+  margin: auto 0 auto 20px;
+  font-size: 16px;
+  color: var(--main-text);
+}
+
+.policy p {
+  text-align: center;
+  font-size: 10px;
+  color: var(--sub-text);
+}
+
+.policy p::after {
+  content: "一部アクセスができないページがあります。";
+}
+
+@media screen and (max-width: 767px) {
+  .policy {
+    margin: 60px auto;
+  }
+}
+
 /* ストア宣伝 */
 .store-ad {
   background: var(--third-back);
   border-radius: 15px;
   width: 720px;
   max-width: 90%;
-  margin: 60px auto;
+  margin: 60px auto 0 auto;
   padding: 40px 0;
-  filter: drop-shadow(0 0 7px #0000002c);
+  filter: drop-shadow(0 0 10px #0000001a);
 }
 
 .store-ad h2 {
@@ -899,7 +988,7 @@ input:checked+label+.content {
 
 /* お知らせ */
 .news {
-  margin: 80px 0;
+  margin: 60px 0;
 }
 
 .news .texts {
@@ -919,7 +1008,7 @@ input:checked+label+.content {
 }
 
 .news .boxes {
-  padding: 0 calc((100% - 1200px)/2);
+  padding: 0 calc((100% - 1240px)/2);
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -996,81 +1085,6 @@ input:checked+label+.content {
 
   .news .box p {
     font-size: 14px;
-  }
-}
-
-/* ポリシー */
-.policy {
-  width: 1280px;
-  max-width: 100%;
-  margin: 80px auto;
-}
-
-.policy .box {
-  background: var(--third-back);
-  border-radius: 10px;
-  width: 720px;
-  max-width: 90%;
-  margin: 20px auto;
-  padding: 25px 30px;
-  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1));
-}
-
-.policy .box .section {
-  display: flex;
-  height: 50px;
-  width: 100%;
-  margin: 5px 0;
-  transition: 0.3s;
-  background: var(--third-back);
-  border-radius: 5px;
-}
-
-.policy .box .section:hover {
-  background: var(--four-back);
-}
-
-
-.policy .box hr {
-  border: none;
-  border-bottom: 1px solid var(--line);
-  margin-left: 60px;
-}
-
-.policy .box .icon {
-  border-radius: 7px;
-  width: 45px;
-  height: 45px;
-  padding: 5px;
-  text-align: center;
-  margin: auto 0 auto 2px;
-}
-
-.policy .box img {
-  width: 100%;
-  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
-  ;
-}
-
-.policy .box h3 {
-  margin: auto 0 auto 20px;
-  font-size: 16px;
-  color: var(--main-text);
-}
-
-.policy p {
-  text-align: center;
-  font-size: 10px;
-  color: var(--sub-text);
-}
-
-.policy p::after {
-  content: "一部アクセスができないページがあります。";
-}
-
-@media screen and (max-width: 767px) {
-  .policy {
-    margin: 60px auto;
   }
 }
 
