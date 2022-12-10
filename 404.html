@@ -12,7 +12,7 @@
     <meta name="description" content="ページが見つかりません">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="shortcut icon" href="https://xullua.com/img/favicon.ico">
-    <link rel="stylesheet" href="https://xullua.com/css/404.css">
+    <link rel="stylesheet" href="css/404.css">
     <link rel="stylesheet" href="https://xullua.com/css/color.css">
     <link rel="stylesheet" href="https://xullua.com/css/base.css">
     <title>ページが見つかりません</title>
@@ -41,7 +41,7 @@
         <section>
             <h2>404</h2>
             <h1>ページが見つかりません</h1>
-            <p>残念ながらお探しのページは見つかりませんでした。<br>削除されたか、URLが違っている可能性があります。</p>
+            <p id="404text"></p>
             <div class="btns">
                 <a href="https://xullua.com">ホーム</a>
                 <a href="https://xullua.com/blog">ブログ</a>
@@ -49,6 +49,16 @@
             </div>
         </section>
     </main>
+    <script>
+        var rand = Math.random();
+
+        // 10%の確率で、"A"の代わりに"B"を表示する
+        if (rand < 0.1) {
+            document.getElementById("404text").innerHTML = "404エラー❗️✨🤟😁👍✨⚡️感謝❗️🙌✨🙌✨🙌感謝❗️🙌✨🙌✨🙌お探しのページは❗️🥓🥩🍗🍖😋🍖🍴✨残念ながらっ‼️🙏✨ｼｬ‼️🙏✨ ｼｬ‼️🙏✨ ｼｬ‼️🙏✨ ｼｬ‼️🙏✨ ｼｬ‼️🙏✨ ｼｬｯｯ‼😁🙏✨😁🙏✨😁🙏✨見つかり🌟ませんでした❗️❗️❗💥✨👉😁👈✨💥";
+        } else {
+            document.getElementById("404text").innerHTML = "残念ながらお探しのページは見つかりませんでした。<br>削除されたか、URLが違っている可能性があります。";
+        }
+    </script>
 </body>
 
 </html>
