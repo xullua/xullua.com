@@ -18,7 +18,6 @@
 
     <link rel="shortcut icon" href="../img/favicon.ico">
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/color.css">
     <link rel="stylesheet" href="../css/base.css">
 
@@ -57,6 +56,10 @@
             <button onclick="copyToClipboard()">コピー</button>
         </div>
     </main>
+    <footer>
+        <a href="https://xullua.com/contact">お問い合わせ</a>
+        <a href="https://xullua.com/policy/privacy">プライバシーポリシー</a>
+    </footer>
 
     <script>
         function copyToClipboard() {
@@ -110,6 +113,19 @@
             background: #FFF;
             color: #000;
             transition: .2s;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            text-align: right;
+            width: 100%;
+        }
+
+        footer a {
+            color: #FFF;
+            font-size: 10px;
+            margin: 0 10px 0 0;
         }
     </style>
 </body>
