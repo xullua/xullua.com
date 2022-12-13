@@ -54,34 +54,22 @@
         <div>
             <h1>美味しいヤミー❗️✨🤟😁👍✨⚡️感謝❗️🙌✨🙌✨🙌感謝❗️🙌✨🙌✨🙌またいっぱい食べたいな❗️🥓🥩🍗🍖😋🍖🍴✨デリシャッ‼️🙏✨ｼｬ‼️🙏✨ ｼｬ‼️🙏✨ ｼｬ‼️🙏✨
                 ｼｬ‼️🙏✨ ｼｬ‼️🙏✨ ｼｬｯｯ‼😁🙏✨😁🙏✨😁🙏✨ハッピー🌟スマイル❗️❗️❗💥✨👉😁👈✨💥</h1>
-            <input id="copyTarget" type="text"
-                value="美味しいヤミー❗️✨🤟😁👍✨⚡️感謝❗️🙌✨🙌✨🙌感謝❗️🙌✨🙌✨🙌またいっぱい食べたいな❗️🥓🥩🍗🍖😋🍖🍴✨デリシャッ‼️🙏✨ｼｬ‼️🙏✨ ｼｬ‼️🙏✨ ｼｬ‼️🙏✨ ｼｬ‼️🙏✨ ｼｬ‼️🙏✨ ｼｬｯｯ‼😁🙏✨😁🙏✨😁🙏✨ハッピー🌟スマイル❗️❗️❗💥✨👉😁👈✨💥"
-                readonly><br>
             <button onclick="copyToClipboard()">コピー</button>
         </div>
-
-
-        <!-- bodyタグ内の下部に以下を入力する -->
-        <script>
-            function copyToClipboard() {
-                // コピー対象をJavaScript上で変数として定義する
-                var copyTarget = document.getElementById("copyTarget");
-
-                // コピー対象のテキストを選択する
-                copyTarget.select();
-
-                // 選択しているテキストをクリップボードにコピーする
-                document.execCommand("Copy");
-
-                // コピーをお知らせする
-                alert("コピー感謝感謝");
-            }
-        </script>
     </main>
+
+    <script>
+        function copyToClipboard() {
+            navigator.clipboard.writeText("美味しいヤミー❗️✨🤟😁👍✨⚡️感謝❗️🙌✨🙌✨🙌感謝❗️🙌✨🙌✨🙌またいっぱい食べたいな❗️🥓🥩🍗🍖😋🍖🍴✨デリシャッ‼️🙏✨ｼｬ‼️🙏✨ ｼｬ‼️🙏✨ ｼｬ‼️🙏✨ｼｬ‼️🙏✨ ｼｬ‼️🙏✨ ｼｬｯｯ‼😁🙏✨😁🙏✨😁🙏✨ハッピー🌟スマイル❗️❗️❗💥✨👉😁👈✨💥");
+            alert("コピー感謝感謝");
+        }
+    </script>
+
     <style>
         html {
             overflow: hidden;
         }
+
         main {
             width: 100%;
             height: 100vh;
@@ -106,11 +94,6 @@
             font-size: 20px;
         }
 
-        main input {
-            height: 0;
-            opacity: 0;
-        }
-
         main button {
             padding: 5px 20px;
             background: none;
@@ -128,8 +111,6 @@
             color: #000;
             transition: .2s;
         }
-
-        ]
     </style>
 </body>
 
