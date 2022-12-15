@@ -568,8 +568,9 @@ html {
 }
 
 .ad {
+    width: 1000px;
+    max-width: 100%;
     margin: 30px auto;
-    max-width: 80%;
 }
 
 @media screen and (max-width: 767px) {
