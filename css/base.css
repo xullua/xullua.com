@@ -309,14 +309,28 @@ header .header-inner .logo {
 }
 
 #footer .sns-icons {
-    height: 27px;
+    height: 30px;
     margin-top: 20px;
+    display: flex;
+    transform: translateX(-6px);
+}
+
+#footer .sns-icons a {
+    display: block;
+    height: 100%;
+    margin: 0;
+    padding: 6px;
+    border-radius: 50%;
+    transition: .2s;
+}
+
+#footer .sns-icons a:hover {
+    opacity: 1;
+    background: rgba(170, 170, 170, 0.4);
 }
 
 #footer .icon {
     max-height: 100%;
-    margin: 0 5px 0 0;
-    padding: 4px;
     filter: var(--img-change-white);
 }
 
