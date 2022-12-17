@@ -115,6 +115,7 @@ h1 {
     font-weight: bold;
     align-items: center;
     transition: 1s;
+    position: relative;
 }
 
 .btn a:hover {
