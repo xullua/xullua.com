@@ -1068,6 +1068,45 @@ input:checked+label+.content {
   margin: 20px 0 0 0;
 }
 
+/* 今までの動画 */
+.movie {
+  width: 100%;
+  margin: 60px auto;
+  padding: 0 calc((100% - 1240px)/2);
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 0 0 calc((100% - 1200px)/2);
+}
+
+.movie iframe {
+  min-width: 400px;
+  aspect-ratio: 16 / 9;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  margin: 20px 10px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1));
+}
+
+@media screen and (max-width: 1280px) {
+  .movie {
+    padding: 0 30px;
+    scroll-padding: 0 0 0 40px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .movie {
+    scroll-padding: 0 0 0 20px;
+  }
+
+  .movie iframe {
+    width: 300px;
+    min-width: 300px;
+  }
+}
+
 /* お知らせ */
 .news {
   margin: 60px 0;
