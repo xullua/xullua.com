@@ -2227,6 +2227,21 @@ input[type="checkbox"]:checked+label:before {
 }
 
 /* デバイス */
+.device-title {
+  margin: 80px auto 0 auto;
+  text-align: center;
+  line-height: .9;
+  width: 230px;
+}
+
+.device-title h2 {
+  font-size: 50px;
+}
+
+.device-title h1 {
+  font-size: 16px;
+}
+
 .devices {
   margin: 40px 0;
 }
