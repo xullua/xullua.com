@@ -76,10 +76,6 @@ html {
   max-width: 100%;
 }
 
-.en {
-  font-family: 'Noto Sans', sans-serif;
-}
-
 .fonts1 {
   font-family: 'Noto Sans JP', sans-serif;
 }
@@ -2406,57 +2402,6 @@ input[type="checkbox"]:checked+label:before {
   .devices .peripheral {
     padding: 0 calc(100vw - 75vw) 0 10px;
   }
-}
-
-
-/* アバウト */
-.about-ad .video {
-  text-align: center;
-}
-
-.about-ad .video video {
-  width: 1280px;
-  max-width: 100%;
-  margin: 50px auto 10px auto;
-}
-
-.about-ad .texts {
-  max-width: 95%;
-  width: 1280px;
-  margin: 30px auto;
-}
-
-.about-ad .yt {
-  margin: 10px 0 40px 0;
-  text-align: center;
-}
-
-.about-ad .yt a {
-  background-color: #eb2929;
-  color: #FFF;
-  padding: 3px 15px;
-  border-radius: 20px;
-  font-size: 12px;
-}
-
-.about-ad .mini {
-  font-size: 12px;
-  color: var(--sub-text);
-}
-
-.about-ad .btns a {
-  color: #FFF;
-  margin-right: 5px;
-  background-color: var(--blue-1);
-  border-radius: 20px;
-  padding: 5px 20px
-}
-
-.about-ad .btns {
-  margin: 15px 0;
-  display: flex;
-  white-space: nowrap;
-  overflow-x: auto;
 }
 
 /* ツール */
