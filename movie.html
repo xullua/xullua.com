@@ -14,15 +14,8 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="js/main.js" async></script>
   <link rel="shortcut icon" href="img/favicon.ico">
-  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://xullua.com/css/color.css">
   <link rel="stylesheet" href="https://xullua.com/css/base.css">
-  <link rel="stylesheet" href="css/2.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
   <title>ぞるあについて</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
   <script src="js/main.js" async></script>
@@ -42,53 +35,123 @@
   </script>
 </head>
 
+<style>
+  .top {
+    margin: 80px auto;
+    width: 1000px;
+    text-align: center;
+  }
+
+  .top iframe {
+    width: 1000px;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 0 0 10px 0;
+    border-radius: 10px;
+  }
+
+  .top a {
+    border: 2px solid #eb2929;
+    color: #eb2929;
+    font-weight: bold;
+    border-radius: 100px;
+    padding: 5px 15px;
+    transition: 1s;
+  }
+
+  .top a:hover {
+    background: #eb2929;
+    color: #FFF;
+    transition: .2s;
+  }
+
+  .archive {
+    width: 1000px;
+    max-width: 100%;
+    margin: 60px auto;
+    padding: 0 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+
+  .archive .text {
+    width: 100%;
+    background: linear-gradient(to right bottom, #c112c7, #521091);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    color: #fff;
+    grid-column: 1/3;
+  }
+
+  .archive .text a {
+    border: 1px solid #FFF;
+    border-radius: 100px;
+    padding: 0 12px;
+    color: #FFF;
+    font-size: 12px;
+  }
+
+  .archive .text a:hover {
+    background: #FFF;
+    color: #c112c7;
+  }
+
+  .archive iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .archive {
+      grid-template-columns: 1fr;
+    }
+
+    .archive .text {
+      grid-column: 1/2;
+    }
+  }
+</style>
 
 <body>
   <!-- ヘッダー -->
   <header class="header" id="header"></header>
 
-  <div class="about-ad">
-    <div class="video"><video controls loop autoplay muted playsinline poster="img/xulluaad7-samune.png">
-        <source src="img/xulluaad7.webm" type="video/webm">
-        <source src="img/xulluaad7.mp4" type="video/mp4">
-      </video></div>
-
-    <div class="texts">
-      <div class="yt"><a href="https://youtu.be/KITUpTp1DaA" class="en">Watch On YouTube</a></div>
-
-      <h3>今回の内容は"自分の紹介"</h3>
-      <p>いつもはフォローしてくれとしか言っていなかったものに紹介を混ぜてみました。内容はいつも通り薄いです。</p><br>
-
-      <h3>デザインの参考元</h3>
-      <p>今回は<a href="https://youtu.be/lCFTVALSwOE">AppleのiPhone14のCM</a>を真似してみました。文字が奥行きのある感じ</p><br>
-
-      <h3>ダウンロード</h3>
-      <p>いつもダウンロードをしたいという方が多いので簡単にダウンロードできるようにしました。以下のボタンからダウンロードできます。</p>
-      <p class="mini">ダウンロードの目的はご自身の編集の研究に限ります。転載は断固禁止します。</p>
-      <div class="btns"><a href="img/xulluaad7.mp4" download="XulluaCM7.mp4" class="btn">ダウンロード</a></div><br>
-
-      <h3>接続</h3>
-      <p>動画内に登場するリンク</p>
-      <div class="btns">
-        <a href="https://twitter.com/xullua">フォローする</a>
-        <a href="https://twitter.com/xlagame">ゲームアカウント</a>
-        <a href="https://xullua.com/bblog">ブログ</a>
-        <a href="https://xla.jp/store">ストア</a>
-      </div><br>
-
-      <p>よければ<a href="https://twitter.com/Xullua/status/1571423806022815744">この動画のツイート</a>にいいねしていただけると嬉しいです。</p>
-    </div>
-  </div>
-
-  <div class="ad">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8816279824306037"
-      crossorigin="anonymous"></script>
-    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article"
-      data-ad-format="fluid" data-ad-client="ca-pub-8816279824306037" data-ad-slot="5012308478"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
+  <main>
+    <section class="top">
+      <iframe src="https://www.youtube.com/embed/piw5tuKlo3U" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <a href="https://youtu.be/piw5tuKlo3U" target="_blank">YouTubeで見る</a>
+    </section>
+    <section class="archive">
+      <div class="text">
+        <div>
+          <h2>過去の投稿</h2>
+          <a href="https://youtube.com/@twitterjp" target="_blank">YouTube</a>
+        </div>
+      </div>
+      <iframe src="https://www.youtube.com/embed/wyEhpzx6rXE" title="Twitterモーショングラフィックス" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/KITUpTp1DaA" title="Xullua CM #7" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/AtEIPrLVHzY" title="Xullua CM6 | ぞるあをフォローしよう" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/ryFmB49m3-k" title="Xullua CM 5" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/HDBGgHXrDdU" title="自作CM | " 私をフォローして!!"" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/dbTSgzePVcI" title="Twitterのはじめ方" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </section>
+  </main>
 
   <!-- フッター -->
   <footer id="footer"></footer>
