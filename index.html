@@ -90,6 +90,15 @@
             msg[31] = '最近気づいたんですがウェブサイト見る時ってよくブラウザ開いてるんですよね<span>@4mpoi</span>';
             msg[32] = '部活サボってたら好きな人に嫌われました<span>@player_rarurai3</span>';
             msg[33] = '1年終わるの、あっという間ですね。<span>こうちゃん50da4</span>';
+            msg[34] = '幸せな家族と、家族の幸せ。あなたならどちらを取る?';
+            msg[35] = 'いま、あなたの後ろにいるの';
+            msg[36] = '奈良県にもし行くなら奈良駅近くの奈良公園へ行きましょう！(寒)<span>こうちゃん50da4</span>';
+            msg[37] = 'イカは怒(いか)った<span>こうちゃん50da4</span>';
+            msg[38] = '新春や　積み重なるは　課題山<span>kobakoo.com</span>';
+            msg[39] = '肌色って200色あんねん<span>@KGB_satihar</span>';
+            msg[40] = '毎日がeveryday<span>@reuni_gadget</span>';
+            msg[41] = 'ニューヨークで入浴';
+            msg[42] = '今日は昨日の明日';
 
             var no = Math.floor(Math.random() * msg.length);
             document.write(msg[no]);
@@ -201,12 +210,12 @@
           action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScDg2tD6J3400xH1kOslT9pEYbj_reaOMBUcqSRUtxoZmx3Mg/formResponse"
           method="post" target="hidden_iframe" onsubmit="submitted=true;">
 
-          <p class="title">お名前<span class="box" style="background: #896fff;">任意</span></p>
-          <p class="explain">テキストの下側に名前が表示されます。表示されたくない方は未記入にしてください。10字以内です。</p>
-          <input class="name" type="text" name="entry.123140293" placeholder="@Xullua" title="名前を入力">
+          <p class="title">お名前<span class="box" style="background: #ff5757;">必須</span></p>
+          <p class="explain">テキストの下側に名前が表示されます。10字以内です。</p>
+          <input class="name" type="text" name="entry.123140293" placeholder="@Xullua" title="名前を入力" required>
 
           <p class="title">言葉<span class="box" style="background: #ff5757;">必須</span></p>
-          <p class="explain">この部分が表示されます。50字以内です。</p>
+          <p class="explain">50字以内です。</p>
           <textarea class="text" type="text" name="entry.681018563" placeholder="布団が吹っ飛んだ" title="面白い言葉や名言を入力"
             maxlength="50" required></textarea>
 
@@ -226,6 +235,11 @@
           <button type="submit" title="クリックして送信">送信</button>
           <p style="color: var(--sub-text); font-size: 12px; margin-top: 5px;">正しく送信されるとリダイレクトされます</p>
         </form>
+        <div class="help">
+          <h3>削除の申し立て</h3>
+          <p>自身の名前が無断で使用されていたり、過去に応募した内容の掲載を中止したい場合</p>
+          <a href="https://what.xullua.com/h/delete-top-word">更に詳しく</a>
+        </div>
       </div>
     </div>
     <script>
@@ -640,6 +654,15 @@
       <p></p>
     </div>
     <div class="boxes">
+
+      <div class="box" id="2023/1/4">
+        <date>2023/1/4</date>
+        <h3>プロフィール変更</h3>
+        <p>
+          <a href="#profile">プロフィール</a>を新しくしました。情報を最新にし、より美しいデザインに仕上げました。
+          Appleの商品のスペックをまとめている物を参考にしました。
+        </p>
+      </div>
 
       <div class="box" id="2022/10/26">
         <date>2022/10/26</date>
