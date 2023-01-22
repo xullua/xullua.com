@@ -688,6 +688,33 @@ input[name="vote-top-words-page"]:checked+label {
   margin: 5px 0;
 }
 
+.vote-top-words .help {
+  background: var(--support-back);
+  margin: 20px 0 0;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.vote-top-words .help h3 {
+  font-size: 16px;
+}
+
+.vote-top-words .help p {
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--sub-text);
+  margin: 0 0 10px 0;
+}
+
+.vote-top-words .help a {
+  background: var(--support);
+  color: #fff;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
 @media screen and (max-width: 767px) {
   .vote-top-words h2 {
     font-size: 20px;
@@ -814,6 +841,7 @@ input[name="vote-top-words-page"]:checked+label {
 
 .profile .skill1:hover,
 .profile .skill2:hover{
+  animation: profileanime-fadein .2s;
   background: radial-gradient(rgba(168, 76, 255, 0.418),rgba(175, 1, 255, 0.171)); 
 }
 
@@ -827,6 +855,7 @@ input[name="vote-top-words-page"]:checked+label {
 .profile .skill1:hover p,
 .profile .skill2:hover p{
   display: block;
+  animation: profileanime-fadein 1s;
 }
 
 .profile .favorite,
@@ -863,7 +892,6 @@ input[name="vote-top-words-page"]:checked+label {
   display: flex;
   align-items: center;
   width: 100%;
-  background: ;
 }
 
 .profile .sns a {
@@ -909,6 +937,15 @@ input[name="vote-top-words-page"]:checked+label {
   border: 1px solid var(--main-text);
   color: var(--third-back);
   transition: .2s;
+}
+
+@keyframes profileanime-fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 1000px) {

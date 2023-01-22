@@ -6,9 +6,16 @@
     --four-back: #f3f3f3;
     --main-text: #000000;
     --sub-text: #6e6e6e;
+    --third-text: #333333;
     --url: #0066c0;
     --url-active: #1900ff;
     --line: #cccccc;
+    --explain : #b700ff;
+    --help : #ff7b00;
+    --support : #0084ff;
+    --explain-back : #b700ff33;
+    --help-back : #ff7b0033;
+    --support-back : #0084ff33;
     --header-back: rgba(255, 255, 255, 0.5);
     --blue-1: #8991ff;
     --blue-2: #eaeaff;
@@ -54,6 +61,7 @@
         --four-back: #1f1f1f;
         --main-text: #eeeeee;
         --sub-text: #bebebe;
+        --third-text: #dddddd;
         --url: #40a6ff;
         --url-active: #7060ff;
         --line: #555555;
