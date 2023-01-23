@@ -1,0 +1,322 @@
+/* お問い合わせ */
+.contact {
+    margin: 80px 0 0 0;
+}
+
+.contact .top {
+    width: 720px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.contact h2 {
+    line-height: 1.2;
+    font-size: 40px;
+}
+
+.contact h1 {
+    line-height: 1.2;
+    font-size: 24px;
+}
+
+.contact .top p {
+    color: var(--sub-text);
+    font-size: 14px;
+    margin: 20px 0 0 0;
+}
+
+.Form {
+    margin: 40px auto 80px auto;
+    width: 720px;
+    max-width: 90%;
+    background: var(--third-back);
+    padding: 10px 25px;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 10px #0003);
+}
+
+@media screen and (max-width: 767px) {
+    .Form {
+        margin-top: 40px;
+    }
+}
+
+.Form-Item {
+    padding: 24px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+    .Form-Item {
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+}
+
+.Form-Item-Label {
+    width: 100%;
+    max-width: 248px;
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--main-text);
+}
+
+@media screen and (max-width: 767px) {
+    .Form-Item-Label {
+        max-width: inherit;
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        margin-left: 0;
+    }
+}
+
+.Form-Item-Label.isMsg {
+    margin-top: 8px;
+    margin-bottom: auto;
+}
+
+@media screen and (max-width: 767px) {
+    .Form-Item-Label.isMsg {
+        margin-top: 0;
+    }
+}
+
+.Form-Item-Label-Required {
+    border-radius: 6px;
+    margin-right: 8px;
+    padding: 5px 10px;
+    background: #eb2929;
+    color: #fff;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 767px) {
+    .Form-Item-Label-Required {
+        border-radius: 4px;
+        padding: 3px 7px;
+        font-size: 11px;
+    }
+}
+
+.Form-Item-Label-n {
+    border-radius: 6px;
+    margin-right: 8px;
+    padding: 5px 10px;
+    text-align: center;
+    background: var(--blue-1);
+    color: #fff;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 767px) {
+    .Form-Item-Label-n {
+        border-radius: 4px;
+        padding: 3px 7px;
+        font-size: 10px;
+    }
+}
+
+.Form-Item-Input {
+    border: none;
+    border-radius: 10px;
+    padding: 0 1em;
+    height: 48px;
+    flex: 1;
+    width: 100%;
+    background: var(--four-back);
+    font-size: 16px;
+    outline: none;
+}
+
+@media screen and (max-width: 767px) {
+    .Form-Item-Input {
+        margin-right: 0;
+        margin-top: 10px;
+        height: 40px;
+        flex: inherit;
+        font-size: 15px;
+        max-width: 100%;
+    }
+}
+
+.Form-Item-Textarea {
+    font-family: 'LSeedJP', sans-serif;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    min-height: 220px;
+    flex: 1;
+    min-width: none;
+    background: var(--four-back);
+    font-size: 18px;
+    outline: none;
+}
+
+@media screen and (max-width: 767px) {
+    .Form-Item-Textarea {
+        margin-top: 10px;
+        margin-right: 0;
+        height: 200px;
+        flex: inherit;
+        font-size: 15px;
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+
+.Form-Btn {
+    border-radius: 100px;
+    margin: 30px 0;
+    padding: 8px 0;
+    width: 150px;
+    display: block;
+    letter-spacing: 0.05em;
+    border: 2px solid var(--main-text);
+    background: #0000;
+    color: var(--main-text);
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.Form-Btn:hover {
+    background-color: var(--main-text);
+    color: var(--third-back);
+    transition: .2s;
+}
+
+.checkbox1 {
+    margin: 20px 0;
+}
+
+form input[type="checkbox"] {
+    display: none;
+}
+
+form input[type="checkbox"]+label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    font: 14px/20px 'Open Sans', Arial, sans-serif;
+    color: var(--main-text);
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+form input[type="checkbox"]+label:last-child {
+    margin-bottom: 0;
+}
+
+form input[type="checkbox"]+label:before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--blue-1);
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: .6;
+    -webkit-transition: all .12s, border-color .08s;
+    transition: all .12s, border-color .08s;
+}
+
+form input[type="checkbox"]:checked+label:before {
+    width: 10px;
+    top: -5px;
+    left: 5px;
+    border-radius: 0;
+    opacity: 1;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.checkbox-text {
+    font-size: 14px;
+    color: var(--sub-text);
+}
+
+
+.contact .help {
+    width: 720px;
+    max-width: 90%;
+    margin: 10px auto 30px auto;
+    background: var(--third-back);
+    padding: 20px;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 10px #0003);
+}
+
+.more .content {
+    display: none;
+    transform: translateY(-100px);
+    transition: 1s all;
+}
+
+.more input {
+    display: none;
+}
+
+.more label {
+    display: block;
+    width: 100%;
+    position: relative;
+    background: var(--four-back);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 5px 0 0 0;
+    transition: .2s;
+}
+
+.more label:first-child {
+    margin: 0;
+}
+
+.more label:hover {
+    background: rgba(129, 129, 129, 0.3);
+}
+
+.more label::before {
+    position: absolute;
+    top: 37%;
+    right: 20px;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid var(--main-text);
+    border-right: 2px solid var(--main-text);
+    transform: rotate(45deg);
+    transition: .2s;
+}
+
+.more input:checked + label::before {
+    transform: rotate(135deg);
+    top: 30%;
+}
+
+.more input:checked +label {
+    border-radius: 10px 10px 0 0;
+}
+
+.more input:checked +label + .content {
+    display: block;
+    background: var(--four-back);
+    border-radius: 0 0 10px 10px;
+    padding: 10px;
+    transform: translateY(0);
+    transition: .3s all;
+    font-size: 13px;
+    color: var(--sub-text);
+}
