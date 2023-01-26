@@ -14,7 +14,7 @@
   background-color: var(--blue-2);
   border-left: solid 3px var(--blue-1);
   text-decoration: none;
-  color: var(--main-text);
+  color: var(--maintext);
   margin: 0 3px;
   padding: 0 10px 0 8px;
   transition: 0.5s;
@@ -52,7 +52,7 @@
 }
 
 .devices .text p {
-  color: var(--sub-text);
+  color: var(--subtext);
   font-size: 14px;
 }
 
@@ -66,12 +66,11 @@
 .devices .main article a {
   display: grid;
   grid-template-rows: auto auto auto 1fr auto auto;
-  background: var(--third-back);
+  background: var(--secondback);
   border-radius: 10px;
   width: calc(1230px/3);
   margin: 20px 5px;
   height: 430px;
-  filter: drop-shadow(0 0 7px rgba(0, 0, 0, 0.15));
   cursor: default;
   opacity: 1;
 }
@@ -89,12 +88,11 @@
 .devices .peripheral article a {
   display: grid;
   grid-template-rows: auto auto auto 1fr auto auto;
-  background: var(--third-back);
+  background: var(--secondback);
   border-radius: 10px;
   width: calc((1280px - 40px - 10px - 10px)/4);
   margin: 20px 5px;
   height: 400px;
-  filter: drop-shadow(0 0 7px rgba(0, 0, 0, 0.15));
   cursor: default;
   opacity: 1;
   scroll-snap-align: start;
@@ -110,20 +108,20 @@
   padding: 0 10px;
   margin-top: 10px;
   font-size: 12px;
-  color: var(--sub-text);
+  color: var(--secondtext);
 }
 
 .devices article h3 {
   padding: 0 10px;
   font-size: 20px;
-  color: var(--main-text);
+  color: var(--maintext);
 }
 
 .devices article .explain {
   padding: 0 10px;
   margin-bottom: 10px;
   font-size: 15px;
-  color: var(--sub-text);
+  color: var(--subtext);
   overflow-y: auto;
 }
 
@@ -135,7 +133,7 @@
   padding: 0 10px;
   margin-bottom: 5px;
   font-size: 14px;
-  color: var(--yellow-1);
+  color: var(--accentcolor);
 }
 
 .devices article .price::before {
@@ -145,8 +143,8 @@
 .devices article button {
   height: 30px;
   margin: 7px;
-  background: var(--main-text);
-  color: var(--four-back);
+  background: var(--fourthback);
+  color: var(--subtext);
   border: none;
   border-radius: 5px;
   font-weight: bold;
@@ -155,8 +153,8 @@
 }
 
 .devices article button:hover {
-  background-color: var(--blue-3);
-  color: #FFF;
+  background-color: var(--fifthback);
+  color: var(--accentcolor);
 }
 
 @media screen and (max-width: 1280px) {
@@ -222,7 +220,7 @@
 
 .pc .text p {
   font-size: 14px;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .pc .area {
@@ -234,38 +232,37 @@
 
 .pc .box {
   width: 100%;
-  background: var(--third-back);
+  background: var(--secondback);
   border-radius: 10px;
   padding: 15px;
   line-height: 1;
-  filter: drop-shadow(0 0 10px #0002);
   transition: .2s;
 }
 
 .pc .category {
   font-size: 12px;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .pc .name {
-  color: var(--main-text);
+  color: var(--maintext);
   font-weight: bold;
   margin: 5px 0 10px 0;
+  transition: .2s;
 }
 
 .pc .impressions {
   font-size: 12px;
-  color: var(--sub-text);
+  color: var(--subtext);
   line-height: 1.2;
 }
 
 .pc .box:hover {
-  background: var(--blue-2);
+  background: var(--fourthback);
 }
 
 .pc .box:hover .name {
-  color: #ff0;
-  filter: drop-shadow(1px 1px 1px #000030);
+  color: var(--accentcolor);
 }
 
 .pc .big1,

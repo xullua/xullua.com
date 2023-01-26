@@ -20,7 +20,7 @@
 }
 
 .contact .top p {
-    color: var(--sub-text);
+    color: var(--subtext);
     font-size: 14px;
     margin: 20px 0 0 0;
 }
@@ -29,7 +29,7 @@
     margin: 40px auto 80px auto;
     width: 720px;
     max-width: 90%;
-    background: var(--third-back);
+    background: var(--secondback);
     padding: 10px 25px;
     border-radius: 10px;
     filter: drop-shadow(0 0 10px #0003);
@@ -60,7 +60,7 @@
     max-width: 248px;
     font-weight: bold;
     font-size: 16px;
-    color: var(--main-text);
+    color: var(--maintext);
 }
 
 @media screen and (max-width: 767px) {
@@ -126,7 +126,7 @@
     height: 48px;
     flex: 1;
     width: 100%;
-    background: var(--four-back);
+    background: var(--thirdback);
     font-size: 16px;
     outline: none;
 }
@@ -150,7 +150,7 @@
     min-height: 220px;
     flex: 1;
     min-width: none;
-    background: var(--four-back);
+    background: var(--thirdback);
     font-size: 18px;
     outline: none;
 }
@@ -174,9 +174,9 @@
     width: 150px;
     display: block;
     letter-spacing: 0.05em;
-    border: 2px solid var(--main-text);
-    background: #0000;
-    color: var(--main-text);
+    border: none;
+    background: var(--fourthback);
+    color: var(--maintext);
     font-weight: 700;
     font-size: 16px;
     cursor: pointer;
@@ -184,8 +184,8 @@
 }
 
 .Form-Btn:hover {
-    background-color: var(--main-text);
-    color: var(--third-back);
+    background-color: var(--fifthback);
+    color: var(--accentcolor);
     transition: .2s;
 }
 
@@ -203,7 +203,7 @@ form input[type="checkbox"]+label {
     padding-left: 35px;
     margin-bottom: 20px;
     font: 14px/20px 'Open Sans', Arial, sans-serif;
-    color: var(--main-text);
+    color: var(--maintext);
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -217,23 +217,23 @@ form input[type="checkbox"]+label:last-child {
 form input[type="checkbox"]+label:before {
     content: '';
     display: block;
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--blue-1);
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--themecolor);
     position: absolute;
     left: 0;
     top: 0;
-    opacity: .6;
     -webkit-transition: all .12s, border-color .08s;
     transition: all .12s, border-color .08s;
 }
 
 form input[type="checkbox"]:checked+label:before {
-    width: 10px;
+    width: 5px;
     top: -5px;
     left: 5px;
     border-radius: 0;
     opacity: 1;
+    border: 2px solid var(--accentcolor);
     border-top-color: transparent;
     border-left-color: transparent;
     -webkit-transform: rotate(45deg);
@@ -242,7 +242,7 @@ form input[type="checkbox"]:checked+label:before {
 
 .checkbox-text {
     font-size: 14px;
-    color: var(--sub-text);
+    color: var(--subtext);
 }
 
 
@@ -250,7 +250,7 @@ form input[type="checkbox"]:checked+label:before {
     width: 720px;
     max-width: 90%;
     margin: 10px auto 30px auto;
-    background: var(--third-back);
+    background: var(--secondback);
     padding: 20px;
     border-radius: 10px;
     filter: drop-shadow(0 0 10px #0003);
@@ -270,7 +270,7 @@ form input[type="checkbox"]:checked+label:before {
     display: block;
     width: 100%;
     position: relative;
-    background: var(--four-back);
+    background: var(--thirdback);
     cursor: pointer;
     padding: 10px;
     border-radius: 10px;
@@ -285,7 +285,7 @@ form input[type="checkbox"]:checked+label:before {
 }
 
 .more label:hover {
-    background: rgba(129, 129, 129, 0.3);
+    background: var(--fourthback);
 }
 
 .more label::before {
@@ -295,8 +295,8 @@ form input[type="checkbox"]:checked+label:before {
     content: "";
     width: 10px;
     height: 10px;
-    border-top: 2px solid var(--main-text);
-    border-right: 2px solid var(--main-text);
+    border-top: 2px solid var(--themecolor);
+    border-right: 2px solid var(--themecolor);
     transform: rotate(45deg);
     transition: .2s;
 }
@@ -312,11 +312,11 @@ form input[type="checkbox"]:checked+label:before {
 
 .more input:checked +label + .content {
     display: block;
-    background: var(--four-back);
+    background: var(--thirdback);
     border-radius: 0 0 10px 10px;
     padding: 10px;
     transform: translateY(0);
     transition: .3s all;
     font-size: 13px;
-    color: var(--sub-text);
+    color: var(--subtext);
 }

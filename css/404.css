@@ -30,15 +30,15 @@ h1 {
 p {
     margin: 40px 0 25px 0;
     line-height: 1.2;
-    color: var(--sub-text);
+    color: var(--subtext);
     font-size: 14px;
 }
 
 .btns a {
-    color: var(--main-text);
+    color: var(--subtext);
     padding: 5px 20px;
     margin: 0 0 5px 0;
-    border: 2px solid var(--main-text);
+    background: var(--secondback);
     border-radius: 50px;
     font-size: 14px;
     font-weight: bold;
@@ -46,7 +46,7 @@ p {
 }
 
 .btns a:hover {
-    color: var(--third-back);
-    background: var(--main-text);
+    color: var(--accentcolor);
+    background: var(--fourthback);
     transition: .1s;
 }

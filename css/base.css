@@ -38,8 +38,8 @@
 html {
     font-size: 100%;
     scroll-behavior: smooth;
-    background-color: var(--main-back);
-    color: var(--main-text);
+    background-color: var(--firstback);
+    color: var(--maintext);
     max-width: 100%;
 }
 
@@ -50,11 +50,7 @@ a {
 }
 
 a:hover {
-    opacity: 0.9;
-}
-
-a:active {
-    color: var(--url-active);
+    color: var(--barhover);
 }
 
 .header-noscroll {
@@ -148,7 +144,7 @@ header .header-inner .logo {
     text-decoration: none;
     height: 44px;
     line-height: 44px;
-    color: var(--main-text);
+    color: var(--maintext);
     font-size: 14px;
     padding: 0 8px;
     opacity: 0.8;
@@ -157,7 +153,7 @@ header .header-inner .logo {
 
 #navi a:hover {
     opacity: 1;
-    background: var(--four-back);
+    background: var(--firstback);
 }
 
 #navi img {
@@ -294,7 +290,7 @@ header .header-inner .logo {
 /* フッター */
 #footer {
     width: 100%;
-    background-color: var(--third-back);
+    background-color: var(--secondback);
     color: #86868b;
     font-size: 12px;
     position: static;
@@ -302,7 +298,6 @@ header .header-inner .logo {
     padding: 45px 40px;
     margin-top: 40px;
     border-radius: 20px 20px 0 0;
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.205));
 }
 
 #footer .footer-logo a {
@@ -338,7 +333,7 @@ header .header-inner .logo {
 
 #footer .sns-icons a:hover {
     opacity: 1;
-    background: rgba(170, 170, 170, 0.4);
+    background: var(--fourthback);
 }
 
 #footer .icon {
@@ -359,14 +354,14 @@ header .header-inner .logo {
 }
 
 #footer .footer-menu .title {
-    color: var(--main-text);
+    color: var(--maintext);
     font-weight: bold;
     margin-top: 20px;
     font-size: 12px;
 }
 
 #footer .footer-menu .title2 {
-    color: var(--main-text);
+    color: var(--maintext);
     font-weight: bold;
     margin-top: 20px;
     font-size: 12px;
@@ -384,7 +379,7 @@ header .header-inner .logo {
 }
 
 #footer .footer-menu a {
-    color: var(--sub-text);
+    color: var(--subtext);
     text-decoration: none;
 }
 
@@ -406,7 +401,7 @@ header .header-inner .logo {
 
 #footer .copyright {
     font-size: 12px;
-    color: var(--main-text);
+    color: var(--maintext);
 }
 
 #footer .text2s {
@@ -417,14 +412,14 @@ header .header-inner .logo {
 
 #footer .text2 {
     font-size: 12px;
-    color: var(--sub-text);
+    color: var(--subtext);
     list-style: none;
     text-decoration: none;
     margin-left: 10px;
 }
 
 #footer .text2:hover {
-    color: #8991ff;
+    color: var(--urlhover);
 }
 
 #footer .text1 {

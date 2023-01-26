@@ -30,7 +30,7 @@
 }
 
 .line {
-  border-top: 1px solid var(--sub-text);
+  border-top: 1px solid var(--line);
   margin: 0 auto;
 }
 
@@ -71,8 +71,8 @@
 html {
   font-size: 100%;
   scroll-behavior: smooth;
-  background-color: var(--main-back);
-  color: var(--main-text);
+  background-color: var(--firstback);
+  color: var(--maintext);
   max-width: 100%;
 }
 
@@ -129,7 +129,7 @@ body {
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
-  color: var(--main-text);
+  color: var(--maintext);
   background-size: 200% 100%;
   border-radius: 1000px;
   margin: 0 auto;
@@ -268,8 +268,7 @@ body {
 
 .top-hello .explain {
   font-size: 12px;
-  color: var(--sub-text);
-  opacity: .7;
+  color: var(--subtext);
 }
 
 .top-hello .time {
@@ -371,7 +370,7 @@ body {
 }
 
 .connect .texts p {
-  color: var(--sub-text);
+  color: var(--subtext);
   font-size: 12px;
   opacity: 0.7;
   display: none;
@@ -393,19 +392,18 @@ body {
   grid-template-rows: auto auto 1fr auto;
   gap: 4px;
   padding: 7px;
-  background: var(--third-back);
+  background: var(--secondback);
   border-radius: 10px;
   width: 400px;
   height: 270px;
   min-width: 400px;
   margin: 20px 10px;
-  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1));
   scroll-snap-align: center;
   transition: 0.3s all;
 }
 
 .connect .box:hover {
-  filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.2));
+  background: var(--thirdback);
 }
 
 .connect .box:active {
@@ -435,7 +433,7 @@ body {
 .connect .box p {
   margin: 0 15px;
   font-size: 14px;
-  color: var(--sub-text);
+  color: var(--subtext);
   overflow-y: auto;
 }
 
@@ -538,10 +536,9 @@ body {
   margin: 0 auto;
   width: 720px;
   max-width: 90%;
-  background: var(--third-back);
+  background: var(--secondback);
   border-radius: 15px;
   padding: 30px;
-  filter: drop-shadow(0 0 10px #0000001a);
 }
 
 .vote-top-words h2 {
@@ -569,19 +566,19 @@ body {
 }
 
 .vote-top-words .open {
-  color: var(--main-text);
+  color: var(--subtext);
   cursor: pointer;
   border-radius: 50px;
   padding: 3px 20px;
   margin: 10px 0;
   font-weight: bold;
   transition: 1s;
-  border: 2px solid var(--main-text);
+  background: var(--fourthback);
 }
 
 .vote-top-words .open:hover {
-  background: var(--main-text);
-  color: var(--third-back);
+  background: var(--fifthback);
+  color: var(--accentcolor);
   transition: .2s;
 }
 
@@ -621,12 +618,12 @@ input[name="vote-top-words-page"]:checked+label {
 
 .vote-top-words .explain {
   font-size: 14px;
-  opacity: .9s;
+  color: var(--subtext);
 }
 
 .vote-top-words .name,
 .vote-top-words textarea {
-  background: var(--four-back);
+  background: var(--thirdback);
   max-width: 100%;
   min-height: 35px;
   max-height: 100px;
@@ -651,9 +648,9 @@ input[name="vote-top-words-page"]:checked+label {
 .vote-top-words button {
   display: block;
   margin: 20px 0 0 0;
-  padding: 5px 40px;
-  background: none;
-  border: 2px solid var(--main-text);
+  padding: 5px 26px;
+  background: var(--fourthback);
+  border: none;
   border-radius: 40px;
   cursor: pointer;
   font-size: 16px;
@@ -661,23 +658,10 @@ input[name="vote-top-words-page"]:checked+label {
   transition: 1s;
 }
 
-.vote-top-words button::before {
-  content: '';
-  background-image: url(../img/send.svg);
-  filter: var(--img-change-white);
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-size: contain;
-  vertical-align: middle;
-  transform: translateX(-5px);
-}
-
 .vote-top-words button:hover {
-  background: var(--third-back);
+  background: var(--fifthback);
+  color: var(--accentcolor);
   transition: .2s;
-  border: 2px solid var(--third-back);
-  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
 }
 
 .vote-top-words .agreement {
@@ -689,7 +673,7 @@ input[name="vote-top-words-page"]:checked+label {
 }
 
 .vote-top-words .help {
-  background: var(--support-back);
+  background: var(--supportback);
   margin: 20px 0 0;
   padding: 15px;
   border-radius: 10px;
@@ -702,7 +686,7 @@ input[name="vote-top-words-page"]:checked+label {
 .vote-top-words .help p {
   font-size: 12px;
   line-height: 1.2;
-  color: var(--sub-text);
+  color: var(--secondtext);
   margin: 0 0 10px 0;
 }
 
@@ -715,6 +699,53 @@ input[name="vote-top-words-page"]:checked+label {
   border-radius: 5px;
 }
 
+form input[type="checkbox"] {
+  display: none;
+}
+
+form input[type="checkbox"]+label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 20px;
+  font: 14px/20px 'Open Sans', Arial, sans-serif;
+  color: var(--maintext);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+form input[type="checkbox"]+label:last-child {
+  margin-bottom: 0;
+}
+
+form input[type="checkbox"]+label:before {
+  content: '';
+  display: block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--themecolor);
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+}
+
+form input[type="checkbox"]:checked+label:before {
+  width: 5px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  border: 2px solid var(--accentcolor);
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
 @media screen and (max-width: 767px) {
   .vote-top-words h2 {
     font-size: 20px;
@@ -725,7 +756,6 @@ input[name="vote-top-words-page"]:checked+label {
 .profile {
   margin: 60px 0 0 0;
   z-index: 0;
-  background: var(--sub-back);
   width: 100%;
   padding: 30px;
 }
@@ -745,7 +775,7 @@ input[name="vote-top-words-page"]:checked+label {
 }
 
 .profile .box {
-  background: var(--main-back);
+  background: var(--secondback);
   border-radius: 10px;
   padding: 15px;
 }
@@ -765,7 +795,7 @@ input[name="vote-top-words-page"]:checked+label {
 
 .profile .myname p {
   font-size: 12px;
-  color: var(--sub-text);
+  color: var(--subtext);
   margin: 5px 0 0;
 }
 
@@ -779,13 +809,13 @@ input[name="vote-top-words-page"]:checked+label {
 .profile .spec {
   font-size: 12px;
   text-align: center;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .profile .abouttext {
   grid-column: span 7;
   font-size: 12px;
-  color: var(--sub-text);
+  color: var(--subtext);
   display: flex;
   align-items: center;
   overflow: auto;
@@ -805,7 +835,7 @@ input[name="vote-top-words-page"]:checked+label {
 
 .profile .twitter p {
   font-size: 12px;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .profile .skill1,
@@ -905,7 +935,7 @@ input[name="vote-top-words-page"]:checked+label {
 
 .profile .sns a:hover {
   opacity: 1;
-  background: #94949455;
+  background: var(--fourthback);
 }
 
 .profile .sns img {
@@ -924,8 +954,8 @@ input[name="vote-top-words-page"]:checked+label {
 }
 
 .profile .profilecontact a {
-  color: var(--main-text);
-  border: 1px solid var(--sub-text);
+  color: var(--sebtext);
+  background: var(--fourthback);
   font-size: 11px;
   border-radius: 50px;
   padding: 5px 12px;
@@ -933,9 +963,8 @@ input[name="vote-top-words-page"]:checked+label {
 }
 
 .profile .profilecontact a:hover {
-  background: var(--main-text);
-  border: 1px solid var(--main-text);
-  color: var(--third-back);
+  background: var(--fifthback);
+  color: var(--accentcolor);
   transition: .2s;
 }
 
@@ -1133,13 +1162,12 @@ input[name="vote-top-words-page"]:checked+label {
 }
 
 .policy .box {
-  background: var(--third-back);
+  background: var(--secondback);
   border-radius: 10px;
   width: 720px;
   max-width: 90%;
   margin: 0 auto;
   padding: 25px 30px;
-  filter: drop-shadow(0 0 10px #0000001a);
 }
 
 .policy .box .section {
@@ -1148,12 +1176,12 @@ input[name="vote-top-words-page"]:checked+label {
   width: 100%;
   margin: 5px 0;
   transition: 0.3s;
-  background: var(--third-back);
+  background: var(--secondback);
   border-radius: 5px;
 }
 
 .policy .box .section:hover {
-  background: var(--four-back);
+  background: var(--thirdback);
 }
 
 
@@ -1181,13 +1209,13 @@ input[name="vote-top-words-page"]:checked+label {
 .policy .box h3 {
   margin: auto 0 auto 20px;
   font-size: 16px;
-  color: var(--main-text);
+  color: var(--maintext);
 }
 
 .policy p {
   text-align: center;
   font-size: 10px;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .policy p::after {
@@ -1202,13 +1230,12 @@ input[name="vote-top-words-page"]:checked+label {
 
 /* ストア宣伝 */
 .store-ad {
-  background: var(--third-back);
+  background: var(--secondback);
   border-radius: 15px;
   width: 1280px;
   max-width: calc(100% - 30px*2);
   margin: 60px auto 0 auto;
   padding: 40px 0;
-  filter: drop-shadow(0 0 10px #0000001a);
 }
 
 .store-ad h2 {
@@ -1323,7 +1350,7 @@ input:checked+label+.content {
 }
 
 .store-ad .area .content a {
-  background: var(--blue-1);
+  background: var(--themecolor);
   border-radius: 40px;
   padding: 5px 30px;
   color: #FFF;
@@ -1332,8 +1359,7 @@ input:checked+label+.content {
 }
 
 .store-ad .area .content a:hover {
-  background: var(--blue-3);
-  color: #fff;
+  background: var(--accentcolor);
   transition: .2s;
 }
 
@@ -1343,7 +1369,7 @@ input:checked+label+.content {
   text-align: center;
   margin: 10px auto 0 auto;
   font-size: 13px;
-  color: var(--blue-1);
+  color: var(--themecolor);
 }
 
 .store-ad .btn {
@@ -1429,7 +1455,7 @@ input:checked+label+.content {
 }
 
 .news .texts p {
-  color: var(--sub-text);
+  color: var(--subtext);
   font-size: 12px;
 }
 
@@ -1450,13 +1476,12 @@ input:checked+label+.content {
 }
 
 .news .box {
-  background: var(--third-back);
+  background: var(--secondback);
   border-radius: 10px;
   min-width: 400px;
   width: 400px;
   height: 250px;
   margin: 20px 10px;
-  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1));
   scroll-snap-align: start;
   scroll-snap-stop: always;
   padding: 20px;
@@ -1474,12 +1499,12 @@ input:checked+label+.content {
 
 .news date {
   font-size: 12px;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .news .box p {
   font-size: 14px;
-  color: var(--sub-text);
+  color: var(--subtext);
   margin-top: 15px;
 
 }
@@ -1518,95 +1543,6 @@ input:checked+label+.content {
   }
 }
 
-/* スキル */
-.skill-block {
-  padding-top: 40px;
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: -50px;
-  justify-content: space-between;
-  padding: 40px 0px 0px 0px;
-  color: var(--main-text);
-}
-
-.skills {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  width: 48%;
-  margin-bottom: 50px;
-  transition: 1s;
-}
-
-.skills:hover {
-  transform: scale(1.03, 1.03);
-}
-
-.skills:nth-of-type(3n) {
-  margin-right: 0;
-}
-
-.skill-img {
-  width: 60px;
-  height: 53px;
-  margin-right: 20px;
-  cursor: pointer;
-}
-
-@media (prefers-color-scheme: dark) {
-  .skill-img img {
-    background-color: #FFFFFF;
-    border-radius: 50px;
-    padding: 5px;
-    width: 50px;
-  }
-}
-
-.skill-more {
-  flex: 1;
-}
-
-.skill-title {
-  margin-bottom: 10px;
-}
-
-.skill-text {
-  font-size: 14px;
-  line-height: 1.8;
-  color: var(--sub-text);
-}
-
-@media screen and (max-width: 767px) {
-  .skill-block {
-    display: block;
-    margin-bottom: 0;
-  }
-
-  .skills {
-    width: 100%;
-    margin-bottom: 35px;
-  }
-
-  .skill-img {
-    width: 60px;
-    height: 53px;
-    margin-right: 10px;
-  }
-
-  .skill-item:last-child {
-    margin-bottom: 0;
-  }
-
-  .skill-title {
-    margin-bottom: 5px;
-  }
-
-  .skill-text {
-    font-size: 14px;
-    line-height: 1.7;
-  }
-}
-
 .hello-subtitle {
   display: inline-block;
   margin-bottom: 10px;
@@ -1642,12 +1578,12 @@ input:checked+label+.content {
 
 .thanks p {
   margin: 20px 0 10px 0;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .thanks a {
-  color: var(--main-text);
-  border: 2px solid var(--main-text);
+  color: var(--maintext);
+  border: 2px solid var(--maintext);
   font-size: 14px;
   font-weight: bold;
   padding: 3px 20px;
@@ -1657,7 +1593,7 @@ input:checked+label+.content {
 
 .thanks a:hover {
   color: var(--third-back);
-  background: var(--main-text);
+  background: var(--maintext);
 }
 
 .thanks h2 {
@@ -1697,7 +1633,7 @@ input:checked+label+.content {
 }
 
 .sitemap .top p {
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .sitemap .map {
@@ -1725,7 +1661,7 @@ input:checked+label+.content {
   margin-left: 25px;
   margin-bottom: 50px;
   text-align: center;
-  color: var(--main-text);
+  color: var(--maintext);
 }
 
 .present-title1 {
@@ -1737,10 +1673,10 @@ input:checked+label+.content {
 }
 
 .present-howto {
-  background-color: var(--sub-back);
+  background-color: var(--subback);
   border-radius: 25px;
   font-family: 'Zen Kaku Gothic New', sans-serif;
-  color: var(--main-text);
+  color: var(--maintext);
   text-align: center;
   max-width: 90%;
   width: 500px;
@@ -1756,7 +1692,7 @@ input:checked+label+.content {
 
 .present-howto-text {
   font-size: 16px;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .present-text-mini {
@@ -1841,16 +1777,16 @@ input:checked+label+.content {
   text-align: center;
   font-size: 23px;
   margin-bottom: 10px;
-  color: var(--main-text);
+  color: var(--maintext);
 }
 
 .present-a-text {
   font-size: 14px;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .present-ex {
-  background-color: var(--main-back);
+  background-color: var(--mainback);
   text-align: left;
   padding: 15px;
   width: 180px;
@@ -1915,7 +1851,7 @@ input:checked+label+.content {
 /* ゲーム */
 .game-box {
   border-radius: 15px;
-  background-color: var(--sub-back);
+  background-color: var(--secondback);
   width: 720px;
   margin: 0 auto;
   margin-top: 30px;
@@ -1949,14 +1885,12 @@ input:checked+label+.content {
 
 .game-title {
   margin-bottom: 5px;
-  font-family: 'Edu VIC WA NT Beginner', cursive;
-  color: var(--main-text);
+  color: var(--maintext);
 }
 
 .game-text {
   font-size: 14px;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .game-btn {
@@ -2035,15 +1969,13 @@ input:checked+label+.content {
 .game-title2 {
   margin-bottom: 5px;
   text-align: center;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  color: var(--main-text);
+  color: var(--maintext);
 }
 
 .game-text2 {
   font-size: 14px;
   text-align: center;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .game-faq {
@@ -2060,14 +1992,13 @@ input:checked+label+.content {
 }
 
 .game-faq-title {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
   margin-bottom: 5px;
-  color: var(--main-text);
+  color: var(--maintext);
 }
 
 .game-faq-text {
   font-size: 10px;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .game-faq-url {
@@ -2084,13 +2015,12 @@ input:checked+label+.content {
 .game-q {
   background: linear-gradient(transparent 60%, rgba(255, 255, 102, 0.425) 30%);
   font-weight: bold;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  color: var(--main-text);
+  color: var(--maintext);
 }
 
 .game-a {
   font-size: 14px;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .game-a-url {
@@ -2107,12 +2037,12 @@ input:checked+label+.content {
 }
 
 .game-blog-top-title {
-  color: var(--main-text);
+  color: var(--maintext);
 }
 
 .game-blog-top-text {
   font-size: 12px;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .game-blog-top-text::after {
@@ -2158,7 +2088,7 @@ input:checked+label+.content {
 
 .blog-box {
   border-radius: 10px;
-  background-color: var(--sub-back);
+  background-color: var(--subback);
   height: 100%;
 }
 
@@ -2177,12 +2107,12 @@ input:checked+label+.content {
 
 .blog-box-more-title {
   font-weight: bold;
-  color: var(--main-text);
+  color: var(--maintext);
 }
 
 .blog-box-more-text {
   font-size: 12px;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 
@@ -2211,7 +2141,7 @@ input:checked+label+.content {
 .faq-btn {
   background-color: var(--blue-2);
   border-radius: 50px;
-  color: var(--main-text);
+  color: var(--maintext);
   padding: 5px 20px;
   text-decoration: none;
   font-size: 11px;
@@ -2306,10 +2236,9 @@ input:checked+label+.content {
 }
 
 .tools .top h2 {
-  font-family: 'Noto Sans', sans-serif;
   font-size: 24px;
   font-weight: 500;
-  color: var(--sub-text);
+  color: var(--subtext);
 }
 
 .tools .area {
@@ -2340,8 +2269,8 @@ input:checked+label+.content {
   }
 
   .tools .content {
-    border-top: 5px solid var(--main-back);
-    border-bottom: 5px solid var(--main-back);
+    border-top: 5px solid var(--secondback);
+    border-bottom: 5px solid var(--secondback);
   }
 }
 
@@ -2422,7 +2351,7 @@ input:checked+label+.content {
 
 .tools .end-text {
   text-align: center;
-  color: var(--sub-text);
+  color: var(--subtext);
   font-size: 14px;
 }
 

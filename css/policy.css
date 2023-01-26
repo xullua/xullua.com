@@ -38,7 +38,7 @@ h4 {
 }
 
 p {
-    color: var(--sub-text);
+    color: var(--subtext);
     font-size: 14px;
 }
 
@@ -81,7 +81,7 @@ hr {
 }
 
 .policy .box .section:hover {
-    background: var(--third-back);
+    background: var(--fourthback);
 }
 
 
@@ -109,13 +109,13 @@ hr {
 .policy .box h3 {
     margin: auto 0 auto 20px;
     font-size: 16px;
-    color: var(--main-text);
+    color: var(--maintext);
 }
 
 .policy p {
     text-align: center;
     font-size: 10px;
-    color: var(--sub-text);
+    color: var(--subtext);
 }
 
 .policy p::after {
@@ -134,17 +134,17 @@ hr {
 }
 
 .policy .btn a {
-    border: 2px solid var(--main-text);
     border-radius: 40px;
     font-weight: bold;
     transition: .2s;
     font-size: 14px;
     padding: 5px 25px;
     margin: 0 5px;
-    color: var(--main-text);
+    color: var(--subtext);
+    background: var(--secondback);
 }
 
 .policy .btn a:hover {
-    background: var(--main-text);
-    color: var(--third-back);
+    background: var(--fourthback);
+    color: var(--accentcolor);
 }
