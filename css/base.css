@@ -50,7 +50,7 @@ a {
 }
 
 a:hover {
-    color: var(--barhover);
+    color: var(--urlhover);
 }
 
 .header-noscroll {
