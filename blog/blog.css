@@ -7,7 +7,7 @@
 main {
     margin: 90px auto 50px auto;
     width: 100%;
-    color: var(--main-text);
+    color: var(--maintext);
 }
 
 .top {
@@ -37,14 +37,14 @@ main .top img {
 }
 
 .info-title {
-    background-color: var(--blue-1);
+    background-color: var(--themecolor);
     color: #fff;
     padding: 1px 5px;
     font-weight: 500;
 }
 
 .info-text {
-    background: var(--blue-2);
+    background: var(--secondback);
     padding: 1px 5px;
 }
 
@@ -60,20 +60,27 @@ article {
 article h2 {
     margin: 40px auto 10px auto;
     font-size: 24px;
-    background: var(--blue-2);
-    border-left: solid 10px var(--blue-1);
+    background: var(--secondback);
+    border-left: solid 10px var(--themecolor);
     padding: 10px 20px;
     width: 1000px;
     max-width: calc(100% - 60px);
+    transition: 1s;
 }
 
 article h3 {
     margin: 30px auto 10px auto;
     font-size: 18px;
-    background: var(--blue-2);
+    background: var(--secondback);
     padding: 10px 20px;
     width: 1000px;
     max-width: calc(100% - 60px);
+    transition: 1s;
+}
+
+article h2:hover,
+article h3:hover {
+    color: var(--accentcolor);
 }
 
 article p {
@@ -92,7 +99,7 @@ article img {
     width: 1000px;
     max-width: calc(100% - 60px);
     margin: 30px auto 20px auto;
-    filter: drop-shadow(0 0 12px #0003);
+    filter: drop-shadow(0 0 12px #7773);
     border-radius: 10px;
     transition: 1s;
 }
@@ -290,13 +297,6 @@ article img:hover {
     text-decoration: underline;
 }
 
-html {
-    font-size: 100%;
-    scroll-behavior: smooth;
-    background-color: var(--main-back);
-    font-family: 'Noto Sans JP', sans-serif;
-}
-
 /* メインページ */
 .main-titles {
     max-width: 90%;
@@ -318,7 +318,7 @@ html {
 .blogswrapper {
     font-size: 16px;
     font-weight: bold;
-    color: var(--main-text);
+    color: var(--maintext);
 }
 
 .blogswrapper {
@@ -336,9 +336,8 @@ html {
 
 .blogs #search {
     width: 300px;
-    background: var(--third-back);
+    background: var(--secondback);
     border-radius: 5px;
-    filter: drop-shadow(0 0 10px #0003);
     border: none;
     outline: none;
     padding: 5px 10px;
@@ -359,7 +358,7 @@ html {
 .blogs-text {
     font-weight: bold;
     margin-left: 10px;
-    color: var(--main-text);
+    color: var(--maintext);
 }
 
 .blogboxes {
@@ -370,9 +369,9 @@ html {
 }
 
 .blogbox {
-    background: var(--third-back);
+    background: var(--thirdback);
     border-radius: 5px;
-    filter: drop-shadow(0 0 10px #0003);
+    filter: drop-shadow(0 0 10px #0002);
     transition: 1s;
 }
 
@@ -462,11 +461,11 @@ html {
 @media screen and (max-width: 1000px) {
     .blogbox a {
         position: static;
-        color: var(--main-text);
+        color: var(--maintext);
     }
 
     .blogbox a:hover {
-        color: var(--main-text);
+        color: var(--maintext);
     }
     
     .blogbox a::after {
@@ -540,7 +539,7 @@ html {
 }
 
 .end-box {
-    background-color: var(--sub-back);
+    background-color: var(--secondback);
     border-radius: 15px;
     padding: 20px;
     width: 1000px;
@@ -556,14 +555,16 @@ html {
 .end-btn {
     text-decoration: none;
     padding: 5px 30px;
-    background-color: #27acd9;
+    background-color: var(--thirdback);
     border-radius: 50px;
-    color: #fff;
+    color: var(--subtext);
     transition: 0.2s;
+    font-size: 14px;
 }
 
 .end-btn:hover {
-    background-color: #1e1e41;
+    background-color: var(--fourthback);
+    color: var(--accentcolor);
 }
 
 .ad {
@@ -588,28 +589,4 @@ html {
     height: 405px;
     margin: 20px auto;
     text-align: center;
-}
-
-/* 404 */
-.nf {
-    text-align: center;
-    margin-top: 150px;
-}
-
-.nf-btns {
-    margin: 30px auto;
-}
-
-.nf-btn {
-    text-decoration: none;
-    background-color: #e6e6e6;
-    color: #000;
-    border-radius: 50px;
-    padding: 5px 30px;
-    transition: 0.3s;
-}
-
-.nf-btn:hover {
-    background-color: #1e1e41;
-    color: #fff;
 }
