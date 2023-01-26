@@ -1,5 +1,5 @@
 .main-weapon .area {
-    background: var(--third-back);
+    background: var(--secondback);
     border-radius: 10px;
     width: 1280px;
     max-width: 90%;
@@ -10,7 +10,7 @@
 }
 
 .main-weapon .area:hover {
-    background: var(--blue-2);
+    background: var(--thirdback);
     transition: .2s;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .main-weapon .top p {
-    color: var(--sub-text);
+    color: var(--subtext);
 }
 
 .main-weapon .top h3 {
@@ -48,7 +48,7 @@
 }
 
 .main-weapon .box {
-    background: var(--main-back);
+    background: var(--fourthback);
     width: 100%;
     margin: 10px 5px 15px 5px;
     padding: 20px 0;
@@ -57,13 +57,11 @@
     display: flex;
     justify-self: center;
     align-items: center;
-    box-shadow: inset 0px 0px 15px #0001;
     transition: 1s;
 }
 
 .main-weapon .box:hover {
-    background: var(--blue-3);
-    color: #FFF;
+    background: var(--fifthback);
     transition: .2s;
 }
 
@@ -102,13 +100,8 @@
 .main-weapon .box .text p {
     font-size: 12px;
     line-height: 1;
-    color: var(--sub-text);
+    color: var(--subtext);
     transition: 1s;
-}
-
-.main-weapon .box:hover .text p {
-    color: #FFF;
-    transition: .2s;
 }
 
 .main-weapon .box .in p {

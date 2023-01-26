@@ -54,8 +54,8 @@
 
 html {
     scroll-behavior: smooth;
-    background: var(--main-back);
-    color: var(--main-text);
+    background: var(--firstback);
+    color: var(--maintext);
 }
 
 header {
@@ -93,11 +93,11 @@ header .logo {
 header a {
     display: block;
     text-decoration: none;
-    color: var(--sub-text);
+    color: var(--subtext);
 }
 
 header a:hover {
-    color: var(--main-text);
+    color: var(--maintext);
 }
 
 header nav {
@@ -201,7 +201,7 @@ header nav a {
 }
 
 .about-top p {
-    color: var(--sub-text);
+    color: var(--subtext);
     font-size: 14px;
     margin: 20px 0 0 0;
 }
@@ -211,7 +211,7 @@ header nav a {
     max-width: 400px;
     display: flex;
     height: 40px;
-    background: var(--sub-back);
+    background: var(--secondback);
     border-radius: 10px;
     margin: 40px 0 0 auto;
     padding: 5px 5px 5px 15px;
@@ -221,7 +221,7 @@ header nav a {
 .search input:first-child {
     width: calc(100% - 30px);
     height: 100%;
-    background: var(--sub-back);
+    background: var(--secondback);
     border: none;
     outline: none;
     font-size: 16px;
@@ -237,7 +237,7 @@ header nav a {
     border: none;
     outline: none;
     cursor: pointer;
-    color: var(--main-text);
+    color: var(--maintext);
 }
 
 .search input:last-child:hover {
@@ -292,11 +292,11 @@ form+.explain {
 }
 
 #page_top:hover {
-    background: var(--sub-text);
+    background: var(--subtext);
 }
 
 footer {
-    background: var(--third-back);
+    background: var(--secondback);
     border-radius: 20px 20px 0 0;
     margin: 50px 0 0 0;
     filter: drop-shadow(0 0 8px #0003);
@@ -312,12 +312,12 @@ footer .content {
 
 footer .logo a {
     text-decoration: none;
-    color: var(--sub-text);
+    color: var(--subtext);
     font-size: 18px;
 }
 
 footer .logo a:hover {
-    color: var(--main-text);
+    color: var(--maintext);
 }
 
 footer .sns {
@@ -342,11 +342,11 @@ footer .menu .box {
 footer .menu a {
     font-size: 13px;
     text-decoration: none;
-    color: var(--sub-text);
+    color: var(--subtext);
 }
 
 footer .menu a:hover {
-    color: var(--main-text);
+    color: var(--maintext);
     background: var(--main-back);
 }
 
@@ -366,7 +366,7 @@ footer .copyright a {
 }
 
 footer .copyright p:first-child {
-    color: var(--sub-text);
+    color: var(--subtext);
     font-size: 12px;
 }
 

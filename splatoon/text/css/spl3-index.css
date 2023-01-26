@@ -30,13 +30,12 @@ main .menu a {
     margin: 10px 0;
     border-radius: 10px;
     text-decoration: none;
-    background: var(--third-back);
-    filter: drop-shadow(0 0 8px #0003);
+    background: var(--secondback);
     transition: 1s;
 }
 
 .menu h3 {
-    color: var(--main-text);
+    color: var(--maintext);
     transition: 1s;
 }
 
@@ -48,15 +47,15 @@ main .menu a {
 
 .menu p {
     grid-column: 2;
-    color: var(--sub-text);
+    color: var(--subtext);
     font-size: 14px;
     transition: 1s;
 }
 
 main .menu a:hover {
     transition: .2s;
-    transform: scale(1.03);
-    filter: drop-shadow(10px 10px 8px #0003);
+    transform: scale(1.02);
+    filter: drop-shadow(5px 5px 8px #0003);
 }
 
 main .menu a:hover h3,
@@ -71,8 +70,8 @@ main .menu a:hover p {
 
 .connect a {
     text-decoration: none;
-    color: var(--main-text);
-    border: 1.5px solid var(--main-text);
+    color: var(--subtext);
+    background: var(--secondback);
     border-radius: 40px;
     padding: 4px 12px;
     margin: 0 5px;
@@ -82,6 +81,6 @@ main .menu a:hover p {
 }
 
 .connect a:hover {
-    background: var(--main-text);
-    color: var(--third-back);
+    background: var(--fourthback);
+    color: var(--accentcolor);
 }

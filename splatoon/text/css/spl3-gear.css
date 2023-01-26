@@ -1,10 +1,9 @@
 .gear .area {
-    background: var(--third-back);
+    background: var(--secondback);
     border-radius: 10px;
     width: 1280px;
     max-width: 90%;
     margin: 10px auto;
-    filter: drop-shadow(0 0 8px #0002);
     transition: 1s;
     cursor: default;
     display: flex;
@@ -14,7 +13,7 @@
 }
 
 .gear .area:hover {
-    background: var(--blue-2);
+    background: var(--thirdback);
     transition: .2s;
 }
 
@@ -28,7 +27,7 @@
 }
 
 .gear p {
-    color: var(--sub-text);
+    color: var(--subtext);
     font-size: 14px;
 }
 

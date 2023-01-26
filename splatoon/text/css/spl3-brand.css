@@ -1,11 +1,10 @@
 .brand .area {
-    background: var(--third-back);
+    background: var(--secondback);
     border-radius: 10px;
     width: 1280px;
     max-width: 90%;
     margin: 10px auto;
     padding: 20px;
-    filter: drop-shadow(0 0 8px #0002);
     transition: 1s;
     cursor: default;
     display: flex;
@@ -13,7 +12,7 @@
 }
 
 .brand .area:hover {
-    background: var(--blue-2);
+    background: var(--thirdback);
     transition: .2s;
 }
 
@@ -38,18 +37,16 @@
 .brand .box {
     width: 100%;
     text-align: center;
-    background: var(--main-back);
+    background: var(--fourthback);
     border-radius: 10px;
     margin: 0 0 0 10px;
     padding: 10px 0;
     transition: 1s;
-    box-shadow: inset 0px 0px 15px #0001;
 }
 
 .brand .box p {
     font-size: 12px;
     color: var(--sub-text);
-    transition: 1s;
 }
 
 .brand .box img {
@@ -63,8 +60,7 @@
 }
 
 .brand .box:hover {
-    background: var(--blue-3);
-    color: #FFF;
+    background: var(--fifthback);
     transition: .2s;
 }
 
@@ -73,10 +69,6 @@
     transition: .2s;
 }
 
-.brand .box:hover p {
-    color: #FFF;
-    transition: .2s;
-}
 
 @media screen and (max-width: 767px) {
     .brand .area {
