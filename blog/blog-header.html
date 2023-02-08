@@ -12,10 +12,12 @@
                 <li><a href="https://xullua.com/contact" title="お問い合わせ"><img src="https://xullua.com/img/mail.svg">Contact</a></li>
                 <li><a href="https://xullua.com/blog" title="ブログ/記事"><img src="https://xullua.com/img/blog.svg">Blog</a></li>
                 <li><a href="https://xla.jp/store" title="壁紙販売"><img src="https://xullua.com/img/store.svg">Store</a></li>
+                <li><a href="https://xullua.com/tools" title="Webツール"><img src="https://xullua.com/img/tools.svg">Tools</a></li>
                 <li><a href="https://twitter.com/xullua" title="Twitter"><img src="https://xullua.com/img/twitter.svg">Twitter</a></li>
             </ul>
         </nav>
         <div class="hamburger">
+            <span></span>
             <span></span>
             <span></span>
         </div>
@@ -28,14 +30,18 @@
             if ($(this).hasClass('active')) {
                 $('#navi').addClass('active');
                 $('.header-back').addClass('active');
+                $('.logo').addClass('active');
                 $('header').addClass('active');
+                $('header').addClass('hide');
                 $('html').addClass('header-noscroll');
                 document.addEventListener('touchmove', disableScroll, { passive: false });
                 document.body.classList.add('header-noscroll');
             } else {
                 $('#navi').removeClass('active');
                 $('.header-back').removeClass('active');
+                $('.logo').removeClass('active');
                 $('header').addClass('active');
+                $('header').removeClass('hide');
                 $('html').removeClass('header-noscroll');
                 document.removeEventListener('touchmove', disableScroll, { passive: false });
                 document.body.classList.remove('header-noscroll');
