@@ -18,5 +18,3 @@ fetch("blog.json")
 
         placeholder.innerHTML = out;
     });
-
-
