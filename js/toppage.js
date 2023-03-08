@@ -33,3 +33,19 @@ function changeTime() {
     }
 }
 changeTime();
+
+//ヘッダーを100vhスクロールするまで表示しない
+window.addEventListener('scroll', function () {
+    var header = document.querySelector('header');
+    if (window.scrollY < window.innerHeight) {
+        header.classList.add('hide');
+        setTimeout(function () {
+            header.style.display = 'none';
+        }, 300); // 0.3秒後にdisplay: noneを追加
+    } else {
+        header.style.display = 'block';
+        setTimeout(function () {
+            header.classList.remove('hide');
+        }, 100);
+    }
+});
