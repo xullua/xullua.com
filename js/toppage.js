@@ -20,7 +20,7 @@ var greeting = document.getElementById("greeting")
 var b = document.getElementsByTagName('body')[0];
 function changeTime() {
     if (6 < hours && hours <= 10) {
-        greeting.textContent = "おはようございます";
+        greeting.textContent = "おはよう";
     }
     else if (10 < hours && hours <= 17) {
         greeting.textContent = "こんにちは";
@@ -34,18 +34,18 @@ function changeTime() {
 }
 changeTime();
 
-//ヘッダーを100vhスクロールするまで表示しない
-window.addEventListener('scroll', function () {
-    var header = document.querySelector('header');
-    if (window.scrollY < window.innerHeight) {
-        header.classList.add('hide');
-        setTimeout(function () {
-            header.style.display = 'none';
-        }, 300); // 0.3秒後にdisplay: noneを追加
-    } else {
-        header.style.display = 'block';
-        setTimeout(function () {
-            header.classList.remove('hide');
-        }, 100);
-    }
-});
+fetch('js/top-words.json')
+  .then(response => response.json())
+  .then(data => {
+    // `data` に JSON データが格納されます
+    const randomIndex = Math.floor(Math.random() * data.length); // ランダムなインデックスを生成
+    const randomWord = data[randomIndex]; // ランダムに選んだ単語オブジェクトを取得
+
+    // `text` と `name` を HTML ページに表示する
+    const textElement = document.querySelector('#top-words-text');
+    textElement.textContent = randomWord.text;
+
+    const nameElement = document.querySelector('#top-words-name');
+    nameElement.textContent = randomWord.name;
+  })
+  .catch(error => console.error(error));
