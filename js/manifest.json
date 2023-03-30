@@ -5,5 +5,10 @@
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "var(--firstback)",
-  "theme_color": "var(--themecolor)"
+  "theme_color": "var(--themecolor)",
+  "icons": {
+    "src": "/imgs/favicon.ico",
+    "sizes": "48×48",
+    "type": "image/ico"
+  }
 }
