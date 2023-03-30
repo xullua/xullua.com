@@ -1,0 +1,9 @@
+{
+  "name": "ぞるあ",
+  "short_name": "ぞるあ",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "var(--firstback)",
+  "theme_color": "var(--themecolor)"
+}
