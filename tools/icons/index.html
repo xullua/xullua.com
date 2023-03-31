@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="ja"><head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Adobe風アイコンジェネレーター</title> <meta name="description" content="Adobe風のアイコンを好きな文字、色、サイズで作成できます。.pngか.icoで保存できるのでWindowsでもiPhoneでも簡単に設定できます。"> <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:site" content="@xullua"> <meta name="twitter:title" content="Adobe風アイコンジェネレーター"> <meta name="twitter:description" content="Adobe風のアイコンを好きな文字、色、サイズで作成できます。.pngか.icoで保存できるのでWindowsでもiPhoneでも簡単に設定できます。"> <meta name="twitter:image" content="https://xullua.com/tools/icons/samune.webp"> <link rel="shortcut icon" href="../../img/favicon.ico"> <link rel="stylesheet" href="../../css/color.css"> <link rel="stylesheet" href="../../css/base.css"> <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <script src="../../js/main.js" async></script> <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script> <script>window.dataLayer=window.dataLayer || []; function gtag(){dataLayer.push(arguments);}gtag('js', new Date()); gtag('config', 'G-JDKGJ1E005'); </script> <script>$(function (){$("#header").load("../../header.html"); $("#footer").load("../../footer.html");}); </script></head><body> <header id="header"></header> <main> <section> <h1>アイコン作成</h1> <div class="area"> <div class="preview"> <canvas id="canvas"></canvas> </div><div class="settings"> <div class="setting"> <label for="text-input" style="line-height: 1.6;">テキスト</label><br><input type="text" id="text-input" value="Pr" maxlength="3" oninput="updatePreview()"> </div><div class="setting"> <label for="color-input">テキストカラー</label><br><input type="color" id="color-input" value="#9999f8" oninput="updatePreview()"> </div><div class="setting"> <label for="size-input">サイズ</label><br><div class="select-wrap"> <select id="size-input" onchange="updatePreview()"> <option value="48">48px × 48px</option> <option value="64">64px × 64px</option> <option value="128" selected>128px × 128px</option> <option value="256">256px × 256px</option> </select> </div></div><div class="setting"> <label for="format-input">保存形式</label><br><div class="select-wrap"> <select id="format-input" onchange="updatePreview()"> <option value="png" selected>PNG</option> <option value="ico">ICO</option> </select> </div></div><div> <button id="download-btn" onclick="downloadIcon()">ダウンロード</button> </div></div></div></section> <section class="explain"> <h2>設定方法</h2> <p>各デバイスごとのアイコンの設定方法を案内します</p><a style="background: #ffffff; color: #000;" href="https://www.google.com/search?q=iPhone+%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3%E3%82%92%E5%A4%89%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95">iPhone/iPad</a> <a style="background: #5b58f3; color: #fff;" href="https://support.xullua.com/s/how-to-set-icons-on-windows">Windows</a> <a style="background: #5faa4c; color: #fff;" href="https://www.google.com/search?q=Android+%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3%E3%82%92%E5%A4%89%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95">Android</a> </section> <section class="explain"> <h2>すでに完成</h2> <p>ぞるあストアではすでに完成したものを無料で配布しています。デザイナーが文字間などを微調整しているのでここで作るより美しい仕上がりになっています。</p><a style="background: #5e6ce6; color: #fff;" href="https://store.xullua.com/?category_id=62a4317139da5f6a8efa7cbf">入手する</a> </section> </main></body><style>main{width: 100%; min-height: 100vh; padding: 50px 20px 10px 20px; display: flex; flex-flow: column; justify-content: space-evenly;}section{width: 720px; max-width: 100%; margin: 0 auto 10px auto; padding: 30px; border-radius: 20px; background: var(--secondback);}.area{display: flex;}.settings{width: calc(100% - 256px);}.setting{width: 100%; margin: 0 0 15px 0; line-height: 1;}input[type="text"], select, button{outline: none; border: none; background: var(--thirdback); padding: 4px 12px; border-radius: 99px; font-family: 'LSeedJP', sans-serif;}input[type="text"]:hover, input[type="text"]:focus, select:hover, button:hover{background: var(--fourthback);}input[type="text"]{width: 160px; font-size: 12px;}input[type="color"]{outline: none; border: none; -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; background: var(--secondback);}select{appearance: none; -moz-appearance: none; -webkit-appearance: none; cursor: pointer; color: var(--maintext); width: 160px; font-size: 12px;}.select-wrap{position: relative; background: var(--thirdback); margin: 10px 0 20px 0; border-radius: 99px; width: 160px;}.select-wrap::before{position: absolute; top: 8px; right: 12px; content: ""; width: 6px; height: 6px; border-bottom: 2px solid var(--secondtext); border-right: 2px solid var(--secondtext); transform: rotate(45deg);}button{background: var(--themecolor); cursor: pointer;}button:hover{background: var(--url);}.preview{width: 256px; margin: 0 15px 0 0;}canvas{width: 100%;}.explain a{padding: 3px 12px; border-radius: 99px; line-height: 3; font-size: 14px; margin-right: 3px;}.explain a:hover{text-decoration: underline;}@media screen and (max-width: 500px){main{padding: 50px 10px 10px;}.area{justify-content: space-between;}h2{font-size: 18px;}p{font-size: 14px;}.explain a{font-size: 12px;}.settings{width: 160px;}.preview{width: 128px; margin: 0 15px 0 0;}}</style>
+
+<script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const fontFamily = "'LSeedJP', 'Helvetica Neue', Arial, sans-serif";
+
+    function updatePreview() {
+        const text = document.getElementById("text-input").value;
+        const color = document.getElementById("color-input").value;
+        const size = parseInt(document.getElementById("size-input").value);
+        const format = document.getElementById("format-input").value;
+        const roundedCorner = size * 0.15;
+        const darkerColor = darkenColor(color, 0.80);
+
+        canvas.width = size;
+        canvas.height = size;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = darkerColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = color;
+        ctx.font = `bold ${size * 0.55}px ${fontFamily}`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+        // 丸角の描画
+        ctx.globalCompositeOperation = "destination-in";
+        ctx.beginPath();
+        ctx.moveTo(roundedCorner, 0);
+        ctx.lineTo(canvas.width - roundedCorner, 0);
+        ctx.arcTo(canvas.width, 0, canvas.width, roundedCorner, roundedCorner);
+        ctx.lineTo(canvas.width, canvas.height - roundedCorner);
+        ctx.arcTo(canvas.width, canvas.height, canvas.width - roundedCorner, canvas.height, roundedCorner);
+        ctx.lineTo(roundedCorner, canvas.height);
+        ctx.arcTo(0, canvas.height, 0, canvas.height - roundedCorner, roundedCorner);
+        ctx.lineTo(0, roundedCorner);
+        ctx.arcTo(0, 0, roundedCorner, 0, roundedCorner);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.globalCompositeOperation = "source-over";
+        const downloadBtn = document.getElementById("download-btn");
+        if (format === "png") {
+            downloadBtn.href = canvas.toDataURL("image/png");
+        } else if (format === "ico") {
+            downloadBtn.href = "";
+        }
+    }
+
+    function downloadIcon() {
+        const format = document.getElementById("format-input").value;
+        if (format === "png") {
+            const link = document.createElement("a");
+            link.download = "icon.png";
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        } else if (format === "ico") {
+            const link = document.createElement("a");
+            link.download = "icon.ico";
+            link.href = canvas.toDataURL("image/ico");
+            link.click();
+        }
+    }
+
+    function darkenColor(color, amount) {
+        const rgb = hexToRgb(color);
+        const r = Math.round(rgb.r * (1 - amount));
+        const g = Math.round(rgb.g * (1 - amount));
+        const b = Math.round(rgb.b * (1 - amount));
+        return rgbToHex(r, g, b);
+    }
+
+    function hexToRgb(hex) {
+        const r = parseInt(hex.substr(1, 2), 16);
+        const g = parseInt(hex.substr(3, 2), 16);
+        const b = parseInt(hex.substr(5, 2), 16);
+        return { r: r, g: g, b: b };
+    }
+
+    function rgbToHex(r, g, b) {
+        const hexR = r.toString(16).padStart(2, "0");
+        const hexG = g.toString(16).padStart(2, "0");
+        const hexB = b.toString(16).padStart(2, "0");
+        return `#${hexR}${hexG}${hexB}`;
+    }
+
+    updatePreview();
+</script>
+
+</html>
