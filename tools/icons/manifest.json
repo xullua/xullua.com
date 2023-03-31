@@ -1,0 +1,14 @@
+{
+  "name": "Adobe風アイコンジェネレーター",
+  "short_name": "アイコン作成",
+  "start_url": "/tools/icons",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "var(--firstback)",
+  "theme_color": "#ffa54b",
+  "icons": {
+    "src": "https://xullua.com/img/favicon.ico",
+    "sizes": "48×48",
+    "type": "image/ico"
+  }
+}
