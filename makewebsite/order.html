@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webサイト作成申し込み</title>
+    <meta name="description" content="ぞるあのWebページです。SNSへ容易にアクセスができたり、ブログを書いていたり、Webツールを作っていたりします。誰もが簡単に使えるサイトを目指しています。">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@xullua">
+    <meta name="twitter:title" content="ぞるあ">
+    <meta name="twitter:description" content="Xullua Web">
+    <meta name="twitter:image" content="https://xullua.com/img/xullualogo1.png">
+
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/color.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="order.css">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/main.js" async></script>
+    <!-- アナリティクス -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JDKGJ1E005');
+    </script>
+    <!-- 共通部分 -->
+    <script>
+        $(function () {
+            $("#header").load("../header.html");
+            $("#footer").load("../footer.html");
+        });
+    </script>
+</head>
+
+<body>
+    <header id="header"></header>
+    <main>
+        <p style="margin: 100px 0; font-weight: bold; color: #f00;">現在準備中です。送信しても反応はありません。</p>
+        <section class="order">
+            <h1>依頼する</h1>
+            <form
+                action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeR9dLgHxXxn0Ksm9DQmvTWJ3vmTNFOhwDkRsL1V7j7byVDow/formResponse"
+                method="post" target="hidden_iframe" onsubmit="submitted=true" id="myForm">
+                <div class="option name">
+                    <div class="intext">
+                        <h3>お名前・グループ名<sup>必須</sup></h3>
+                        <p>お名前を入力してください。必ず個人を特定できる本名、ネット名またはグループ名を記載してください。もしグループでの申し込みの場合は代表者名も続けて記入してください。</p>
+                    </div>
+                    <input type="text" name="entry.1255274040" id="" placeholder="ぞるあ" required>
+                </div>
+                <div class="option email">
+                    <div class="intext">
+                        <h3>メールアドレス<sup>必須</sup></h3>
+                        <p>正しい連絡の取れるメールアドレスを入力してください。</p>
+                    </div>
+                    <input type="email" name="entry.1712443818" id="" placeholder="example@xullua.com" required>
+                </div>
+                <div class="option text">
+                    <div class="intext">
+                        <h3>求める内容<sup>必須</sup></h3>
+                        <p>できるだけ詳細に教えてください。何の目的のサイトなのか。何に使用するのか。デザインの雰囲気。デザインの指定。</p>
+                    </div>
+                    <textarea name="entry.1398930053" id="" cols="30" rows="10" required></textarea>
+                </div>
+                <hr>
+                <p class="explain">ここからはオプションの選択です。後での相談の段階で自由に変更可能なので参考程度に教えてください。</p>
+                <div class="option">
+                    <div class="intext">
+                        <h3>お問い合わせフォームを希望しますか</h3>
+                        <p>サイト内に簡易お問い合わせフォームを設置します。これは送信された内容はGoogleスプレッドシートにまとめられるので知識がない人でも気軽に運用できます。</p>
+                    </div>
+                    <div class="select">
+                        <input type="radio" name="entry.2091739504" id="s11" value="作成する" data-price="400">
+                        <label for="s11">作成する</label>
+                        <input type="radio" name="entry.2091739504" id="s12" value="作成しない" data-price="0">
+                        <label for="s12">作成しない</label>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="intext">
+                        <h3>ポリシーを掲載しますか</h3>
+                        <p>プライバシーポリシーなどの規約のページを作成します。Googleアナリティクスを使用する際には絶対に必要になります。</p>
+                    </div>
+                    <div class="select">
+                        <input type="radio" name="entry.1567234718" id="s21" value="作成する" data-price="400">
+                        <label for="s21">作成する</label>
+                        <input type="radio" name="entry.1567234718" id="s22" value="作成しない" data-price="0">
+                        <label for="s22">作成しない</label>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="intext">
+                        <h3>その他のページを作成しますか</h3>
+                        <p>最低1ページ以上の自分の各SNSのリンクをまとめたページや、AboutMeのページなどサイトトップページ以外のページも作成しますか。</p>
+                    </div>
+                    <div class="select">
+                        <input type="radio" name="entry.92096239" id="s31" value="作成する" data-price="500">
+                        <label for="s31">作成する</label>
+                        <input type="radio" name="entry.92096239" id="s32" value="作成しない" data-price="0">
+                        <label for="s32">作成しない</label>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="intext">
+                        <h3>ライト/ダークモードに対応させますか</h3>
+                        <p>最近ではダークモード対応のサイトやアプリが増えてきました。閲覧している端末の設定に合わせて自動でライトモードとダークモードを切り替えするように作りますか。これによってサイトを訪れた人の満足度が高まります。
+                        </p>
+                    </div>
+                    <div class="select">
+                        <input type="radio" name="entry.799164436" id="s41" value="対応する" data-price="400">
+                        <label for="s41">対応する</label>
+                        <input type="radio" name="entry.799164436" id="s42" value="対応しない" data-price="0">
+                        <label for="s42">対応しない</label>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="intext">
+                        <h3>Googleアナリティクスを設定しますか</h3>
+                        <p>Googleアナリティクスを使用することでユーザーがサイトをどのように利用しているかを知ることができます。サイトでGoogleアナリティクスを使用できるようにしますか。</p>
+                    </div>
+                    <div class="select">
+                        <input type="radio" name="entry.352991960" id="s51" value="設定する" data-price="200">
+                        <label for="s51">設定する</label>
+                        <input type="radio" name="entry.352991960" id="s52" value="設定しない" data-price="0">
+                        <label for="s52">設定しない</label>
+                    </div>
+                </div>
+                <div class="price">
+                    <p id="total">合計金額 : 約1500円</p>
+                </div>
+                <hr>
+                <div class="option">
+                    <div class="intext">
+                        <h3>規約に同意<sup>必須</sup></h3>
+                        <p>申し込む場合は<a href="">規約</a>に同意していただく必要があります。</p>
+                    </div>
+                    <div class="agreement">
+                        <input type="checkbox" name="entry.882668368" id="agreement" value="同意する" required>
+                        <label for="agreement">同意する</label>
+                    </div>
+                </div>
+                <div class="send">
+                    <button type="submit">送信する</button>
+                    <p id="sendinfo"></p>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer id="footer"></footer>
+    <script type="text/javascript">
+        let submitted = false;
+    </script>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display: none"
+        onload="if(submitted){window.location='https://xullua.com/thanks';}"></iframe>
+</body>
+<script>
+    const DEFAULT_PRICE = 1500; /* デフォルトの価格 */
+    let totalPrice = DEFAULT_PRICE;
+    const handleClick = () => {
+        const checkedInputs = document.querySelectorAll('.select input:checked');
+        totalPrice = DEFAULT_PRICE;
+        for (const input of checkedInputs) {
+            const price = parseInt(input.getAttribute('data-price'));
+            totalPrice += price;
+        }
+        document.getElementById('total').textContent = `合計金額 : 約${totalPrice}円`;
+    };
+    const inputs2 = document.querySelectorAll('.select input');
+    for (const input2 of inputs2) {
+        input2.addEventListener('click', handleClick);
+    }
+
+    const inputs = document.querySelectorAll('input');
+    for (const input of inputs) {
+        input.addEventListener('click', handleClick);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const sendInfo = document.querySelector('#sendinfo');
+        const checkValidity = function () {
+            const isValid = form.checkValidity();
+            submitBtn.disabled = !isValid;
+            if (isValid) {
+                submitBtn.style.backgroundColor = '';
+                submitBtn.style.color = '';
+                submitBtn.style.cursor = 'pointer';
+                submitBtn.style.filter = '';
+                sendInfo.textContent = '送信に成功すると送信完了ページにリダイレクトされます';
+            } else {
+                submitBtn.style.backgroundColor = 'var(--thirdtext)';
+                submitBtn.style.color = 'var(--fourthback)';
+                submitBtn.style.cursor = 'not-allowed';
+                submitBtn.style.filter = 'none';
+                sendInfo.textContent = '必須項目を全て埋めてください';
+            }
+        }
+        checkValidity();
+        form.addEventListener('input', function (event) {
+            checkValidity();
+        });
+    });
+</script>
+
+</html>
