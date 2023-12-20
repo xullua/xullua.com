@@ -1,1 +1,779 @@
-<!DOCTYPE html><html lang="ja"><head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>ぞるあ</title> <meta name="description" content="ぞるあのWebページです。SNSへ容易にアクセスができたり、ブログを書いていたり、Webツールを作っていたりします。誰もが簡単に使えるサイトを目指しています。"> <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:site" content="@xullua"> <meta name="twitter:title" content="ぞるあ"> <meta name="twitter:description" content="Xullua Web"> <meta name="twitter:image" content="https://xullua.com/img/xullualogo1.png"> <link rel="shortcut icon" href="img/favicon.ico"> <link rel="stylesheet" href="css/color.css"> <link rel="stylesheet" href="css/base.css"> <link rel="stylesheet" href="css/style.css"> <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <script src="js/toppage.js" async></script> <script src="js/main.js" async></script> <link rel="stylesheet" href="js/manifest.json"> <meta name="mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-capable" content="yes"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script> <script>window.dataLayer=window.dataLayer || []; function gtag(){dataLayer.push(arguments);}gtag('js', new Date()); gtag('config', 'G-JDKGJ1E005'); </script> <script>$(function (){$("#header").load("header.html"); $("#footer").load("footer.html");}); </script></head><body> <header class="header" id="header"></header> <section class="top-hello" id="top"> <div class="back"> <div class="content"> <img src="img/xullualogowhite.webp"> <p class="greeting" id="greeting"></p><a href="#vote-top-words" class="shortmessage" style="color: var(--maintext);"> <p id="top-words-text"></p><p id="top-words-name"></p></a> <h1>ぞるあ</h1> </div></div><div class="access"> <div class="area"> <a title="Twitter" href="https://twitter.com/xullua"><img src="img/twitter.webp" alt="twitter"></a> <a title="ブログ/記事" href="blog"><img src="img/blog.svg" alt="blog"></a> <a title="ストア" href="store"><img src="img/store.svg" alt="store"></a> <a title="Webツール" href="tools"><img src="img/tools.svg" alt="tools"></a> <a title="Instagram" href=https://instagram.com/xullua"><img src="img/instagram.webp" alt="instagram"></a> <a title="使用デバイス" href="device"><img src="img/built.svg" alt="device"></a> <a title="YouTube" href="https://youtube.com/c/xullua"><img src="img/youtube.webp" alt="youtube"></a> </div></div></section> <section class="top-ad"> <div class="area"> <div class="box"> <div class="left"> <div class="text"> <div class="min-text">NEW</div><h3>Snake</h3> <p>新しいデザインの美しい壁紙が登場。おしゃれな9色。PayPayやクレジットカードなどで支払い可能。価格は50円。セットで買うと40％OFFで1枚当たり30円。</p><a href="https://store.xullua.com/?category_id=63f1e081fd12d123d2372172">今すぐ購入</a> <a href="#store">他の壁紙と比較する</a> </div></div><img src="img/store-ad-top.webp" alt=""> </div></div></section> <section class="vote-top-words" id="vote-top-words"> <div class="back"> <p class="mini">トップショートメッセージ</p><h2>センスが良い人<br>探してます</h2> <p class="lightexplain"> このサイトのトップに表示される皆さんのショートメッセージを募集しています。採用されたメッセージはサイトを訪れるたびにランダムで表示されます。皆さんからのセンスあるショートメッセージを期待して待っています。 </p><input type="checkbox" name="vote-top-words-page" id="vote-top-words-page"> <label for="vote-top-words-page" class="open">応募する</label> <div class="form"> <label for="vote-top-words-page" class="backclose"></label> <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScDg2tD6J3400xH1kOslT9pEYbj_reaOMBUcqSRUtxoZmx3Mg/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;"> <p class="mini">トップショートメッセージ応募フォーム </p><p class="title">お名前<span class="box" style="background: #ff5757;">必須</span></p><p class="explain">テキストの下側に表示されます。Twitterの＠で始まるID。半角英数字のみ。</p><input class="name" type="text" name="entry.123140293" placeholder="@Xullua" title="名前を入力" required maxlength="16" pattern="^[@＠][0-9A-Za-z_]+$" value="@"> <p class="title">言葉<span class="box" style="background: #ff5757;">必須</span></p><p class="explain">50字以内です。</p><textarea class="text" type="text" name="entry.681018563" placeholder="布団が吹っ飛んだ" title="面白い言葉や名言を入力" maxlength="50" required></textarea> <div class="agreement"> <p class="title">確認してチェックをつけてください</p><p style="color: var(--sub-text); font-size: 12px;">チェックをつけていない場合は送信できません</p><input type="checkbox" id="vote-top-words-agreement1" required> <label for="vote-top-words-agreement1">下品、他人を中傷、個人情報や自己を宣伝する内容は含まれていません</label> <input type="checkbox" id="vote-top-words-agreement2" required> <label for="vote-top-words-agreement2">利用規約に同意します</label> <input type="checkbox" id="vote-top-words-agreement3" required> <label for="vote-top-words-agreement3">送信された内容はぞるあの独断の判断で掲載期間を決め、勝手に削除できる物とします</label> <input type="checkbox" id="vote-top-words-agreement4" required> <label for="vote-top-words-agreement4">名前(を入力している場合)は自身の名前(ネット名可)です。他人の名前は含めていません</label> </div><button type="submit" title="クリックして送信">送信</button> <p style="color: var(--sub-text); font-size: 12px; margin-top: 5px;">正しく送信されるとページが再度読み込まれます。数秒かかることがあります。</p><div class="help"> <h3>削除の申し立て</h3> <p>自身の名前が無断で使用されていたり、過去に応募した内容の掲載を中止したい場合</p><a href="https://what.xullua.com/s/delete-top-word">更に詳しく</a> </div></form> </div></div><script>let submitted=false; const page_transition=function (){if (submitted){window.location='https://xullua.com';}}</script> <iframe name="hidden_iframe" style="display:none;" onload="page_transition()"></iframe> </section> <section class="profile" id="profile"> <h2>私について</h2> <div class="area"> <div class="box myname"> <div class="in"> <img src="img/xulluaiconwhiteblock.webp"> <div class="name"> <h3>ぞるあ</h3> <p>@Xullua</p></div></div></div><div class="box spec"> <p>男</p><p>170cm</p><p>55kg</p><p>学生</p></div><div class="box abouttext"> <p> ゲームやガジェットにまつわる話が好きな学生です。 映像や画像をはじめとしたデザインも好きで生きながら常に「このデザイン良いな」「このデザインこうするべきだろ」とツッコミを入れながら生活しています。 簡単に言えば趣味病(職業病みたいな)ですかね。<br>現実世界では成績は真ん中程度のつまらない人間です。春、、、来ないかな。。。 </p></div><div class="box twitter"> <img src="img/twitter.svg" alt=""> <h4>Twitter</h4> <p>Twitterに生息しています。毎日アクティブです。日常を基本としてツイートしてます。</p></div><div class="box skill1"> <img src="img/edit.svg" alt=""> <h4>動画編集</h4> <p>昔から動画を作るのが好きです。繋がりが気持ちいアニメーションを取り入れた動画を作るのが好きです。最近は成長してないのでしたいところ</p></div><div class="box skill1"> <img src="img/picture.svg" alt=""> <h4>画像編集</h4> <p>コラ画像をはじめとしたものを作るのが好きです。違和感がないように作るのは得意ですが、センスのいいものは作れません。</p></div><div class="box skill2"> <img src="img/code.svg" alt=""> <h4>HTML / CSS</h4> <p>まぁまぁできるようになったと思いたいです。ただ他のプログラミング言語に関しては全くできないのでできるようになりたいです。色々なことができるようになる日はいつ来るかな。。。</p></div><div class="box favorite"> <img src="img/favorite.svg" alt=""> <div class="more"> <h4>好きなこと</h4> <p>「何かを作ること」が好きです。例えば工作や、動画/画像/写真や、料理など</p></div></div><div class="box sns"> <a href="https://twitter.com/xullua" target="_blank"><img src="img/twitter.webp"></a> <a href="https://instagram.com/xullua" target="_blank"><img src="img/instagram.webp"></a> <a href="https://youtube.com/xullua" target="_blank"><img src="img/youtube.webp"></a> </div><div class="box dislike"> <img src="img/dislike.svg" alt=""> <div class="more"> <h4>嫌いなこと</h4> <p>責任を負うことがものすごく嫌いです。依頼を受けない理由の1つもこれです...</p></div></div><div class="box profilecontact"> <div class="in"> <a href="contact">問い合わせ</a> <a href="https://twitter.com/messages/compose?recipient_id=1146016040343592967">TwitterDM</a> </div></div></div><p style="font-size: 12px; text-align: center; color: var(--sub-text); margin: 10px 0 0;"> ホバーやタッチをしてより詳しい情報を見ることができます。 </p></section> <section class="store-ad" id="store"> <h2 style="font-size: 25.5px;">あなたのスマホに</h2> <h2 style="font-size: 34px;">新しい壁紙を</h2> <div class="slide"> <div class="type" id="Mystical"> <div class="area"> <input type="radio" id="mystical-purple" name="store-mystical" checked> <label for="mystical-purple"></label> <div class="content"> <img src="img/mystical-purple.webp"> <h3>Mysticalパープル</h3> <p>￥60</p><a href="https://store.xullua.com/items/647c46a15ec8250035efe73f">購入</a> </div><input type="radio" id="mystical-midnight" name="store-mystical"> <label for="mystical-midnight"></label> <div class="content"> <img src="img/mystical-midnight.webp"> <h3>Mysticalミッドナイト</h3> <p>￥60</p><a href="https://store.xullua.com/items/647c46c6fc566000348a17c1">購入</a> </div><input type="radio" id="mystical-green" name="store-mystical"> <label for="mystical-green"></label> <div class="content"> <img src="img/mystical-green.webp"> <h3>Mysticalグリーン</h3> <p>￥60</p><a href="https://store.xullua.com/items/647c4658ee8b3e002a61b271">購入</a> </div><input type="radio" id="mystical-blue" name="store-mystical"> <label for="mystical-blue"></label> <div class="content"> <img src="img/mystical-blue.webp"> <h3>Mysticalブルー</h3> <p>￥60</p><a href="https://store.xullua.com/items/647c467da39907007fd5ec52">購入</a> </div><input type="radio" id="mystical-white" name="store-mystical"> <label for="mystical-white"></label> <div class="content"> <img src="img/mystical-white.webp"> <h3>Mysticalホワイト</h3> <p>￥60</p><a href="https://store.xullua.com/items/647c45f0ee8b3e003061a44b">購入</a> </div><input type="radio" id="mystical-red" name="store-mystical"> <label for="mystical-red"></label> <div class="content"> <img src="img/mystical-red.webp"> <h3>Mysticalレッド</h3> <p>￥60</p><a href="https://store.xullua.com/items/647c461a5ec8250032f00459">購入</a> </div></div><a class="all-buy" href="https://store.xullua.com/items/647c534f044f890083f9f75c">全色購入</a> <div class="btn"> <label for="mystical-purple" style="background: #9e15ee;" title="パープル"></label> <label for="mystical-midnight" style="background: #352e4e;" title="ミッドナイト"></label> <label for="mystical-green" style="background: #0ebeb5;" title="グリーン"></label> <label for="mystical-blue" style="background: #2264f1;" title="ブルー"></label> <label for="mystical-white" style="background: #c5c5c5;" title="ホワイト"></label> <label for="mystical-red" style="background: #ff0062;" title="レッド"></label> </div></div><div class="type" id="Snake"> <div class="area"> <input type="radio" id="snake-purple" name="store-snake" checked> <label for="snake-purple"></label> <div class="content"> <img src="img/snake-purple.webp"> <h3>Snakeパープル</h3> <p>￥60</p><a href="https://store.xullua.com/items/63f1e0b5e2f3b64e2965204a">購入</a> </div><input type="radio" id="snake-green" name="store-snake"> <label for="snake-green"></label> <div class="content"> <img src="img/snake-green.webp"> <h3>Snakeグリーン</h3> <p>￥60</p><a href="https://store.xullua.com/items/63f241cbdb33f62dc1c38070">購入</a> </div><input type="radio" id="snake-red" name="store-snake"> <label for="snake-red"></label> <div class="content"> <img src="img/snake-red.webp"> <h3>Snakeレッド</h3> <p>￥60</p><a href="https://store.xullua.com/items/63f24219d1912319e5671f7a">購入</a> </div><input type="radio" id="snake-brown" name="store-snake"> <label for="snake-brown"></label> <div class="content"> <img src="img/snake-brown.webp"> <h3>Snakeブラウン</h3> <p>￥60</p><a href="https://store.xullua.com/items/63f242917d65da6b5e32941e">購入</a> </div><input type="radio" id="snake-violet" name="store-snake"> <label for="snake-violet"></label> <div class="content"> <img src="img/snake-violet.webp"> <h3>Snakeバイオレット</h3> <p>￥60</p><a href="https://store.xullua.com/items/63f2425d7c42ee0c10a4e716">購入</a> </div><input type="radio" id="snake-white" name="store-snake"> <label for="snake-white"></label> <div class="content"> <img src="img/snake-white.webp"> <h3>Snakeホワイト</h3> <p>￥50</p><a href="https://store.xullua.com/items/63f2445f97c24527263034fc">購入</a> </div><input type="radio" id="snake-black" name="store-snake"> <label for="snake-black"></label> <div class="content"> <img src="img/snake-black.webp"> <h3>Snakeブラック</h3> <p>￥50</p><a href="https://store.xullua.com/items/63f2445f97c24527263034fc">購入</a> </div><input type="radio" id="snake-light" name="store-snake"> <label for="snake-light"></label> <div class="content"> <img src="img/snake-light.webp"> <h3>Snakeライト</h3> <p>￥50</p><a href="https://store.xullua.com/items/63f2440bdb33f62dc1c380f1">購入</a> </div><input type="radio" id="snake-dark" name="store-snake"> <label for="snake-dark"></label> <div class="content"> <img src="img/snake-dark.webp"> <h3>Snakeダーク</h3> <p>￥50</p><a href="https://store.xullua.com/items/63f2440bdb33f62dc1c380f1">購入</a> </div></div><a class="all-buy" href="https://store.xullua.com/items/63f245daf54f67026ae96d16">全色購入</a> <div class="btn"> <label for="snake-purple" style="background: #e52aec;" title="パープル"></label> <label for="snake-green" style="background: #1fb0ca;" title="グリーン"></label> <label for="snake-red" style="background: #e46a07;" title="レッド"></label> <label for="snake-brown" style="background: #996545;" title="ブラウン"></label> <label for="snake-violet" style="background: #7631a1;" title="バイオレット"></label> <label for="snake-white" style="background: #dddddd;" title="ホワイト"></label> <label for="snake-black" style="background: #222222;" title="ブラック"></label> <label for="snake-light" style="background: #c4c4c4;" title="ライト"></label> <label for="snake-dark" style="background: #4d4d4d;" title="ダーク"></label> </div></div><div class="type" id="GlowWiper"> <div class="area"> <input type="radio" id="glowwiper-purple" name="store-glowwiper" checked> <label for="glowwiper-purple"></label> <div class="content"> <img src="img/GlowWiper-purple.webp"> <h3>GlowWiperパープル</h3> <p>￥60</p><a href="https://store.xullua.com/items/636522094292bf56ea4c59fc">購入</a> </div><input type="radio" id="glowwiper-green" name="store-glowwiper"> <label for="glowwiper-green"></label> <div class="content"> <img src="img/GlowWiper-green.webp"> <h3>GlowWiperグリーン</h3> <p>￥60</p><a href="https://store.xullua.com/items/636521c2abc35c538d09a7cc">購入</a> </div><input type="radio" id="glowwiper-blue" name="store-glowwiper"> <label for="glowwiper-blue"></label> <div class="content"> <img src="img/GlowWiper-blue.webp"> <h3>GlowWiperブルー</h3> <p>￥60</p><a href="https://store.xullua.com/items/636520d5211ac34d586f1e2f">購入</a> </div><input type="radio" id="glowwiper-white" name="store-glowwiper"> <label for="glowwiper-white"></label> <div class="content"> <img src="img/GlowWiper-white.webp"> <h3>GlowWiperホワイト</h3> <p>￥60</p><a href="https://store.xullua.com/items/63652131211ac33f4d6f2bdd">購入</a> </div><input type="radio" id="glowwiper-orange" name="store-glowwiper"> <label for="glowwiper-orange"></label> <div class="content"> <img src="img/GlowWiper-orange.webp"> <h3>GlowWiperオレンジ</h3> <p>￥60</p><a href="https://store.xullua.com/items/636521964ff8c26fee3a188b">購入</a> </div><input type="radio" id="glowwiper-red" name="store-glowwiper"> <label for="glowwiper-red"></label> <div class="content"> <img src="img/GlowWiper-red.webp"> <h3>GlowWiperレッド</h3> <p>￥60</p><a href="https://store.xullua.com/items/6365216bc15c5a28402ab3f9">購入</a> </div></div><a class="all-buy" href="https://store.xullua.com/items/63652499abc35c538d09a852">全色購入</a> <div class="btn"> <label for="glowwiper-purple" style="background: #bf2aec;" title="パープル"></label> <label for="glowwiper-green" style="background: #0ebeb5;" title="グリーン"></label> <label for="glowwiper-blue" style="background: #074de4;" title="ブルー"></label> <label for="glowwiper-white" style="background: #dddddd;" title="ホワイト"></label> <label for="glowwiper-orange" style="background: #e68e1b;" title="オレンジ"></label> <label for="glowwiper-red" style="background: #ff0000;" title="レッド"></label> </div></div><div class="type" id="Future"> <div class="area"> <input type="radio" id="wp-black" name="store-ad"> <label for="wp-black"></label> <div class="content"> <img src="img/wp-black.webp"> <h3>Futureブラック</h3> <p>￥60</p><a href="https://store.xullua.com/items/6241df9d6dc67b17420ce1b0">購入</a> </div><input type="radio" id="wp-blue" name="store-ad"> <label for="wp-blue"></label> <div class="content"> <img src="img/wp-blue.webp"> <h3>Futureブルー</h3> <p>￥60</p><a href="https://store.xullua.com/items/6241e0d2a861133a81e41ac1">購入</a> </div><input type="radio" id="wp-purple" name="store-ad" checked> <label for="wp-purple"></label> <div class="content"> <img src="img/wp-purple.webp"> <h3>Futureパープル</h3> <p>￥60</p><a href="https://store.xullua.com/items/623f29026dc67b5fe38bec09">購入</a> </div><input type="radio" id="wp-white" name="store-ad"> <label for="wp-white"></label> <div class="content"> <img src="img/wp-white.webp"> <h3>Futureホワイト</h3> <p>￥60</p><a href="https://store.xullua.com/items/6241e08d34e0176e3f6b1fde">購入</a> </div><input type="radio" id="wp-orange" name="store-ad"> <label for="wp-orange"></label> <div class="content"> <img src="img/wp-orange.webp"> <h3>Futureオレンジ</h3> <p>￥60</p><a href="https://store.xullua.com/items/6241e1522b2d3d7e5ad49e97">購入</a> </div><input type="radio" id="wp-pink" name="store-ad"> <label for="wp-pink"></label> <div class="content"> <img src="img/wp-pink.webp"> <h3>Futureピンク</h3> <p>￥60</p><a href="https://store.xullua.com/items/6241e1947d116110b3feefd3">購入</a> </div><input type="radio" id="wp-red" name="store-ad"> <label for="wp-red"></label> <div class="content"> <img src="img/wp-red.webp"> <h3>Futureレッド</h3> <p>￥60</p><a href="https://store.xullua.com/items/6241dfeda861137d01e41bf9">購入</a> </div><input type="radio" id="wp-green" name="store-ad"> <label for="wp-green"></label> <div class="content"> <img src="img/wp-green.webp"> <h3>Futureグリーン</h3> <p>￥60</p><a href="https://store.xullua.com/items/6241e045047a9d09d838fb1a">購入</a> </div></div><a class="all-buy"><br></a> <div class="btn"> <label for="wp-black" style="background: #141414;" title="ブラック"></label> <label for="wp-blue" style="background: #4c85ff;" title="ブルー"></label> <label for="wp-purple" style="background: #a52aec;" title="パープル"></label> <label for="wp-white" style="background: #dddddd;" title="ホワイト"></label> <label for="wp-orange" style="background: #e65b1b;" title="オレンジ"></label> <label for="wp-pink" style="background: #e923c8;" title="ピンク"></label> <label for="wp-red" style="background: #ff0d0d;" title="レッド"></label> <label for="wp-green" style="background: #0ebe26;" title="グリーン"></label> </div></div><div class="type" id="overlap"> <div class="area"> <input type="radio" id="overlap-purple" name="store-overlap" checked> <label for="overlap-purple"></label> <div class="content"> <img src="img/overlap-purple.webp"> <h3>Overlapパープル</h3> <p>￥40</p><a href="https://store.xullua.com/items/62f1e2a92fc8810f7ad98627">購入</a> </div><input type="radio" id="overlap-black" name="store-overlap"> <label for="overlap-black"></label> <div class="content"> <img src="img/overlap-black.webp"> <h3>Overlapブラック</h3> <p>￥30</p><a href="https://store.xullua.com/items/62f1e1508691ec7cf78361f4">購入</a> </div><input type="radio" id="overlap-green" name="store-overlap"> <label for="overlap-green"></label> <div class="content"> <img src="img/overlap-green.webp"> <h3>Overlapグリーン</h3> <p>￥40</p><a href="https://store.xullua.com/items/62f1e1dd21442542b4c24658">購入</a> </div><input type="radio" id="overlap-orange" name="store-overlap"> <label for="overlap-orange"></label> <div class="content"> <img src="img/overlap-orange.webp"> <h3>Overlapオレンジ</h3> <p>￥40</p><a href="https://store.xullua.com/items/62f1e2332144253a2165e01c">購入</a> </div></div><a class="all-buy" href="https://store.xullua.com/items/62f1e6c5ac36611fd2ea83d8">全色購入</a> <div class="btn"> <label for="overlap-purple" style="background: #b920ff;" title="パープル"></label> <label for="overlap-black" style="background: #222222;" title="ブラック"></label> <label for="overlap-green" style="background: #19b493;" title="グリーン"></label> <label for="overlap-orange" style="background: #ec9f57;" title="オレンジ"></label> </div></div><div class="type" id="Wave"> <div class="area"> <input type="radio" id="Wave-purple" name="store-Wave" checked> <label for="Wave-purple"></label> <div class="content"> <img src="img/Wave-purple.webp"> <h3>Waveパープル</h3> <p>￥30</p><a href="https://store.xullua.com/items/62f09a79d8893759e84bf4e8">購入</a> </div><input type="radio" id="Wave-red" name="store-Wave"> <label for="Wave-red"></label> <div class="content"> <img src="img/Wave-red.webp"> <h3>Waveレッド</h3> <p>￥30</p><a href="https://store.xullua.com/items/62f099d0110dda73315c310f">購入</a> </div><input type="radio" id="Wave-green" name="store-Wave"> <label for="Wave-green"></label> <div class="content"> <img src="img/Wave-green.webp"> <h3>Waveグリーン</h3> <p>￥30</p><a href="https://store.xullua.com/items/62f09ae0a7e560199a12b477">購入</a> </div><input type="radio" id="Wave-blue" name="store-Wave"> <label for="Wave-blue"></label> <div class="content"> <img src="img/Wave-blue.webp"> <h3>Waveブルー</h3> <p>￥30</p><a href="https://store.xullua.com/items/62f09971bef3810fbed6a007">購入</a> </div><input type="radio" id="Wave-black" name="store-Wave"> <label for="Wave-black"></label> <div class="content"> <img src="img/Wave-black.webp"> <h3>Waveブラック</h3> <p>無料</p><a href="https://store.xullua.com/items/62f09910d8893759e84bf458">購入</a> </div></div><a class="all-buy" href="https://store.xullua.com/items/62f1e858a7e560131991737f">全色購入</a> <div class="btn"> <label for="Wave-purple" style="background: #b920ff;" title="パープル"></label> <label for="Wave-red" style="background: #d12929;" title="レッド"></label> <label for="Wave-green" style="background: #09b18c;" title="グリーン"></label> <label for="Wave-blue" style="background: #3125d8;" title="ブルー"></label> <label for="Wave-black" style="background: #222222;" title="ブラック"></label> </div></div></div><div class="move"> <p>その他にも色々なデザインを安く製作しています。<br>PayPayやクレカでの支払いも対応しています。<br><a href="https://xla.jp/store">ストア</a></p></div></section> <section class="indextools" id="tools"> <h2>強力な<br>Webツール</h2> <p class="topexplain">ぞるあが作成した簡単で分かりやすいWebツールです。きっと使いやすいはず。</p><div class="grid"> <article> <img src="https://xullua.com/img/countersamune.webp" alt=""> <div class="text"> <h5>NEW</h5> <h3>文字数カウント</h3> <p>文字数を素早くカウントすることができます</p><a href="tools/counter">使用する</a> </div></article> <article> <img src="https://xullua.com/img/oishiiyami-.webp" alt=""> <div class="text"> <h5>最も人気</h5> <h3>美味しいヤミー</h3> <p>美味しいヤミーを素早くコピーできる</p><a href="tools/oishiiyami-">使用する</a> </div></article> <article> <img src="https://xullua.com/img/water-remove.webp" alt=""> <div class="text"> <h5>NEW</h5> <h3>スマホ水抜き</h3> <p>スマホの水抜き音を流せるサイト</p><a href="tools/water-remove">使用する</a> </div></article> <article> <img src="https://xullua.com/tools/icons/samune.webp" alt=""> <div class="text"> <h5></h5> <h3>アイコン生成</h3> <p>Adobe風のアイコンを生成できます</p><a href="tools/icons">使用する</a> </div></article> <article> <img src="https://xullua.com/tools/ruler/rulersamune.png" alt=""> <div class="text"> <h5></h5> <h3>Web定規</h3> <p>iPhoneで使用できるWeb定規です</p><a href="tools/ruler">使用する</a> </div></article> <article> <img src="https://calculator.xullua.com/calculatorsamune.png" alt=""> <div class="text"> <h5></h5> <h3>電卓</h3> <p>iPhone風のデザインの電卓</p><a href="https://calculator.xullua.com">使用する</a> </div></article> </div><p style="text-align: center; margin: 15px 0 0;"><a href="tools">全てのツールを見る</a></p></section> <section class="movie"> <iframe src="https://www.youtube.com/embed/piw5tuKlo3U" title="Xullua PV #8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> <iframe src="https://www.youtube.com/embed/wyEhpzx6rXE" title="Twitterモーショングラフィックス" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <iframe src="https://www.youtube.com/embed/KITUpTp1DaA" title="Xullua CM #7" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <iframe src="https://www.youtube.com/embed/AtEIPrLVHzY" title="Xullua CM6 | ぞるあをフォローしよう" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <iframe src="https://www.youtube.com/embed/ryFmB49m3-k" title="Xullua CM 5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <iframe src="https://www.youtube.com/embed/HDBGgHXrDdU" title="自作CM | " 私をフォローして!!"" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <iframe src="https://www.youtube.com/embed/dbTSgzePVcI" title="Twitterのはじめ方" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </section> <footer id="footer"></footer></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ぞるあ</title>
+  <meta name="description" content="ぞるあのWebページです。SNSへ容易にアクセスができたり、ブログを書いていたり、Webツールを作っていたりします。誰もが簡単に使えるサイトを目指しています。">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@xullua">
+  <meta name="twitter:title" content="ぞるあ">
+  <meta name="twitter:description" content="Xullua Web">
+  <meta name="twitter:image" content="https://xullua.com/img/xullualogo1.png">
+
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/color.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/toppage.js" async></script>
+  <script src="js/main.js" async></script>
+  <!-- フルスクリーン -->
+  <link rel="stylesheet" href="js/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- アナリティクス -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-JDKGJ1E005');
+  </script>
+  <!-- 共通部分 -->
+  <script>
+    $(function () {
+      $("#header").load("header.html");
+      $("#footer").load("footer.html");
+    });
+  </script>
+</head>
+
+
+<body>
+  <!-- ヘッダー -->
+  <header class="header" id="header"></header>
+
+  <!-- トップ -->
+  <section class="top-hello" id="top">
+    <div class="back">
+      <div class="content">
+        <img src="img/xullualogowhite.webp">
+        <p class="greeting" id="greeting"></p>
+        <a href="#vote-top-words" class="shortmessage" style="color: var(--maintext);">
+          <p id="top-words-text"></p>
+          <p id="top-words-name"></p>
+        </a>
+        <h1>ぞるあ</h1>
+      </div>
+    </div>
+    <div class="access">
+      <div class="area">
+        <a title="Twitter" href="https://twitter.com/xullua"><img src="img/twitter.webp" alt="twitter"></a>
+        <a title="ブログ/記事" href="blog"><img src="img/blog.svg" alt="blog"></a>
+        <a title="ストア" href="store"><img src="img/store.svg" alt="store"></a>
+        <a title="Webツール" href="tools"><img src="img/tools.svg" alt="tools"></a>
+        <a title="Instagram" href=https://instagram.com/xullua"><img src="img/instagram.webp" alt="instagram"></a>
+        <a title="使用デバイス" href="device"><img src="img/built.svg" alt="device"></a>
+        <a title="YouTube" href="https://youtube.com/c/xullua"><img src="img/youtube.webp" alt="youtube"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 宣伝 -->
+  <section class="top-ad">
+    <div class="area">
+      <div class="box">
+        <div class="left">
+          <div class="text">
+            <div class="min-text">NEW</div>
+            <h3>Elevation</h3>
+            <p>新しいデザインの落ち着いた壁紙が登場。おしゃれな3デザイン。PayPayやクレジットカードなどで支払い可能。価格は50円。セットで買うと40％OFFで120円。</p>
+            <a href="https://store.xullua.com/?category_id=6562bfdde843872ca6f5f870">今すぐ購入</a>
+            <a href="#store">他の壁紙と比較する</a>
+          </div>
+        </div>
+        <img src="img/store-ad-top.webp" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- トップワード応募 -->
+  <section class="vote-top-words" id="vote-top-words">
+    <div class="back">
+      <p class="mini">トップショートメッセージ</p>
+      <h2>センスが良い人<br>探してます</h2>
+      <p class="lightexplain">
+        このサイトのトップに表示される皆さんのショートメッセージを募集しています。採用されたメッセージはサイトを訪れるたびにランダムで表示されます。皆さんからのセンスあるショートメッセージを期待して待っています。
+      </p>
+      <input type="checkbox" name="vote-top-words-page" id="vote-top-words-page">
+      <label for="vote-top-words-page" class="open">応募する</label>
+      <div class="form">
+        <label for="vote-top-words-page" class="backclose"></label>
+        <form
+          action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScDg2tD6J3400xH1kOslT9pEYbj_reaOMBUcqSRUtxoZmx3Mg/formResponse"
+          method="post" target="hidden_iframe" onsubmit="submitted=true;" id="vote-top-words">
+          <p class="mini">トップショートメッセージ応募フォーム
+
+          </p>
+
+          <p class="title">お名前<span class="box" style="background: #ff5757;">必須</span></p>
+          <p class="explain">テキストの下側に表示されます。Twitterの＠で始まるID。半角英数字のみ。</p>
+          <input class="name" type="text" name="entry.123140293" placeholder="@Xullua" title="名前を入力" required
+            maxlength="16" pattern="^[@＠][0-9A-Za-z_]+$" value="">
+
+          <p class="title">言葉<span class="box" style="background: #ff5757;">必須</span></p>
+          <p class="explain">50字以内です。</p>
+          <textarea class="text" type="text" name="entry.681018563" placeholder="布団が吹っ飛んだ" title="面白い言葉や名言を入力"
+            maxlength="50" required></textarea>
+
+          <div class="agreement">
+            <p class="title">確認してチェックをつけてください</p>
+            <p style="color: var(--sub-text); font-size: 12px;">チェックをつけていない場合は送信できません</p>
+            <input type="checkbox" id="vote-top-words-agreement1" required>
+            <label for="vote-top-words-agreement1">下品、他人を中傷、個人情報や自己を宣伝する内容は含まれていません</label>
+            <input type="checkbox" id="vote-top-words-agreement2" required>
+            <label for="vote-top-words-agreement2">利用規約に同意します</label>
+            <input type="checkbox" id="vote-top-words-agreement3" required>
+            <label for="vote-top-words-agreement3">送信された内容はぞるあの独断の判断で掲載期間を決め、勝手に削除できる物とします</label>
+            <input type="checkbox" id="vote-top-words-agreement4" required>
+            <label for="vote-top-words-agreement4">名前(を入力している場合)は自身の名前(ネット名可)です。他人の名前は含めていません</label>
+          </div>
+
+          <button id="vote-top-words-submit" type="submit" title="クリックして送信">送信</button>
+          <p style="color: var(--sub-text); font-size: 12px; margin-top: 5px;">正しく送信されるとページが再度読み込まれます。数秒かかることがあります。</p>
+
+          <div class="help">
+            <h3>削除の申し立て</h3>
+            <p>自身の名前が無断で使用されていたり、過去に応募した内容の掲載を中止したい場合</p>
+            <a href="https://support.xullua.com/s/delete-top-word">更に詳しく</a>
+          </div>
+        </form>
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            var submitButton = document.getElementById('vote-top-words-submit');
+            submitButton.addEventListener('click', function () {
+              submitButton.classList.add('disabled');
+              submitButton.innerText = '送信中';
+              setTimeout(function () {
+                submitButton.classList.remove('disabled');
+                submitButton.innerText = '送信';
+              }, 5000);
+            });
+          });
+        </script>
+      </div>
+    </div>
+    <script>
+      let submitted = false;
+      const page_transition = function () {
+        if (submitted) {
+          window.location = 'https://xullua.com';
+        }
+      }
+    </script>
+    <iframe name="hidden_iframe" style="display:none;" onload="page_transition()"></iframe>
+  </section>
+
+  <!-- 自己紹介 -->
+  <section class="profile" id="profile">
+    <h2>私について</h2>
+    <div class="area">
+      <div class="box myname">
+        <div class="in">
+          <img src="img/xulluaiconwhiteblock.webp">
+          <div class="name">
+            <h3>ぞるあ</h3>
+            <p>@Xullua</p>
+          </div>
+        </div>
+      </div>
+      <div class="box spec">
+        <p>男</p>
+        <p>170cm</p>
+        <p>55kg</p>
+        <p>学生</p>
+      </div>
+      <div class="box abouttext">
+        <p>
+          ゲームやガジェットにまつわる話が好きな学生です。
+          映像や画像をはじめとしたデザインも好きで生きながら常に「このデザイン良いな」「このデザインこうするべきだろ」とツッコミを入れながら生活しています。
+          簡単に言えば趣味病(職業病みたいな)ですかね。<br>
+          現実世界では成績は真ん中程度のつまらない人間です。春、、、来ないかな。。。
+        </p>
+      </div>
+      <div class="box twitter">
+        <img src="img/twitter.svg" alt="">
+        <h4>Twitter</h4>
+        <p>Twitterに生息しています。毎日アクティブです。日常を基本としてツイートしてます。</p>
+      </div>
+      <div class="box skill1">
+        <img src="img/edit.svg" alt="">
+        <h4>動画編集</h4>
+        <p>昔から動画を作るのが好きです。繋がりが気持ちいアニメーションを取り入れた動画を作るのが好きです。最近は成長してないのでしたいところ</p>
+      </div>
+      <div class="box skill1">
+        <img src="img/picture.svg" alt="">
+        <h4>画像編集</h4>
+        <p>コラ画像をはじめとしたものを作るのが好きです。違和感がないように作るのは得意ですが、センスのいいものは作れません。</p>
+      </div>
+      <div class="box skill2">
+        <img src="img/code.svg" alt="">
+        <h4>HTML / CSS</h4>
+        <p>まぁまぁできるようになったと思いたいです。ただ他のプログラミング言語に関しては全くできないのでできるようになりたいです。色々なことができるようになる日はいつ来るかな。。。</p>
+      </div>
+      <div class="box favorite">
+        <img src="img/favorite.svg" alt="">
+        <div class="more">
+          <h4>好きなこと</h4>
+          <p>「何かを作ること」が好きです。例えば工作や、動画/画像/写真や、料理など</p>
+        </div>
+      </div>
+      <div class="box sns">
+        <a href="https://twitter.com/xullua" target="_blank"><img src="img/twitter.webp"></a>
+        <a href="https://instagram.com/xullua" target="_blank"><img src="img/instagram.webp"></a>
+        <a href="https://youtube.com/xullua" target="_blank"><img src="img/youtube.webp"></a>
+      </div>
+      <div class="box dislike">
+        <img src="img/dislike.svg" alt="">
+        <div class="more">
+          <h4>嫌いなこと</h4>
+          <p>責任を負うことがものすごく嫌いです。依頼を受けない理由の1つもこれです...</p>
+        </div>
+      </div>
+      <div class="box profilecontact">
+        <div class="in">
+          <a href="contact">問い合わせ</a>
+          <a href="https://twitter.com/messages/compose?recipient_id=1146016040343592967">TwitterDM</a>
+        </div>
+      </div>
+    </div>
+    <p style="font-size: 12px; text-align: center; color: var(--sub-text); margin: 10px 0 0;">
+      ホバーやタッチをしてより詳しい情報を見ることができます。
+    </p>
+  </section>
+
+  <!-- 壁紙宣伝 -->
+  <section class="store-ad" id="store">
+    <h2 style="font-size: 25.5px;">あなたのスマホに</h2>
+    <h2 style="font-size: 34px;">新しい壁紙を</h2>
+    <div class="slide">
+      <div class="type" id="Mystical">
+        <div class="area">
+
+          <input type="radio" id="mystical-purple" name="store-mystical" checked>
+          <label for="mystical-purple"></label>
+          <div class="content">
+            <img src="img/mystical-purple.webp">
+            <h3>Mysticalパープル</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/647c46a15ec8250035efe73f">購入</a>
+          </div>
+
+          <input type="radio" id="mystical-midnight" name="store-mystical">
+          <label for="mystical-midnight"></label>
+          <div class="content">
+            <img src="img/mystical-midnight.webp">
+            <h3>Mysticalミッドナイト</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/647c46c6fc566000348a17c1">購入</a>
+          </div>
+
+          <input type="radio" id="mystical-green" name="store-mystical">
+          <label for="mystical-green"></label>
+          <div class="content">
+            <img src="img/mystical-green.webp">
+            <h3>Mysticalグリーン</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/647c4658ee8b3e002a61b271">購入</a>
+          </div>
+
+          <input type="radio" id="mystical-blue" name="store-mystical">
+          <label for="mystical-blue"></label>
+          <div class="content">
+            <img src="img/mystical-blue.webp">
+            <h3>Mysticalブルー</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/647c467da39907007fd5ec52">購入</a>
+          </div>
+
+          <input type="radio" id="mystical-white" name="store-mystical">
+          <label for="mystical-white"></label>
+          <div class="content">
+            <img src="img/mystical-white.webp">
+            <h3>Mysticalホワイト</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/647c45f0ee8b3e003061a44b">購入</a>
+          </div>
+
+          <input type="radio" id="mystical-red" name="store-mystical">
+          <label for="mystical-red"></label>
+          <div class="content">
+            <img src="img/mystical-red.webp">
+            <h3>Mysticalレッド</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/647c461a5ec8250032f00459">購入</a>
+          </div>
+
+        </div>
+        <a class="all-buy" href="https://store.xullua.com/items/647c534f044f890083f9f75c">全色購入</a>
+        <div class="btn">
+          <label for="mystical-purple" style="background: #9e15ee;" title="パープル"></label>
+          <label for="mystical-midnight" style="background: #352e4e;" title="ミッドナイト"></label>
+          <label for="mystical-green" style="background: #0ebeb5;" title="グリーン"></label>
+          <label for="mystical-blue" style="background: #2264f1;" title="ブルー"></label>
+          <label for="mystical-white" style="background: #c5c5c5;" title="ホワイト"></label>
+          <label for="mystical-red" style="background: #ff0062;" title="レッド"></label>
+        </div>
+      </div>
+      <div class="type" id="Snake">
+        <div class="area">
+
+          <input type="radio" id="snake-purple" name="store-snake" checked>
+          <label for="snake-purple"></label>
+          <div class="content">
+            <img src="img/snake-purple.webp">
+            <h3>Snakeパープル</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/63f1e0b5e2f3b64e2965204a">購入</a>
+          </div>
+
+          <input type="radio" id="snake-green" name="store-snake">
+          <label for="snake-green"></label>
+          <div class="content">
+            <img src="img/snake-green.webp">
+            <h3>Snakeグリーン</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/63f241cbdb33f62dc1c38070">購入</a>
+          </div>
+
+          <input type="radio" id="snake-red" name="store-snake">
+          <label for="snake-red"></label>
+          <div class="content">
+            <img src="img/snake-red.webp">
+            <h3>Snakeレッド</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/63f24219d1912319e5671f7a">購入</a>
+          </div>
+
+          <input type="radio" id="snake-brown" name="store-snake">
+          <label for="snake-brown"></label>
+          <div class="content">
+            <img src="img/snake-brown.webp">
+            <h3>Snakeブラウン</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/63f242917d65da6b5e32941e">購入</a>
+          </div>
+
+          <input type="radio" id="snake-violet" name="store-snake">
+          <label for="snake-violet"></label>
+          <div class="content">
+            <img src="img/snake-violet.webp">
+            <h3>Snakeバイオレット</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/63f2425d7c42ee0c10a4e716">購入</a>
+          </div>
+
+          <input type="radio" id="snake-white" name="store-snake">
+          <label for="snake-white"></label>
+          <div class="content">
+            <img src="img/snake-white.webp">
+            <h3>Snakeホワイト</h3>
+            <p>￥50</p>
+            <a href="https://store.xullua.com/items/63f2445f97c24527263034fc">購入</a>
+          </div>
+
+          <input type="radio" id="snake-black" name="store-snake">
+          <label for="snake-black"></label>
+          <div class="content">
+            <img src="img/snake-black.webp">
+            <h3>Snakeブラック</h3>
+            <p>￥50</p>
+            <a href="https://store.xullua.com/items/63f2445f97c24527263034fc">購入</a>
+          </div>
+
+          <input type="radio" id="snake-light" name="store-snake">
+          <label for="snake-light"></label>
+          <div class="content">
+            <img src="img/snake-light.webp">
+            <h3>Snakeライト</h3>
+            <p>￥50</p>
+            <a href="https://store.xullua.com/items/63f2440bdb33f62dc1c380f1">購入</a>
+          </div>
+
+          <input type="radio" id="snake-dark" name="store-snake">
+          <label for="snake-dark"></label>
+          <div class="content">
+            <img src="img/snake-dark.webp">
+            <h3>Snakeダーク</h3>
+            <p>￥50</p>
+            <a href="https://store.xullua.com/items/63f2440bdb33f62dc1c380f1">購入</a>
+          </div>
+
+        </div>
+        <a class="all-buy" href="https://store.xullua.com/items/63f245daf54f67026ae96d16">全色購入</a>
+        <div class="btn">
+          <label for="snake-purple" style="background: #e52aec;" title="パープル"></label>
+          <label for="snake-green" style="background: #1fb0ca;" title="グリーン"></label>
+          <label for="snake-red" style="background: #e46a07;" title="レッド"></label>
+          <label for="snake-brown" style="background: #996545;" title="ブラウン"></label>
+          <label for="snake-violet" style="background: #7631a1;" title="バイオレット"></label>
+          <label for="snake-white" style="background: #dddddd;" title="ホワイト"></label>
+          <label for="snake-black" style="background: #222222;" title="ブラック"></label>
+          <label for="snake-light" style="background: #c4c4c4;" title="ライト"></label>
+          <label for="snake-dark" style="background: #4d4d4d;" title="ダーク"></label>
+        </div>
+      </div>
+      <div class="type" id="GlowWiper">
+        <div class="area">
+
+          <input type="radio" id="glowwiper-purple" name="store-glowwiper" checked>
+          <label for="glowwiper-purple"></label>
+          <div class="content">
+            <img src="img/GlowWiper-purple.webp">
+            <h3>GlowWiperパープル</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/636522094292bf56ea4c59fc">購入</a>
+          </div>
+
+          <input type="radio" id="glowwiper-green" name="store-glowwiper">
+          <label for="glowwiper-green"></label>
+          <div class="content">
+            <img src="img/GlowWiper-green.webp">
+            <h3>GlowWiperグリーン</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/636521c2abc35c538d09a7cc">購入</a>
+          </div>
+
+          <input type="radio" id="glowwiper-blue" name="store-glowwiper">
+          <label for="glowwiper-blue"></label>
+          <div class="content">
+            <img src="img/GlowWiper-blue.webp">
+            <h3>GlowWiperブルー</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/636520d5211ac34d586f1e2f">購入</a>
+          </div>
+
+          <input type="radio" id="glowwiper-white" name="store-glowwiper">
+          <label for="glowwiper-white"></label>
+          <div class="content">
+            <img src="img/GlowWiper-white.webp">
+            <h3>GlowWiperホワイト</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/63652131211ac33f4d6f2bdd">購入</a>
+          </div>
+
+          <input type="radio" id="glowwiper-orange" name="store-glowwiper">
+          <label for="glowwiper-orange"></label>
+          <div class="content">
+            <img src="img/GlowWiper-orange.webp">
+            <h3>GlowWiperオレンジ</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/636521964ff8c26fee3a188b">購入</a>
+          </div>
+
+          <input type="radio" id="glowwiper-red" name="store-glowwiper">
+          <label for="glowwiper-red"></label>
+          <div class="content">
+            <img src="img/GlowWiper-red.webp">
+            <h3>GlowWiperレッド</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/6365216bc15c5a28402ab3f9">購入</a>
+          </div>
+
+        </div>
+        <a class="all-buy" href="https://store.xullua.com/items/63652499abc35c538d09a852">全色購入</a>
+        <div class="btn">
+          <label for="glowwiper-purple" style="background: #bf2aec;" title="パープル"></label>
+          <label for="glowwiper-green" style="background: #0ebeb5;" title="グリーン"></label>
+          <label for="glowwiper-blue" style="background: #074de4;" title="ブルー"></label>
+          <label for="glowwiper-white" style="background: #dddddd;" title="ホワイト"></label>
+          <label for="glowwiper-orange" style="background: #e68e1b;" title="オレンジ"></label>
+          <label for="glowwiper-red" style="background: #ff0000;" title="レッド"></label>
+        </div>
+      </div>
+      <div class="type" id="Future">
+        <div class="area">
+          <input type="radio" id="wp-black" name="store-ad">
+          <label for="wp-black"></label>
+          <div class="content">
+            <img src="img/wp-black.webp">
+            <h3>Futureブラック</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/6241df9d6dc67b17420ce1b0">購入</a>
+          </div>
+
+          <input type="radio" id="wp-blue" name="store-ad">
+          <label for="wp-blue"></label>
+          <div class="content">
+            <img src="img/wp-blue.webp">
+            <h3>Futureブルー</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/6241e0d2a861133a81e41ac1">購入</a>
+          </div>
+
+          <input type="radio" id="wp-purple" name="store-ad" checked>
+          <label for="wp-purple"></label>
+          <div class="content">
+            <img src="img/wp-purple.webp">
+            <h3>Futureパープル</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/623f29026dc67b5fe38bec09">購入</a>
+          </div>
+
+          <input type="radio" id="wp-white" name="store-ad">
+          <label for="wp-white"></label>
+          <div class="content">
+            <img src="img/wp-white.webp">
+            <h3>Futureホワイト</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/6241e08d34e0176e3f6b1fde">購入</a>
+          </div>
+
+          <input type="radio" id="wp-orange" name="store-ad">
+          <label for="wp-orange"></label>
+          <div class="content">
+            <img src="img/wp-orange.webp">
+            <h3>Futureオレンジ</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/6241e1522b2d3d7e5ad49e97">購入</a>
+          </div>
+
+          <input type="radio" id="wp-pink" name="store-ad">
+          <label for="wp-pink"></label>
+          <div class="content">
+            <img src="img/wp-pink.webp">
+            <h3>Futureピンク</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/6241e1947d116110b3feefd3">購入</a>
+          </div>
+
+          <input type="radio" id="wp-red" name="store-ad">
+          <label for="wp-red"></label>
+          <div class="content">
+            <img src="img/wp-red.webp">
+            <h3>Futureレッド</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/6241dfeda861137d01e41bf9">購入</a>
+          </div>
+
+          <input type="radio" id="wp-green" name="store-ad">
+          <label for="wp-green"></label>
+          <div class="content">
+            <img src="img/wp-green.webp">
+            <h3>Futureグリーン</h3>
+            <p>￥60</p>
+            <a href="https://store.xullua.com/items/6241e045047a9d09d838fb1a">購入</a>
+          </div>
+        </div>
+        <a class="all-buy"><br></a>
+        <div class="btn">
+          <label for="wp-black" style="background: #141414;" title="ブラック"></label>
+          <label for="wp-blue" style="background: #4c85ff;" title="ブルー"></label>
+          <label for="wp-purple" style="background: #a52aec;" title="パープル"></label>
+          <label for="wp-white" style="background: #dddddd;" title="ホワイト"></label>
+          <label for="wp-orange" style="background: #e65b1b;" title="オレンジ"></label>
+          <label for="wp-pink" style="background: #e923c8;" title="ピンク"></label>
+          <label for="wp-red" style="background: #ff0d0d;" title="レッド"></label>
+          <label for="wp-green" style="background: #0ebe26;" title="グリーン"></label>
+        </div>
+      </div>
+      <div class="type" id="overlap">
+        <div class="area">
+          <input type="radio" id="overlap-purple" name="store-overlap" checked>
+          <label for="overlap-purple"></label>
+          <div class="content">
+            <img src="img/overlap-purple.webp">
+            <h3>Overlapパープル</h3>
+            <p>￥40</p>
+            <a href="https://store.xullua.com/items/62f1e2a92fc8810f7ad98627">購入</a>
+          </div>
+
+          <input type="radio" id="overlap-black" name="store-overlap">
+          <label for="overlap-black"></label>
+          <div class="content">
+            <img src="img/overlap-black.webp">
+            <h3>Overlapブラック</h3>
+            <p>￥30</p>
+            <a href="https://store.xullua.com/items/62f1e1508691ec7cf78361f4">購入</a>
+          </div>
+
+          <input type="radio" id="overlap-green" name="store-overlap">
+          <label for="overlap-green"></label>
+          <div class="content">
+            <img src="img/overlap-green.webp">
+            <h3>Overlapグリーン</h3>
+            <p>￥40</p>
+            <a href="https://store.xullua.com/items/62f1e1dd21442542b4c24658">購入</a>
+          </div>
+
+          <input type="radio" id="overlap-orange" name="store-overlap">
+          <label for="overlap-orange"></label>
+          <div class="content">
+            <img src="img/overlap-orange.webp">
+            <h3>Overlapオレンジ</h3>
+            <p>￥40</p>
+            <a href="https://store.xullua.com/items/62f1e2332144253a2165e01c">購入</a>
+          </div>
+        </div>
+        <a class="all-buy" href="https://store.xullua.com/items/62f1e6c5ac36611fd2ea83d8">全色購入</a>
+        <div class="btn">
+          <label for="overlap-purple" style="background: #b920ff;" title="パープル"></label>
+          <label for="overlap-black" style="background: #222222;" title="ブラック"></label>
+          <label for="overlap-green" style="background: #19b493;" title="グリーン"></label>
+          <label for="overlap-orange" style="background: #ec9f57;" title="オレンジ"></label>
+        </div>
+      </div>
+      <div class="type" id="Wave">
+        <div class="area">
+          <input type="radio" id="Wave-purple" name="store-Wave" checked>
+          <label for="Wave-purple"></label>
+          <div class="content">
+            <img src="img/Wave-purple.webp">
+            <h3>Waveパープル</h3>
+            <p>￥30</p>
+            <a href="https://store.xullua.com/items/62f09a79d8893759e84bf4e8">購入</a>
+          </div>
+
+          <input type="radio" id="Wave-red" name="store-Wave">
+          <label for="Wave-red"></label>
+          <div class="content">
+            <img src="img/Wave-red.webp">
+            <h3>Waveレッド</h3>
+            <p>￥30</p>
+            <a href="https://store.xullua.com/items/62f099d0110dda73315c310f">購入</a>
+          </div>
+
+          <input type="radio" id="Wave-green" name="store-Wave">
+          <label for="Wave-green"></label>
+          <div class="content">
+            <img src="img/Wave-green.webp">
+            <h3>Waveグリーン</h3>
+            <p>￥30</p>
+            <a href="https://store.xullua.com/items/62f09ae0a7e560199a12b477">購入</a>
+          </div>
+
+          <input type="radio" id="Wave-blue" name="store-Wave">
+          <label for="Wave-blue"></label>
+          <div class="content">
+            <img src="img/Wave-blue.webp">
+            <h3>Waveブルー</h3>
+            <p>￥30</p>
+            <a href="https://store.xullua.com/items/62f09971bef3810fbed6a007">購入</a>
+          </div>
+
+          <input type="radio" id="Wave-black" name="store-Wave">
+          <label for="Wave-black"></label>
+          <div class="content">
+            <img src="img/Wave-black.webp">
+            <h3>Waveブラック</h3>
+            <p>無料</p>
+            <a href="https://store.xullua.com/items/62f09910d8893759e84bf458">購入</a>
+          </div>
+        </div>
+        <a class="all-buy" href="https://store.xullua.com/items/62f1e858a7e560131991737f">全色購入</a>
+        <div class="btn">
+          <label for="Wave-purple" style="background: #b920ff;" title="パープル"></label>
+          <label for="Wave-red" style="background: #d12929;" title="レッド"></label>
+          <label for="Wave-green" style="background: #09b18c;" title="グリーン"></label>
+          <label for="Wave-blue" style="background: #3125d8;" title="ブルー"></label>
+          <label for="Wave-black" style="background: #222222;" title="ブラック"></label>
+        </div>
+      </div>
+    </div>
+    <div class="move">
+      <p>その他にも色々なデザインを安く製作しています。<br>PayPayやクレカでの支払いも対応しています。<br><a href="https://xla.jp/store">ストア</a></p>
+    </div>
+  </section>
+
+  <!-- ツール -->
+  <section class="indextools" id="tools">
+    <h2>強力な<br>Webツール</h2>
+    <p class="topexplain">ぞるあが作成した簡単で分かりやすいWebツールです。きっと使いやすいはず。</p>
+    <div class="grid">
+      <article>
+        <img src="https://xullua.com/img/countersamune.webp" alt="">
+        <div class="text">
+          <h5>NEW</h5>
+          <h3>文字数カウント</h3>
+          <p>文字数を素早くカウントすることができます</p>
+          <a href="tools/counter">使用する</a>
+        </div>
+      </article>
+      <article>
+        <img src="https://xullua.com/img/oishiiyami-.webp" alt="">
+        <div class="text">
+          <h5>最も人気</h5>
+          <h3>美味しいヤミー</h3>
+          <p>美味しいヤミーを素早くコピーできる</p>
+          <a href="tools/oishiiyami-">使用する</a>
+        </div>
+      </article>
+      <article>
+        <img src="https://xullua.com/img/water-remove.webp" alt="">
+        <div class="text">
+          <h5>NEW</h5>
+          <h3>スマホ水抜き</h3>
+          <p>スマホの水抜き音を流せるサイト</p>
+          <a href="tools/water-remove">使用する</a>
+        </div>
+      </article>
+      <article>
+        <img src="https://xullua.com/tools/icons/samune.webp" alt="">
+        <div class="text">
+          <h5></h5>
+          <h3>アイコン生成</h3>
+          <p>Adobe風のアイコンを生成できます</p>
+          <a href="tools/icons">使用する</a>
+        </div>
+      </article>
+      <article>
+        <img src="https://xullua.com/tools/ruler/rulersamune.png" alt="">
+        <div class="text">
+          <h5></h5>
+          <h3>Web定規</h3>
+          <p>iPhoneで使用できるWeb定規です</p>
+          <a href="tools/ruler">使用する</a>
+        </div>
+      </article>
+      <article>
+        <img src="https://calculator.xullua.com/calculatorsamune.png" alt="">
+        <div class="text">
+          <h5></h5>
+          <h3>電卓</h3>
+          <p>iPhone風のデザインの電卓</p>
+          <a href="https://calculator.xullua.com">使用する</a>
+        </div>
+      </article>
+    </div>
+    <p style="text-align: center; margin: 15px 0 0;"><a href="tools">全てのツールを見る</a></p>
+  </section>
+
+  <!-- 今までの動画 -->
+  <section class="movie">
+    <iframe src="https://www.youtube.com/embed/piw5tuKlo3U" title="Xullua PV #8" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/wyEhpzx6rXE" title="Twitterモーショングラフィックス" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/KITUpTp1DaA" title="Xullua CM #7" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/AtEIPrLVHzY" title="Xullua CM6 | ぞるあをフォローしよう" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/ryFmB49m3-k" title="Xullua CM 5" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/HDBGgHXrDdU" title="自作CM | " 私をフォローして!!"" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/dbTSgzePVcI" title="Twitterのはじめ方" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </section>
+
+  <!-- フッター -->
+  <footer id="footer"></footer>
+
+</body>
+
+</html>
