@@ -1,0 +1,128 @@
+.top {
+    margin: 100px auto;
+    width: min(1280px,90%);
+}
+
+.top h1 {
+    font-weight: 900;
+    font-size: 30px;
+}
+
+#quiz-container {
+    margin: 40px auto;
+    width: min(1280px,90%);
+}
+
+.question {
+    margin: 40px 0;
+}
+
+.question p {
+    font-size: 13px;
+    margin: 0px 0 20px;
+}
+
+.question input {
+    display: none;
+}
+
+.question label {
+    background: var(--secondback);
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    transition: .2s;
+}
+
+.question input:checked+label {
+    padding: 10px 20px 10px 40px;
+    filter: drop-shadow(0 0 1px var(--accentcolor));
+}
+
+.question label:hover,
+.question input:checked+label:hover {
+    background: var(--thirdback);
+    filter: drop-shadow(0 0 5px var(--accentcolorhover));
+}
+
+.question label:active,
+.question input:checked+label:active {
+    background: var(--fourthback);
+    transition: 0s;
+}
+
+.question label::before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 6px);
+    left: 20px;
+    transform: rotate(-45deg);
+    width: 0px;
+    height: 5px;
+    border-bottom: 2px solid var(--maintext);
+    border-left: 2px solid var(--maintext);
+    opacity: 0;
+    transition: .2s;
+}
+
+.question input:checked+label::before{
+    opacity: 1;
+    width: 12px;
+}
+
+button {
+    border: none;
+    outline: none;
+    background: var(--accentcolor);
+    color: #fff;
+    border-radius: 99px;
+    padding: 7px 21px;
+    font-weight: 700;
+    font-size: 18px;
+    font-family: var(--fontfamily);
+    cursor: pointer;
+    transition: .2s;
+}
+
+button:hover {
+    background: var(--accentcolorhover);
+    filter: drop-shadow(0 0 7px var(--accentcolorhover));
+}
+
+#submit-button:disabled,
+#submit-button:disabled:hover {
+    background-color: #888;
+    cursor: not-allowed;
+    filter: none;
+}
+
+.result {
+    margin: 40px auto;
+    width: min(1280px,90%);
+}
+
+.result mark {
+    padding: 0 7px;
+    border-radius: 5px;
+    background: var(--maintext);
+    color: var(--secondback);
+    font-weight: 900;
+}
+
+.result .styled-text {
+    margin: 20px 0;
+}
+
+.result .styled-text a {
+    background: var(--themecolor);
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 99px;
+    font-size: 14px;
+    transition: .2s;
+}
+
+.result .styled-text a:hover {
+    background: var(--themecolorhover);
+}

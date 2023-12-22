@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クイックMBTI診断</title>
+    <meta name="description" content="簡易的なMBTI診断です。素早くあなたのMBTIを診断し、特徴や相性のいいMBTIの結果を出します。">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@xullua">
+    <meta name="twitter:title" content="クイックMBTI診断">
+    <meta name="twitter:description" content="簡易的なMBTI診断です。素早くあなたのMBTIを診断し、特徴や相性のいいMBTIの結果を出します。">
+    <meta name="twitter:image" content="https://xullua.com/tools/mbti/mbti.webp">
+
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/color.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="mbti.css">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../js/main.js" async></script>
+    <!-- アナリティクス -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JDKGJ1E005');
+    </script>
+    <!-- 共通部分 -->
+    <script>
+        $(function () {
+            $("#header").load("../../header.html");
+            $("#footer").load("../../footer.html");
+            $("#othertools").load("../othertools.html");
+        });
+    </script>
+</head>
+
+<body>
+    <header id="header"></header>
+    <main>
+        <section class="top">
+            <h1>クイックMBTI診断</h1>
+            <p>簡易的なMBTI診断です。素早くあなたのMBTIを診断し、特徴や相性のいいMBTIの結果を出します。</p>
+        </section>
+        <section id="quiz-container">
+
+            <div id="question1" class="question">
+                <h3>あなたは外交的ですか内向的ですか？</h3>
+                <p>
+                    <b>外向的</b>：社交的でエネルギッシュ。外部の世界との交流を好み、新しい経験に開かれています。目的がなくても会話を楽しむことができ、1人でいるよりもみんなといる方が好きな人<br>
+                    <b>内向的</b>：控えめで静か。内面的な世界にエネルギーを注ぎ、独自のアイディアや考えに焦点を当てます。目的がない会話は苦手で、1人で過ごす時間が苦ではなく好きな人
+                </p>
+                <input type="radio" name="q1" value="E" id="mbtiE">
+                <label for="mbtiE">外交的</label>
+                <input type="radio" name="q1" value="I" id="mbtiI">
+                <label for="mbtiI">内向的</label>
+            </div>
+
+            <div id="question2" class="question">
+                <h3>あなたは感覚的ですか直観的ですか？</h3>
+                <p>
+                    <b>感覚的</b>：現実的で具体的。五感を頼りに、実際の事実や具体的な詳細に注目します。現実的な思考をし、枠組みの中で考える人<br>
+                    <b>直観的</b>：洞察力があり、抽象的なアイディアや未来の可能性に興味を持ちます。シンボルや隠れた意味に敏感です。守りたいルールだけ守り、枠組みを飛び越えた考え方をする人
+                </p>
+                <input type="radio" name="q2" value="S" id="mbtiS">
+                <label for="mbtiS">感覚的</label>
+                <input type="radio" name="q2" value="N" id="mbtiN">
+                <label for="mbtiN">直観的</label>
+            </div>
+
+            <div id="question3" class="question">
+                <h3>あなたは感情的ですか論理的ですか？</h3>
+                <p>
+                    <b>感情的</b>：感情に敏感で、他人との関係や価値観に重きを置く。思いやりや共感があります。感情を優先し、人の気持ちをよく理解する人<br>
+                    <b>論理的</b>：論理的で客観的。問題解決に論理を用い、客観的な基準に基づいて意思決定します。論理を優先し、感情が論理を超えることはないと思っている人
+                </p>
+                <input type="radio" name="q3" value="F" id="mbtiF">
+                <label for="mbtiF">感情的</label>
+                <input type="radio" name="q3" value="T" id="mbtiT">
+                <label for="mbtiT">論理的</label>
+            </div>
+
+            <div id="question4" class="question">
+                <h3>あなたは知覚的ですか審判的ですか？</h3>
+                <p>
+                    <b>知覚的</b>：柔軟で適応力があり、新しい情報や状況にオープン。計画を立てるよりも、柔軟に対応します。人のために行動することができ、目的に向かって一直線な人<br>
+                    <b>審判的</b>：構築的で計画的。計画をたて、組織し、予測可能な状況を好みます。情熱のために行動することができ、目的を実行する際に寄り道をしながら行く人
+                </p>
+                <input type="radio" name="q4" value="P" id="mbtiP">
+                <label for="mbtiP">知覚的</label>
+                <input type="radio" name="q4" value="J" id="mbtiJ">
+                <label for="mbtiJ">審判的</label>
+            </div>
+
+            <button id="submit-button" onclick="showResult()">結果を出す</button>
+        </section>
+
+        <section class="result">
+            <div id="result-container"></div>
+            <div id="result-details">
+                <p id="result-description"></p>
+                <p class="styled-text" id="result-link"></p>
+            </div>
+        </section>
+
+        <script>
+            function showResult() {
+                // 質問ごとの選択肢を取得
+                const q1 = document.querySelector('input[name="q1"]:checked').value;
+                const q2 = document.querySelector('input[name="q2"]:checked').value;
+                const q3 = document.querySelector('input[name="q3"]:checked').value;
+                const q4 = document.querySelector('input[name="q4"]:checked').value;
+
+                // MBTIを生成
+                const mbti = q1 + q2 + q3 + q4;
+
+                // 結果とリンクを表示
+                const resultContainer = document.getElementById('result-container');
+                resultContainer.innerHTML = `<h2>あなたのMBTIは <mark>${mbti}</mark> です。</h2>`;
+
+                // MBTIの結果に応じた文章を表示
+                const resultDescription = document.getElementById('result-description');
+                resultDescription.innerHTML = generateDescription(mbti);
+
+                // "さらに詳しく"ボタンのリンクを表示
+                const resultLink = document.getElementById('result-link');
+                resultLink.innerHTML = `<a href="${generateLink(mbti)}" target="_blank">さらに詳しく</a>`;
+
+                // 詳細を表示
+                showDetails();
+            }
+
+            function generateLink(mbti) {
+                // ここに各MBTIに対応する別ページへのリンクを追加
+                const links = {
+                    'INTJ': 'https://xullua.com/tools/mbti/intj',
+                    'INTP': 'https://xullua.com/tools/mbti/intp',
+                    'ENTJ': 'https://xullua.com/tools/mbti/entj',
+                    'ENTP': 'https://xullua.com/tools/mbti/entp',
+                    'INFJ': 'https://xullua.com/tools/mbti/infj',
+                    'INFP': 'https://xullua.com/tools/mbti/infp',
+                    'ENFJ': 'https://xullua.com/tools/mbti/enfj',
+                    'ENFP': 'https://xullua.com/tools/mbti/enfp',
+                    'ISTJ': 'https://xullua.com/tools/mbti/istj',
+                    'ISFJ': 'https://xullua.com/tools/mbti/isfj',
+                    'ESTJ': 'https://xullua.com/tools/mbti/estj',
+                    'ESFJ': 'https://xullua.com/tools/mbti/esfj',
+                    'ISTP': 'https://xullua.com/tools/mbti/istp',
+                    'ISFP': 'https://xullua.com/tools/mbti/isfp',
+                    'ESTP': 'https://xullua.com/tools/mbti/estp',
+                    'ESFP': 'https://xullua.com/tools/mbti/esfp',
+                };
+
+                return links[mbti] || '#';
+            }
+
+            function generateDescription(mbti) {
+                // MBTIの結果に応じた文章を返す
+                const descriptions = {
+                    'INTJ': 'あなたは<b>戦略的な戦略家</b>。知識と洞察に基づいた強力な戦略家で、目標達成のために冷静な論理を駆使します。想像力が豊かで、戦略的な思考の持ち主。ENTJやINTPと相性が良いです。',
+                    'INTP': 'あなたは<b>ロジカルな解析者</b>。論理的で冷静な思考力を持ち、知識の追求と問題解決に熱心です。貪欲な知識欲を持つ革新的な発明家。ENTPやINTJと相性が良いです。',
+                    'ENTJ': 'あなたは<b>決断力のある司令官</b>。目標志向で効果的な組織運営を行い、冷静で合理的な意思決定を行います。常に道を見つけるか切り開きます。ISTJやESTJと相性が良いです。',
+                    'ENTP': 'あなたは<b>概念的な発明家</b>。創造的で概念的なアイデアを追求し、柔軟な思考力で新しい可能性を見出します。賢くて好奇心旺盛な思考家。INTPやENFJと相性が良いです。',
+                    'INFJ': 'あなたは<b>洞察力のある助言者</b>。洞察力豊かで独創的なアイデアを持つ。他者の感情に共感し、理想主義的なリーダーシップを発揮します。物静かで神秘的だが、人々を非常に勇気づける飽きることのない理想主義者。ENFJやINFPと相性が良いです。',
+                    'INFP': 'あなたは<b>熱情的な夢想家</b>。 独創的で理想主義的な人で、他者との調和を重視しながらも自らの価値観を大切にします。良い物事のためならば、いつでも全力に手を差し伸べます。ENFPやINFJと相性が良いです。',
+                    'ENFJ': 'あなたは<b>社会的な提唱者</b>。社交的で感受性があり、他者を鼓舞し組織内での調和を重視するリーダーです。カリスマ性があり、人々を励ますリーダー的な人。INFJやENFPと相性が良いです。',
+                    'ENFP': 'あなたは<b>想像力豊かな提唱者</b>。想像力豊かで柔軟な発想を持ち、人々を感動させるアイデアを提案します。情熱的で独創力があり、社交的な自由人。INFPやENFJと相性が良いです。',
+                    'ISTJ': 'あなたは<b>慎重な管理者</b>。 実践的で責任感が強く、計画的で効率的なリーダーシップを持つ。細部に注意し、組織を着実に運営します。実用的で事実に基づいた思考の持ち主。ISFJやESTPと相性が良いです。',
+                    'ISFJ': 'あなたは<b>実践的な擁護者</b>。忠実で思いやりがあり、他者のニーズに敏感。協力的で組織の円滑な機能をサポートします。非常に献身的で心の温かい人。ISTJやESFPと相性が良いです。',
+                    'ESTJ': 'あなたは<b>責任感のある管理者</b>。堅実で組織を効果的に管理し、リーダーシップを取ることに長けています。物事や人々を管理する能力においては右に出る者はいない。ISTJやENTJと相性が良いです。',
+                    'ESFJ': 'あなたは<b>社交的な実践者</b>。社交的で協力的な人で、他者のニーズを理解しサポートすることに優れています。常に熱心に人々に手を差し伸べています。ISFJやENFJと相性が良いです。',
+                    'ISTP': 'あなたは<b>冷静な冒険者</b>。冷静で冒険心旺盛なトラブルシューター。実用的な手腕で問題にアプローチします。大胆で実践的な思考を持つ実験者。あらゆる道具を使いこなします。ESTPやISFPと相性が良いです。',
+                    'ISFP': 'あなたは<b>柔軟で思いやりのある芸術家</b>。芸術的で感受性豊かな人で、他者に対して思いやりを持ちながら自分の芸術的な表現を追求します。常に進んで物事を探索し経験しようとします。ESFPやISTPと相性が良いです。',
+                    'ESTP': 'あなたは<b>行動力のある起業家</b>。冒険心旺盛で即座の行動力があり、リーダーシップを発揮することが得意です。賢くエネルギッシュで、非常に鋭い近くの持ち主。ISTPやESTJと相性が良いです。',
+                    'ESFP': 'あなたは<b>社交的なエンターテイナー</b>。社交的で楽観的な人で、他者を元気にすることが得意なエンターテイナーです。自発性がありエネルギッシュで周りが退屈することはありません。ISFPやENFPと相性が良いです。',
+                };
+
+                return descriptions[mbti] || '詳細な説明がありません。';
+            }
+
+            function showDetails() {
+                const detailsContainer = document.getElementById('result-details');
+                detailsContainer.style.display = 'block';
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const submitButton = document.getElementById('submit-button');
+                submitButton.disabled = true;
+            });
+
+            // 4つの質問全てが選択されたかどうかをチェックする関数
+            function checkAllQuestionsAnswered() {
+                const q1 = document.querySelector('input[name="q1"]:checked');
+                const q2 = document.querySelector('input[name="q2"]:checked');
+                const q3 = document.querySelector('input[name="q3"]:checked');
+                const q4 = document.querySelector('input[name="q4"]:checked');
+
+                // 全ての質問が回答されている場合にtrueを返す
+                return q1 && q2 && q3 && q4;
+            }
+
+            // フォームの変更時に4つの質問が全て回答されているか確認し、ボタンの有効/無効を切り替える
+            document.querySelectorAll('input[type="radio"]').forEach(function (input) {
+                input.addEventListener('change', function () {
+                    const submitButton = document.getElementById('submit-button');
+                    submitButton.disabled = !checkAllQuestionsAnswered();
+                });
+            });
+        </script>
+    </main>
+    <section id="othertools" style="width: min(1310px,90% + 30px); margin: 0 auto;"></section>
+    <footer id="footer"></footer>
+</body>
+
+</html>
