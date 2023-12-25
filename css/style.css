@@ -1446,43 +1446,57 @@ input:checked+label+.content {
   }
 }
 
-/* 今までの動画 */
-.movie {
-  width: 100%;
+/* instagram AD */
+.instaad {
+  width: min(1280px,90%);
   margin: 60px auto;
-  padding: 0 calc((100% - 1240px)/2);
+}
+
+.instaad .area {
+  min-height: 60vh;
+  background-position: center center;
+  background-size: 115%;
+  border-radius: 15px;
+  padding: 15px 15px 20px;
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding: 0 0 0 calc((100% - 1200px)/2);
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-.movie iframe {
-  min-width: 400px;
-  aspect-ratio: 16 / 9;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  margin: 20px 10px;
-  border-radius: 10px;
-  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1));
+.instaad img {
+  width: min(35px,8%);
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
 }
 
-@media screen and (max-width: 1280px) {
-  .movie {
-    padding: 0 30px;
-    scroll-padding: 0 0 0 40px;
-  }
+.instaad .in {
+  width: 100%;
+  line-height: 1.3;
 }
 
-@media screen and (max-width: 767px) {
-  .movie {
-    scroll-padding: 0 0 0 20px;
-  }
+.instaad .in h2 {
+  font-weight: 900;
+  font-size: 32px;
+}
 
-  .movie iframe {
-    width: 300px;
-    min-width: 300px;
-  }
+.instaad .in p {
+  font-size: 12px;
+  margin: 0 0 15px;
+}
+
+.instaad .in a {
+  color: var(--btntext);
+  background: var(--btn);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 99px;
+  transition: 1s;
+}
+
+.instaad .in a:hover {
+  background: var(--btnhover);
+  transition: .2s;
 }
 
 /* お問い合わせ完了 */
