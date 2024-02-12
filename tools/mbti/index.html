@@ -53,13 +53,13 @@
         <section id="quiz-container">
 
             <div id="question1" class="question">
-                <h3>あなたは外交的ですか内向的ですか？</h3>
+                <h3>あなたは外向的ですか内向的ですか？</h3>
                 <p>
                     <b>外向的</b>：社交的でエネルギッシュ。外部の世界との交流を好み、新しい経験に開かれています。目的がなくても会話を楽しむことができ、1人でいるよりもみんなといる方が好きな人<br>
                     <b>内向的</b>：控えめで静か。内面的な世界にエネルギーを注ぎ、独自のアイディアや考えに焦点を当てます。目的がない会話は苦手で、1人で過ごす時間が苦ではなく好きな人
                 </p>
                 <input type="radio" name="q1" value="E" id="mbtiE">
-                <label for="mbtiE">外交的</label>
+                <label for="mbtiE">外向的</label>
                 <input type="radio" name="q1" value="I" id="mbtiI">
                 <label for="mbtiI">内向的</label>
             </div>
@@ -113,33 +113,21 @@
 
         <script>
             function showResult() {
-                // 質問ごとの選択肢を取得
                 const q1 = document.querySelector('input[name="q1"]:checked').value;
                 const q2 = document.querySelector('input[name="q2"]:checked').value;
                 const q3 = document.querySelector('input[name="q3"]:checked').value;
                 const q4 = document.querySelector('input[name="q4"]:checked').value;
-
-                // MBTIを生成
                 const mbti = q1 + q2 + q3 + q4;
-
-                // 結果とリンクを表示
                 const resultContainer = document.getElementById('result-container');
                 resultContainer.innerHTML = `<h2>あなたのMBTIは <mark>${mbti}</mark> です。</h2>`;
-
-                // MBTIの結果に応じた文章を表示
                 const resultDescription = document.getElementById('result-description');
                 resultDescription.innerHTML = generateDescription(mbti);
-
-                // "さらに詳しく"ボタンのリンクを表示
                 const resultLink = document.getElementById('result-link');
                 resultLink.innerHTML = `<a href="${generateLink(mbti)}" target="_blank">${mbti}についてさらに詳しく</a>`;
-
-                // 詳細を表示
                 showDetails();
             }
 
             function generateLink(mbti) {
-                // ここに各MBTIに対応する別ページへのリンクを追加
                 const links = {
                     'INTJ': 'https://xullua.com/tools/mbti/intj',
                     'INTP': 'https://xullua.com/tools/mbti/intp',
@@ -158,12 +146,10 @@
                     'ESTP': 'https://xullua.com/tools/mbti/estp',
                     'ESFP': 'https://xullua.com/tools/mbti/esfp',
                 };
-
                 return links[mbti] || '#';
             }
 
             function generateDescription(mbti) {
-                // MBTIの結果に応じた文章を返す
                 const descriptions = {
                     'INTJ': 'あなたは<b>戦略的な戦略家</b>。知識と洞察に基づいた強力な戦略家で、目標達成のために冷静な論理を駆使します。想像力が豊かで、戦略的な思考の持ち主。ENTJやINTPと相性が良いです。',
                     'INTP': 'あなたは<b>ロジカルな解析者</b>。論理的で冷静な思考力を持ち、知識の追求と問題解決に熱心です。貪欲な知識欲を持つ革新的な発明家。ENTPやINTJと相性が良いです。',
@@ -182,7 +168,6 @@
                     'ESTP': 'あなたは<b>行動力のある起業家</b>。冒険心旺盛で即座の行動力があり、リーダーシップを発揮することが得意です。賢くエネルギッシュで、非常に鋭い近くの持ち主。ISTPやESTJと相性が良いです。',
                     'ESFP': 'あなたは<b>社交的なエンターテイナー</b>。社交的で楽観的な人で、他者を元気にすることが得意なエンターテイナーです。自発性がありエネルギッシュで周りが退屈することはありません。ISFPやENFPと相性が良いです。',
                 };
-
                 return descriptions[mbti] || '詳細な説明がありません。';
             }
 
@@ -196,18 +181,14 @@
                 submitButton.disabled = true;
             });
 
-            // 4つの質問全てが選択されたかどうかをチェックする関数
             function checkAllQuestionsAnswered() {
                 const q1 = document.querySelector('input[name="q1"]:checked');
                 const q2 = document.querySelector('input[name="q2"]:checked');
                 const q3 = document.querySelector('input[name="q3"]:checked');
                 const q4 = document.querySelector('input[name="q4"]:checked');
-
-                // 全ての質問が回答されている場合にtrueを返す
                 return q1 && q2 && q3 && q4;
             }
 
-            // フォームの変更時に4つの質問が全て回答されているか確認し、ボタンの有効/無効を切り替える
             document.querySelectorAll('input[type="radio"]').forEach(function (input) {
                 input.addEventListener('change', function () {
                     const submitButton = document.getElementById('submit-button');
