@@ -1,1 +1,153 @@
-/* カラー設定 */:root{--main-back: #FFF; --sub-back: #f3f3f3; --third-back: #FFFFFF; --four-back: #f3f3f3; --main-text: #000000; --sub-text: #6e6e6e; --third-text: #333333; --blue-1: #8991ff; --blue-2: #eaeaff; --blue-3: #3232aa; --yellow-1: #bdbd00; --top-hello-gradation: linear-gradient(#00000046 70%, #f0f0f4); /* テキスト,背景 */ --firstback: #f0f0f4; --secondback: #ffffff; --thirdback: #f6f6fa; --fourthback: #e8e8eb; --fifthback: #eaeaff; --sixthback: #c4c4ca; --maintext: #0b0b0f; --subtext: #555559; --secondtext: #0b0b0fbb; --thirdtext: #0b0b0f88; --btn: #3a3a3a; --btnhover: #000000; --btntext: #ffffff; --url: #1f7dff; --urlhover: #3ea5ff; --line: #aaaaaa; --header-back: #ffffffbb; /* テーマカラー */ --themecolor: #1c7eff; --themecolorhover: #539dff; --accentcolor: #ff9900; --accentcolorhover: #d37f00; --explain: #b700ff; --help: #ff7b00; --support: #0084ff; --explainback: #b700ff33; --helpback: #ff7b0033; --supportback: #0084ff33; /* 影 */ --shadow-blackwhite1: 0 0 10px rgba(0, 0, 0, 0.2); /* イージング */ --easing27: cubic-bezier(0, 1, 1, 1); /* 徐々に減速 */ --easing26: cubic-bezier(1, 0, 1, 1); /* 徐々に加速 */ --easing8: cubic-bezier(.6, 0, .4, 1); /* 最初と最後がゆっくり*/ /* スクロールバーカラー */ --bar-back: #fff0; --bar-track: rgba(150, 150, 150, 0.2); --bar-hover: rgba(140, 140, 140, 0.3); --bar-active: rgba(130, 130, 130, 0.4); /* 黒画像の色変化 */ --img-change-white: none; --img-change-black: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%); --img-change-gray: none; --img-change-red: none; --img-change-green: none; --img-change-blue: none; --img-change-skyblue: none; --img-change-purple: none; --img-change-orange: none; --img-change-yellow: none;}@media (prefers-color-scheme: dark){:root{--main-back: #1f1f1f; --sub-back: #000000; --third-back: #000000; --four-back: #1f1f1f; --main-text: #eeeeee; --sub-text: #bebebe; --third-text: #dddddd; --blue-1: #8991ff; --blue-2: #000030; --blue-3: #4d4dff; --yellow-1: #FFFF00; --top-hello-gradation: linear-gradient(#18181c33 70%, #18181c); /* テキスト,背景 */ --firstback: #18181c; --secondback: #000000; --thirdback: #202022; --fourthback: #303032; --fifthback: #404042; --sixthback: #505052; --maintext: #fbfbff; --subtext: #aaaaaa; --secondtext: #fbfbffbb; --thirdtext: #fbfbff88; --btn: #d1d1d1; --btnhover: #ffffff; --btntext: #000000; --url: #569cff; --urlhover: #40a6ff; --line: #777777; --header-back: #000000bb; /* テーマカラー */ --themecolor: #5188ff; --themecolorhover: #7ca6ff; --accentcolor: #ec8b29; --accentcolorhover: #fcaa58; --explain: #b700ff; --help: #ff7b00; --support: #0084ff; --explainback: #b700ff33; --helpback: #ff7b0033; --supportback: #0084ff33; /* 影 */ --shadow-blackwhite1: 0 0 10px rgba(185, 185, 185, 0.2); /* スクロールバーカラー */ --bar-back: #000; --bar-track: rgba(80, 80, 80, 0.5); --bar-hover: rgba(100, 100, 100, 0.6); --bar-active: rgba(120, 120, 120, 0.7); color-scheme: dark; /* 黒画像の色変化 */ --img-change-white: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%); --img-change-black: none; --img-change-gray: invert(50%) sepia(0%) saturate(11%) hue-rotate(143deg) brightness(101%) contrast(93%); --img-change-red: invert(15%) sepia(95%) saturate(6932%) hue-rotate(358deg) brightness(95%) contrast(112%); --img-change-green: invert(17%) sepia(91%) saturate(7085%) hue-rotate(128deg) brightness(100%) contrast(106%); --img-change-blue: invert(8%) sepia(99%) saturate(7044%) hue-rotate(247deg) brightness(100%) contrast(145%); --img-change-skyblue: invert(88%) sepia(100%) saturate(2929%) hue-rotate(104deg) brightness(99%) contrast(104%); --img-change-purple: invert(11%) sepia(71%) saturate(5170%) hue-rotate(293deg) brightness(87%) contrast(111%); --img-change-orange: invert(72%) sepia(26%) saturate(6428%) hue-rotate(1deg) brightness(105%) contrast(102%); --img-change-yellow: invert(81%) sepia(81%) saturate(633%) hue-rotate(359deg) brightness(106%) contrast(105%);}}/* グラデーションテキスト */.gradation-text-1{background: linear-gradient(45deg, #fa91f1, #5248a7); background: -webkit-linear-gradient(45deg, #fa91f1, #5248a7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+/* カラー設定 */
+:root {
+    --main-back: #FFF;
+    --sub-back: #f3f3f3;
+    --third-back: #FFFFFF;
+    --four-back: #f3f3f3;
+    --main-text: #000000;
+    --sub-text: #6e6e6e;
+    --third-text: #333333;
+    --blue-1: #8991ff;
+    --blue-2: #eaeaff;
+    --blue-3: #3232aa;
+    --yellow-1: #bdbd00;
+    --top-hello-gradation: linear-gradient(#00000046 70%, #f0f0f4);
+
+    /* テキスト,背景 */
+    --firstback: #f0f0f4;
+    --secondback: #ffffff;
+    --thirdback: #f6f6fa;
+    --fourthback: #e8e8eb;
+    --fifthback: #eaeaff;
+    --sixthback: #c4c4ca;
+    --maintext: #0b0b0f;
+    --subtext: #555559;
+    --secondtext: #0b0b0fbb;
+    --thirdtext: #0b0b0f88;
+    --btn: #3a3a3a;
+    --btnhover: #000000;
+    --btntext: #ffffff;
+    --url: #1f7dff;
+    --urlhover: #3ea5ff;
+    --line: #aaaaaa;
+    --header-back: #ffffffbb;
+    --headerback: linear-gradient(var(--firstback),#fffb);
+    /* テーマカラー */
+    --themecolor: #1c7eff;
+    --themecolorhover: #539dff;
+    --accentcolor: #ff9900;
+    --accentcolorhover: #d37f00;
+    --explain: #b700ff;
+    --help: #ff7b00;
+    --support: #0084ff;
+    --explainback: #b700ff33;
+    --helpback: #ff7b0033;
+    --supportback: #0084ff33;
+
+    /* 影 */
+    --shadow-blackwhite1: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    /* イージング */
+    --easing27: cubic-bezier(0, 1, 1, 1);
+    /* 徐々に減速 */
+    --easing26: cubic-bezier(1, 0, 1, 1);
+    /* 徐々に加速 */
+    --easing8: cubic-bezier(.6, 0, .4, 1);
+    /* 最初と最後がゆっくり*/
+
+    /* スクロールバーカラー */
+    --bar-back: #fff0;
+    --bar-track: rgba(150, 150, 150, 0.2);
+    --bar-hover: rgba(140, 140, 140, 0.3);
+    --bar-active: rgba(130, 130, 130, 0.4);
+
+    /* 黒画像の色変化 */
+    --img-change-white: none;
+    --img-change-black: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+    --img-change-gray: none;
+    --img-change-red: none;
+    --img-change-green: none;
+    --img-change-blue: none;
+    --img-change-skyblue: none;
+    --img-change-purple: none;
+    --img-change-orange: none;
+    --img-change-yellow: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-back: #1f1f1f;
+        --sub-back: #000000;
+        --third-back: #000000;
+        --four-back: #1f1f1f;
+        --main-text: #eeeeee;
+        --sub-text: #bebebe;
+        --third-text: #dddddd;
+        --blue-1: #8991ff;
+        --blue-2: #000030;
+        --blue-3: #4d4dff;
+        --yellow-1: #FFFF00;
+        --top-hello-gradation: linear-gradient(#18181c33 70%, #18181c);
+
+        /* テキスト,背景 */
+        --firstback: #18181c;
+        --secondback: #000000;
+        --thirdback: #202022;
+        --fourthback: #303032;
+        --fifthback: #404042;
+        --sixthback: #505052;
+        --maintext: #fbfbff;
+        --subtext: #aaaaaa;
+        --secondtext: #fbfbffbb;
+        --thirdtext: #fbfbff88;
+        --btn: #d1d1d1;
+        --btnhover: #ffffff;
+        --btntext: #000000;
+        --url: #569cff;
+        --urlhover: #40a6ff;
+        --line: #777777;
+        --header-back: #000000bb;
+        --headerback: linear-gradient(var(--firstback),#000a);
+        /* テーマカラー */
+        --themecolor: #5188ff;
+        --themecolorhover: #7ca6ff;
+        --accentcolor: #ec8b29;
+        --accentcolorhover: #fcaa58;
+        --explain: #b700ff;
+        --help: #ff7b00;
+        --support: #0084ff;
+        --explainback: #b700ff33;
+        --helpback: #ff7b0033;
+        --supportback: #0084ff33;
+
+        /* 影 */
+        --shadow-blackwhite1: 0 0 10px rgba(185, 185, 185, 0.2);
+
+        /* スクロールバーカラー */
+        --bar-back: #000;
+        --bar-track: rgba(80, 80, 80, 0.5);
+        --bar-hover: rgba(100, 100, 100, 0.6);
+        --bar-active: rgba(120, 120, 120, 0.7);
+        color-scheme: dark;
+
+        /* 黒画像の色変化 */
+        --img-change-white: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+        --img-change-black: none;
+        --img-change-gray: invert(50%) sepia(0%) saturate(11%) hue-rotate(143deg) brightness(101%) contrast(93%);
+        --img-change-red: invert(15%) sepia(95%) saturate(6932%) hue-rotate(358deg) brightness(95%) contrast(112%);
+        --img-change-green: invert(17%) sepia(91%) saturate(7085%) hue-rotate(128deg) brightness(100%) contrast(106%);
+        --img-change-blue: invert(8%) sepia(99%) saturate(7044%) hue-rotate(247deg) brightness(100%) contrast(145%);
+        --img-change-skyblue: invert(88%) sepia(100%) saturate(2929%) hue-rotate(104deg) brightness(99%) contrast(104%);
+        --img-change-purple: invert(11%) sepia(71%) saturate(5170%) hue-rotate(293deg) brightness(87%) contrast(111%);
+        --img-change-orange: invert(72%) sepia(26%) saturate(6428%) hue-rotate(1deg) brightness(105%) contrast(102%);
+        --img-change-yellow: invert(81%) sepia(81%) saturate(633%) hue-rotate(359deg) brightness(106%) contrast(105%);
+    }
+}
+
+/* グラデーションテキスト */
+.gradation-text-1 {
+    background: linear-gradient(45deg, #fa91f1, #5248a7);
+    background: -webkit-linear-gradient(45deg, #fa91f1, #5248a7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
