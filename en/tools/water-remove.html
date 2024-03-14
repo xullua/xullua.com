@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can play the sound of a phone draining（Water Remove）</title>
+    <meta name="description" content="Play the sound of water draining clogged in the phone's speaker. If the sound is caged, water may be clogged.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@xullua">
+    <meta name="twitter:title" content="Can play the sound of a phone draining（Water Remove）">
+    <meta name="twitter:description" content="Play the sound of water draining clogged in the phone's speaker. If the sound is caged, water may be clogged.">
+    <meta name="twitter:image" content="https://xullua.com/img/water-remove.webp">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <link rel="stylesheet" href="../../css/color.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JDKGJ1E005');
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../js/main.js" async></script>
+    <script>
+        $(function () {
+            $("#header").load("../header.html");
+            $("#footer").load("../footer.html");
+            $("#othertools").load("../../tools/othertools.html");
+        });
+    </script>
+</head>
+
+<style>
+    main {
+        width: min(1000px - 40px, 100% - 40px);
+        margin: 0 auto;
+        padding: 80px 0;
+        text-align: center;
+    }
+
+    #playStopButton {
+        width: 130px;
+        height: 130px;
+        aspect-ratio: 1 / 1;
+        margin: 60px 0;
+        outline: none;
+        border-radius: 50%;
+        font-size: 30px;
+        cursor: pointer;
+        transition: 1s;
+        background: none;
+        color: var(--maintext);
+        border: 3px solid var(--accentcolor);
+        filter: drop-shadow(0 0 10px var(--accentcolor));
+        font-family: 'LSeedJP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ ゴシック', 'MS Gothic', HiraKakuProN-W3, 'TakaoExゴシック', TakaoExGothic, 'MotoyaLCedar', 'Droid Sans Japanese', sans-serif;
+    }
+
+    #playStopButton:hover {
+        transition: .2s;
+        font-size: 34px;
+        color: var(--maintext);
+        background: var(--accentcolor);
+        border: 20px solid var(--accentcolor);
+        filter: drop-shadow(0 0 10px var(--accentcolor));
+    }
+
+    #playStopButton:active {
+        transition: .2s;
+        transform: scale(.9);
+        font-size: 30px;
+        background: none;
+        border: 5px solid var(--accentcolor);
+        filter: drop-shadow(0 0 20px var(--accentcolor));
+        color: var(--accentcolor);
+    }
+</style>
+
+<body>
+    <header id="header" class="en ja"></header>
+    <main>
+        <h1>Water Remove of phone</h1>
+        <p>
+            When water clogs the speakers of your phone and causes the sound to become muffled, you can efficiently eliminate water from your phone's speakers by playing a 165 Hz sound. Using this site, you can play the sound with significantly less data traffic than playing the sound on YouTube or other sites. Gently wipe off any water that comes out with a tissue or something similar.<br>
+            <span style="color: var(--subtext); font-size: 12px;">For iPhone, the bottom speaker is only on the right side</span><br>
+            <span style="color: var(--accentcolor);">In silent mode, sound may not be heard. The higher the volume, the better the effect. Be careful not to forget to turn down the volume after use.</span>
+        </p>
+        <button id="playStopButton">Play</button>
+    </main>
+    <section id="othertools" style="width: min(100%,1280px); margin: 0 auto;"></section>
+    <footer id="footer"></footer>
+    <script>
+        var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        var oscillator;
+        var isPlaying = false;
+
+        function playSound() {
+            oscillator = audioContext.createOscillator();
+            oscillator.type = 'sine';
+            oscillator.frequency.value = 165;
+            oscillator.connect(audioContext.destination);
+            oscillator.start();
+            
+            setInterval(function () {
+                if (isPlaying) {
+                    oscillator.stop(audioContext.currentTime + 3);
+                    oscillator.start(audioContext.currentTime + 3.5);
+                }
+            }, 5000);
+        }
+
+        function stopSound() {
+            oscillator.stop();
+            oscillator.disconnect();
+        }
+
+        document.getElementById('playStopButton').addEventListener('click', function () {
+            if (!isPlaying) {
+                playSound();
+                isPlaying = true;
+                document.getElementById('playStopButton').textContent = 'Stop';
+            } else {
+                stopSound();
+                isPlaying = false;
+                document.getElementById('playStopButton').textContent = 'Play';
+            }
+        });
+
+    </script>
+</body>
+<html>

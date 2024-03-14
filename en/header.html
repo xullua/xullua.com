@@ -1,4 +1,80 @@
-<input type="checkbox" name="headerinput" id="headerinput"><label class="headerbackclose" for="headerinput"></label><div class="area"> <div class="in"> <div class="top"> <div class="logo"> <a href="//xullua.com"> <picture title="Home"> <source srcset="//xullua.com/img/xulluaheaderlogowhite.webp" media="(prefers-color-scheme: dark)"> <img src="//xullua.com/img/xulluaheaderlogoblack.webp" alt="XulluaLogo"> </picture> </a> </div><div class="lightnav"> <ul> <li><a href="//xullua.com">Home</a></li><li><a href="//xullua.com/contact">Contact</a></li><li><a href="//xla.jp/store">Store</a></li><li><a href="//xullua.com/tools">WebTools</a></li></ul> </div></div><div class="navi"> <nav> <ul> <li><a href="//xullua.com">Home</a></li><li><a href="//xullua.com/contact">Contact</a></li><li> <input type="checkbox" name="headerinput1" id="headerinput1"> <label for="headerinput1" data-comment="Tap to expand" data-comment2="Tap to close">WebTools</label> <div class="headerinput"> <ul> <li><a href="//xullua.com/tools">See All</a></li><li><a href="//xullua.com/en/tools/water-remove">Water Remove</a></li></ul> </div></li><li><a href="//xla.jp/store">Store</a></li><li> <input type="checkbox" name="headerinput2" id="headerinput2"> <label for="headerinput2" data-comment="Tap to expand" data-comment2="Tap to close">SNS</label> <div class="headerinput"> <ul> <li><a href="//xullua.com/link">Links</a></li><li><a href="//x.com/xullua">X（Twitter）</a></li><li><a href="//instagram/xullua">Instagram</a></li><li><a href="//youtube.com/xullua">YouTube</a></li></ul> </div></li></ul> </nav> </div class="navi"> <div class="otherlink"> <ul> <li><a href="//xullua.com/map">SiteMap</a></li></ul> </div><div class="language"> <input type="checkbox" name="languagechange" id="languagechange"> <label for="languagechange">Language - English</label> <div class="languagechange"> <ul> <li><button onclick="changeLanguage('ja')">JA 日本語</button></li><li><button class="now" onclick="changeLanguage('en')">EN English</button></li><li><button onclick="changeLanguage('kr')">KR 한국어</button></li></ul> </div></div><label class="hamburger" id="hamburger" for="headerinput"> <span></span> <span></span> <span></span> </label> </div></div>
+<input type="checkbox" name="headerinput" id="headerinput">
+<label class="headerbackclose" for="headerinput"></label>
+<div class="area">
+    <div class="in">
+        <div class="headertop">
+            <div class="logo">
+                <a href="//xullua.com">
+                    <picture title="Home">
+                        <source srcset="//xullua.com/img/xulluaheaderlogowhite.webp"
+                            media="(prefers-color-scheme: dark)">
+                        <img src="//xullua.com/img/xulluaheaderlogoblack.webp" alt="XulluaLogo">
+                    </picture>
+                </a>
+            </div>
+            <div class="lightnav">
+                <ul>
+                    <li><a href="//xullua.com">Home</a></li>
+                    <li><a href="//xullua.com/contact">Contact</a></li>
+                    <li><a href="//xla.jp/store">Store</a></li>
+                    <li><a href="//xullua.com/tools">WebTools</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="navi">
+            <nav>
+                <ul>
+                    <li><a href="//xullua.com">Home</a></li>
+                    <li><a href="//xullua.com/contact">Contact</a></li>
+                    <li>
+                        <input type="checkbox" name="headerinput1" id="headerinput1">
+                        <label for="headerinput1" data-comment="Tap to expand" data-comment2="Tap to close">WebTools</label>
+                        <div class="headerinput">
+                            <ul>
+                                <li><a href="//xullua.com/tools">See All</a></li>
+                                <li><a href="//xullua.com/en/tools/water-remove">Water Remove</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="//xla.jp/store">Store</a></li>
+                    <li>
+                        <input type="checkbox" name="headerinput2" id="headerinput2">
+                        <label for="headerinput2" data-comment="Tap to expand" data-comment2="Tap to close">SNS</label>
+                        <div class="headerinput">
+                            <ul>
+                                <li><a href="//xullua.com/link">Links</a></li>
+                                <li><a href="//x.com/xullua">X（Twitter）</a></li>
+                                <li><a href="//instagram/xullua">Instagram</a></li>
+                                <li><a href="//youtube.com/xullua">YouTube</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div class="navi">
+        <div class="otherlink">
+            <ul>
+                <li><a href="//xullua.com/map">SiteMap</a></li>
+            </ul>
+        </div>
+        <div class="language">
+            <input type="checkbox" name="languagechange" id="languagechange">
+            <label for="languagechange">Language - English</label>
+            <div class="languagechange">
+                <ul>
+                    <li><button onclick="changeLanguage('ja')">JA 日本語</button></li>
+                    <li><button class="now" onclick="changeLanguage('en')">EN English</button></li>
+                    <li><button onclick="changeLanguage('kr')">KR 한국어</button></li>
+                </ul>
+            </div>
+        </div>
+        <label class="hamburger" id="hamburger" for="headerinput">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+    </div>
+</div>
 <script>
     function changeLanguage(language) {
         var currentUrl = window.location.href;
