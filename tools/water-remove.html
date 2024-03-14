@@ -42,7 +42,7 @@
         text-align: center;
     }
 
-    button {
+    #playStopButton {
         width: 130px;
         height: 130px;
         aspect-ratio: 1 / 1;
@@ -59,7 +59,7 @@
         font-family: 'LSeedJP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ ゴシック', 'MS Gothic', HiraKakuProN-W3, 'TakaoExゴシック', TakaoExGothic, 'MotoyaLCedar', 'Droid Sans Japanese', sans-serif;
     }
 
-    button:hover {
+    #playStopButton:hover {
         transition: .2s;
         font-size: 34px;
         color: var(--maintext);
@@ -68,7 +68,7 @@
         filter: drop-shadow(0 0 10px var(--accentcolor));
     }
 
-    button:active {
+    #playStopButton:active {
         transition: .2s;
         transform: scale(.9);
         font-size: 30px;
@@ -80,7 +80,7 @@
 </style>
 
 <body>
-    <header id="header"></header>
+    <header id="header" class="ja en"></header>
     <main>
         <h1>スマホの水抜き</h1>
         <p>
