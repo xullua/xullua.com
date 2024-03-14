@@ -1,9 +1,9 @@
-.top {
+main .top {
     margin: 100px auto;
     width: min(1280px,90%);
 }
 
-.top h1 {
+main .top h1 {
     font-weight: 900;
     font-size: 30px;
 }
@@ -20,6 +20,7 @@
 .question p {
     font-size: 13px;
     margin: 0px 0 20px;
+    color: var(--subtext);
 }
 
 .question input {
