@@ -12,10 +12,9 @@
     <meta name="twitter:image" content="https://at.xullua.com/img/contact.png">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="shortcut icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/color.css">
     <link rel="stylesheet" href="https://xullua.com/css/base.css">
-    <title>ぞるあ-お問い合わせ完了</title>
+    <title>お問い合わせ完了</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
     <script src="js/main.js" async></script>
     <script>
@@ -46,12 +45,57 @@
             <h2 class="gradation-text-1">Thank you</h2>
             <h1 class="gradation-text-1">リクエストしました</h1>
             <p>
-                返信には時間がかかる場合があります。また返信がない場合もあります。予めご了承ください。<br>
-                正しく送信されると入力したメールアドレス宛に受付完了メールが届きます。
+                お問い合わせに対しての返信は通常7日以内に送信します。お問い合わせ内容によっては返信を行わない場合があります、予めご了承ください。<br>
+                正しく送信されると入力したメールアドレスに確認メールが届きます。
             </p>
             <a href="https://xullua.com">ホーム</a>
         </div>
     </main>
+
+    <style>
+        /* お問い合わせ完了 */
+        .thanks {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-self: center;
+        }
+
+        .thanks .content {
+            width: 720px;
+            max-width: 90%;
+            margin: 0 auto 10px auto;
+        }
+
+        .thanks p {
+            margin: 20px 0 10px 0;
+            color: var(--subtext);
+        }
+
+        .thanks a {
+            color: var(--btntext);
+            background: var(--btn);
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 15px;
+            border-radius: 50px;
+            transition: .3s;
+        }
+
+        .thanks a:hover {
+            background: var(--btnhover);
+        }
+
+        .thanks h2 {
+            font-size: 40px;
+            line-height: 1.2;
+        }
+
+        .thanks h1 {
+            font-size: 24px;
+        }
+    </style>
 
     <footer class="footer" id="footer"></footer>
 
