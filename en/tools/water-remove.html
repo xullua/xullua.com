@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Can play the sound of a phone draining（Water Remove）</title>
+    <title>Can play the sound of a phone draining</title>
     <meta name="description" content="Play the sound of water draining clogged in the phone's speaker. If the sound is caged, water may be clogged.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@xullua">
-    <meta name="twitter:title" content="Can play the sound of a phone draining（Water Remove）">
+    <meta name="twitter:title" content="Can play the sound of a phone draining">
     <meta name="twitter:description" content="Play the sound of water draining clogged in the phone's speaker. If the sound is caged, water may be clogged.">
     <meta name="twitter:image" content="https://xullua.com/img/water-remove.webp">
     <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -36,9 +36,84 @@
 
 <style>
     main {
-        width: min(1000px - 40px, 100% - 40px);
+        width: min(var(--width-l) - 20px, 100% - 40px);
         margin: 0 auto;
-        padding: 80px 0;
+        padding: 60px 0;
+    }
+    
+    h1 {
+        line-height: 1.2;
+        margin: 0 0 10px 0;
+    }
+
+    main .topexplain {
+        color: var(--subtext);
+        line-height: 1.3;
+        margin: 0 0 10px 0;
+    }
+
+    main .explain {
+        background-color: var(--explainback);
+        padding: 10px 15px 10px;
+        border-radius: 15px;
+        margin: 5px 0;
+    }
+    
+    main .explain:has(input:checked) {
+        padding: 10px 15px 7px;
+    }
+
+    main .help {
+        background: var(--helpback);
+        padding: 10px 15px;
+        border-radius: 15px;
+        font-size: 14px;
+        line-height: 1.1;
+    }
+
+    main .help p {
+        margin: 5px 0;
+    }
+
+    main .explain article p {
+        margin: 0 0 8px 0;
+        line-height: 1.2;
+    }
+
+    main label {
+        cursor: pointer;
+        position: relative;
+    }
+
+    main input+label::before {
+        position: absolute;
+        content: "";
+        width: 10px;
+        height: 10px;
+        top: 9px;
+        right: 0;
+        border-top: 2px solid var(--maintext);
+        border-left: 2px solid var(--maintext);
+        transform: rotate(-45deg);
+        transition: .2s;
+    }
+
+    main input:checked+label::before {
+        top: 7px;
+        right: 3px;
+        transform: rotate(-135deg);
+    }
+
+    main input,
+    main input+label+article {
+        display: none;
+    }
+
+    main input:checked+label+article {
+        display: block;
+    }
+
+    .btn {
         text-align: center;
     }
 
@@ -82,13 +157,25 @@
 <body>
     <header id="header" class="en ja"></header>
     <main>
-        <h1>Water Remove of phone</h1>
-        <p>
-            When water clogs the speakers of your phone and causes the sound to become muffled, you can efficiently eliminate water from your phone's speakers by playing a 165 Hz sound. Using this site, you can play the sound with significantly less data traffic than playing the sound on YouTube or other sites. Gently wipe off any water that comes out with a tissue or something similar.<br>
-            <span style="color: var(--subtext); font-size: 12px;">For iPhone, the bottom speaker is only on the right side</span><br>
-            <span style="color: var(--accentcolor);">In silent mode, sound may not be heard. The higher the volume, the better the effect. Be careful not to forget to turn down the volume after use.</span>
+        <h1>Draining water from phone speakers</h1>
+        <p class="topexplain">
+            When water clogs the speakers of your phone and causes the sound to become muffled, you can efficiently eliminate water from your phone's speakers by playing a 165 Hz sound. Using this site, you can play the sound with significantly less data traffic than playing the sound on YouTube or other sites.
         </p>
-        <button id="playStopButton">Play</button>
+        <div class="help">
+            <p>・For iPhone, the bottom speaker is only on the right side.</p>
+            <p>・In silent mode, sound may not be heard.</p>
+        </div>
+        <div class="explain">
+            <input type="checkbox" name="water-remove-explain" id="water-remove-explain">
+            <label for="water-remove-explain"><h3>How to</h3></label>
+            <article>
+                <p>Step1：Turn off silent mode and maximize volume.</p>
+                <p>Step2：Play.</p>
+                <p>Step3：Wipe water drained from the speaker.</p>
+                <p>Step4：Check the volume and silent mode.</p>
+            </article>
+        </div>
+        <div class="btn"><button id="playStopButton">Play</button></div>
     </main>
     <section id="othertools" style="width: min(100%,1280px); margin: 0 auto;"></section>
     <footer id="footer"></footer>
