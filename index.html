@@ -21,9 +21,9 @@
   <link rel="stylesheet" href="css/style.css">
 
   <!-- JS -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="js/toppage.js" async></script>
   <script src="js/main.js" async></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- アナリティクス -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
   <script>
@@ -106,7 +106,8 @@
         <div class="content">
           <img src="https://i.ytimg.com/vi_webp/RRZPQqF5rvI/hq720.webp" style="filter: blur(2px);">
           <div class="img2">
-            <img src="https://i.ytimg.com/vi_webp/RRZPQqF5rvI/hq720.webp" style="border-radius: 10px; width: 80%; margin-top: 40px;">
+            <img src="https://i.ytimg.com/vi_webp/RRZPQqF5rvI/hq720.webp"
+              style="border-radius: 10px; width: 80%; margin-top: 40px;">
           </div>
           <p class="status" style="background: #ff0000cc;">最新の動画</p>
           <div class="gradation" style="background: linear-gradient(#00000000,#bd0e0ecc 65%);"></div>
@@ -118,7 +119,8 @@
             </div>
             <div class="links">
               <div class="left">
-                <img src="https://www.youtube.com/s/desktop/a258f8cf/img/favicon_32x32.png" alt="" class="icon" style="background: #fff; padding: 5px;">
+                <img src="https://www.youtube.com/s/desktop/a258f8cf/img/favicon_32x32.png" alt="" class="icon"
+                  style="background: #fff; padding: 5px;">
                 <div class="linkdetail">
                   <h4>ぞるあ</h4>
                   <p>YouTube</p>
@@ -133,12 +135,12 @@
       </article>
       <article>
         <div class="content">
-          <img src="https://xullua.com/img/water-remove.webp" style="filter: blur(0px);">
+          <img src="img/tools-waterremove.webp" style="filter: blur(0px); object-position: 50% 90%;">
           <div class="img2">
             <img src="" style="">
           </div>
           <p class="status" style="background: #ff0000cc;" hidden>最新の動画</p>
-          <div class="gradation" style="background: linear-gradient(#00000000,#194d77cc 65%);"></div>
+          <div class="gradation" style="background: linear-gradient(#00000000,#1979b9cc 65%);"></div>
           <div class="info">
             <div class="texts">
               <h4>便利</h4>
@@ -164,10 +166,10 @@
         <div class="content">
           <img src="img/XulluaStoreSumaho.webp" style="filter: blur(0px);">
           <div class="img2">
-            <img src="img/mystical-purple.webp" style=" width: 50%; border-radius: 35px;">
+            <img src="" style="">
           </div>
           <p class="status" style="background: #ff0000cc;" hidden>最新の動画</p>
-          <div class="gradation" style="background: linear-gradient(#00000000,#777885cc 65%);"></div>
+          <div class="gradation" style="background: linear-gradient(#ffffff00,#777885cc 65%);"></div>
           <div class="info">
             <div class="texts">
               <h4></h4>
@@ -190,6 +192,146 @@
         </div>
       </article>
     </div>
+    <div class="pagination">
+      <button class="prev"><span></span></button>
+      <div class="selects"></div>
+      <button class="next"><span></span></button>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const area = document.querySelector('.foryou .area');
+        const articles = document.querySelectorAll('.foryou article');
+        const pagination = document.querySelector('.pagination');
+        const selects = document.querySelector('.pagination .selects');
+        let currentIndex = 0;
+        let intervalId;
+
+        // 自動スクロールの間隔（ミリ秒）
+        const autoScrollInterval = 5000;
+
+        // ページの最大幅と表示する記事数のマッピング
+        const pageWidthToVisibleArticles = [
+          { maxWidth: 1040, visibleArticles: 3 },
+          { maxWidth: 767, visibleArticles: 2 },
+          { maxWidth: 0, visibleArticles: 1 }
+        ];
+
+        // 現在のウィンドウ幅に応じて表示する記事数を決定する関数
+        function calculateVisibleArticles() {
+          const screenWidth = window.innerWidth;
+          for (let i = 0; i < pageWidthToVisibleArticles.length; i++) {
+            if (screenWidth >= pageWidthToVisibleArticles[i].maxWidth) {
+              return pageWidthToVisibleArticles[i].visibleArticles;
+            }
+          }
+          return 1; // デフォルトとして最小値を返す
+        }
+
+        // ドットボタンを生成する関数
+        function createDots() {
+          selects.innerHTML = '';
+          const totalArticles = articles.length;
+          const visibleArticles = calculateVisibleArticles();
+          const dotsCount = totalArticles - visibleArticles + 1;
+
+          for (let i = 0; i < dotsCount; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('dot');
+            dot.setAttribute('data-index', i);
+            dot.addEventListener('click', () => {
+              currentIndex = i;
+              scrollToArticle(currentIndex);
+              updatePagination();
+              resetAutoScroll();
+            });
+            selects.appendChild(dot);
+          }
+        }
+
+        // ページネーションの更新
+        function updatePagination() {
+          const dots = document.querySelectorAll('.pagination .dot');
+          dots.forEach((dot, index) => {
+            dot.classList.remove('active');
+          });
+          const dotIndex = currentIndex;
+          if (dots[dotIndex]) {
+            dots[dotIndex].classList.add('active');
+          }
+        }
+
+        // 記事をスクロールする関数
+        function scrollToArticle(index) {
+          const articleWidth = articles[0].offsetWidth;
+          area.style.scrollBehavior = 'smooth';
+          area.scrollTo({
+            left: articleWidth * index
+          });
+          area.style.scrollBehavior = 'auto';
+        }
+
+        // 自動スクロールを開始する関数
+        function autoScroll() {
+          intervalId = setInterval(() => {
+            const visibleArticles = calculateVisibleArticles();
+            currentIndex = (currentIndex + 1) % (articles.length - (visibleArticles - 1));
+            scrollToArticle(currentIndex);
+            updatePagination();
+          }, autoScrollInterval);
+        }
+
+        // 自動スクロールをリセットする関数
+        function resetAutoScroll() {
+          clearInterval(intervalId);
+          autoScroll();
+        }
+
+        // 前の記事へ移動するイベントリスナー
+        document.querySelector('.pagination .prev span').addEventListener('click', () => {
+          const visibleArticles = calculateVisibleArticles();
+          if (currentIndex > 0) {
+            currentIndex--;
+          } else {
+            currentIndex = articles.length - visibleArticles;
+          }
+          scrollToArticle(currentIndex);
+          updatePagination();
+          resetAutoScroll();
+        });
+
+        // 次の記事へ移動するイベントリスナー
+        document.querySelector('.pagination .next span').addEventListener('click', () => {
+          const visibleArticles = calculateVisibleArticles();
+          if (currentIndex < articles.length - visibleArticles) {
+            currentIndex++;
+          } else {
+            currentIndex = 0;
+          }
+          scrollToArticle(currentIndex);
+          updatePagination();
+          resetAutoScroll();
+        });
+
+        // スクロールエリアのスクロールイベントリスナー
+        area.addEventListener('scroll', () => {
+          const articleWidth = articles[0].offsetWidth;
+          currentIndex = Math.round(area.scrollLeft / articleWidth);
+          updatePagination();
+          resetAutoScroll();
+        });
+
+        // ウィンドウリサイズ時のイベントリスナー
+        window.addEventListener('resize', () => {
+          createDots();
+          updatePagination();
+        });
+
+        // 初期化
+        createDots();
+        autoScroll();
+        updatePagination();
+      });
+    </script>
   </section>
 
   <!-- トップワード応募 -->
