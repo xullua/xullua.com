@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Xullua</title>
-  <meta name="description" content="The Xullua web page, which includes easy access to social networking sites and web tools. We aim to make the site easy for everyone to use.">
+  <meta name="description"
+    content="The Xullua web page, which includes easy access to social networking sites and web tools. We aim to make the site easy for everyone to use.">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@xullua">
@@ -78,7 +79,8 @@
       <article>
         <div class="content">
           <img src="../img/store-senden-top-back.webp" alt="" class="">
-          <div class="img2"><img src="../img/store-senden-top.gif" alt="" style="pointer-events: none; width: 60%;"></div>
+          <div class="img2"><img src="../img/store-senden-top.gif" alt="" style="pointer-events: none; width: 60%;">
+          </div>
           <p class="status" style="background: #6d3388cc;">New</p>
           <div class="gradation" style="background: linear-gradient(#00000000,#6d3388cc 65%);"></div>
           <div class="info">
@@ -106,7 +108,8 @@
         <div class="content">
           <img src="https://i.ytimg.com/vi_webp/RRZPQqF5rvI/hq720.webp" style="filter: blur(2px);">
           <div class="img2">
-            <img src="https://i.ytimg.com/vi_webp/RRZPQqF5rvI/hq720.webp" style="border-radius: 10px; width: 80%; margin-top: 40px;">
+            <img src="https://i.ytimg.com/vi_webp/RRZPQqF5rvI/hq720.webp"
+              style="border-radius: 10px; width: 80%; margin-top: 40px;">
           </div>
           <p class="status" style="background: #ff0000cc;">Newest</p>
           <div class="gradation" style="background: linear-gradient(#00000000,#bd0e0ecc 65%);"></div>
@@ -114,11 +117,13 @@
             <div class="texts">
               <h4></h4>
               <h3>Getting to know<br>the iPhone 15 Pro</h3>
-              <p>This video looks for the merits and demerits of differences between the iPhoneXR and the iPhone15Pro</p>
+              <p>This video looks for the merits and demerits of differences between the iPhoneXR and the iPhone15Pro
+              </p>
             </div>
             <div class="links">
               <div class="left">
-                <img src="https://www.youtube.com/s/desktop/a258f8cf/img/favicon_32x32.png" alt="" class="icon" style="background: #fff; padding: 5px;">
+                <img src="https://www.youtube.com/s/desktop/a258f8cf/img/favicon_32x32.png" alt="" class="icon"
+                  style="background: #fff; padding: 5px;">
                 <div class="linkdetail">
                   <h4>Xullua</h4>
                   <p>YouTube</p>
@@ -133,7 +138,7 @@
       </article>
       <article>
         <div class="content">
-          <img src="https://xullua.com/img/water-remove.webp" style="filter: blur(0px);">
+          <img src="../img/tools-waterremove.webp" style="filter: blur(0px);">
           <div class="img2">
             <img src="" style="">
           </div>
@@ -164,9 +169,9 @@
         <div class="content">
           <img src="../img/XulluaStoreSumaho.webp" style="filter: blur(0px);">
           <div class="img2">
-            <img src="../img/mystical-purple.webp" style=" width: 50%; border-radius: 35px;">
+            <img src="" style="">
           </div>
-          <p class="status" style="background: #ff0000cc;" hidden>最新の動画</p>
+          <p class="status" style="background: #ff0000cc;" hidden></p>
           <div class="gradation" style="background: linear-gradient(#00000000,#777885cc 65%);"></div>
           <div class="info">
             <div class="texts">
@@ -190,6 +195,146 @@
         </div>
       </article>
     </div>
+    <div class="pagination">
+      <button class="prev"><span></span></button>
+      <div class="selects"></div>
+      <button class="next"><span></span></button>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const area = document.querySelector('.foryou .area');
+        const articles = document.querySelectorAll('.foryou article');
+        const pagination = document.querySelector('.pagination');
+        const selects = document.querySelector('.pagination .selects');
+        let currentIndex = 0;
+        let intervalId;
+
+        // 自動スクロールの間隔（ミリ秒）
+        const autoScrollInterval = 5000;
+
+        // ページの最大幅と表示する記事数のマッピング
+        const pageWidthToVisibleArticles = [
+          { maxWidth: 1040, visibleArticles: 3 },
+          { maxWidth: 767, visibleArticles: 2 },
+          { maxWidth: 0, visibleArticles: 1 }
+        ];
+
+        // 現在のウィンドウ幅に応じて表示する記事数を決定する関数
+        function calculateVisibleArticles() {
+          const screenWidth = window.innerWidth;
+          for (let i = 0; i < pageWidthToVisibleArticles.length; i++) {
+            if (screenWidth >= pageWidthToVisibleArticles[i].maxWidth) {
+              return pageWidthToVisibleArticles[i].visibleArticles;
+            }
+          }
+          return 1; // デフォルトとして最小値を返す
+        }
+
+        // ドットボタンを生成する関数
+        function createDots() {
+          selects.innerHTML = '';
+          const totalArticles = articles.length;
+          const visibleArticles = calculateVisibleArticles();
+          const dotsCount = totalArticles - visibleArticles + 1;
+
+          for (let i = 0; i < dotsCount; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('dot');
+            dot.setAttribute('data-index', i);
+            dot.addEventListener('click', () => {
+              currentIndex = i;
+              scrollToArticle(currentIndex);
+              updatePagination();
+              resetAutoScroll();
+            });
+            selects.appendChild(dot);
+          }
+        }
+
+        // ページネーションの更新
+        function updatePagination() {
+          const dots = document.querySelectorAll('.pagination .dot');
+          dots.forEach((dot, index) => {
+            dot.classList.remove('active');
+          });
+          const dotIndex = currentIndex;
+          if (dots[dotIndex]) {
+            dots[dotIndex].classList.add('active');
+          }
+        }
+
+        // 記事をスクロールする関数
+        function scrollToArticle(index) {
+          const articleWidth = articles[0].offsetWidth;
+          area.style.scrollBehavior = 'smooth';
+          area.scrollTo({
+            left: articleWidth * index
+          });
+          area.style.scrollBehavior = 'auto';
+        }
+
+        // 自動スクロールを開始する関数
+        function autoScroll() {
+          intervalId = setInterval(() => {
+            const visibleArticles = calculateVisibleArticles();
+            currentIndex = (currentIndex + 1) % (articles.length - (visibleArticles - 1));
+            scrollToArticle(currentIndex);
+            updatePagination();
+          }, autoScrollInterval);
+        }
+
+        // 自動スクロールをリセットする関数
+        function resetAutoScroll() {
+          clearInterval(intervalId);
+          autoScroll();
+        }
+
+        // 前の記事へ移動するイベントリスナー
+        document.querySelector('.pagination .prev span').addEventListener('click', () => {
+          const visibleArticles = calculateVisibleArticles();
+          if (currentIndex > 0) {
+            currentIndex--;
+          } else {
+            currentIndex = articles.length - visibleArticles;
+          }
+          scrollToArticle(currentIndex);
+          updatePagination();
+          resetAutoScroll();
+        });
+
+        // 次の記事へ移動するイベントリスナー
+        document.querySelector('.pagination .next span').addEventListener('click', () => {
+          const visibleArticles = calculateVisibleArticles();
+          if (currentIndex < articles.length - visibleArticles) {
+            currentIndex++;
+          } else {
+            currentIndex = 0;
+          }
+          scrollToArticle(currentIndex);
+          updatePagination();
+          resetAutoScroll();
+        });
+
+        // スクロールエリアのスクロールイベントリスナー
+        area.addEventListener('scroll', () => {
+          const articleWidth = articles[0].offsetWidth;
+          currentIndex = Math.round(area.scrollLeft / articleWidth);
+          updatePagination();
+          resetAutoScroll();
+        });
+
+        // ウィンドウリサイズ時のイベントリスナー
+        window.addEventListener('resize', () => {
+          createDots();
+          updatePagination();
+        });
+
+        // 初期化
+        createDots();
+        autoScroll();
+        updatePagination();
+      });
+    </script>
   </section>
 
   <!-- トップワード応募 -->
@@ -198,7 +343,8 @@
       <p class="mini">Top Short Message</p>
       <h2>Looking for<br>Good Sense</h2>
       <p class="lightexplain">
-        We are looking for your short message to be displayed at the top of this site. The selected message will be displayed at random each time you visit the site. We are looking forward to your tasteful short messages.
+        We are looking for your short message to be displayed at the top of this site. The selected message will be
+        displayed at random each time you visit the site. We are looking forward to your tasteful short messages.
       </p>
       <input type="checkbox" name="vote-top-words-page" id="vote-top-words-page">
       <label for="vote-top-words-page" class="open">Apply</label>
@@ -218,28 +364,33 @@
 
           <p class="title">Wards<span class="box" style="background: #ff5757;">required</span></p>
           <p class="explain">Up to 50 characters.</p>
-          <textarea class="text" type="text" name="entry.681018563" placeholder="布団が吹っ飛んだ" title="Wards"
-            maxlength="50" required></textarea>
+          <textarea class="text" type="text" name="entry.681018563" placeholder="布団が吹っ飛んだ" title="Wards" maxlength="50"
+            required></textarea>
 
           <div class="agreement">
             <p class="title">Please check and tick the box.</p>
             <p style="color: var(--sub-text); font-size: 12px;">Cannot be sent if not checked</p>
             <input type="checkbox" id="vote-top-words-agreement1" required>
-            <label for="vote-top-words-agreement1">No vulgarity, slander, personal information or self-promotional content</label>
+            <label for="vote-top-words-agreement1">No vulgarity, slander, personal information or self-promotional
+              content</label>
             <input type="checkbox" id="vote-top-words-agreement2" required>
             <label for="vote-top-words-agreement2">I agree to the Terms of Use</label>
             <input type="checkbox" id="vote-top-words-agreement3" required>
-            <label for="vote-top-words-agreement3">The site operator reserves the right to delete any submitted content at its sole discretion and for a period of time to be determined by the site operator.</label>
+            <label for="vote-top-words-agreement3">The site operator reserves the right to delete any submitted content
+              at its sole discretion and for a period of time to be determined by the site operator.</label>
             <input type="checkbox" id="vote-top-words-agreement4" required>
-            <label for="vote-top-words-agreement4">The name is your own name (online names are acceptable). Names of others are not included.</label>
+            <label for="vote-top-words-agreement4">The name is your own name (online names are acceptable). Names of
+              others are not included.</label>
           </div>
 
           <button id="vote-top-words-submit" type="submit" title="クリックして送信">Submit</button>
-          <p style="color: var(--sub-text); font-size: 12px; margin-top: 5px;">If submitted correctly, the page will reload. This may take a few seconds.</p>
+          <p style="color: var(--sub-text); font-size: 12px; margin-top: 5px;">If submitted correctly, the page will
+            reload. This may take a few seconds.</p>
 
           <div class="help">
             <h3>Petition for Deletion</h3>
-            <p>If your name is being used without permission or if you wish to discontinue publication of a previous application</p>
+            <p>If your name is being used without permission or if you wish to discontinue publication of a previous
+              application</p>
             <a href="https://support.xullua.com/s/delete-top-word">Learn more</a>
           </div>
         </form>
@@ -288,8 +439,9 @@
       </div>
       <div class="box abouttext">
         <p>
-            I am a student who likes to talk about gadgets.
-            I also like design, including video and images, and I am always making comments like "this design is good" or "this design should be like this" while living my life.
+          I am a student who likes to talk about gadgets.
+          I also like design, including video and images, and I am always making comments like "this design is good" or
+          "this design should be like this" while living my life.
         </p>
       </div>
       <div class="box twitter">
@@ -300,17 +452,21 @@
       <div class="box skill1">
         <img src="../img/edit.svg" alt="">
         <h4>Video Editing</h4>
-        <p>I have always loved making videos. I like to make videos that incorporate animation with pleasant connections.</p>
+        <p>I have always loved making videos. I like to make videos that incorporate animation with pleasant
+          connections.</p>
       </div>
       <div class="box skill1">
         <img src="../img/picture.svg" alt="">
         <h4>Image Editing</h4>
-        <p>I like to create false images and other things. I am good at making things that look right, but I can't make things with good taste.</p>
+        <p>I like to create false images and other things. I am good at making things that look right, but I can't make
+          things with good taste.</p>
       </div>
       <div class="box skill2">
         <img src="../img/code.svg" alt="">
         <h4>HTML / CSS</h4>
-        <p>I would like to think that I can do it to some extent. I would like to be able to do other programming languages, but I can't do them at all. I wonder when the day will come when I will be able to do many things...</p>
+        <p>I would like to think that I can do it to some extent. I would like to be able to do other programming
+          languages, but I can't do them at all. I wonder when the day will come when I will be able to do many
+          things...</p>
       </div>
       <div class="box favorite">
         <img src="../img/favorite.svg" alt="">
@@ -339,7 +495,7 @@
       </div>
     </div>
     <p style="font-size: 12px; text-align: center; color: var(--sub-text); margin: 10px 0 0;">
-        Hover or touch to see more detailed information.
+      Hover or touch to see more detailed information.
     </p>
   </section>
 
@@ -716,7 +872,8 @@
       </div>
     </div>
     <div class="move">
-      <p>We also produce various other designs at low cost.<br>Payment by credit card is also accepted.<br><a href="https://xla.jp/store">Store</a></p>
+      <p>We also produce various other designs at low cost.<br>Payment by credit card is also accepted.<br><a
+          href="https://xla.jp/store">Store</a></p>
     </div>
   </section>
 
@@ -748,8 +905,7 @@
   </section>
 
   <section class="instaad">
-    <div class="area"
-      style="background-image: url(../img/instaad.webp);">
+    <div class="area" style="background-image: url(../img/instaad.webp);">
       <img src="../img/instagram.webp" alt="">
       <div class="in">
         <h2>Instagram</h2>
