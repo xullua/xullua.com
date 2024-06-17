@@ -367,6 +367,10 @@
     scroll-padding: 0 calc((100% - var(--width-l)) / 2);
 }
 
+.foryou .area::-webkit-scrollbar {
+    height: 4px;
+}
+
 .foryou article {
     scroll-snap-align: start;
     margin: 5px;
@@ -375,7 +379,7 @@
 .foryou .content {
     position: relative;
     width: calc(1280px/3 - 5px*2 + 12px/3);
-    height: min(65vh,500px);
+    height: min(65vh, 500px);
     border-radius: 20px;
     overflow: hidden;
     display: flex;
@@ -449,8 +453,8 @@
     font-size: 14px;
     font-weight: 700;
     border-radius: 5px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .foryou .gradation {
@@ -565,6 +569,77 @@
     filter: drop-shadow(0 0 10px #fff5);
     transition: .2s;
 }
+
+.foryou .pagination {
+    width: min(var(--width-l), 100% - 40px);
+    margin: 10px auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.foryou .pagination .prev,
+.foryou .pagination .next {
+    background: var(--fourthback);
+    border: none;
+    padding: 10px;
+    margin: 0 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.foryou .pagination .prev:hover,
+.foryou .pagination .next:hover {
+    background: var(--fifthback);
+    transition: .2s;
+}
+
+.foryou .pagination .prev:active,
+.foryou .pagination .next:active {
+    background: var(--sixthback);
+    transition: 0s;
+}
+
+.foryou .pagination .prev span,
+.foryou .pagination .next span {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid var(--maintext);
+    border-right: 2px solid var(--maintext);
+    transform: rotate(45deg) translate(-15%,15%);
+}
+
+.foryou .pagination .prev span {
+    transform: rotate(-135deg) translate(-15%,15%);
+}
+
+.foryou .pagination .dots {
+    display: flex;
+}
+
+.foryou .pagination .dot {
+    background: var(--thirdtext);
+    border: none;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .2s .18s;
+}
+
+.foryou .pagination .dot:hover {
+    background: var(--secondtext);
+    transition: .1s 0s;
+}
+
+.foryou .pagination .dot.active {
+    background: var(--maintext);
+    width: 40px;
+}
+
 
 /* 投票する */
 .vote-top-words {
