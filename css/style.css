@@ -487,16 +487,26 @@
 
 .foryou .content .texts h3 {
     font-size: 24px;
-    margin: 2px 0 10px;
+    margin: 2px 0 0;
 }
 
 .foryou .content .texts p {
     font-size: 12px;
     color: #fffc;
     display: -webkit-box;
+    margin: 10px 0 0;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
+}
+
+:root {
+    --foryou-back: #fff2;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foryou-back: #0002;
+    }
 }
 
 .foryou .content .links {
@@ -504,10 +514,10 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    background: #0002;
+    background: var(--foryou-back);
     padding: 15px 20px 20px;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .foryou .content .links .left {
