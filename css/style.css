@@ -447,7 +447,7 @@
 .foryou .status {
     position: absolute;
     top: 15px;
-    left: 15px;
+    left: 0px;
     padding: 6px;
     line-height: 1;
     font-size: 14px;
@@ -455,6 +455,14 @@
     border-radius: 5px;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: .4s .01s;
+}
+
+.foryou article.active .status {
+    opacity: 1;
+    left: 15px;
+    transition: .4s .4s;
 }
 
 .foryou .gradation {
@@ -462,6 +470,11 @@
     bottom: 0;
     left: 0;
     width: 100%;
+    height: 35%;
+    transition: .5s .01s;
+}
+
+.foryou article.active .gradation {
     height: 50%;
 }
 
@@ -472,8 +485,17 @@
 }
 
 .foryou .content .texts {
+    padding: 20px 20px 0px;
+    line-height: 1;
+    opacity: 0;
+    transition: .4s .1s;
+}
+
+.foryou article.active .content .texts {
     padding: 20px 20px 15px;
     line-height: 1.2;
+    opacity: 1;
+    transition: .5s .01s;
 }
 
 .foryou .content .texts h4 {
@@ -514,10 +536,16 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    background: var(--foryou-back);
-    padding: 15px 20px 20px;
+    background: transparent;
+    padding: 15px 20px 15px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    transition: .4s .01s;
+}
+
+.foryou article.active .content .links {
+    padding: 15px 20px 20px;
+    background: var(--foryou-back);
 }
 
 .foryou .content .links .left {
@@ -526,6 +554,12 @@
 }
 
 .foryou .content .links .left img {
+    width: 30px;
+    border-radius: 8px;
+    transition: .4s .01s;
+}
+
+.foryou article.active .content .links .left img {
     width: 40px;
     border-radius: 10px;
 }
@@ -549,6 +583,14 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
+    height: 0px;
+    opacity: 0;
+    transition: .4s .01s;
+}
+
+.foryou article.active .content .links .left .linkdetail p {
+    height: 15px;
+    opacity: 1;
 }
 
 .foryou .content:hover .texts h4,
@@ -571,6 +613,12 @@
     transition: 1s;
     font-weight: 700;
     white-space: nowrap;
+    opacity: 0;
+    transition: .4s .01s;
+}
+
+.foryou article.active .content .links .right a {
+    opacity: 1;
 }
 
 .foryou .content .links .right a:hover {
@@ -637,12 +685,12 @@
     margin: 0 5px;
     border-radius: 6px;
     cursor: pointer;
-    transition: .2s .18s;
+    transition: all .2s .18s, background .2s 0s;
 }
 
 .foryou .pagination .dot:hover {
     background: var(--secondtext);
-    transition: .1s 0s;
+    transition: all .1s 0s;
 }
 
 .foryou .pagination .dot.active {
