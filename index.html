@@ -235,17 +235,14 @@
         let currentIndex = 0;
         let intervalId;
 
-        // 自動スクロールの間隔（ミリ秒）
         const autoScrollInterval = 5000;
 
-        // ページの最大幅と表示する記事数のマッピング
         const pageWidthToVisibleArticles = [
-          { maxWidth: 1040, visibleArticles: 3 },
+          { maxWidth: 1240, visibleArticles: 3 },
           { maxWidth: 767, visibleArticles: 2 },
           { maxWidth: 0, visibleArticles: 1 }
         ];
 
-        // 現在のウィンドウ幅に応じて表示する記事数を決定する関数
         function calculateVisibleArticles() {
           const screenWidth = window.innerWidth;
           for (let i = 0; i < pageWidthToVisibleArticles.length; i++) {
@@ -253,10 +250,9 @@
               return pageWidthToVisibleArticles[i].visibleArticles;
             }
           }
-          return 1; // デフォルトとして最小値を返す
+          return 1;
         }
 
-        // ドットボタンを生成する関数
         function createDots() {
           selects.innerHTML = '';
           const totalArticles = articles.length;
@@ -271,51 +267,56 @@
               currentIndex = i;
               scrollToArticle(currentIndex);
               updatePagination();
+              updateArticleClasses();
               resetAutoScroll();
             });
             selects.appendChild(dot);
           }
         }
 
-        // ページネーションの更新
         function updatePagination() {
           const dots = document.querySelectorAll('.pagination .dot');
           dots.forEach((dot, index) => {
-            dot.classList.remove('active');
+            dot.classList.toggle('active', index === currentIndex);
           });
-          const dotIndex = currentIndex;
-          if (dots[dotIndex]) {
-            dots[dotIndex].classList.add('active');
-          }
         }
 
-        // 記事をスクロールする関数
+        function updateArticleClasses() {
+          const visibleArticles = calculateVisibleArticles();
+          articles.forEach((article, index) => {
+            const isVisible = index >= currentIndex && index < currentIndex + visibleArticles;
+            article.classList.toggle('active', isVisible);
+          });
+        }
+
         function scrollToArticle(index) {
           const articleWidth = articles[0].offsetWidth;
           area.style.scrollBehavior = 'smooth';
           area.scrollTo({
             left: articleWidth * index
           });
-          area.style.scrollBehavior = 'auto';
+          // スクロール完了後にクラスを更新
+          setTimeout(() => {
+            updatePagination();
+            updateArticleClasses();
+          }, 500);
         }
 
-        // 自動スクロールを開始する関数
         function autoScroll() {
           intervalId = setInterval(() => {
             const visibleArticles = calculateVisibleArticles();
             currentIndex = (currentIndex + 1) % (articles.length - (visibleArticles - 1));
             scrollToArticle(currentIndex);
             updatePagination();
+            updateArticleClasses();
           }, autoScrollInterval);
         }
 
-        // 自動スクロールをリセットする関数
         function resetAutoScroll() {
           clearInterval(intervalId);
           autoScroll();
         }
 
-        // 前の記事へ移動するイベントリスナー
         document.querySelector('.pagination .prev span').addEventListener('click', () => {
           const visibleArticles = calculateVisibleArticles();
           if (currentIndex > 0) {
@@ -325,10 +326,10 @@
           }
           scrollToArticle(currentIndex);
           updatePagination();
+          updateArticleClasses();
           resetAutoScroll();
         });
 
-        // 次の記事へ移動するイベントリスナー
         document.querySelector('.pagination .next span').addEventListener('click', () => {
           const visibleArticles = calculateVisibleArticles();
           if (currentIndex < articles.length - visibleArticles) {
@@ -338,28 +339,30 @@
           }
           scrollToArticle(currentIndex);
           updatePagination();
+          updateArticleClasses();
           resetAutoScroll();
         });
 
-        // スクロールエリアのスクロールイベントリスナー
         area.addEventListener('scroll', () => {
           const articleWidth = articles[0].offsetWidth;
           currentIndex = Math.round(area.scrollLeft / articleWidth);
           updatePagination();
+          updateArticleClasses();
           resetAutoScroll();
         });
 
-        // ウィンドウリサイズ時のイベントリスナー
         window.addEventListener('resize', () => {
           createDots();
           updatePagination();
+          updateArticleClasses();
         });
 
-        // 初期化
         createDots();
         autoScroll();
         updatePagination();
+        updateArticleClasses();
       });
+
     </script>
   </section>
 
