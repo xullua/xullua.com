@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>X(Twitter) search command generator</title>
+        <meta name="description" content="This is a web tool that enables you to easily generate search commands for Twitter. This makes searching easier.">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@xullua">
+        <meta name="twitter:title" content="X(Twitter) search command generator">
+        <meta name="twitter:description"
+            content="This is a web tool that enables you to easily generate search commands for Twitter. This makes searching easier.">
+        <meta name="twitter:image" content="https://xullua.com/img/x-search-command-generate.webp">
+
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <!-- CSS -->
+        <link rel="stylesheet" href="../../css/color.css">
+        <link rel="stylesheet" href="../../css/base.css">
+
+        <!-- JS -->
+        <script src="../../js/main.js" async></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- アナリティクス -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'G-JDKGJ1E005');
+        </script>
+        <!-- 共通部分 -->
+        <script>
+            $(function () {
+                $("header").load("../header.html");
+                $("footer").load("../footer.html");
+            });
+        </script>
+    </head>
+    <style>
+        main {
+            margin: 70px auto;
+            width: min(var(--width-s) + 40px, 100%);
+        }
+
+        h1,
+        p {
+            line-height: 1.2;
+            padding: 0 20px;
+        }
+
+        .explain {
+            font-size: 14px;
+            color: var(--subtext);
+            margin: 10px 0 15px;
+        }
+
+        input,
+        button,
+        select {
+            outline: none;
+            border: none;
+            font-family: var(--font-family);
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            padding: 8px 10px;
+            border-radius: 5px;
+            margin: 2px 0;
+            background: var(--secondback);
+            width: min(100%, 200px);
+            font-size: 16px;
+            color: var(--maintext);
+        }
+
+        input[type="text"].large {
+            width: min(100%, 350px);
+        }
+
+        input[type="number"] {
+            width: min(100%, 100px);
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        input[type="textarea"]#generated-url {
+            width: 100%;
+            height: auto;
+            background: none;
+            padding: 0;
+            font-size: 12px;
+            color: var(--subtext);
+        }
+
+        h3 {
+            font-size: 18px;
+        }
+
+        label {
+            font-size: 16px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            padding: 0 20px;
+        }
+
+        .input-group label {
+            margin-bottom: 5px;
+        }
+
+        .horizontal-group {
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .horizontal-group input,
+        .horizontal-group select {}
+
+        .output-group {
+            margin-top: 20px;
+        }
+
+        .horizontal-group p {
+            font-size: 12px;
+            color: var(--subtext);
+            padding: 0;
+            margin-top: 5px;
+        }
+
+        .input-group label {
+            cursor: pointer;
+        }
+
+        hr {
+            margin: 20px;
+            height: 1px;
+            background-color: var(--line);
+            border: none;
+        }
+
+        .result {
+            position: sticky;
+            bottom: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 15px 20px 10px;
+        }
+
+        .btns {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #copy-button,
+        #open-twitter-button,
+        #clear-button {
+            background: var(--btn);
+            color: var(--btntext);
+            border: 2px solid var(--btn);
+            padding: 5px 15px;
+            border-radius: 99px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        #open-twitter-button {
+            background: none;
+            color: var(--btn);
+        }
+
+        #clear-button {
+            background: #ff4a4a;
+            color: #ffe8e8;
+            border: 2px solid #ff4a4a;
+        }
+
+        #copy-button:hover {
+            background: var(--btnhover);
+            border: 2px solid var(--btnhover);
+        }
+
+        #open-twitter-button:hover {
+            border: 2px solid var(--btnhover);
+            color: var(--btnhover);
+        }
+
+        #clear-button:hover {
+            background: #ff0000;
+            color: #ffffff;
+            border: 2px solid #ff0000;
+        }
+
+        .not-allowed {
+            pointer-events: none;
+            cursor: not-allowed;
+            background: var(--fourthback) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header" class="width-s ja en"></header>
+    <main>
+        <h1>X search command generator</h1>
+        <p class="explain">
+            Entering commands during advanced searches in X(Twitter) makes it easier to get the information you are looking for. This tool allows you to generate that command effortlessly. You can refine your search to your liking, copy it at the bottom and paste it into the search field, or jump straight to Twitter.
+        </p>
+        <div class="horizontal-group">
+            <h3>Users</h3>
+            <label for="username">Specify :</label>
+            <input type="text" id="username" placeholder="@user's post"><br>
+            <label for="exclude-user">Exclude :</label>
+            <input type="text" id="exclude-user" placeholder="@user's post excluded"><br>
+            <label for="to-user">to :</label>
+            <input type="text" id="to-user" placeholder="Reply to @user">
+            <p>Commas or spaces can be used to separate multiple user searches.</p>
+        </div>
+        <hr>
+        <div class="horizontal-group">
+            <h3>Keywords</h3>
+            <label for="exact-phrase">Specify :</label>
+            <input type="text" id="exact-phrase" placeholder="Include DOG"><br>
+            <label for="exclude-words">Exclude :</label>
+            <input type="text" id="exclude-words" placeholder="Exclude CAT"><br>
+            <label for="hashtag">Hashtag :</label>
+            <input type="text" id="hashtag" placeholder="Include #MOUSE"><br>
+            <label for="url">URL :</label>
+            <input type="text" id="url" placeholder="Include example.com" class="large">
+            <p>Words can be separated by a slash to specify a post that contains one of them.</p>
+        </div>
+        <hr>
+        <div class="horizontal-group">
+            <h3>Engagements</h3>
+            <label for="min-faves">Like :</label>
+            <input type="number" id="min-faves" placeholder="Minimum"><br>
+            <label for="min-retweets">Repost :</label>
+            <input type="number" id="min-retweets" placeholder="Minimum"><br>
+            <label for="min-replies">Reply :</label>
+            <input type="number" id="min-replies" placeholder="Minimum">
+        </div>
+        <hr>
+        <div class="horizontal-group">
+            <h3>Dates</h3>
+            <span>from</span>
+            <input type="date" id="since-date">
+            <span>to</span>
+            <input type="date" id="until-date">
+        </div>
+        <hr>
+        <div class="input-group">
+            <h3>Filters</h3>
+            <input type="checkbox" id="followed-only">
+            <label for="followed-only">Followos only</label>
+        </div>
+        <div class="input-group">
+            <input type="checkbox" id="replies-only" name="replies">
+            <label for="replies-only">Include replies</label><br>
+            <input type="checkbox" id="exclude-replies" name="replies">
+            <label for="exclude-replies">Exclude replies</label>
+        </div>
+        <div class="input-group">
+            <input type="checkbox" id="media-only" name="media">
+            <label for="media-only">Include images</label><br>
+            <input type="checkbox" id="exclude-media" name="media">
+            <label for="exclude-media">Exclude images</label>
+        </div>
+        <div class="input-group">
+            <input type="checkbox" id="videos-only" name="videos">
+            <label for="videos-only">Include videos</label><br>
+            <input type="checkbox" id="exclude-videos" name="videos">
+            <label for="exclude-videos">Exclude videos</label>
+        </div>
+        <div class="input-group">
+            <input type="checkbox" id="links-only" name="links">
+            <label for="links-only">Include links</label><br>
+            <input type="checkbox" id="exclude-links" name="links">
+            <label for="exclude-links">Exclude links</label>
+        </div>
+        <hr>
+        <div class="input-group">
+            <h3>Language</h3>
+            <select id="language">
+                <option value="">Any language</option>
+                <option value="en">English</option>
+                <option value="ja">Japanese</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="it">Italian</option>
+                <option value="ko">Korean</option>
+                <option value="other">Other (manual input)</option>
+            </select>
+            <input type="text" id="language-other" placeholder="Other Language Codes" style="display:none;">
+        </div>
+        <div class="result">
+            <div class="btns">
+                <div class="left">
+                    <button id="copy-button">Copy</button>
+                    <button id="open-twitter-button">Open on X</button>
+                </div>
+                <div class="right"><button id="clear-button">Clear</button></div>
+            </div>
+            <input type="textarea" id="generated-url" readonly>
+        </div>
+    </main>
+    <footer id="footer" class="width-s"></footer>
+</body>
+<script>document.querySelectorAll('input, select').forEach(element => {
+        element.addEventListener('input', updateSearchQuery);
+    });
+
+    document.getElementById('copy-button').addEventListener('click', function () {
+        const query = updateSearchQuery();
+        copyToClipboard(query);
+    });
+
+    document.getElementById('open-twitter-button').addEventListener('click', function () {
+        const url = document.getElementById('generated-url').value;
+        if (url) {
+            window.location.href = url;
+        } else {
+            alert('まず検索コマンドを生成してください。');
+        }
+    });
+
+    document.getElementById('clear-button').addEventListener('click', clearFields);
+
+    document.getElementById('language').addEventListener('change', function () {
+        const otherLanguageInput = document.getElementById('language-other');
+        if (this.value === 'other') {
+            otherLanguageInput.style.display = 'inline';
+        } else {
+            otherLanguageInput.style.display = 'none';
+        }
+    });
+
+    document.getElementById('replies-only').addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById('exclude-replies').checked = false;
+        }
+    });
+
+    document.getElementById('exclude-replies').addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById('replies-only').checked = false;
+        }
+    });
+
+    document.getElementById('media-only').addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById('exclude-media').checked = false;
+        }
+    });
+
+    document.getElementById('exclude-media').addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById('media-only').checked = false;
+        }
+    });
+
+    document.getElementById('videos-only').addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById('exclude-videos').checked = false;
+        }
+    });
+
+    document.getElementById('exclude-videos').addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById('videos-only').checked = false;
+        }
+    });
+
+    document.getElementById('links-only').addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById('exclude-links').checked = false;
+        }
+    });
+
+    document.getElementById('exclude-links').addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById('links-only').checked = false;
+        }
+    });
+
+    function updateSearchQuery() {
+        const usernames = document.getElementById('username').value.trim().split(/[\s,]+/).filter(Boolean);
+        const excludeUsers = document.getElementById('exclude-user').value.trim().split(/[\s,]+/).filter(Boolean);
+        const hashtags = document.getElementById('hashtag').value.trim().split(/[\s,]+/).filter(Boolean);
+        const exactPhrases = document.getElementById('exact-phrase').value.trim().split('/').filter(Boolean);
+        const excludeWords = document.getElementById('exclude-words').value.trim().split('/').filter(Boolean);
+        const sinceDate = document.getElementById('since-date').value.trim();
+        const untilDate = document.getElementById('until-date').value.trim();
+        const minRetweets = document.getElementById('min-retweets').value.trim();
+        const minFaves = document.getElementById('min-faves').value.trim();
+        const minReplies = document.getElementById('min-replies').value.trim();
+        const url = document.getElementById('url').value.trim();
+        const toUser = document.getElementById('to-user').value.trim().split(/[\s,]+/).filter(Boolean);
+        const followedOnly = document.getElementById('followed-only').checked;
+        const repliesOnly = document.getElementById('replies-only').checked;
+        const excludeReplies = document.getElementById('exclude-replies').checked;
+        const mediaOnly = document.getElementById('media-only').checked;
+        const excludeMedia = document.getElementById('exclude-media').checked;
+        const videosOnly = document.getElementById('videos-only').checked;
+        const excludeVideos = document.getElementById('exclude-videos').checked;
+        const linksOnly = document.getElementById('links-only').checked;
+        const excludeLinks = document.getElementById('exclude-links').checked;
+        const language = document.getElementById('language').value;
+        const languageOther = document.getElementById('language-other').value.trim();
+
+        let searchQuery = [];
+
+        usernames.forEach(user => {
+            user = user.startsWith('@') ? user : `@${user}`;
+            if (user) searchQuery.push(`from:${user.slice(1)}`);
+        });
+
+        excludeUsers.forEach(user => {
+            user = user.startsWith('@') ? user : `@${user}`;
+            if (user) searchQuery.push(`-from:${user.slice(1)}`);
+        });
+
+        hashtags.forEach(tag => {
+            tag = tag.startsWith('#') ? tag : `#${tag}`;
+            if (tag) searchQuery.push(`${tag}`);
+        });
+
+        exactPhrases.forEach(phrase => {
+            if (phrase) searchQuery.push(`"${phrase}"`);
+        });
+
+        excludeWords.forEach(word => {
+            if (word) searchQuery.push(`-${word}`);
+        });
+
+        if (sinceDate) searchQuery.push(`since:${sinceDate}`);
+        if (untilDate) searchQuery.push(`until:${untilDate}`);
+        if (minRetweets) searchQuery.push(`min_retweets:${minRetweets}`);
+        if (minFaves) searchQuery.push(`min_faves:${minFaves}`);
+        if (minReplies) searchQuery.push(`min_replies:${minReplies}`);
+        if (url) searchQuery.push(`url:${url}`);
+
+        toUser.forEach(user => {
+            user = user.startsWith('@') ? user : `@${user}`;
+            if (user) searchQuery.push(`to:${user.slice(1)}`);
+        });
+
+        if (followedOnly) searchQuery.push('filter:follows');
+        if (repliesOnly) searchQuery.push('filter:replies');
+        if (excludeReplies) searchQuery.push('-filter:replies');
+        if (mediaOnly) searchQuery.push('filter:media');
+        if (excludeMedia) searchQuery.push('-filter:media');
+        if (videosOnly) searchQuery.push('filter:videos');
+        if (excludeVideos) searchQuery.push('-filter:videos');
+        if (linksOnly) searchQuery.push('filter:links');
+        if (excludeLinks) searchQuery.push('-filter:links');
+
+        if (language === 'other' && languageOther) {
+            searchQuery.push(`lang:${languageOther}`);
+        } else if (language) {
+            searchQuery.push(`lang:${language}`);
+        }
+
+        const query = searchQuery.filter(Boolean).join(' ');
+        const encodedQuery = encodeURIComponent(query);
+        const twitterUrl = `https://twitter.com/search?q=${encodedQuery}`;
+        document.getElementById('generated-url').value = twitterUrl;
+        return query;
+    }
+
+    function copyToClipboard(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            alert('検索コマンドをコピーしました！');
+        } catch (err) {
+            alert('コピーに失敗しました。');
+        }
+        document.body.removeChild(textArea);
+    }
+
+    function clearFields() {
+        document.getElementById('username').value = '';
+        document.getElementById('exclude-user').value = '';
+        document.getElementById('hashtag').value = '';
+        document.getElementById('exact-phrase').value = '';
+        document.getElementById('exclude-words').value = '';
+        document.getElementById('since-date').value = '';
+        document.getElementById('until-date').value = '';
+        document.getElementById('min-retweets').value = '';
+        document.getElementById('min-faves').value = '';
+        document.getElementById('min-replies').value = '';
+        document.getElementById('url').value = '';
+        document.getElementById('to-user').value = '';
+        document.getElementById('followed-only').checked = false;
+        document.getElementById('replies-only').checked = false;
+        document.getElementById('exclude-replies').checked = false;
+        document.getElementById('media-only').checked = false;
+        document.getElementById('exclude-media').checked = false;
+        document.getElementById('videos-only').checked = false;
+        document.getElementById('exclude-videos').checked = false;
+        document.getElementById('links-only').checked = false;
+        document.getElementById('exclude-links').checked = false;
+        document.getElementById('language').value = '';
+        document.getElementById('language-other').value = '';
+        document.getElementById('language-other').style.display = 'none';
+        updateSearchQuery(); // フィールドをクリアした後に検索クエリを更新
+    }
+
+    // 初期化
+    updateSearchQuery();
+</script>
+
+</html>
