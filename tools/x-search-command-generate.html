@@ -2,6 +2,7 @@
 <html lang="ja">
 
 <head>
+
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,8 +13,9 @@
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@xullua">
         <meta name="twitter:title" content="Twitter(X)検索コマンド生成ツール">
-        <meta name="twitter:description" content="Twitterの検索コマンドを簡単に生成してコピーまたは飛ぶことができるWebツールです。これを使用することで検索がよりやりやすくなります。">
-        <meta name="twitter:image" content="https://xullua.com/img/x-search-command-generate.webp>
+        <meta name="twitter:description"
+            content="Twitterの検索コマンドを簡単に生成してコピーまたは飛ぶことができるWebツールです。これを使用することで検索がよりやりやすくなります。">
+        <meta name="twitter:image" content="https://xullua.com/img/x-search-command-generate.webp">
 
         <link rel="shortcut icon" href="../img/favicon.ico">
         <!-- CSS -->
@@ -42,8 +44,8 @@
     </head>
     <style>
         main {
-            margin: 60px auto;
-            width: min(var(--width-s), 100%);
+            margin: 70px auto;
+            width: min(var(--width-s) + 40px, 100%);
         }
 
         h1,
@@ -70,7 +72,7 @@
         input[type="number"],
         input[type="date"],
         select {
-            padding: 5px 10px;
+            padding: 8px 10px;
             border-radius: 5px;
             margin: 2px 0;
             background: var(--secondback);
@@ -80,7 +82,7 @@
         }
 
         input[type="text"].large {
-            width: min(100%);
+            width: min(100%, 350px);
         }
 
         input[type="number"] {
@@ -119,7 +121,6 @@
 
         .horizontal-group {
             align-items: center;
-            margin-bottom: 15px;
             padding: 0 20px;
         }
 
@@ -128,6 +129,24 @@
 
         .output-group {
             margin-top: 20px;
+        }
+
+        .horizontal-group p {
+            font-size: 12px;
+            color: var(--subtext);
+            padding: 0;
+            margin-top: 5px;
+        }
+
+        .input-group label {
+            cursor: pointer;
+        }
+
+        hr {
+            margin: 20px;
+            height: 1px;
+            background-color: var(--line);
+            border: none;
         }
 
         .result {
@@ -193,30 +212,49 @@
 </head>
 
 <body>
-    <header id="header" class="width-s"></header>
+    <header id="header" class="width-s ja en"></header>
     <main>
         <h1>Twitter検索コマンド生成ツール</h1>
         <p class="explain">
-            X（旧Twitter）での検索の際にコマンドを入力すると自分の求めている情報を得やすくなります。そのコマンドを楽に生成することができるツールです。自分の好みの絞り込みをし、下部でコピーをして検索欄に張り付けるか、Twitterにそのまま飛んでください。
+            X（旧Twitter）での高度な検索の際にコマンドを入力すると自分の求めている情報を得やすくなります。そのコマンドを楽に生成することができるツールです。自分の好みの絞り込みをし、下部でコピーをして検索欄に張り付けるか、Twitterにそのまま飛んでください。
         </p>
         <div class="horizontal-group">
-            <h3>ユーザー名</h3>
+            <h3>ユーザー</h3>
             <label for="username">指定：</label>
-            <input type="text" id="username" placeholder="例: username"><br>
+            <input type="text" id="username" placeholder="@userのポスト"><br>
             <label for="exclude-user">除外：</label>
-            <input type="text" id="exclude-user" placeholder="例: username">
+            <input type="text" id="exclude-user" placeholder="@userのポストを除外"><br>
+            <label for="to-user">宛て：</label>
+            <input type="text" id="to-user" placeholder="@userへの返信">
+            <p>カンマまたはスペースで区切ると複数のユーザーを検索することができます。</p>
         </div>
+        <hr>
         <div class="horizontal-group">
-            <h3>ハッシュタグ</h3>
-            <input type="text" id="hashtag" placeholder="例: #hashtag">
-        </div>
-        <div class="horizontal-group">
-            <h3>フレーズ</h3>
+            <h3>キーワード</h3>
             <label for="exact-phrase">指定：</label>
-            <input type="text" id="exact-phrase" placeholder="例: &quot;example phrase&quot;"><br>
+            <input type="text" id="exact-phrase" placeholder="dogを必ず含む"><br>
             <label for="exclude-words">除外：</label>
-            <input type="text" id="exclude-words" placeholder="例: word1 word2">
+            <input type="text" id="exclude-words" placeholder="catを除外"><br>
+            <label for="hashtag">ハッシュタグ：</label>
+            <input type="text" id="hashtag" placeholder="#mouseを含む"><br>
+            <label for="url">URL：</label>
+            <input type="text" id="url" placeholder="example.comを含む" class="large">
+            <p>ワードをスラッシュで区切るといずれかを含むポストを指定できます。</p>
         </div>
+        <hr>
+        <div class="horizontal-group">
+            <h3>エンゲージメント</h3>
+            <label for="min-faves">いいね　</label>
+            <input type="number" id="min-faves" placeholder="最小件数">
+            <span>以上</span><br>
+            <label for="min-retweets">リポスト</label>
+            <input type="number" id="min-retweets" placeholder="最小件数">
+            <span>以上</span><br>
+            <label for="min-replies">リプライ</label>
+            <input type="number" id="min-replies" placeholder="最小件数">
+            <span>以上</span>
+        </div>
+        <hr>
         <div class="horizontal-group">
             <h3>期間</h3>
             <input type="date" id="since-date">
@@ -224,36 +262,9 @@
             <input type="date" id="until-date">
             <span>まで</span>
         </div>
-        <div class="horizontal-group">
-            <h3>リツイート</h3>
-            <input type="number" id="min-retweets" placeholder="最小">
-            <span>以上</span>
-            <input type="number" id="max-retweets" placeholder="使用不可" class="not-allowed" style="display: none;">
-            <span style="display: none;">以下</span>
-        </div>
-        <div class="horizontal-group">
-            <h3>いいね</h3>
-            <input type="number" id="min-faves" placeholder="最小">
-            <span>以上</span>
-            <input type="number" id="max-faves" placeholder="使用不可" class="not-allowed" style="display: none;">
-            <span style="display: none;">以下</span>
-        </div>
-        <div class="horizontal-group">
-            <h3>リプライ（返信）</h3>
-            <input type="number" id="min-replies" placeholder="最小">
-            <span>以上</span>
-            <input type="number" id="max-replies" placeholder="使用不可" class="not-allowed" style="display: none;">
-            <span style="display: none;">以下</span>
-        </div>
+        <hr>
         <div class="input-group">
-            <h3>特定のURLを含む</h3>
-            <input type="text" id="url" placeholder="例: example.com" class="large">
-        </div>
-        <div class="input-group">
-            <h3>特定のユーザーに対するポスト</h3>
-            <input type="text" id="to-user" placeholder="例: username">
-        </div>
-        <div class="input-group">
+            <h3>フィルター</h3>
             <input type="checkbox" id="followed-only">
             <label for="followed-only">フォローしている人のみ</label>
         </div>
@@ -281,10 +292,11 @@
             <input type="checkbox" id="exclude-links" name="links">
             <label for="exclude-links">リンクを除外</label>
         </div>
+        <hr>
         <div class="input-group">
             <h3>言語</h3>
             <select id="language">
-                <option value="">選択してください</option>
+                <option value="">全ての言語</option>
                 <option value="en">英語</option>
                 <option value="ja">日本語</option>
                 <option value="es">スペイン語</option>
@@ -309,8 +321,7 @@
     </main>
     <footer id="footer" class="width-s"></footer>
 </body>
-<script>
-    document.querySelectorAll('input, select').forEach(element => {
+<script>document.querySelectorAll('input, select').forEach(element => {
         element.addEventListener('input', updateSearchQuery);
     });
 
@@ -388,21 +399,18 @@
     });
 
     function updateSearchQuery() {
-        const username = document.getElementById('username').value.trim();
-        const excludeUser = document.getElementById('exclude-user').value.trim();
-        const hashtag = document.getElementById('hashtag').value.trim();
-        const exactPhrase = document.getElementById('exact-phrase').value.trim();
-        const excludeWords = document.getElementById('exclude-words').value.trim();
-        const sinceDate = document.getElementById('since-date').value;
-        const untilDate = document.getElementById('until-date').value;
+        const usernames = document.getElementById('username').value.trim().split(/[\s,]+/).filter(Boolean);
+        const excludeUsers = document.getElementById('exclude-user').value.trim().split(/[\s,]+/).filter(Boolean);
+        const hashtags = document.getElementById('hashtag').value.trim().split(/[\s,]+/).filter(Boolean);
+        const exactPhrases = document.getElementById('exact-phrase').value.trim().split('/').filter(Boolean);
+        const excludeWords = document.getElementById('exclude-words').value.trim().split('/').filter(Boolean);
+        const sinceDate = document.getElementById('since-date').value.trim();
+        const untilDate = document.getElementById('until-date').value.trim();
         const minRetweets = document.getElementById('min-retweets').value.trim();
-        const maxRetweets = document.getElementById('max-retweets').value.trim();
         const minFaves = document.getElementById('min-faves').value.trim();
-        const maxFaves = document.getElementById('max-faves').value.trim();
         const minReplies = document.getElementById('min-replies').value.trim();
-        const maxReplies = document.getElementById('max-replies').value.trim();
         const url = document.getElementById('url').value.trim();
-        const toUser = document.getElementById('to-user').value.trim();
+        const toUser = document.getElementById('to-user').value.trim().split(/[\s,]+/).filter(Boolean);
         const followedOnly = document.getElementById('followed-only').checked;
         const repliesOnly = document.getElementById('replies-only').checked;
         const excludeReplies = document.getElementById('exclude-replies').checked;
@@ -417,25 +425,41 @@
 
         let searchQuery = [];
 
-        if (username) searchQuery.push(`from:${username}`);
-        if (excludeUser) searchQuery.push(`-from:${excludeUser}`);
-        if (hashtag) searchQuery.push(`#${hashtag}`);
-        if (exactPhrase) searchQuery.push(`"${exactPhrase}"`);
-        if (excludeWords) {
-            excludeWords.split(' ').forEach(word => {
-                searchQuery.push(`-${word}`);
-            });
-        }
+        usernames.forEach(user => {
+            user = user.startsWith('@') ? user : `@${user}`;
+            if (user) searchQuery.push(`from:${user.slice(1)}`);
+        });
+
+        excludeUsers.forEach(user => {
+            user = user.startsWith('@') ? user : `@${user}`;
+            if (user) searchQuery.push(`-from:${user.slice(1)}`);
+        });
+
+        hashtags.forEach(tag => {
+            tag = tag.startsWith('#') ? tag : `#${tag}`;
+            if (tag) searchQuery.push(`${tag}`);
+        });
+
+        exactPhrases.forEach(phrase => {
+            if (phrase) searchQuery.push(`"${phrase}"`);
+        });
+
+        excludeWords.forEach(word => {
+            if (word) searchQuery.push(`-${word}`);
+        });
+
         if (sinceDate) searchQuery.push(`since:${sinceDate}`);
         if (untilDate) searchQuery.push(`until:${untilDate}`);
         if (minRetweets) searchQuery.push(`min_retweets:${minRetweets}`);
-        if (maxRetweets) searchQuery.push(`max_retweets:${maxRetweets}`);
         if (minFaves) searchQuery.push(`min_faves:${minFaves}`);
-        if (maxFaves) searchQuery.push(`max_faves:${maxFaves}`);
         if (minReplies) searchQuery.push(`min_replies:${minReplies}`);
-        if (maxReplies) searchQuery.push(`max_replies:${maxReplies}`);
         if (url) searchQuery.push(`url:${url}`);
-        if (toUser) searchQuery.push(`to:${toUser}`);
+
+        toUser.forEach(user => {
+            user = user.startsWith('@') ? user : `@${user}`;
+            if (user) searchQuery.push(`to:${user.slice(1)}`);
+        });
+
         if (followedOnly) searchQuery.push('filter:follows');
         if (repliesOnly) searchQuery.push('filter:replies');
         if (excludeReplies) searchQuery.push('-filter:replies');
@@ -445,13 +469,14 @@
         if (excludeVideos) searchQuery.push('-filter:videos');
         if (linksOnly) searchQuery.push('filter:links');
         if (excludeLinks) searchQuery.push('-filter:links');
+
         if (language === 'other' && languageOther) {
             searchQuery.push(`lang:${languageOther}`);
         } else if (language) {
             searchQuery.push(`lang:${language}`);
         }
 
-        const query = searchQuery.join(' ');
+        const query = searchQuery.filter(Boolean).join(' ');
         const encodedQuery = encodeURIComponent(query);
         const twitterUrl = `https://twitter.com/search?q=${encodedQuery}`;
         document.getElementById('generated-url').value = twitterUrl;
@@ -481,11 +506,8 @@
         document.getElementById('since-date').value = '';
         document.getElementById('until-date').value = '';
         document.getElementById('min-retweets').value = '';
-        document.getElementById('max-retweets').value = '';
         document.getElementById('min-faves').value = '';
-        document.getElementById('max-faves').value = '';
         document.getElementById('min-replies').value = '';
-        document.getElementById('max-replies').value = '';
         document.getElementById('url').value = '';
         document.getElementById('to-user').value = '';
         document.getElementById('followed-only').checked = false;
@@ -505,7 +527,6 @@
 
     // 初期化
     updateSearchQuery();
-
 </script>
 
 </html>
