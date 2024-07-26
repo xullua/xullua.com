@@ -695,7 +695,10 @@
 .foryou .pagination .prev,
 .foryou .pagination .next {
     padding: 10px;
-    margin: 0 10px;
+}
+
+.foryou .pagination .play-pause {
+    margin-right: 7px;
 }
 
 .foryou .pagination .prev:hover,
