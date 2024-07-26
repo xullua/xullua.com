@@ -667,7 +667,6 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: 1s;
 }
 
@@ -677,7 +676,7 @@
   width: 0;
   height: 0;
   transform: translateX(1px);
-  border-left: 11px solid #fff;
+  border-left: 11px solid var(--maintext);
   border-top: 7px solid transparent;
   border-bottom: 7px solid transparent;
 }
@@ -688,8 +687,8 @@
   width: 4px;
   height: 12px;
   transform: translateX(-3.5px);
-  background-color: #fff;
-  box-shadow: 7px 0 0 0 #fff;
+  background-color:  var(--maintext);
+  box-shadow: 7px 0 0 0  var(--maintext);
 }
 
 .foryou .pagination .prev,
