@@ -53,7 +53,8 @@
       <div class="content">
         <img src="img/xullualogowhite.webp">
         <p class="greeting" id="greeting"></p>
-        <a href="#vote-top-words" class="shortmessage" style="color: var(--maintext);" data-topwordsexplain="このメッセージはサイトを訪れた人が投稿しています。">
+        <a href="#vote-top-words" class="shortmessage" style="color: var(--maintext);"
+          data-topwordsexplain="このメッセージはサイトを訪れた人が投稿しています。">
           <p id="top-words-text"></p>
           <p id="top-words-name"></p>
         </a>
@@ -80,25 +81,25 @@
       <article>
         <div class="content">
           <img src="img/store-senden-top-back.webp" alt="" class="">
-          <div class="img2"><img src="img/store-senden-top.gif" alt="" style="pointer-events: none; width: 60%;"></div>
-          <p class="status" style="background: #6d3388cc;">新登場</p>
-          <div class="gradation" style="background: linear-gradient(#00000000,#6d3388c2 65%);"></div>
+          <div class="img2"><img src="img/store-senden-top.webp" alt="" style="pointer-events: none; width: 70%;"></div>
+          <p class="status" style="background: #f30a50cc;">新登場</p>
+          <div class="gradation" style="background: linear-gradient(#00000000,#921a34c2 65%);"></div>
           <div class="info">
             <div class="texts">
               <h4>おすすめ</h4>
-              <h3>GlowIconsを<br>手に入れよう</h3>
-              <p>新しいアイコン。黒い背景に光るアイコン。PayPayやクレジットカードなどで支払い可能。</p>
+              <h3>あなたのスマホに<br>新しい壁紙を</h3>
+              <p>新しい壁紙が登場。PayPayやクレジットカードなどで支払い可能。</p>
             </div>
             <div class="links">
               <div class="left">
                 <img src="img/favicon.ico" style="background: #000; padding: 2px;">
                 <div class="linkdetail">
-                  <h4>GlowIcons</h4>
+                  <h4>MosaicMelody</h4>
                   <p>Xullua Store</p>
                 </div>
               </div>
               <div class="right">
-                <a href="https://store.xullua.com/?category_id=65fbe5d97ae104007f9219e2">入手</a>
+                <a href="https://xullua.stores.jp/?category_id=66a20ecf1bcd7405c1a0ee8f">入手</a>
               </div>
             </div>
           </div>
@@ -128,37 +129,6 @@
               </div>
               <div class="right">
                 <a href="tools/x-search-command-generate">使う</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-      <article>
-        <div class="content">
-          <img src="https://i.ytimg.com/vi_webp/RRZPQqF5rvI/hq720.webp" style="filter: blur(2px);">
-          <div class="img2">
-            <img src="https://i.ytimg.com/vi_webp/RRZPQqF5rvI/hq720.webp"
-              style="border-radius: 10px; width: 80%; margin-top: 40px;">
-          </div>
-          <p class="status" style="background: #ff0000cc;">最新の動画</p>
-          <div class="gradation" style="background: linear-gradient(#00000000,#bd0e0ecc 65%);"></div>
-          <div class="info">
-            <div class="texts">
-              <h4></h4>
-              <h3>iPhone15Proを知ろう</h3>
-              <p>この動画ではiPhoneXRとiPhone15Proの違いからメリットデメリットを探しています</p>
-            </div>
-            <div class="links">
-              <div class="left">
-                <img src="https://www.youtube.com/s/desktop/a258f8cf/img/favicon_32x32.png" alt="" class="icon"
-                  style="background: #fff; padding: 5px;">
-                <div class="linkdetail">
-                  <h4>ぞるあ</h4>
-                  <p>YouTube</p>
-                </div>
-              </div>
-              <div class="right">
-                <a href="https://www.youtube.com/watch?v=RRZPQqF5rvI">見る</a>
               </div>
             </div>
           </div>
@@ -205,7 +175,7 @@
             <div class="texts">
               <h4></h4>
               <h3>あなたのスマホに<br>新しい壁紙を</h3>
-              <p>ここには多種多様な壁紙がそろっています</p>
+              <p>ここには多種多様な壁紙がそろっています。きっと新名にぴったりな壁紙が見つかります。</p>
             </div>
             <div class="links">
               <div class="left">
@@ -253,9 +223,15 @@
       </article>
     </div>
     <div class="pagination">
-      <button class="prev"><span></span></button>
+      <div class="left">
+        <button class="prev"><span></span></button>
+        <button style="background: none; pointer-events: none;"></button>
+      </div>
       <div class="selects"></div>
-      <button class="next"><span></span></button>
+      <div class="right">
+        <button class="play-pause pause"></button>
+        <button class="next"><span></span></button>
+      </div>
     </div>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
@@ -265,8 +241,9 @@
         const selects = document.querySelector('.pagination .selects');
         let currentIndex = 0;
         let intervalId;
+        let isPlaying = true;
 
-        const autoScrollInterval = 5000;
+        const autoScrollInterval = 4000;
 
         const pageWidthToVisibleArticles = [
           { maxWidth: 1040, visibleArticles: 3 },
@@ -345,7 +322,21 @@
 
         function resetAutoScroll() {
           clearInterval(intervalId);
-          autoScroll();
+          if (isPlaying) autoScroll();
+        }
+
+        function togglePlayPause() {
+          const playPauseButton = document.querySelector('.pagination .play-pause');
+          isPlaying = !isPlaying;
+          if (isPlaying) {
+            playPauseButton.classList.remove('play');
+            playPauseButton.classList.add('pause');
+            autoScroll();
+          } else {
+            playPauseButton.classList.remove('pause');
+            playPauseButton.classList.add('play');
+            clearInterval(intervalId);
+          }
         }
 
         document.querySelector('.pagination .prev span').addEventListener('click', () => {
@@ -358,7 +349,7 @@
           scrollToArticle(currentIndex);
           updatePagination();
           updateArticleClasses();
-          resetAutoScroll();
+          if (isPlaying) resetAutoScroll();
         });
 
         document.querySelector('.pagination .next span').addEventListener('click', () => {
@@ -371,8 +362,10 @@
           scrollToArticle(currentIndex);
           updatePagination();
           updateArticleClasses();
-          resetAutoScroll();
+          if (isPlaying) resetAutoScroll();
         });
+
+        document.querySelector('.pagination .play-pause').addEventListener('click', togglePlayPause);
 
         area.addEventListener('scroll', () => {
           const articleWidth = articles[0].offsetWidth;
