@@ -81,58 +81,25 @@
       <article>
         <div class="content">
           <img src="../img/store-senden-top-back.webp" alt="" class="">
-          <div class="img2"><img src="../img/store-senden-top.gif" alt="" style="pointer-events: none; width: 60%;">
-          </div>
-          <p class="status" style="background: #6d3388cc;">New</p>
-          <div class="gradation" style="background: linear-gradient(#00000000,#6d3388cc 65%);"></div>
+          <div class="img2"><img src="../img/store-senden-top.webp" alt="" style="pointer-events: none; width: 70%;"></div>
+          <p class="status" style="background: #f30a50cc;">New</p>
+          <div class="gradation" style="background: linear-gradient(#00000000,#921a34c2 65%);"></div>
           <div class="info">
             <div class="texts">
-              <h4>Recommendation</h4>
-              <h3>Get this<br>GlowIcons</h3>
-              <p>New icon. Glowing icon on black background. Payable by credit card, etc.</p>
+              <h4>For You</h4>
+              <h3>New WALLPAPER<br>for Your Phone</h3>
+              <p>New wallpaper available. Payable by credit card or other means.</p>
             </div>
             <div class="links">
               <div class="left">
-                <img src="//xullua.com/img/favicon.ico" style="background: #000; padding: 2px;">
+                <img src="../img/favicon.ico" style="background: #000; padding: 2px;">
                 <div class="linkdetail">
-                  <h4>GlowIcons</h4>
+                  <h4>MosaicMelody</h4>
                   <p>Xullua Store</p>
                 </div>
               </div>
               <div class="right">
-                <a href="https://store.xullua.com/?category_id=65fbe5d97ae104007f9219e2">Get</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-      <article>
-        <div class="content">
-          <img src="https://i.ytimg.com/vi_webp/RRZPQqF5rvI/hq720.webp" style="filter: blur(2px);">
-          <div class="img2">
-            <img src="https://i.ytimg.com/vi_webp/RRZPQqF5rvI/hq720.webp"
-              style="border-radius: 10px; width: 80%; margin-top: 40px;">
-          </div>
-          <p class="status" style="background: #ff0000cc;">Newest</p>
-          <div class="gradation" style="background: linear-gradient(#00000000,#bd0e0ecc 65%);"></div>
-          <div class="info">
-            <div class="texts">
-              <h4></h4>
-              <h3>Getting to know<br>the iPhone 15 Pro</h3>
-              <p>This video looks for the merits and demerits of differences between the iPhoneXR and the iPhone15Pro
-              </p>
-            </div>
-            <div class="links">
-              <div class="left">
-                <img src="https://www.youtube.com/s/desktop/a258f8cf/img/favicon_32x32.png" alt="" class="icon"
-                  style="background: #fff; padding: 5px;">
-                <div class="linkdetail">
-                  <h4>Xullua</h4>
-                  <p>YouTube</p>
-                </div>
-              </div>
-              <div class="right">
-                <a href="https://www.youtube.com/watch?v=RRZPQqF5rvI">Watch</a>
+                <a href="https://xullua.stores.jp/?category_id=66a20ecf1bcd7405c1a0ee8f">Get</a>
               </div>
             </div>
           </div>
@@ -198,9 +165,15 @@
       </article>
     </div>
     <div class="pagination">
-      <button class="prev"><span></span></button>
+      <div class="left">
+        <button class="prev"><span></span></button>
+        <button style="background: none; pointer-events: none;"></button>
+      </div>
       <div class="selects"></div>
-      <button class="next"><span></span></button>
+      <div class="right">
+        <button class="play-pause pause"></button>
+        <button class="next"><span></span></button>
+      </div>
     </div>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
@@ -210,8 +183,9 @@
         const selects = document.querySelector('.pagination .selects');
         let currentIndex = 0;
         let intervalId;
+        let isPlaying = true;
 
-        const autoScrollInterval = 5000;
+        const autoScrollInterval = 4000;
 
         const pageWidthToVisibleArticles = [
           { maxWidth: 1040, visibleArticles: 3 },
@@ -290,7 +264,21 @@
 
         function resetAutoScroll() {
           clearInterval(intervalId);
-          autoScroll();
+          if (isPlaying) autoScroll();
+        }
+
+        function togglePlayPause() {
+          const playPauseButton = document.querySelector('.pagination .play-pause');
+          isPlaying = !isPlaying;
+          if (isPlaying) {
+            playPauseButton.classList.remove('play');
+            playPauseButton.classList.add('pause');
+            autoScroll();
+          } else {
+            playPauseButton.classList.remove('pause');
+            playPauseButton.classList.add('play');
+            clearInterval(intervalId);
+          }
         }
 
         document.querySelector('.pagination .prev span').addEventListener('click', () => {
@@ -303,7 +291,7 @@
           scrollToArticle(currentIndex);
           updatePagination();
           updateArticleClasses();
-          resetAutoScroll();
+          if (isPlaying) resetAutoScroll();
         });
 
         document.querySelector('.pagination .next span').addEventListener('click', () => {
@@ -316,8 +304,10 @@
           scrollToArticle(currentIndex);
           updatePagination();
           updateArticleClasses();
-          resetAutoScroll();
+          if (isPlaying) resetAutoScroll();
         });
+
+        document.querySelector('.pagination .play-pause').addEventListener('click', togglePlayPause);
 
         area.addEventListener('scroll', () => {
           const articleWidth = articles[0].offsetWidth;
