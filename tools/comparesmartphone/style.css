@@ -77,11 +77,11 @@ main>.top p {
     }
 
     .select>div {
-        width: 33%;
+        width: calc(100%/3);
     }
 
     .phone-details {
-        width: 33%;
+        width: calc(100%/3);
     }
 }
 
