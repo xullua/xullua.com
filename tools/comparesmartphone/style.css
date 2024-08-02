@@ -86,7 +86,7 @@ main>.top p {
     }
 }
 
-.icon,.name,.display,.chip,.camera,.charge,.weight {
+.phone-details>.icon,.name,.display,.chip,.camera,.charge,.weight {
     margin: 30px auto;
 }
 
