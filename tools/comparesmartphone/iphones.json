@@ -1,0 +1,240 @@
+{
+    "iPhone15Pro": {
+        "name": {
+            "companyname": "Apple",
+            "modelbrand": "iPhone",
+            "modelnumber": "15 Pro Max",
+            "icon": "img/iphone_15pm.svg"
+        },
+        "display": {
+            "displaysize": "6.7",
+            "displayname": "Super Retina XDR",
+            "displayrefreshrate": "10-120",
+            "displaybrightness": "2000"
+        },
+        "chip": {
+            "socbrand": "",
+            "socname": "A17<wbr>Pro"
+        },
+        "camera": {
+            "camerabrand": "",
+            "maximumfocallength": "25",
+            "zoomratio": {
+                "1": {
+                    "type": "sensor",
+                    "ratio": ".5",
+                    "ja":"超広角",
+                    "sensorsize": "1/2.55",
+                    "focallength": "13",
+                    "resolution": "12"
+                },
+                "2": {
+                    "type": "sensor",
+                    "ratio": "1",
+                    "ja":"広角",
+                    "sensorsize": "1/1.28",
+                    "focallength": "24",
+                    "resolution": "48"
+                },
+                "3": {
+                    "type": "crop",
+                    "ratio": "2",
+                    "ja":"広角"
+                },
+                "4": {
+                    "type": "sensor",
+                    "ratio": "5",
+                    "ja":"望遠",
+                    "sensorsize": "1/3.06",
+                    "focallength": "120",
+                    "resolution": "12"
+                }
+            }
+        },
+        "charge": {
+            "wattege": "27",
+            "original": {
+                "name": "",
+                "wattage": ""
+            },
+            "powerdelivery": {
+                "name": "USB PD",
+                "wattage": "27"
+            },
+            "qi": {
+                "name": "MagSafe/Qi2",
+                "wattage": "15"
+            }
+        },
+        "weight": {
+            "bodyweight": "221"
+        },
+        "specs": {
+            "発売日": "2024年9月",
+            "容量": "256GB, 512GB, 1TB"
+        }
+    },
+    "GalaxyS24Ultra": {
+        "name": {
+            "companyname": "Samsung",
+            "modelbrand": "Galaxy",
+            "modelnumber": "S24 Ultra",
+            "icon": "img/galaxy_s24u.svg"
+        },
+        "display": {
+            "displaysize": "6.8",
+            "displayname": "Dynamic AMOLED 2x",
+            "displayrefreshrate": "可変120",
+            "displaybrightness": "2600"
+        },
+        "chip": {
+            "socbrand": "Snapdragon",
+            "socname": "8Gen3"
+        },
+        "camera": {
+            "camerabrand": "",
+            "maximumfocallength": "100",
+            "zoomratio": {
+                "1": {
+                    "type": "sensor",
+                    "ratio": ".6",
+                    "ja":"超広角",
+                    "sensorsize": "1/2.5",
+                    "focallength": "16",
+                    "resolution": "12"
+                },
+                "2": {
+                    "type": "sensor",
+                    "ratio": "1",
+                    "ja":"広角",
+                    "sensorsize": "1/1.33",
+                    "focallength": "23",
+                    "resolution": "200"
+                },
+                "3": {
+                    "type": "crop",
+                    "ratio": "2",
+                    "ja":"広角"
+                },
+                "4": {
+                    "type": "sensor",
+                    "ratio": "3",
+                    "ja":"望遠",
+                    "sensorsize": "1/3.6",
+                    "focallength": "69",
+                    "resolution": "10"
+                },
+                "5": {
+                    "type": "sensor",
+                    "ratio": "5",
+                    "ja":"望遠",
+                    "sensorsize": "1/2.52",
+                    "focallength": "115",
+                    "resolution": "50"
+                },
+                "6": {
+                    "type": "crop",
+                    "ratio": "10",
+                    "ja":"望遠"
+                }
+            }
+        },
+        "charge": {
+            "wattege": "45",
+            "original": {
+                "name": "",
+                "wattage": ""
+            },
+            "powerdelivery": {
+                "name": "PPS",
+                "wattage": "45"
+            },
+            "qi": {
+                "name": "Qi/PMA",
+                "wattage": "15"
+            }
+        },
+        "weight": {
+            "bodyweight": "233"
+        },
+        "specs": {
+            "発売日": "2024年4月",
+            "容量": "256GB, 512GB, 1TB"
+        }
+    },
+    "GooglePixel8Pro": {
+        "name": {
+            "companyname": "Google",
+            "modelbrand": "Pixel",
+            "modelnumber": "8 Pro",
+            "icon": "img/pixel_8p.svg"
+        },
+        "display": {
+            "displaysize": "6.7",
+            "displayname": "Super Actua",
+            "displayrefreshrate": "可変120",
+            "displaybrightness": "2400"
+        },
+        "chip": {
+            "socbrand": "Tensor",
+            "socname": "G3"
+        },
+        "camera": {
+            "camerabrand": "",
+            "maximumfocallength": "30",
+            "zoomratio": {
+                "1": {
+                    "type": "sensor",
+                    "ratio": ".5",
+                    "ja":"超広角",
+                    "sensorsize": "1/2",
+                    "focallength": "16",
+                    "resolution": "48"
+                },
+                "2": {
+                    "type": "sensor",
+                    "ratio": "1",
+                    "ja":"広角",
+                    "sensorsize": "1/1.31",
+                    "focallength": "25",
+                    "resolution": "50"
+                },
+                "3": {
+                    "type": "crop",
+                    "ratio": "2",
+                    "ja":"広角"
+                },
+                "4": {
+                    "type": "sensor",
+                    "ratio": "5",
+                    "ja":"望遠",
+                    "sensorsize": "1/2.55",
+                    "focallength": "110",
+                    "resolution": "48"
+                }
+            }
+        },
+        "charge": {
+            "wattege": "30",
+            "original": {
+                "name": "",
+                "wattage": ""
+            },
+            "powerdelivery": {
+                "name": "PD/PPS",
+                "wattage": "30"
+            },
+            "qi": {
+                "name": "Qi EPP",
+                "wattage": "12"
+            }
+        },
+        "weight": {
+            "bodyweight": "213"
+        },
+        "specs": {
+            "発売日": "2024年10月",
+            "容量": "128GB, 256GB, 512GB"
+        }
+    }
+}

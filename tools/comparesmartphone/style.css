@@ -1,0 +1,202 @@
+main>.top {
+    margin: 80px auto 40px;
+    padding: 0 20px;
+    width: min(100%,var(--width-l) + 40px);
+}
+
+main>.top h1 {
+    font-size: 32px;
+}
+
+main>.top p {
+    color: var(--subtext);
+}
+
+.select {
+    display: flex;
+    width: min(100%,var(--width-l) + 40px);
+    margin: 0 auto;
+    position: sticky;
+    top: 60px;
+    filter: drop-shadow(0 0 10px var(--firstback));
+    z-index: 2;
+}
+
+.select>div {
+    width: 50%;
+    padding: 0 20px;
+}
+
+.select select {
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: 5px 10px;
+    background: var(--secondback);
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: var(--font-family);
+    transition: .2s;
+}
+
+.select select:hover {
+    background: var(--thirdback);
+}
+
+.select select:active {
+    transform: scale(.99);
+}
+
+.comparison-section {
+    width: min(100%,var(--width-l) + 40px);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.phone-details {
+    width: 50%;
+    padding: 20px;
+}
+
+
+.select>div:nth-child(3),
+.phone-details:nth-child(3) {
+    display: none;
+}
+
+@media screen and (min-width: 1000px) {
+    .select>div:nth-child(3),
+    .phone-details:nth-child(3) {
+        display: block;
+    }
+
+    .select>div {
+        width: 33%;
+    }
+
+    .phone-details {
+        width: 33%;
+    }
+}
+
+.icon,.name,.display,.chip,.camera,.charge,.weight {
+    margin: 30px auto;
+}
+
+.icon {
+    height: 100px;
+}
+
+.icon img{
+    display: block;
+    width: min(50%,100px);
+    filter: var(--img-change-white);
+    pointer-events: none;
+}
+
+.name .companyname {
+    font-size: 14px;
+}
+
+.name .modelbrand,
+.name .modelnumber {
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 1.2;
+}
+
+.display {
+    line-height: 1.2;
+}
+
+.display .displaysize {
+    font-weight: 700;
+    font-size: 60px;
+}
+
+.chip .socbrand {
+    height: 25px;
+}
+
+.chip .socname {
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 1;
+    text-wrap: balance;
+    word-break: autp-phrese;
+}
+
+.chip .socname span {
+    font-size: 80%;
+}
+
+.camera .zoomratio {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 450px;
+    border-left: 7px solid var(--maintext);
+    margin: 0 0 0 13px;
+    transition: .2s;
+    position: relative;
+}
+
+.camera .zoomratio>p {
+    margin: 0 0 0 5px;
+    line-height: 1;
+}
+
+.camera .zoomratio .in {
+    position: absolute;
+    left: -20px;
+    top: 0;
+}
+
+.camera .zoomratio .sensor,
+.camera .zoomratio .crop {
+    display: flex;
+    line-height: 1.2;
+    margin: 0 0 10px 0;
+}
+
+.camera .zoomratio .camerazoomratio {
+    background: var(--maintext);
+    color: var(--firstback);
+    border: 3px solid var(--maintext);
+    font-weight: 700;
+    font-size: 30px;
+    padding: 0px 3px;
+    margin: 0 7px 0 0;
+    border-radius: 3px;
+    width: 70px;
+    height: fit-content;
+}
+
+.camera .zoomratio .crop .camerazoomratio {
+    background: var(--firstback);
+    color: var(--maintext);
+}
+
+.charge {
+    line-height: 1.2;
+}
+
+.charge>.wattage {
+    font-weight: 700;
+    font-size: 50px;
+}
+
+.weight {
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 1;
+}
+
+.cooperation {
+    width: min(100%,var(--width-l) + 40px);
+    padding: 20px;
+    margin: 0 auto;
+    color: var(--subtext);
+}
