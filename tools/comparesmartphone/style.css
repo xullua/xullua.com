@@ -1,7 +1,7 @@
 main>.top {
     margin: 80px auto 40px;
-    padding: 0 20px;
-    width: min(100%,var(--width-l) + 40px);
+    padding: 0 15px;
+    width: min(100%,var(--width-l) + 30px);
 }
 
 main>.top h1 {
@@ -14,8 +14,9 @@ main>.top p {
 
 .select {
     display: flex;
-    width: min(100%,var(--width-l) + 40px);
+    width: min(100%,var(--width-l) + 30px);
     margin: 0 auto;
+    padding: 0 10px;
     position: sticky;
     top: 60px;
     filter: drop-shadow(0 0 10px var(--firstback));
@@ -24,7 +25,7 @@ main>.top p {
 
 .select>div {
     width: 50%;
-    padding: 0 20px;
+    padding: 0 5px;
 }
 
 .select select {
@@ -33,6 +34,7 @@ main>.top p {
     width: 100%;
     padding: 5px 10px;
     background: var(--secondback);
+    color: var(--maintext);
     cursor: pointer;
     position: relative;
     border-radius: 5px;
@@ -50,15 +52,16 @@ main>.top p {
 }
 
 .comparison-section {
-    width: min(100%,var(--width-l) + 40px);
+    width: min(100%,var(--width-l) + 30px);
     margin: 0 auto;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
 }
 
 .phone-details {
     width: 50%;
-    padding: 20px;
+    padding: 5px;
 }
 
 
@@ -195,8 +198,8 @@ main>.top p {
 }
 
 .cooperation {
-    width: min(100%,var(--width-l) + 40px);
-    padding: 20px;
+    width: min(100%,var(--width-l) + 30px);
+    padding: 15px;
     margin: 0 auto;
     color: var(--subtext);
 }
