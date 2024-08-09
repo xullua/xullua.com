@@ -1,0 +1,119 @@
+.top {
+    width: min(100%,var(--width-s) + 30px);
+    padding: 0 15px;
+    margin: 80px auto 60px;
+    line-height: 1.2;
+}
+
+.top p {
+    color: var(--subtext);
+    margin-top: 10px;
+}
+
+.newest {
+    width: min(100%,var(--width-s) + 30px);
+    padding: 0 15px;
+    margin: 60px auto 60px;
+}
+
+.newest h2 {
+    white-space: nowrap;
+}
+
+.newest>div {
+    background: var(--secondback);
+    padding: 15px;
+    border-radius: 15px;
+    line-height: 1.2;
+    display: flex;
+    justify-content: space-between;
+    filter: drop-shadow(0 0 5px #00c43b);
+    border: 1px solid #00c43b;
+}
+
+.newest .right {
+    text-align: right;
+}
+
+.newest .status {
+    font-weight: 700;
+}
+
+.newest #neweststatus {
+    border-radius: 5px;
+    padding: 3px 9px;
+    line-height: 2;
+    color: #fff;
+    background: #00c43b;
+}
+
+.newest .explain {
+    font-size: 14px;
+    color: var(--subtext);
+    margin-top: 10px;
+}
+
+.newest.ng>div {
+    filter: drop-shadow(0 0 5px #f00);
+    border: 1px solid #f00;
+}
+
+.newest.ng #neweststatus {
+    background: #f00;
+}
+
+.contact {
+    width: min(100%,var(--width-s) + 30px);
+    padding: 0 15px;
+    margin: 60px auto 60px;
+}
+
+.contact p {
+    font-size: 14px;
+}
+
+.archive {
+    width: min(100%,var(--width-s) + 30px);
+    padding: 0 6px;
+    margin: 60px auto 60px;
+}
+
+.archive article {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1.2;
+    padding: 7px;
+    border-radius: 12px;
+    margin: 0 0 3px;
+    transition: 1s;
+}
+
+.archive article:hover {
+    background: var(--secondback);
+    transition: .2s;
+}
+
+.archive article .left h3 {
+    font-size: 18px;
+}
+
+.archive article .left p {
+    font-size: 12px;
+    color: var(--subtext);
+}
+
+.archive article .left span {
+    margin-right: 10px;
+}
+
+.archive article .right h4 span {
+    padding: 3px 9px;
+    border-radius: 5px;
+    color: #fff;
+    background: #00c43b;
+}
+
+.archive article.ng .right h4 span {
+    background: #f00;
+}
