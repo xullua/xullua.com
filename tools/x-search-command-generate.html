@@ -131,6 +131,7 @@
             margin-top: 20px;
         }
 
+        .input-group p,
         .horizontal-group p {
             font-size: 12px;
             color: var(--subtext);
@@ -229,6 +230,26 @@
             <p>カンマまたはスペースで区切ると複数のユーザーを検索することができます。</p>
         </div>
         <hr>
+        <div class="keyword-specification horizontal-group" style="display: none;">
+            <label for="exact-phrase">キーワード:</label>
+            <input type="text" id="exact-phrase" name="exact-phrase" placeholder="例: keyword1/keyword2">
+            <div class="keyword-options">
+                <input type="checkbox" name="keyword-option" id="include-exact" value="exact">
+                <label for="include-exact">絶対に含める</label><br>
+                <input type="checkbox" name="keyword-option" id="include-all" value="all">
+                <label for="include-all">全てを含める</label><br>
+                <input type="checkbox" name="keyword-option" id="include-any" value="any">
+                <label for="include-any">いずれかを含める (OR)</label>
+            </div>
+            <label for="exclude-words">除外：</label>
+            <input type="text" id="exclude-words" placeholder="catを除外"><br>
+            <label for="hashtag">ハッシュタグ：</label>
+            <input type="text" id="hashtag" placeholder="#mouseを含む"><br>
+            <label for="url">URL：</label>
+            <input type="text" id="url" placeholder="example.comを含む" class="large">
+            <p>ワードをスラッシュで区切るといずれかを含むポストを指定できます。<br>URLは「https://」や「.com」を省略しても検索できます。</p>
+        </div>
+
         <div class="horizontal-group">
             <h3>キーワード</h3>
             <label for="exact-phrase">指定：</label>
@@ -239,7 +260,7 @@
             <input type="text" id="hashtag" placeholder="#mouseを含む"><br>
             <label for="url">URL：</label>
             <input type="text" id="url" placeholder="example.comを含む" class="large">
-            <p>ワードをスラッシュで区切るといずれかを含むポストを指定できます。</p>
+            <p>ワードをスラッシュで区切るといずれかを含むポストを指定できます。<br>URLは「https://」や「.com」を省略しても検索できます。</p>
         </div>
         <hr>
         <div class="horizontal-group">
@@ -269,6 +290,12 @@
             <label for="followed-only">フォローしている人のみ</label>
         </div>
         <div class="input-group">
+            <input type="checkbox" id="verified-only" name="verified">
+            <label for="verified-only">認証バッチ付きのユーザーを包含</label><br>
+            <input type="checkbox" id="exclude-verified" name="verified">
+            <label for="exclude-verified">認証バッチ付きのユーザーを除外</label>
+        </div>
+        <div class="input-group">
             <input type="checkbox" id="replies-only" name="replies">
             <label for="replies-only">リプライを包含</label><br>
             <input type="checkbox" id="exclude-replies" name="replies">
@@ -283,14 +310,29 @@
         <div class="input-group">
             <input type="checkbox" id="videos-only" name="videos">
             <label for="videos-only">動画を包含</label><br>
+            <input type="checkbox" id="videos-x-only" name="videos">
+            <label for="videos-x-only">Xに投稿された動画を包含</label><br>
             <input type="checkbox" id="exclude-videos" name="videos">
             <label for="exclude-videos">動画を除外</label>
+            <p>「動画を包含」ではYouTubeのリンクを含んだ投稿も検索に含まれます。</p>
         </div>
         <div class="input-group">
             <input type="checkbox" id="links-only" name="links">
             <label for="links-only">リンクを包含</label><br>
             <input type="checkbox" id="exclude-links" name="links">
             <label for="exclude-links">リンクを除外</label>
+        </div>
+        <div class="input-group">
+            <input type="checkbox" id="spaces-only" name="spaces">
+            <label for="spaces-only">スペースを包含</label><br>
+            <input type="checkbox" id="exclude-spaces" name="spaces">
+            <label for="exclude-spaces">スペースを除外</label>
+        </div>
+        <div class="input-group">
+            <input type="checkbox" id="source-iPhone" name="source">
+            <label for="source-iPhone">iPhoneからのポストのみ</label><br>
+            <input type="checkbox" id="source-Android" name="source">
+            <label for="source-Android">Androidからのポストのみ</label>
         </div>
         <hr>
         <div class="input-group">
@@ -308,6 +350,19 @@
             </select>
             <input type="text" id="language-other" placeholder="その他の言語コード" style="display:none;">
         </div>
+        <hr>
+        <div class="input-group">
+            <h3>位置</h3>
+            <label for="place-near">場所：</label>
+            <input type="text" id="place-near" name="place-near" placeholder="東京から"><br>
+            <label for="place-within">半径：</label>
+            <input type="text" id="place-within" name="place-within" placeholder="半径0.5km">
+            <p>場所と半径は両方入力してください。</p>
+        </div>
+        <div class="input-group">
+            <label for="geocode">座標：</label>
+            <input type="text" id="geocode" name="geocode" placeholder="緯度,経度,範囲">
+        </div>
         <div class="result">
             <div class="btns">
                 <div class="left">
@@ -321,212 +376,268 @@
     </main>
     <footer id="footer" class="width-s"></footer>
 </body>
-<script>document.querySelectorAll('input, select').forEach(element => {
-        element.addEventListener('input', updateSearchQuery);
-    });
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const usernameInput = document.getElementById('username');
+        const excludeUserInput = document.getElementById('exclude-user');
+        const toUserInput = document.getElementById('to-user');
+        const exactPhraseInput = document.getElementById('exact-phrase');
+        const excludeWordsInput = document.getElementById('exclude-words');
+        const hashtagInput = document.getElementById('hashtag');
+        const urlInput = document.getElementById('url');
+        const minFavesInput = document.getElementById('min-faves');
+        const minRetweetsInput = document.getElementById('min-retweets');
+        const minRepliesInput = document.getElementById('min-replies');
+        const sinceDateInput = document.getElementById('since-date');
+        const untilDateInput = document.getElementById('until-date');
+        const languageInput = document.getElementById('language');
+        const languageOtherInput = document.getElementById('language-other');
+        const placeNearInput = document.getElementById('place-near');
+        const placeWithinInput = document.getElementById('place-within');
+        const geocodeInput = document.getElementById('geocode');
 
-    document.getElementById('copy-button').addEventListener('click', function () {
-        const query = updateSearchQuery();
-        copyToClipboard(query);
-    });
+        // チェックボックスグループで一つのみ選択できるようにする
+        const checkboxGroups = [
+            document.getElementsByName('verified'),
+            document.getElementsByName('replies'),
+            document.getElementsByName('media'),
+            document.getElementsByName('videos'),
+            document.getElementsByName('links'),
+            document.getElementsByName('spaces'),
+            document.getElementsByName('source')
+        ];
 
-    document.getElementById('open-twitter-button').addEventListener('click', function () {
-        const url = document.getElementById('generated-url').value;
-        if (url) {
-            window.location.href = url;
-        } else {
-            alert('まず検索コマンドを生成してください。');
-        }
-    });
-
-    document.getElementById('clear-button').addEventListener('click', clearFields);
-
-    document.getElementById('language').addEventListener('change', function () {
-        const otherLanguageInput = document.getElementById('language-other');
-        if (this.value === 'other') {
-            otherLanguageInput.style.display = 'inline';
-        } else {
-            otherLanguageInput.style.display = 'none';
-        }
-    });
-
-    document.getElementById('replies-only').addEventListener('change', function () {
-        if (this.checked) {
-            document.getElementById('exclude-replies').checked = false;
-        }
-    });
-
-    document.getElementById('exclude-replies').addEventListener('change', function () {
-        if (this.checked) {
-            document.getElementById('replies-only').checked = false;
-        }
-    });
-
-    document.getElementById('media-only').addEventListener('change', function () {
-        if (this.checked) {
-            document.getElementById('exclude-media').checked = false;
-        }
-    });
-
-    document.getElementById('exclude-media').addEventListener('change', function () {
-        if (this.checked) {
-            document.getElementById('media-only').checked = false;
-        }
-    });
-
-    document.getElementById('videos-only').addEventListener('change', function () {
-        if (this.checked) {
-            document.getElementById('exclude-videos').checked = false;
-        }
-    });
-
-    document.getElementById('exclude-videos').addEventListener('change', function () {
-        if (this.checked) {
-            document.getElementById('videos-only').checked = false;
-        }
-    });
-
-    document.getElementById('links-only').addEventListener('change', function () {
-        if (this.checked) {
-            document.getElementById('exclude-links').checked = false;
-        }
-    });
-
-    document.getElementById('exclude-links').addEventListener('change', function () {
-        if (this.checked) {
-            document.getElementById('links-only').checked = false;
-        }
-    });
-
-    function updateSearchQuery() {
-        const usernames = document.getElementById('username').value.trim().split(/[\s,]+/).filter(Boolean);
-        const excludeUsers = document.getElementById('exclude-user').value.trim().split(/[\s,]+/).filter(Boolean);
-        const hashtags = document.getElementById('hashtag').value.trim().split(/[\s,]+/).filter(Boolean);
-        const exactPhrases = document.getElementById('exact-phrase').value.trim().split('/').filter(Boolean);
-        const excludeWords = document.getElementById('exclude-words').value.trim().split('/').filter(Boolean);
-        const sinceDate = document.getElementById('since-date').value.trim();
-        const untilDate = document.getElementById('until-date').value.trim();
-        const minRetweets = document.getElementById('min-retweets').value.trim();
-        const minFaves = document.getElementById('min-faves').value.trim();
-        const minReplies = document.getElementById('min-replies').value.trim();
-        const url = document.getElementById('url').value.trim();
-        const toUser = document.getElementById('to-user').value.trim().split(/[\s,]+/).filter(Boolean);
-        const followedOnly = document.getElementById('followed-only').checked;
-        const repliesOnly = document.getElementById('replies-only').checked;
-        const excludeReplies = document.getElementById('exclude-replies').checked;
-        const mediaOnly = document.getElementById('media-only').checked;
-        const excludeMedia = document.getElementById('exclude-media').checked;
-        const videosOnly = document.getElementById('videos-only').checked;
-        const excludeVideos = document.getElementById('exclude-videos').checked;
-        const linksOnly = document.getElementById('links-only').checked;
-        const excludeLinks = document.getElementById('exclude-links').checked;
-        const language = document.getElementById('language').value;
-        const languageOther = document.getElementById('language-other').value.trim();
-
-        let searchQuery = [];
-
-        usernames.forEach(user => {
-            user = user.startsWith('@') ? user : `@${user}`;
-            if (user) searchQuery.push(`from:${user.slice(1)}`);
+        checkboxGroups.forEach(group => {
+            group.forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    if (this.checked) {
+                        group.forEach(otherCheckbox => {
+                            if (otherCheckbox !== this) {
+                                otherCheckbox.checked = false;
+                            }
+                        });
+                    }
+                    generateSearchCommand();
+                });
+            });
         });
 
-        excludeUsers.forEach(user => {
-            user = user.startsWith('@') ? user : `@${user}`;
-            if (user) searchQuery.push(`-from:${user.slice(1)}`);
+        // 位置の半径にkm単位を付ける
+        placeWithinInput.addEventListener('blur', function () {
+            if (this.value && !this.value.endsWith('km')) {
+                this.value += 'km';
+            }
+            generateSearchCommand();
         });
 
-        hashtags.forEach(tag => {
-            tag = tag.startsWith('#') ? tag : `#${tag}`;
-            if (tag) searchQuery.push(`${tag}`);
+        // 言語選択に応じてその他言語入力欄を表示
+        languageInput.addEventListener('change', function () {
+            if (this.value === 'other') {
+                languageOtherInput.style.display = 'block';
+            } else {
+                languageOtherInput.style.display = 'none';
+                languageOtherInput.value = '';
+            }
+            generateSearchCommand();
         });
 
-        exactPhrases.forEach(phrase => {
-            if (phrase) searchQuery.push(`"${phrase}"`);
+        // 入力内容をリアルタイムで反映
+        const inputs = document.querySelectorAll('input[type="text"], input[type="number"], input[type="date"], input[type="checkbox"], select');
+        inputs.forEach(input => {
+            input.addEventListener('input', generateSearchCommand);
+            input.addEventListener('change', generateSearchCommand);
         });
 
-        excludeWords.forEach(word => {
-            if (word) searchQuery.push(`-${word}`);
-        });
+        function generateSearchCommand() {
+            let query = '';
 
-        if (sinceDate) searchQuery.push(`since:${sinceDate}`);
-        if (untilDate) searchQuery.push(`until:${untilDate}`);
-        if (minRetweets) searchQuery.push(`min_retweets:${minRetweets}`);
-        if (minFaves) searchQuery.push(`min_faves:${minFaves}`);
-        if (minReplies) searchQuery.push(`min_replies:${minReplies}`);
-        if (url) searchQuery.push(`url:${url}`);
+            // ユーザー名の処理
+            if (usernameInput.value) {
+                query += 'from:' + usernameInput.value.split(/[ ,]+/).map(user => user.replace(/^@/, '')).join(' OR from:') + ' ';
+            }
 
-        toUser.forEach(user => {
-            user = user.startsWith('@') ? user : `@${user}`;
-            if (user) searchQuery.push(`to:${user.slice(1)}`);
-        });
+            if (excludeUserInput.value) {
+                query += '-from:' + excludeUserInput.value.split(/[ ,]+/).map(user => user.replace(/^@/, '')).join(' -from:') + ' ';
+            }
 
-        if (followedOnly) searchQuery.push('filter:follows');
-        if (repliesOnly) searchQuery.push('filter:replies');
-        if (excludeReplies) searchQuery.push('-filter:replies');
-        if (mediaOnly) searchQuery.push('filter:media');
-        if (excludeMedia) searchQuery.push('-filter:media');
-        if (videosOnly) searchQuery.push('filter:videos');
-        if (excludeVideos) searchQuery.push('-filter:videos');
-        if (linksOnly) searchQuery.push('filter:links');
-        if (excludeLinks) searchQuery.push('-filter:links');
+            if (toUserInput.value) {
+                query += 'to:' + toUserInput.value.split(/[ ,]+/).map(user => user.replace(/^@/, '')).join(' OR to:') + ' ';
+            }
 
-        if (language === 'other' && languageOther) {
-            searchQuery.push(`lang:${languageOther}`);
-        } else if (language) {
-            searchQuery.push(`lang:${language}`);
+            // キーワードの処理
+            const includeExact = document.getElementById('include-exact');
+            const includeAll = document.getElementById('include-all');
+            const includeAny = document.getElementById('include-any');
+            let keywordLogic = '';
+
+            if (includeExact.checked) {
+                keywordLogic = '""';
+            } else if (includeAll.checked) {
+                keywordLogic = 'AND';
+            } else if (includeAny.checked) {
+                keywordLogic = 'OR';
+            }
+
+            if (exactPhraseInput.value) {
+                const phrases = exactPhraseInput.value.split('/');
+                if (keywordLogic === 'AND') {
+                    query += phrases.map(phrase => `+${phrase}`).join(' ') + ' ';
+                } else if (keywordLogic === 'OR') {
+                    query += phrases.map(phrase => `(${phrase})`).join(' OR ') + ' ';
+                } else {
+                    query += phrases.map(phrase => `"${phrase}"`).join(' OR ') + ' ';
+                }
+            }
+
+            if (excludeWordsInput.value) {
+                query += excludeWordsInput.value.split('/').map(phrase => `-"${phrase}"`).join(' -') + ' ';
+            }
+
+            if (hashtagInput.value) {
+                query += hashtagInput.value.split(/[ ,]+/).map(tag => tag.replace(/^#/, '')).join(' OR #') + ' ';
+            }
+
+            if (urlInput.value) {
+                query += 'url:' + urlInput.value + ' ';
+            }
+
+            // エンゲージメントの処理
+            if (minFavesInput.value) {
+                query += 'min_faves:' + minFavesInput.value + ' ';
+            }
+
+            if (minRetweetsInput.value) {
+                query += 'min_retweets:' + minRetweetsInput.value + ' ';
+            }
+
+            if (minRepliesInput.value) {
+                query += 'min_replies:' + minRepliesInput.value + ' ';
+            }
+
+            // 期間の処理
+            if (sinceDateInput.value) {
+                query += 'since:' + sinceDateInput.value + ' ';
+            }
+
+            if (untilDateInput.value) {
+                query += 'until:' + untilDateInput.value + ' ';
+            }
+
+            // フィルターの処理
+            if (document.getElementById('followed-only').checked) {
+                query += 'filter:follows ';
+            }
+
+            if (document.getElementById('verified-only').checked) {
+                query += 'filter:verified ';
+            }
+
+            if (document.getElementById('exclude-verified').checked) {
+                query += '-filter:verified ';
+            }
+
+            if (document.getElementById('replies-only').checked) {
+                query += 'filter:replies ';
+            }
+
+            if (document.getElementById('exclude-replies').checked) {
+                query += '-filter:replies ';
+            }
+
+            if (document.getElementById('media-only').checked) {
+                query += 'filter:media ';
+            }
+
+            if (document.getElementById('exclude-media').checked) {
+                query += '-filter:media ';
+            }
+
+            if (document.getElementById('videos-only').checked) {
+                query += 'filter:videos ';
+            }
+
+            if (document.getElementById('videos-x-only').checked) {
+                query += 'filter:native_video ';
+            }
+
+            if (document.getElementById('exclude-videos').checked) {
+                query += '-filter:videos ';
+            }
+
+            if (document.getElementById('links-only').checked) {
+                query += 'filter:links ';
+            }
+
+            if (document.getElementById('exclude-links').checked) {
+                query += '-filter:links ';
+            }
+
+            if (document.getElementById('spaces-only').checked) {
+                query += 'filter:spaces ';
+            }
+
+            if (document.getElementById('exclude-spaces').checked) {
+                query += '-filter:spaces ';
+            }
+
+            if (document.getElementById('source-iPhone').checked) {
+                query += 'source:twitter_for_iPhone ';
+            }
+
+            if (document.getElementById('source-Android').checked) {
+                query += 'source:twitter_for_Android ';
+            }
+
+            // 言語の処理
+            if (languageInput.value) {
+                query += 'lang:' + (languageInput.value === 'other' ? languageOtherInput.value : languageInput.value) + ' ';
+            }
+
+            // 位置情報の処理
+            if (placeNearInput.value && placeWithinInput.value) {
+                query += `near:${placeNearInput.value} within:${placeWithinInput.value} `;
+            }
+
+            if (geocodeInput.value) {
+                query += `geocode:${geocodeInput.value} `;
+            }
+
+            // 検索コマンドの生成
+            document.getElementById('generated-url').value = `https://twitter.com/search?q=${encodeURIComponent(query.trim())}`;
         }
 
-        const query = searchQuery.filter(Boolean).join(' ');
-        const encodedQuery = encodeURIComponent(query);
-        const twitterUrl = `https://twitter.com/search?q=${encodedQuery}`;
-        document.getElementById('generated-url').value = twitterUrl;
-        return query;
-    }
+        // 初回の検索コマンド生成
+        generateSearchCommand();
 
-    function copyToClipboard(text) {
-        const textArea = document.createElement('textarea');
-        textArea.value = text;
-        document.body.appendChild(textArea);
-        textArea.select();
-        try {
-            document.execCommand('copy');
-            alert('検索コマンドをコピーしました！');
-        } catch (err) {
-            alert('コピーに失敗しました。');
-        }
-        document.body.removeChild(textArea);
-    }
+        // クリアボタンの処理
+        document.getElementById('clear-button').addEventListener('click', function () {
+            inputs.forEach(input => {
+                if (input.type === 'checkbox') {
+                    input.checked = false;
+                } else {
+                    input.value = '';
+                }
+            });
+            generateSearchCommand();
+        });
 
-    function clearFields() {
-        document.getElementById('username').value = '';
-        document.getElementById('exclude-user').value = '';
-        document.getElementById('hashtag').value = '';
-        document.getElementById('exact-phrase').value = '';
-        document.getElementById('exclude-words').value = '';
-        document.getElementById('since-date').value = '';
-        document.getElementById('until-date').value = '';
-        document.getElementById('min-retweets').value = '';
-        document.getElementById('min-faves').value = '';
-        document.getElementById('min-replies').value = '';
-        document.getElementById('url').value = '';
-        document.getElementById('to-user').value = '';
-        document.getElementById('followed-only').checked = false;
-        document.getElementById('replies-only').checked = false;
-        document.getElementById('exclude-replies').checked = false;
-        document.getElementById('media-only').checked = false;
-        document.getElementById('exclude-media').checked = false;
-        document.getElementById('videos-only').checked = false;
-        document.getElementById('exclude-videos').checked = false;
-        document.getElementById('links-only').checked = false;
-        document.getElementById('exclude-links').checked = false;
-        document.getElementById('language').value = '';
-        document.getElementById('language-other').value = '';
-        document.getElementById('language-other').style.display = 'none';
-        updateSearchQuery(); // フィールドをクリアした後に検索クエリを更新
-    }
+        // コピー機能の処理
+        document.getElementById('copy-button').addEventListener('click', function () {
+            const url = document.getElementById('generated-url');
+            url.select();
+            url.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(url.value).then(() => {
+                alert('検索コマンドがコピーされました');
+            });
+        });
 
-    // 初期化
-    updateSearchQuery();
+        // Twitterで開くボタンの処理
+        document.getElementById('open-twitter-button').addEventListener('click', function () {
+            const url = document.getElementById('generated-url').value;
+            window.open(url, '_blank');
+        });
+    });
+
 </script>
 
 </html>
