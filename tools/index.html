@@ -34,8 +34,8 @@
     <!-- 共通部分 -->
     <script>
         $(function () {
-            $("#header").load("../header.html");
-            $("#footer").load("../footer.html");
+            $("header").load("../header.html");
+            $("footer").load("../footer.html");
         });
     </script>
 </head>
@@ -43,7 +43,7 @@
 
 <body>
     <!-- ヘッダー -->
-    <header class="header" id="header"></header>
+    <header class="width-m"></header>
     <main class="tools">
         <section class="top">
             <h1 class="gradation-text-1">ツール</h1>
@@ -169,7 +169,7 @@
         </section>
 
     </main>
-    <footer id="footer"></footer>
+    <footer class="width-m"></footer>
 </body>
 
 <style>
@@ -220,7 +220,7 @@
     }
 
     .tools .top {
-        width: min(100% - 40px, var(--width-l));
+        width: min(100% - 40px, var(--width-m));
         margin: 0 auto 30px auto;
     }
 
@@ -289,7 +289,7 @@
     }
 
     .tools .content .text {
-        width: min(100%, (var(--width-l) - 20px - 16px)/2 + 40px);
+        width: min(100%, (var(--width-m) - 20px - 16px)/2 + 40px);
         padding: 20px;
         filter: drop-shadow(0 0 10px #00000077);
     }
