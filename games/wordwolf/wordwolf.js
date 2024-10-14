@@ -142,10 +142,12 @@ function displayAnswer() {
     answerSection.innerHTML = tableHTML;
 
     document.getElementById('replay-btn').addEventListener('click', () => {
-        currentIndex = 0;
-        reselectWolfAndTitle(); // 再選抜
-        document.querySelector('.answer').style.display = 'none';
-        displayPlayerCheck();
+        fetchTitles(() => {
+            currentIndex = 0;
+            reselectWolfAndTitle(); // 再選抜
+            document.querySelector('.answer').style.display = 'none';
+            displayPlayerCheck();
+        });
     });
 
     document.getElementById('reset-settings-btn').addEventListener('click', () => {
