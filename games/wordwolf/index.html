@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ワードウルフ</title>
+    <meta name="description" content="">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@xullua">
+    <meta name="twitter:title" content="ワードウルフ">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="https://xullua.com/img/wordwolf.webp">
+
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/color.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="wordwolf.css">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- アナリティクス -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JDKGJ1E005');
+    </script>
+    <!-- 共通部分 -->
+    <script>
+        $(function () {
+            $("header").load("../../header.html");
+            $("footer").load("../../footer.html");
+        });
+    </script>
+</head>
+
+<body>
+    <header class="width-s"></header>
+    <main>
+        <section class="start" style="display: block;">
+            <h2>ワードウルフを開始する</h2>
+            <p>この場にいる人と一緒に一台の端末を使用してワードウルフをプレイします。</p>
+            <button id="start-btn">開始</button>
+        </section>
+
+        <section class="setting" style="display: none;">
+            <h2>ゲーム設定</h2>
+            <h3>プレイヤー数</h3>
+            <input type="number" id="player-count" min="3" placeholder="3">
+
+            <h3>ウルフの人数</h3>
+            <input type="number" id="wolf-count" min="1" value="1">
+
+            <h3>お題のカテゴリー</h3>
+            <select id="category-select">
+                <option value="all">全て</option>
+                <option value="観光地" style="display: none;">観光地</option>
+                <option value="恋愛">恋愛</option>
+            </select>
+
+            <h3>時間制限</h3>
+            <input type="number" id="time-limit-m" value="3"><span>分</span>
+            <input type="number" id="time-limit-s" value="0"><span>秒</span>
+
+            <p id="error-msg" style="display: none;"></p>
+
+            <button id="next-btn">次へ</button>
+        </section>
+
+        <section class="playername" style="display: none;">
+            <h2>プレイヤー名設定</h2>
+            <p>プレイヤー名を入力してください。空欄の場合自動生成されます。</p>
+            <!-- プレイヤー名の入力欄は動的に生成されます -->
+        </section>
+
+        <section class="playercheck" style="display: none;">
+            <h2></h2>
+            <p></p>
+            <button class="player-check-btn">はい</button>
+        </section>
+
+        <section class="displayingtitle" style="display: none;">
+            <h2></h2>
+            <p>お題は忘れやすいので心の中で3回復唱しましょう。</p>
+            <h3 class="player-title"></h3>
+            <button>了解</button>
+        </section>
+
+        <section class="gamestart" style="display: none;">
+            <h2>ゲームを開始する</h2>
+            <p>全員のお題の確認が終わりました。ゲームを開始してください。</p>
+            <div>
+                <button id="game-start-btn">開始</button>
+                <button id="review-title-btn">もう一度お題を確認する</button>
+                <button id="change-title-btn">お題を変える</button>
+            </div>
+        </section>
+
+        <section class="playinggame" style="display: none;">
+            <h2>ゲーム進行中</h2>
+            <p>みんなで話しあってウルフを探し出しましょう。</p>
+            <div class="time">
+                <h3>残り時間</h3>
+                <p id="time-remaining">0分0秒</p>
+            </div>
+
+            <div class="hint"></div>
+
+            <div class="end">
+                <button id="end-game-btn">終了して答えを確認</button>
+            </div>
+        </section>
+
+        <section class="answer" style="display: none;"></section>
+    </main>
+    <footer class="width-s"></footer>
+
+</body>
+<script src="wordwolf.js" defer></script>
+
+</html>
