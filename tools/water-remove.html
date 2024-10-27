@@ -41,7 +41,7 @@
     main {
         width: min(var(--width-l) - 20px, 100% - 40px);
         margin: 0 auto;
-        padding: 60px 0;
+        padding: 70px 0;
     }
 
     h1 {
@@ -133,6 +133,8 @@
         transition: 1s;
         background: none;
         color: var(--maintext);
+        outline: 2px solid #0000;
+        outline-offset: 15px;
         border: 3px solid var(--accentcolor);
         filter: drop-shadow(0 0 10px var(--accentcolor));
         font-family: 'LSeedJP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ ゴシック', 'MS Gothic', HiraKakuProN-W3, 'TakaoExゴシック', TakaoExGothic, 'MotoyaLCedar', 'Droid Sans Japanese', sans-serif;
@@ -140,8 +142,9 @@
 
     #playStopButton:hover {
         transition: .2s;
-        font-size: 34px;
         color: var(--maintext);
+        outline: 2px solid var(--accentcolor);
+        outline-offset: 5px;
         background: var(--accentcolor);
         border: 20px solid var(--accentcolor);
         filter: drop-shadow(0 0 10px var(--accentcolor));
@@ -155,6 +158,8 @@
         border: 5px solid var(--accentcolor);
         filter: drop-shadow(0 0 20px var(--accentcolor));
         color: var(--accentcolor);
+        outline: 2px solid var(--accentcolor);
+        outline-offset: 0px;
     }
 </style>
 
