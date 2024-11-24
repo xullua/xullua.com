@@ -18,6 +18,7 @@ h1 {
     -webkit-text-fill-color: transparent;
     margin: 0 0 20px 0;
     transform: translateY(-10px);
+    line-height: 1.2;
 }
 
 h2 {
@@ -27,6 +28,8 @@ h2 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 50px;
+    line-height: 1.2;
+    margin-bottom: 15px;
 }
 
 h3 {
