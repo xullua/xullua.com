@@ -21,7 +21,7 @@
 
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- アナリティクス -->
+    <!-- Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -30,7 +30,7 @@
 
         gtag('config', 'G-JDKGJ1E005');
     </script>
-    <!-- 共通部分 -->
+    <!-- Common Parts -->
     <script>
         $(function () {
             $("header").load("../header.html");
@@ -100,7 +100,7 @@
 
                 .site-box {
                     width: 100%;
-                    border-radius: 15px;
+                    border-radius: 20px;
                     padding: 10px 15px 15px;
                     cursor: pointer;
                     background: var(--secondback);
@@ -170,56 +170,66 @@
         const downloadSites = {
             tiktok: [
                 {
-                    name: "SnapTik",
-                    url: "https://snaptik.app/",
-                    features: "Fast downloads, HD support",
-                    ads: "Few",
-                    spam: "None",
-                    speed: "Fast",
-                    note: "Note: URL parameters are removed, requiring manual input at the destination site.",
-                    japaneseSupport: true
-                },
-                {
-                    name: "TikTokio",
-                    url: "https://tiktokio.com/?url=",
-                    features: "Simple UI, free",
-                    ads: "Moderate",
-                    spam: "None",
-                    speed: "Medium",
-                    note: "Note: URL is included in parameters but not auto-filled in the textbox. Manual paste required.",
-                    japaneseSupport: true
-                },
-                {
-                    name: "MusicallyDown",
-                    url: "https://musicallydown.com/?url=",
-                    features: "No watermark support",
-                    ads: "Few",
-                    spam: "None",
-                    speed: "Fast",
-                    note: "Note: URL is included in parameters but not auto-filled in the textbox. Manual paste required.",
-                    japaneseSupport: false
-                },
-                {
                     name: "SSSTik",
-                    url: "https://ssstik.io/",
+                    url: "https://ssstik.io/en",
                     features: "Easy operation, lightweight",
                     ads: "Moderate",
                     spam: "None",
                     speed: "Medium",
                     note: "Note: URL parameters are removed, requiring manual input at the destination site.",
-                    japaneseSupport: true
+                    japaneseSupport: true,
+                    autoFillSupport: false,
+                    pricing: "Free"
+                },
+                {
+                    name: "SnapTik",
+                    url: "https://snaptik.app/en",
+                    features: "Fast downloads, HD support",
+                    ads: "Moderate",
+                    spam: "None",
+                    speed: "Fast",
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: false,
+                    pricing: "Free"
+                },
+                {
+                    name: "TikTokio",
+                    url: "https://tiktokio.com/en",
+                    features: "Simple UI, free",
+                    ads: "Moderate",
+                    spam: "None",
+                    speed: "Medium",
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: false,
+                    pricing: "Free"
                 }
             ],
             twitter: [
                 {
+                    name: "cobalt",
+                    url: "https://cobalt.tools",
+                    features: "Lightweight, simple, ad-free",
+                    ads: "None",
+                    spam: "None",
+                    speed: "Fast",
+                    note: "",
+                    japaneseSupport: false,
+                    autoFillSupport: true,
+                    pricing: "Free"
+                },
+                {
                     name: "Twitter Video Downloader",
-                    url: "https://twittervideodownloader.com/?url=",
+                    url: "https://twittervideodownloader.com/",
                     features: "Fast, reliable",
                     ads: "Few",
                     spam: "None",
                     speed: "Fast",
-                    note: "Note: URL is included in parameters but not auto-filled in the textbox. Manual paste required.",
-                    japaneseSupport: false
+                    note: "",
+                    japaneseSupport: false,
+                    autoFillSupport: false,
+                    pricing: "Free"
                 },
                 {
                     name: "TWDown",
@@ -228,28 +238,10 @@
                     ads: "Moderate",
                     spam: "None",
                     speed: "Medium",
-                    note: "Note: URL is included in parameters but not auto-filled in the textbox. Manual paste required.",
-                    japaneseSupport: false
-                },
-                {
-                    name: "TweetReels",
-                    url: "https://tweetreels.com/?url=",
-                    features: "Simple, fast",
-                    ads: "Few",
-                    spam: "None",
-                    speed: "Fast",
-                    note: "Note: URL is included in parameters but not auto-filled in the textbox. Manual paste required.",
-                    japaneseSupport: false
-                },
-                {
-                    name: "GetMyTweet",
-                    url: "https://getmytweet.com/?url=",
-                    features: "Lightweight, easy to use",
-                    ads: "Moderate",
-                    spam: "None",
-                    speed: "Medium",
-                    note: "Note: URL is included in parameters but not auto-filled in the textbox. Manual paste required.",
-                    japaneseSupport: false
+                    note: "",
+                    japaneseSupport: false,
+                    autoFillSupport: false,
+                    pricing: "Free"
                 }
             ],
             instagram: [
@@ -260,18 +252,22 @@
                     ads: "Few",
                     spam: "None",
                     speed: "Medium",
-                    note: "Note: URL parameters are removed, requiring manual input at the destination site.",
-                    japaneseSupport: false
+                    note: "",
+                    japaneseSupport: false,
+                    autoFillSupport: false,
+                    pricing: "Partially Paid"
                 },
                 {
                     name: "InstaDownloader",
                     url: "https://instadownloader.co/",
                     features: "Simple, multifunctional",
-                    ads: "Few",
+                    ads: "Moderate",
                     spam: "None",
                     speed: "Medium",
-                    note: "Note: URL parameters are removed, requiring manual input at the destination site.",
-                    japaneseSupport: false
+                    note: "",
+                    japaneseSupport: false,
+                    autoFillSupport: false,
+                    pricing: "Free"
                 },
                 {
                     name: "FastDL",
@@ -280,21 +276,37 @@
                     ads: "Moderate",
                     spam: "None",
                     speed: "Fast",
-                    note: "Note: URL parameters are removed, requiring manual input at the destination site.",
-                    japaneseSupport: false
+                    note: "",
+                    japaneseSupport: false,
+                    autoFillSupport: false,
+                    pricing: "Free"
                 },
                 {
                     name: "IGDownloader",
-                    url: "https://igdownloader.com/",
+                    url: "https://igdownloader.com/en/",
                     features: "Lightweight, easy to use",
                     ads: "Few",
                     spam: "None",
                     speed: "Medium",
-                    note: "Note: URL parameters are removed, requiring manual input at the destination site.",
-                    japaneseSupport: true
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: false,
+                    pricing: "Free"
                 }
             ],
             youtube: [
+                {
+                    name: "cobalt",
+                    url: "https://cobalt.tools",
+                    features: "Lightweight, simple, ad-free",
+                    ads: "None",
+                    spam: "None",
+                    speed: "Fast",
+                    note: "",
+                    japaneseSupport: false,
+                    autoFillSupport: false,
+                    pricing: "Free"
+                },
                 {
                     name: "Y2Mate",
                     url: "https://www.y2mate.com/en/youtube/",
@@ -302,8 +314,22 @@
                     ads: "Moderate",
                     spam: "None",
                     speed: "Fast",
-                    note: "Auto-fill supported (video ID added to URL)",
-                    japaneseSupport: true
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: true,
+                    pricing: "Partially Paid"
+                },
+                {
+                    name: "ytdl.jp",
+                    url: "https://ytdl.jp",
+                    features: "Simple, ad-free",
+                    ads: "None",
+                    spam: "None",
+                    speed: "Slow",
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: false,
+                    pricing: "Free"
                 },
                 {
                     name: "SaveFrom.net",
@@ -312,8 +338,10 @@
                     ads: "Few",
                     spam: "None",
                     speed: "Fast",
-                    note: "Auto-fill supported (URL added to parameters)",
-                    japaneseSupport: true
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: true,
+                    pricing: "Partially Paid"
                 },
                 {
                     name: "YT1s",
@@ -322,8 +350,10 @@
                     ads: "Few",
                     spam: "None",
                     speed: "Fast",
-                    note: "Auto-fill supported (URL added to parameters)",
-                    japaneseSupport: true
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: false,
+                    pricing: "Free"
                 },
                 {
                     name: "10Downloader",
@@ -332,13 +362,15 @@
                     ads: "Moderate",
                     spam: "None",
                     speed: "Medium",
-                    note: "Auto-fill supported (URL added to parameters)",
-                    japaneseSupport: true
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: false,
+                    pricing: "Free"
                 }
             ]
         };
 
-        // SNSを判定する関数
+        // Function to detect SNS
         function detectSNS(url) {
             if (url.includes('tiktok.com')) return 'tiktok';
             if (url.includes('twitter.com') || url.includes('x.com')) return 'twitter';
@@ -347,7 +379,7 @@
             return null;
         }
 
-        // サイトオプションを更新する関数
+        // Function to update site options
         function updateSiteOptions() {
             const url = document.getElementById('video_url').value.trim();
             const sns = detectSNS(url);
@@ -358,7 +390,7 @@
                 return;
             }
 
-            // 既存の選択肢をクリア
+            // Clear existing options
             siteOptions.innerHTML = '';
 
             downloadSites[sns].forEach(site => {
@@ -368,10 +400,12 @@
                     <h3>${site.name}</h3>
                     <p class="appeal">${site.features}</p>
                     <p class="spec">
+                        <span>${site.pricing}</span>
                         <span>Ads: ${site.ads}</span>
-                        <span>Spam: ${site.spam}</span>
                         <span>Speed: ${site.speed}</span>
-                        ${site.japaneseSupport ? '<span>日本語対応</span>' : ''}
+                        <span>Spam: ${site.spam}</span>
+                        ${site.japaneseSupport ? '<span>Japanese</span>' : ''}
+                        ${site.autoFillSupport ? '<span>Auto-fill</span>' : ''}
                     </p>
                     <p class="explain">${site.note}</p><br>
                     <button>Go to This Site</button>
@@ -386,17 +420,17 @@
             siteOptions.style.display = 'grid';
         }
 
-        // URL入力時にリアルタイムでサイトオプションを表示
+        // Display site options in real-time on URL input
         document.getElementById('video_url').addEventListener('input', function () {
             updateSiteOptions();
         });
 
-        // ページ読み込み時に既存のURLをチェック
+        // Check existing URL on page load
         window.addEventListener('load', function () {
             updateSiteOptions();
         });
 
-        // リダイレクト処理
+        // Redirect function
         function redirectToSite(url, siteUrl, sns) {
             let redirectUrl = siteUrl;
             if (sns === 'youtube' && siteUrl.includes('y2mate.com')) {
