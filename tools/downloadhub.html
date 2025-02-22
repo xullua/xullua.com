@@ -170,56 +170,66 @@
         const downloadSites = {
             tiktok: [
                 {
-                    name: "SnapTik",
-                    url: "https://snaptik.app/JP",
-                    features: "高速ダウンロード、HD対応",
-                    ads: "少ない",
-                    spam: "なし",
-                    speed: "高速",
-                    note: "注意: URLパラメータが削除されるため、リダイレクト先で手動入力が必要",
-                    japaneseSupport: true
-                },
-                {
-                    name: "TikTokio",
-                    url: "https://tiktokio.com/jp/?url=",
-                    features: "シンプルなUI、無料",
-                    ads: "中程度",
-                    spam: "なし",
-                    speed: "中速",
-                    note: "注意: URLはパラメータに含まれるが、テキストボックスに自動入力されない。手動ペーストが必要",
-                    japaneseSupport: true
-                },
-                {
-                    name: "MusicallyDown",
-                    url: "https://musicallydown.com/?url=",
-                    features: "ウォーターマークなし対応",
-                    ads: "少ない",
-                    spam: "なし",
-                    speed: "高速",
-                    note: "注意: URLはパラメータに含まれるが、テキストボックスに自動入力されない。手動ペーストが必要",
-                    japaneseSupport: false
-                },
-                {
                     name: "SSSTik",
-                    url: "https://ssstik.io/jp",
+                    url: "https://ssstik.io/ja",
                     features: "簡単操作、軽量",
                     ads: "中程度",
                     spam: "なし",
                     speed: "中速",
                     note: "注意: URLパラメータが削除されるため、リダイレクト先で手動入力が必要",
-                    japaneseSupport: true
+                    japaneseSupport: true,
+                    autoFillSupport: false,
+                    pricing: "無料"
+                },
+                {
+                    name: "SnapTik",
+                    url: "https://snaptik.app/ja2",
+                    features: "高速ダウンロード、HD対応",
+                    ads: "中程度",
+                    spam: "なし",
+                    speed: "高速",
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: false,
+                    pricing: "無料"
+                },
+                {
+                    name: "TikTokio",
+                    url: "https://tiktokio.com/ja",
+                    features: "シンプルなUI、無料",
+                    ads: "中程度",
+                    spam: "なし",
+                    speed: "中速",
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: false,
+                    pricing: "無料"
                 }
             ],
             twitter: [
                 {
+                    name: "cobalt",
+                    url: "https://cobalt.tools",
+                    features: "軽量、シンプル、広告なし",
+                    ads: "なし",
+                    spam: "なし",
+                    speed: "高速",
+                    note: "",
+                    japaneseSupport: false,
+                    autoFillSupport: true,
+                    pricing: "無料"
+                },
+                {
                     name: "Twitter Video Downloader",
-                    url: "https://twittervideodownloader.com/?url=",
+                    url: "https://twittervideodownloader.com/",
                     features: "高速、信頼性高い",
                     ads: "少ない",
                     spam: "なし",
                     speed: "高速",
-                    note: "注意: URLはパラメータに含まれるが、テキストボックスに自動入力されない。手動ペーストが必要",
-                    japaneseSupport: false
+                    note: "",
+                    japaneseSupport: false,
+                    autoFillSupport: false,
+                    pricing: "無料"
                 },
                 {
                     name: "TWDown",
@@ -228,28 +238,10 @@
                     ads: "中程度",
                     spam: "なし",
                     speed: "中速",
-                    note: "注意: URLはパラメータに含まれるが、テキストボックスに自動入力されない。手動ペーストが必要",
-                    japaneseSupport: false
-                },
-                {
-                    name: "TweetReels",
-                    url: "https://tweetreels.com/?url=",
-                    features: "シンプル、高速",
-                    ads: "少ない",
-                    spam: "なし",
-                    speed: "高速",
-                    note: "注意: URLはパラメータに含まれるが、テキストボックスに自動入力されない。手動ペーストが必要",
-                    japaneseSupport: false
-                },
-                {
-                    name: "GetMyTweet",
-                    url: "https://getmytweet.com/?url=",
-                    features: "軽量、使いやすい",
-                    ads: "中程度",
-                    spam: "なし",
-                    speed: "中速",
-                    note: "注意: URLはパラメータに含まれるが、テキストボックスに自動入力されない。手動ペーストが必要",
-                    japaneseSupport: false
+                    note: "",
+                    japaneseSupport: false,
+                    autoFillSupport: false,
+                    pricing: "無料"
                 }
             ],
             instagram: [
@@ -260,18 +252,22 @@
                     ads: "少ない",
                     spam: "なし",
                     speed: "中速",
-                    note: "注意: URLパラメータが削除されるため、リダイレクト先で手動入力が必要",
-                    japaneseSupport: false
+                    note: "",
+                    japaneseSupport: false,
+                    autoFillSupport: false,
+                    pricing: "一部有料"
                 },
                 {
                     name: "InstaDownloader",
                     url: "https://instadownloader.co/",
                     features: "シンプル、多機能",
-                    ads: "少ない",
+                    ads: "中程度",
                     spam: "なし",
                     speed: "中速",
-                    note: "注意: URLパラメータが削除されるため、リダイレクト先で手動入力が必要",
-                    japaneseSupport: false
+                    note: "",
+                    japaneseSupport: false,
+                    autoFillSupport: false,
+                    pricing: "無料"
                 },
                 {
                     name: "FastDL",
@@ -280,8 +276,10 @@
                     ads: "中程度",
                     spam: "なし",
                     speed: "高速",
-                    note: "注意: URLパラメータが削除されるため、リダイレクト先で手動入力が必要",
-                    japaneseSupport: false
+                    note: "",
+                    japaneseSupport: false,
+                    autoFillSupport: false,
+                    pricing: "無料"
                 },
                 {
                     name: "IGDownloader",
@@ -290,11 +288,25 @@
                     ads: "少ない",
                     spam: "なし",
                     speed: "中速",
-                    note: "注意: URLパラメータが削除されるため、リダイレクト先で手動入力が必要",
-                    japaneseSupport: true
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: false,
+                    pricing: "無料"
                 }
             ],
             youtube: [
+                {
+                    name: "cobalt",
+                    url: "https://cobalt.tools",
+                    features: "軽量、シンプル、広告なし",
+                    ads: "なし",
+                    spam: "なし",
+                    speed: "高速",
+                    note: "",
+                    japaneseSupport: false,
+                    autoFillSupport: false,
+                    pricing: "無料"
+                },
                 {
                     name: "Y2Mate",
                     url: "https://www.y2mate.com/jp/youtube/",
@@ -302,8 +314,22 @@
                     ads: "中程度",
                     spam: "なし",
                     speed: "高速",
-                    note: "自動入力対応（動画IDをURLに追加）",
-                    japaneseSupport: true
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: true,
+                    pricing: "一部有料"
+                },
+                {
+                    name: "ytdl.jp",
+                    url: "https://ytdl.jp",
+                    features: "シンプル、広告なし",
+                    ads: "なし",
+                    spam: "なし",
+                    speed: "低速",
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: false,
+                    pricing: "無料"
                 },
                 {
                     name: "SaveFrom.net",
@@ -312,8 +338,10 @@
                     ads: "少ない",
                     spam: "なし",
                     speed: "高速",
-                    note: "自動入力対応（URLをパラメータに追加）",
-                    japaneseSupport: true
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: true,
+                    pricing: "一部有料"
                 },
                 {
                     name: "YT1s",
@@ -322,8 +350,10 @@
                     ads: "少ない",
                     spam: "なし",
                     speed: "高速",
-                    note: "自動入力対応（URLをパラメータに追加）",
-                    japaneseSupport: true
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: false,
+                    pricing: "無料"
                 },
                 {
                     name: "10Downloader",
@@ -332,8 +362,10 @@
                     ads: "中程度",
                     spam: "なし",
                     speed: "中速",
-                    note: "自動入力対応（URLをパラメータに追加）",
-                    japaneseSupport: true
+                    note: "",
+                    japaneseSupport: true,
+                    autoFillSupport: false,
+                    pricing: "無料"
                 }
             ]
         };
@@ -368,10 +400,12 @@
                     <h3>${site.name}</h3>
                     <p class="appeal">${site.features}</p>
                     <p class="spec">
+                        <span>${site.pricing}</span>
                         <span>広告：${site.ads}</span>
-                        <span>スパム：${site.spam}</span>
                         <span>速度：${site.speed}</span>
-                        ${site.japaneseSupport ? '<span>日本語対応</span>' : ''}
+                        <span>スパム${site.spam}</span>
+                        ${site.japaneseSupport ? '<span>日本語</span>' : ''}
+                        ${site.autoFillSupport ? '<span>自動入力</span>' : ''}
                     </p>
                     <p class="explain">${site.note}</p><br>
                     <button>このサイトへ</button>
