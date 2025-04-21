@@ -40,7 +40,7 @@
 </head>
 
 <body>
-    <header class="width-s"></header>
+    <header class="width-s ja en"></header>
     <main>
         <section class="explain">
             <h1>電光掲示板</h1>
@@ -359,6 +359,11 @@
         width: 100vw;
         height: 100vh;
         overflow: hidden;
+        z-index: 999;
+    }
+
+    body.no-scroll {
+        overflow: hidden;
     }
 
     .textbox {
@@ -407,8 +412,6 @@
 </style>
 
 <script>
-
-    // 要素の初期化
     const preview = document.getElementById('preview');
     const textbox = document.querySelector('.textbox');
     const startBtn = document.querySelector('.start');
@@ -423,55 +426,44 @@
     const fontSizeRadios = document.querySelectorAll('input[name="font-size"]');
     const fontRadios = document.querySelectorAll('input[name="font"]');
 
-    // 入力欄にラベルや初期値を設定
     textInput.placeholder = '表示するテキストを入力';
     fontColorSingleInput.value = '#ffffff';
     bgColorInput.value = '#000000';
 
-    // 状態管理
     let isGradient = false;
 
-    // プレビューにスタイルを適用する関数
     function updatePreviewStyles() {
-        // テキスト
         preview.textContent = textInput.value || 'プレビュー';
 
-        // フォント
         const selectedFont = document.querySelector('input[name="font"]:checked').id;
         const fontFamily = selectedFont === 'font0' ? 'inherit' : selectedFont === 'font1' ? 'sans-serif' : 'serif';
         preview.style.setProperty('font-family', fontFamily, 'important');
 
-        // フォントカラー
         preview.style.animation = `scroll ${getScrollDuration()}s linear infinite${isGradient ? ', gradient 1.5s linear infinite' : ''}`;
         if (!isGradient) {
             preview.style.color = fontColorSingleInput.value;
         } else {
-            preview.style.color = ''; // グラデーション用にリセット
+            preview.style.color = '';
         }
 
-        // スクロールスピード
         function getScrollDuration() {
-            return scrollSpeedInput.value; // rangeの値（3～25秒）
+            return scrollSpeedInput.value;
         }
 
-        // フォントサイズ
         const selectedSize = document.querySelector('input[name="font-size"]:checked').id;
         const sizeMap = {
             'font-size100': 1,
             'font-size150': 1.5,
             'font-size200': 2
         };
-        const baseFontSize = 30; // プレビュー用の基準フォントサイズ
+        const baseFontSize = 30;
         preview.style.fontSize = `${baseFontSize * sizeMap[selectedSize]}px`;
 
-        // 背景色
         preview.parentElement.style.backgroundColor = bgColorInput.value;
 
-        // スライダーの値表示
         scrollSpeedValue.textContent = scrollSpeedInput.value;
     }
 
-    // イベントリスナーで即時プレビュー更新
     textInput.addEventListener('input', updatePreviewStyles);
 
     fontRadios.forEach(radio => {
@@ -501,7 +493,6 @@
         radio.addEventListener('change', updatePreviewStyles);
     });
 
-    // 表示ボタンの処理
     startBtn.addEventListener('click', () => {
         if (!textInput.value) {
             alert('テキストを入力してください');
@@ -514,55 +505,55 @@
         screenSection.style.width = '100vw';
         screenSection.style.height = '100vh';
 
-        // テキストボックスのサイズ
+        document.body.classList.add('no-scroll');
+
         textbox.style.width = 'auto';
         textbox.style.height = 'auto';
         textbox.style.maxHeight = '100vh';
 
-        // テキストを設定
         textbox.textContent = textInput.value;
 
-        // フォントを設定
         const selectedFont = document.querySelector('input[name="font"]:checked').id;
         const fontFamily = selectedFont === 'font0' ? 'inherit' : selectedFont === 'font1' ? 'sans-serif' : 'serif';
         textbox.style.setProperty('font-family', fontFamily, 'important');
 
-        // フォントカラー
         textbox.style.animation = `scroll ${getScrollDuration()}s linear infinite${isGradient ? ', gradient 1.5s linear infinite' : ''}`;
         if (!isGradient) {
             textbox.style.color = fontColorSingleInput.value;
         } else {
-            textbox.style.color = ''; // グラデーション用にリセット
+            textbox.style.color = '';
         }
 
-        // スクロールスピード
         function getScrollDuration() {
-            return scrollSpeedInput.value; // rangeの値（3～25秒）
+            return scrollSpeedInput.value;
         }
 
-        // 背景色を#screenに設定
         screenSection.style.backgroundColor = bgColorInput.value;
         textbox.style.backgroundColor = 'transparent';
 
-        // フォントサイズを設定
         const selectedSize = document.querySelector('input[name="font-size"]:checked').id;
         const sizeMap = {
             'font-size100': 1,
             'font-size150': 1.5,
             'font-size200': 2
         };
-        const baseFontSize = window.innerHeight * 0.5; // 画面高さの50%
+        const baseFontSize = window.innerHeight * 0.5;
         textbox.style.fontSize = `${baseFontSize * sizeMap[selectedSize]}px`;
     });
 
-    // 終了ボタンの処理
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && screenSection.style.display === 'flex') {
+            closeBtn.click();
+        }
+    });
+
     closeBtn.addEventListener('click', () => {
         screenSection.style.display = 'none';
         textbox.style.animation = 'none';
-        textbox.style.color = ''; // リセット
+        textbox.style.color = '';
+        document.body.classList.remove('no-scroll');
     });
 
-    // 初期プレビュー設定
     updatePreviewStyles();
 
 </script>
