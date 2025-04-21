@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Electric Bulletin Board</title>
+    <meta name="description"
+        content="You can project the text in large size while scrolling it like an electric bulletin board. You can use your phone to communicate text to someone.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@xullua">
+    <meta name="twitter:title" content="Custom Electric Bulletin Board">
+    <meta name="twitter:description"
+        content="You can project the text in large size while scrolling it like an electric bulletin board. You can use your phone to communicate text to someone.">
+    <meta name="twitter:image" content="https://xullua.com/img/eboard.webp">
+
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/color.css">
+    <link rel="stylesheet" href="../../css/base.css">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- アナリティクス -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JDKGJ1E005');
+    </script>
+    <!-- 共通部分 -->
+    <script>
+        $(function () {
+            $("header").load("../header.html");
+            $("footer").load("../footer.html");
+        });
+    </script>
+</head>
+
+<body>
+    <header class="width-s en"></header>
+    <main>
+        <section class="explain">
+            <h1>Electric Bulletin Board</h1>
+            <p>
+                Text can be projected in large size while scrolling like an electronic bulletin board. It can be used to
+                convey a message to someone silently or through a window using a smartphone, or to display information
+                using a large monitor such as a PC.
+            </p>
+        </section>
+        <section class="content">
+            <div id="preview-container">
+                <div id="preview"></div>
+            </div>
+            <div id="setting">
+                <div class="text">
+                    <h3>Text</h3>
+                    <div>
+                        <input type="text" name="" id="">
+                    </div>
+                </div>
+                <div class="font">
+                    <h3>Font</h3>
+                    <div>
+                        <input type="radio" name="font" id="font0">
+                        <label for="font0">Default</label>
+                        <input type="radio" name="font" id="font1" checked>
+                        <label for="font1">Gothic</label>
+                        <input type="radio" name="font" id="font2">
+                        <label for="font2">Mincho</label>
+                    </div>
+                </div>
+                <div class="font-color">
+                    <h3>Text Color</h3>
+                    <div>
+                        <input type="radio" name="font-color" id="font-color1" checked>
+                        <label for="font-color1">Mono</label>
+                        <input type="radio" name="font-color" id="font-color2">
+                        <label for="font-color2">Gradation</label>
+                        <div class="font-color-single">
+                            <input type="color" name="" id="">
+                        </div>
+                    </div>
+                </div>
+                <div class="background-color">
+                    <h3>Background Color</h3>
+                    <div><input type="color"></div>
+                </div>
+                <div class="scrollspeed">
+                    <h3>Scrolling Speed</h3>
+                    <div>
+                        <input type="range" id="scrollspeed" min="3" max="25" value="4" step="0.1">
+                        <label for="scrollspeed"><span id="scrollspeed-value">4</span><span
+                                style="font-size: .8rem;">s</span></label>
+                    </div>
+                </div>
+                <div class="font-size">
+                    <h3>Font Size</h3>
+                    <div>
+                        <input type="radio" name="font-size" id="font-size100" checked>
+                        <label for="font-size100">100%</label>
+                        <input type="radio" name="font-size" id="font-size150">
+                        <label for="font-size150">150%</label>
+                        <input type="radio" name="font-size" id="font-size200">
+                        <label for="font-size200">200%</label>
+                    </div>
+                </div>
+                <div class="start-btn">
+                    <button class="start">PLAY</button>
+                </div>
+            </div>
+        </section>
+        <section id="screen">
+            <div class="textbox"></div>
+            <button class="close">CLOSE</button>
+        </section>
+        <section class="notes">
+            <ul>
+                <li>The preview may differ from the actual display.</li>
+                <li>In the font selection, the Gothic and Mincho fonts are the browser or device defaults. If you change
+                    from the default settings, it may not behave as expected.</li>
+                <li>While selecting a gradient, the text color cannot be selected from the color pad.</li>
+            </ul>
+        </section>
+    </main>
+    <footer class="width-s en"></footer>
+</body>
+
+<style>
+    .explain {
+        width: min(100% - 40px, var(--width-s));
+        margin: 60px auto 20px;
+
+        p {
+            color: var(--subtext);
+            font-size: 14px;
+            line-height: 1.2;
+        }
+    }
+
+    .content {
+        width: min(100% - 40px, var(--width-s));
+        margin: 20px auto 60px;
+        padding: 20px 0;
+
+        #preview-container {
+            width: 100%;
+            height: 60px;
+            margin: 0 0 20px;
+            border-radius: 15px;
+            position: sticky;
+            top: 60px;
+            left: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            filter: drop-shadow(0 0 10px #0005);
+
+            #preview {
+                width: auto;
+                padding: 10px;
+                white-space: nowrap;
+                overflow: hidden;
+                display: inline-block;
+                max-width: none;
+                font-weight: 900;
+            }
+        }
+
+        #setting {
+            &>div {
+                background: var(--secondback);
+                padding: 5px;
+                margin: 5px 0;
+                border-radius: 20px;
+                display: flex;
+                justify-content: space-between;
+
+                h3 {
+                    padding: 5px 10px;
+                    margin: 0;
+                }
+
+                &>div {
+                    display: flex;
+                    text-align: center;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    gap: 5px;
+                    padding: 5px;
+                    width: 50%;
+
+                    input[type="radio"] {
+                        display: none;
+                    }
+
+                    label {
+                        display: block;
+                        width: min(100%, 150px);
+                        background: var(--thirdback);
+                        padding: 5px 10px;
+                        border-radius: 10px;
+                        cursor: pointer;
+                        transition: .2s;
+
+                        &:hover {
+                            background: var(--fourthback);
+                        }
+
+                        &:active {
+                            transform: scale(.9);
+                        }
+                    }
+
+                    input[type="radio"]:checked+label {
+                        color: #fff;
+                        background: var(--accentcolor);
+                    }
+
+                    input[type="text"] {
+                        outline: none;
+                        border: none;
+                        padding: 10px;
+                        font-size: 16px;
+                        background: var(--thirdback);
+                        border-radius: 10px;
+                        width: min(100%, 300px);
+                    }
+
+                    input[type="color"] {
+                        display: block;
+                        width: 100px;
+                        height: 38px;
+                        border-radius: 10px;
+                        outline: none;
+                        border: none;
+                        appearance: none;
+                        cursor: pointer;
+                        background: none;
+                    }
+
+                    input[type="range"] {
+                        width: 150px;
+                        height: 5px;
+                        appearance: none;
+                        background: var(--thirdback);
+                        border-radius: 10px;
+                        outline: none;
+                        cursor: pointer;
+
+                        &::-webkit-slider-thumb {
+                            appearance: none;
+                            width: 20px;
+                            height: 20px;
+                            background: var(--accentcolor);
+                            border-radius: 50%;
+                            cursor: pointer;
+                        }
+
+                        &::-moz-range-thumb {
+                            width: 20px;
+                            height: 20px;
+                            background: var(--accentcolor);
+                            border-radius: 50%;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                &.scrollspeed div {
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-end;
+                    gap: 0;
+
+                    label {
+                        text-align: right;
+                        display: inline-block;
+                        width: min(75px, 100%);
+                        padding: 5px 10px;
+                        background: none;
+                        border-radius: 99px;
+                    }
+                }
+
+                &:last-child {
+                    background: none;
+                    padding: 0;
+                    position: sticky;
+                    bottom: 20px;
+                    left: 0;
+                    pointer-events: none;
+                    display: flex;
+                    flex-direction: row-reverse;
+
+                    button {
+                        pointer-events: all;
+                        outline: 2px solid #0000;
+                        outline-offset: 5px;
+                        border: none;
+                        padding: 10px 30px;
+                        color: #fff;
+                        background: var(--themecolor);
+                        border-radius: 99px;
+                        font-size: 18px;
+                        cursor: pointer;
+                        transition: .2s;
+
+                        &:hover {
+                            background: var(--themecolorhover);
+                            outline: 2px solid var(--themecolorhover);
+                            outline-offset: 2px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* スクロールアニメーション */
+    @keyframes scroll {
+        0% {
+            transform: translateX(90%);
+            /* 画面右端から開始 */
+        }
+
+        100% {
+            transform: translateX(-90%);
+            /* テキスト全体が左に移動 */
+        }
+    }
+
+    /* グラデーションアニメーション */
+    @keyframes gradient {
+        0% {
+            color: #ff0000;
+        }
+
+        33.33% {
+            color: #00ff00;
+        }
+
+        66.66% {
+            color: #0000ff;
+        }
+
+        100% {
+            color: #ff0000;
+        }
+    }
+
+    /* 表示画面のスタイル */
+    #screen {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        z-index: 999;
+    }
+
+    body.no-scroll {
+        overflow: hidden;
+    }
+
+    .textbox {
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.5s ease;
+        width: auto;
+        max-height: 100vh;
+        background-color: transparent;
+        font-weight: 900;
+    }
+
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 99px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        color: #fff7;
+        background: #fff3;
+        backdrop-filter: difference;
+        transition: .2s;
+
+        &:hover {
+            color: #fff;
+            background: #fff5;
+        }
+    }
+
+    .notes {
+        width: min(100% - 40px, var(--width-s));
+        margin: 20px auto 60px;
+
+        ul {
+            padding: 0 0 0 20px;
+            font-size: 14px;
+            color: var(--subtext);
+        }
+    }
+</style>
+
+<script>
+    const preview = document.getElementById('preview');
+    const textbox = document.querySelector('.textbox');
+    const startBtn = document.querySelector('.start');
+    const closeBtn = document.querySelector('.close');
+    const screenSection = document.getElementById('screen');
+    const textInput = document.querySelector('.text input');
+    const fontColorSingleInput = document.querySelector('.font-color-single input[type="color"]');
+    const bgColorInput = document.querySelector('.background-color input[type="color"]');
+    const fontColorRadios = document.querySelectorAll('input[name="font-color"]');
+    const scrollSpeedInput = document.getElementById('scrollspeed');
+    const scrollSpeedValue = document.getElementById('scrollspeed-value');
+    const fontSizeRadios = document.querySelectorAll('input[name="font-size"]');
+    const fontRadios = document.querySelectorAll('input[name="font"]');
+
+    textInput.placeholder = '表示するテキストを入力';
+    fontColorSingleInput.value = '#ffffff';
+    bgColorInput.value = '#000000';
+
+    let isGradient = false;
+
+    function updatePreviewStyles() {
+        preview.textContent = textInput.value || 'プレビュー';
+
+        const selectedFont = document.querySelector('input[name="font"]:checked').id;
+        const fontFamily = selectedFont === 'font0' ? 'inherit' : selectedFont === 'font1' ? 'sans-serif' : 'serif';
+        preview.style.setProperty('font-family', fontFamily, 'important');
+
+        preview.style.animation = `scroll ${getScrollDuration()}s linear infinite${isGradient ? ', gradient 1.5s linear infinite' : ''}`;
+        if (!isGradient) {
+            preview.style.color = fontColorSingleInput.value;
+        } else {
+            preview.style.color = '';
+        }
+
+        function getScrollDuration() {
+            return scrollSpeedInput.value;
+        }
+
+        const selectedSize = document.querySelector('input[name="font-size"]:checked').id;
+        const sizeMap = {
+            'font-size100': 1,
+            'font-size150': 1.5,
+            'font-size200': 2
+        };
+        const baseFontSize = 30;
+        preview.style.fontSize = `${baseFontSize * sizeMap[selectedSize]}px`;
+
+        preview.parentElement.style.backgroundColor = bgColorInput.value;
+
+        scrollSpeedValue.textContent = scrollSpeedInput.value;
+    }
+
+    textInput.addEventListener('input', updatePreviewStyles);
+
+    fontRadios.forEach(radio => {
+        radio.addEventListener('change', updatePreviewStyles);
+    });
+
+    fontColorRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            isGradient = radio.id === 'font-color2';
+            fontColorSingleInput.disabled = isGradient;
+            fontColorSingleInput.style.opacity = isGradient ? 0.5 : 1;
+            updatePreviewStyles();
+        });
+    });
+
+    fontColorSingleInput.addEventListener('input', () => {
+        if (!isGradient) updatePreviewStyles();
+    });
+
+    bgColorInput.addEventListener('input', updatePreviewStyles);
+
+    scrollSpeedInput.addEventListener('input', () => {
+        updatePreviewStyles();
+    });
+
+    fontSizeRadios.forEach(radio => {
+        radio.addEventListener('change', updatePreviewStyles);
+    });
+
+    startBtn.addEventListener('click', () => {
+        if (!textInput.value) {
+            alert('Enter text');
+            return;
+        }
+
+        screenSection.style.display = 'flex';
+        screenSection.style.alignItems = 'center';
+        screenSection.style.justifyContent = 'center';
+        screenSection.style.width = '100vw';
+        screenSection.style.height = '100vh';
+
+        document.body.classList.add('no-scroll');
+
+        textbox.style.width = 'auto';
+        textbox.style.height = 'auto';
+        textbox.style.maxHeight = '100vh';
+
+        textbox.textContent = textInput.value;
+
+        const selectedFont = document.querySelector('input[name="font"]:checked').id;
+        const fontFamily = selectedFont === 'font0' ? 'inherit' : selectedFont === 'font1' ? 'sans-serif' : 'serif';
+        textbox.style.setProperty('font-family', fontFamily, 'important');
+
+        textbox.style.animation = `scroll ${getScrollDuration()}s linear infinite${isGradient ? ', gradient 1.5s linear infinite' : ''}`;
+        if (!isGradient) {
+            textbox.style.color = fontColorSingleInput.value;
+        } else {
+            textbox.style.color = '';
+        }
+
+        function getScrollDuration() {
+            return scrollSpeedInput.value;
+        }
+
+        screenSection.style.backgroundColor = bgColorInput.value;
+        textbox.style.backgroundColor = 'transparent';
+
+        const selectedSize = document.querySelector('input[name="font-size"]:checked').id;
+        const sizeMap = {
+            'font-size100': 1,
+            'font-size150': 1.5,
+            'font-size200': 2
+        };
+        const baseFontSize = window.innerHeight * 0.5;
+        textbox.style.fontSize = `${baseFontSize * sizeMap[selectedSize]}px`;
+    });
+
+    closeBtn.addEventListener('click', () => {
+        screenSection.style.display = 'none';
+        textbox.style.animation = 'none';
+        textbox.style.color = '';
+        document.body.classList.remove('no-scroll');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && screenSection.style.display === 'flex') {
+            closeBtn.click();
+        }
+    });
+
+    updatePreviewStyles();
+
+</script>
+
+</html>
