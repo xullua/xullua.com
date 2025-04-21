@@ -153,7 +153,8 @@
             overflow: hidden;
             display: flex;
             align-items: center;
-            filter: drop-shadow(0 0 10px #0005);
+            outline: 3px solid var(--firstback);
+            border: 2px solid #7c7c7c5e;
 
             #preview {
                 width: auto;
@@ -231,8 +232,8 @@
                         width: 100px;
                         height: 38px;
                         border-radius: 10px;
-                        outline: none;
-                        border: none;
+                        outline: 2px solid var(--firstback);
+                        border: #75757562;
                         appearance: none;
                         cursor: pointer;
                         background: none;
@@ -276,6 +277,7 @@
                         text-align: right;
                         display: inline-block;
                         width: min(75px, 100%);
+                        min-width: min(75px, 100%);
                         padding: 5px 10px;
                         background: none;
                         border-radius: 99px;
@@ -297,6 +299,7 @@
                         outline: 2px solid #0000;
                         outline-offset: 5px;
                         border: none;
+                        filter: drop-shadow(0 0 10px var(--firstback));
                         padding: 10px 30px;
                         color: #fff;
                         background: var(--themecolor);
