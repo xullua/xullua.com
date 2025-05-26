@@ -10,7 +10,7 @@
     display: flex;
     width: min(100%,var(--width-xl));
     margin: 0 auto;
-    height: 100svh;
+    height: 100dvh;
 
     .sidebar {
         z-index: 99;
