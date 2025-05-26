@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGGR</title>
+    <meta name="description" content="人類の生存が持続可能である地球環境を目指した、地球にやさしいモデルです。">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@xullua">
+    <meta name="twitter:title" content="ChatGGR">
+    <meta name="twitter:description" content="人類の生存が持続可能である地球環境を目指した、地球にやさしいモデルです。">
+    <meta name="twitter:image" content="//xullua.com/img/chatggr.webp">
+
+    <link rel="shortcut icon" href="//xullua.com/img/favicon.ico">
+    <!-- CSS -->
+    <link rel="stylesheet" href="//xullua.com/css/color.css">
+    <link rel="stylesheet" href="//xullua.com/css/base.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- アナリティクス -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JDKGJ1E005');
+    </script>
+    <!-- 共通部分 -->
+    <script>
+        $(function () {
+            $("#header").load("//xullua.com/header.html");
+        });
+    </script>
+</head>
+
+<body>
+    <input type="checkbox" name="sidebardisplay" id="sidebardisplay">
+    <div class="app-layout">
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <button id="new-chat-button" class="new-chat-btn">
+                    <span class="material-icons-outlined">add_comment</span>
+                    新しいチャット
+                </button>
+                <div class="chat-search-container">
+                    <span class="material-icons-outlined search-icon">search</span>
+                    <input type="search" id="chat-search-input" placeholder="チャットを検索...">
+                </div>
+            </header>
+            <nav id="chat-list-container" class="chat-list-container">
+            </nav>
+            <div class="sidebar-footer">
+                <button id="settings-button" class="settings-btn">
+                    <span class="material-icons-outlined">settings</span>
+                    設定
+                </button>
+            </div>
+        </aside>
+        <main class="main-content">
+            <div class="app-container">
+                <header class="app-header">
+                    <h1 id="chat-title">ChatGGR</h1>
+                    <label for="sidebardisplay">MENU</label>
+                </header>
+                <div class="chat-container">
+                    <div id="chat-log" class="chat-log">
+                    </div>
+                </div>
+                <footer class="chat-input-footer">
+                    <div id="file-preview-area" class="file-preview-area" style="display: none;">
+                        <span id="file-name-preview"></span>
+                        <button id="remove-file-button" class="remove-file-button">&times;</button>
+                    </div>
+                    <div class="chat-input-area">
+                        <button id="file-upload-button" class="icon-button">
+                            <span class="material-icons-outlined">attach_file</span>
+                        </button>
+                        <input type="file" id="file-input" style="display: none;">
+                        <textarea id="user-input" placeholder="ChatGGRにメッセージを送信"></textarea>
+                        <button id="send-button" class="icon-button send-button-style">
+                            <span class="material-icons-outlined">send</span>
+                        </button>
+                    </div>
+                    <p>ChatGGRは不出来な回答を表示することがあるため、回答をもとに検索して再確認するようにしてください。</p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <div id="settings-modal" class="modal-overlay">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2>設定</h2>
+                <button id="close-settings-modal-button" class="close-modal-btn">
+                    <span class="material-icons-outlined">close</span>
+                </button>
+            </header>
+            <section class="modal-body">
+                <div class="settings-item">
+                    <label for="ai-model-select">モデルを選択</label>
+                    <select id="ai-model-select">
+                        <option value="ChatGGR-Turbo">ChatGGR-1</option>
+                        <option value="ChatGGR-Light">ChatGGR-2</option>
+                        <option value="ChatGGR-Legacy">ChatGGR-3</option>
+                    </select>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="confirmation-modal" class="modal-overlay">
+        <div class="modal-content confirmation-dialog">
+            <header class="modal-header">
+                <h2 id="confirmation-title">確認</h2>
+                <button id="close-confirmation-modal-button" class="close-modal-btn"> <span
+                        class="material-icons-outlined">close</span>
+                </button>
+            </header>
+            <section class="modal-body">
+                <p id="confirmation-message"></p>
+            </section>
+            <div class="modal-footer">
+                <button id="confirm-action-button" class="button primary">実行</button>
+                <button id="cancel-action-button" class="button secondary">キャンセル</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
