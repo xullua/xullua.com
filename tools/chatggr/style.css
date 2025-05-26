@@ -301,7 +301,6 @@
                         line-height: 1.5;
                         word-wrap: break-word;
                         opacity: 0;
-                        /* 初期状態はアニメーションのため透明 */
                         animation-duration: 0.6s;
                         animation-fill-mode: forwards;
 
@@ -339,7 +338,6 @@
 
                                 .rainbow-spinner {
                                     width: 20px;
-                                    /* テキストに合わせて少し小さく */
                                     height: 20px;
                                     border-width: 3px;
                                     border-style: solid;
@@ -512,7 +510,6 @@
 
 @keyframes rainbowHueRotate {
 
-    /* 虹色アニメーション */
     0% {
         filter: hue-rotate(0deg);
     }
@@ -686,7 +683,6 @@ input#sidebardisplay {
 
         .modal-body {
             .settings-item {
-                /* 設定モーダル用 */
                 margin-bottom: 16px;
 
                 label {
@@ -709,7 +705,6 @@ input#sidebardisplay {
             }
 
             p#confirmation-message {
-                /* 確認モーダル用 */
                 font-size: 1em;
                 line-height: 1.5;
                 color: var(--maintext);
@@ -718,7 +713,6 @@ input#sidebardisplay {
         }
 
         &.confirmation-dialog .modal-footer {
-            /* 確認モーダル用フッター */
             display: flex;
             justify-content: flex-end;
             gap: 10px;
