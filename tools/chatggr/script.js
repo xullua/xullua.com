@@ -139,13 +139,12 @@ function setupEventListeners() {
 }
 
 async function loadThinkingPhrases() {
-    // defaultStages を countMin と countMax を使うように修正
     const defaultStages = [
         {
             stageName: "準備中...",
             phrases: ["少々お待ちください...", "データを読み込んでいます...", "接続を確認しています..."],
-            countMin: 1, // 最小表示数を1に設定
-            countMax: 1, // 最大表示数も1に（単一フレーズなので）
+            countMin: 1,
+            countMax: 1,
             durationMin: 1500,
             durationMax: 2000
         }
@@ -157,7 +156,6 @@ async function loadThinkingPhrases() {
         }
         const data = await response.json();
         if (data && data.stages && Array.isArray(data.stages)) {
-            // JSONファイルから読み込んだステージデータが正しい形式か確認 (任意ですが推奨)
             thinkingProcessStages = data.stages.map(stage => ({
                 stageName: stage.stageName || "処理中...",
                 phrases: Array.isArray(stage.phrases) && stage.phrases.length > 0 ? stage.phrases : ["情報を処理しています..."],
@@ -488,7 +486,7 @@ function renderMessagesForActiveChat() {
 }
 
 async function showThinkingProcess(thinkingMsgElement) {
-    if (!thinkingMsgElement || !thinkingMsgElement.isConnected) return; // 要素がDOMに接続されているか確認
+    if (!thinkingMsgElement || !thinkingMsgElement.isConnected) return;
     const stageTextElement = thinkingMsgElement.querySelector('.thinking-stage');
     const detailTextElement = thinkingMsgElement.querySelector('.thinking-detail');
 
@@ -498,7 +496,6 @@ async function showThinkingProcess(thinkingMsgElement) {
     }
 
     if (thinkingProcessStages.length === 0) {
-        // これは loadThinkingPhrases で defaultStages が設定されるので通常は通らないはず
         stageTextElement.textContent = "思考中...";
         detailTextElement.textContent = "データを準備しています...";
         await new Promise(resolve => setTimeout(resolve, 1500));
@@ -507,53 +504,46 @@ async function showThinkingProcess(thinkingMsgElement) {
 
     try {
         for (const stage of thinkingProcessStages) {
-            if (!thinkingMsgElement.isConnected) return; // 各ステージ開始前に接続確認
+            if (!thinkingMsgElement.isConnected) return;
 
             stageTextElement.textContent = stage.stageName;
 
             const phrasesToShow = [];
-            const availablePhrases = [...stage.phrases]; // フレーズのコピーを作成
+            const availablePhrases = [...stage.phrases];
 
-            // countMin と countMax から表示するフレーズ数を決定
-            // stageオブジェクトにcountMin/countMaxがない場合のフォールバックも考慮
             const minPhrases = (typeof stage.countMin === 'number' && stage.countMin >= 0) ? stage.countMin : 1;
             const maxPhrases = (typeof stage.countMax === 'number' && stage.countMax >= minPhrases) ? stage.countMax : minPhrases;
 
             let numPhrasesToDisplay = 0;
             if (availablePhrases.length > 0) {
                 numPhrasesToDisplay = Math.floor(Math.random() * (maxPhrases - minPhrases + 1)) + minPhrases;
-                // 利用可能なフレーズ数を超えないように調整
                 numPhrasesToDisplay = Math.min(numPhrasesToDisplay, availablePhrases.length);
             }
 
 
             for (let i = 0; i < numPhrasesToDisplay; i++) {
-                if (availablePhrases.length === 0) break; //念のため
+                if (availablePhrases.length === 0) break;
                 const randomIndex = Math.floor(Math.random() * availablePhrases.length);
-                phrasesToShow.push(availablePhrases.splice(randomIndex, 1)[0]); // 選んだフレーズは重複しないように削除
+                phrasesToShow.push(availablePhrases.splice(randomIndex, 1)[0]);
             }
 
             if (phrasesToShow.length === 0 && availablePhrases.length > 0) {
-                // numPhrasesToDisplayが0になったが、表示できるフレーズがまだある場合、最低1つは表示する (任意)
-                // もしくは、何かしらのデフォルトフレーズを表示する
                 phrasesToShow.push(availablePhrases[Math.floor(Math.random() * availablePhrases.length)]);
             } else if (phrasesToShow.length === 0 && availablePhrases.length === 0) {
-                // 表示するフレーズが尽きた場合
-                detailTextElement.textContent = "情報を整理中です..."; // デフォルトのフレーズ
+                detailTextElement.textContent = "情報を整理中です...";
                 const duration = Math.floor(Math.random() * (stage.durationMax - stage.durationMin + 1)) + stage.durationMin;
                 await new Promise(resolve => setTimeout(resolve, duration));
                 if (!thinkingMsgElement.isConnected) return;
-                continue; // 次のステージへ
+                continue;
             }
 
 
             for (const phrase of phrasesToShow) {
-                if (!thinkingMsgElement.isConnected) return; // 各フレーズ表示前に接続確認
+                if (!thinkingMsgElement.isConnected) return;
 
                 detailTextElement.textContent = phrase;
-                // アニメーションのリセットと再開
                 detailTextElement.classList.remove('fade-in-from-bottom');
-                void detailTextElement.offsetWidth; // 強制リフロー
+                void detailTextElement.offsetWidth;
                 detailTextElement.classList.add('fade-in-from-bottom');
 
                 const duration = Math.floor(Math.random() * (stage.durationMax - stage.durationMin + 1)) + stage.durationMin;
@@ -585,7 +575,7 @@ async function handleSendMessage() {
     clearSelectedFile();
 
     const thinkingMsgId = 'thinking-msg-' + Date.now();
-    let currentThinkingMessageElem = appendMessageElement("", 'ai', thinkingMsgId, true); // ローカル変数に変更
+    let currentThinkingMessageElem = appendMessageElement("", 'ai', thinkingMsgId, true);
     if (!currentThinkingMessageElem) return;
     scrollToBottom(true);
 
@@ -598,7 +588,7 @@ async function handleSendMessage() {
 
     const aiMessageData = addMessageToActiveChat('ai', aiResponseText, null);
 
-    if (aiMessageData && currentThinkingMessageElem && currentThinkingMessageElem.isConnected) { // 要素がまだDOMにあるか確認
+    if (aiMessageData && currentThinkingMessageElem && currentThinkingMessageElem.isConnected) {
         updateThinkingMessageToFinal(currentThinkingMessageElem, aiResponseText, aiMessageData.id, null);
     } else if (aiMessageData) {
         appendMessageElement(aiMessageData.text, 'ai', aiMessageData.id, false, aiMessageData.file);
@@ -613,11 +603,9 @@ async function handleSendMessage() {
 function updateThinkingMessageToFinal(thinkingMsgElement, finalText, messageId, fileInfo = null) {
     if (thinkingMsgElement) {
         thinkingMsgElement.classList.remove('thinking-message');
-        // thinking-message特有のラッパーなどを削除
         const wrapper = thinkingMsgElement.querySelector('.thinking-content-wrapper');
         if (wrapper) thinkingMsgElement.removeChild(wrapper);
 
-        // 通常のメッセージコンテンツを再構築 (appendMessageElementの通常メッセージ部分と類似)
         const textContentDiv = document.createElement('div');
         textContentDiv.className = 'message-text-content';
         textContentDiv.innerHTML = finalText ? String(finalText).replace(/\n/g, '<br>') : '';
