@@ -1,22 +1,4 @@
 :root {
-    --body-bg: #f0f2f5;
-    --chat-bg: #ffffff;
-    --sidebar-bg: #e8eaed;
-    --text-primary: #1f1f1f;
-    --text-secondary: #5f6368;
-    --accent-color: #1a73e8;
-    --accent-color-darker: #135abc;
-    --user-message-bg: #d1e3ff;
-    --ai-message-bg: #f1f3f4;
-    --input-bg: #f1f3f4;
-    --input-border-color: #dfe1e5;
-    --border-color: #dadce0;
-    --hover-bg-light: rgba(0, 0, 0, 0.04);
-    --modal-overlay-bg: rgba(0, 0, 0, 0.6);
-    --danger-color: #d93025;
-    --danger-color-lighten: #fce8e6;
-    --file-attachment-bg: #e8f0fe;
-    --file-attachment-border: #1a73e8;
     --border-radius: 18px;
     --border-radius-medium: 8px;
     --border-radius-large: 24px;
@@ -28,7 +10,7 @@
     display: flex;
     width: min(100%,var(--width-xl));
     margin: 0 auto;
-    height: 100vh;
+    height: 100svh;
 
     .sidebar {
         z-index: 99;
