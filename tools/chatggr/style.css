@@ -329,6 +329,7 @@
                                 animation-name: fadeInSimple;
                                 animation-duration: 0.3s;
                                 opacity: 1;
+                                padding: 10px 0;
 
                                 .thinking-content-wrapper {
                                     display: flex;
