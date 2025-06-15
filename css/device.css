@@ -1,1 +1,510 @@
-.devicemokuji{text-align: center; margin: 40px auto 20px auto; position: sticky; top: 10px; z-index: 1;}.devicemokuji a{background: var(--header-back); color: var(--secondtext); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 4px 12px; border-radius: 99px; font-size: 14px; line-height: 1; transition: 1s;}.devicemokuji a:hover{transition: .2s; color: var(--accentcolor); background: var(--thirdback);}.top p{text-align: center; color: var(--sub-text);}/* デバイス */.device-title{margin: 80px auto 0 auto; text-align: center; line-height: .9; width: 230px;}.device-title h2{font-size: 50px;}.device-title h1{font-size: 16px;}.devices{margin: 40px 0;}.devices .text{padding: 0 calc((100% - 1260px + 10px)/2);}.devices .text p{color: var(--subtext); font-size: 14px;}.devices .main{display: flex; max-width: 100%; padding: 0 calc((100% - 1247px)/2); margin: 0 auto;}.devices .main article a{display: grid; grid-template-rows: auto auto auto 1fr auto auto; background: var(--secondback); border-radius: 10px; width: calc(1230px/3); margin: 20px 5px; height: 430px; cursor: default; opacity: 1;}.devices .peripheral{display: flex; max-width: 100%; padding: 0 calc((100% - 1247px)/2); margin: 0 auto; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 0 0 calc((100% - 1237px)/2);}.devices .peripheral article a{display: grid; grid-template-rows: auto auto auto 1fr auto auto; background: var(--secondback); border-radius: 10px; width: calc((1280px - 40px - 10px - 10px)/4); margin: 20px 5px; height: 400px; cursor: default; opacity: 1; scroll-snap-align: start;}.devices .peripheral article a img,.devices .main article a img{width: 100%; border-radius: 10px 10px 0 0;}.devices .peripheral article .category,.devices .main article .category{padding: 0 10px; margin-top: 10px; font-size: 12px; color: var(--secondtext);}.devices .peripheral article h3,.devices .main article h3{padding: 0 10px; font-size: 20px; color: var(--maintext);}.devices .peripheral article .explain,.devices .main article .explain{padding: 0 10px; margin-bottom: 10px; font-size: 15px; color: var(--subtext); overflow-y: auto;}.devices .peripheral article .explain::-webkit-scrollbar,.devices .main article .explain::-webkit-scrollbar{display: none;}.devices .peripheral article .price,.devices .main article .price{padding: 0 10px; margin-bottom: 5px; font-size: 14px; color: var(--accentcolor);}.devices .peripheral article .price::before,.devices .main article .price::before{content: "￥";}.devices .peripheral article button,.devices .main article button{height: 30px; margin: 7px; background: var(--fourthback); color: var(--subtext); border: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.2s; font-family: 'LSeedJP', sans-serif;}.devices .peripheral article button:hover,.devices .main article button:hover{background-color: var(--fifthback); color: var(--accentcolor);}@media screen and (max-width: 1280px){.devices .text{padding: 0 15px;}.devices .main, .devices .peripheral{padding: 0 10px;}.devices .peripheral{scroll-padding: 0 0 0 15px;}.devices .main article a{width: calc((100vw - 63px)/3); height: 410px;}.devices .peripheral article a{width: calc((100vw - 73px)/4);}}@media screen and (max-width: 767px){.devices .main{display: block;}.devices .main article a{width: 100%; height: auto;}.devices .peripheral article a{width: calc((100vw - 53px)/2); height: 420px;}}@media screen and (max-width: 500px){.devices .peripheral article a{width: 75vw;}.devices .peripheral{padding: 0 calc(100vw - 75vw) 0 10px;}}.pc{width: 1280px; max-width: 100%; margin: 60px auto; padding: 0 15px;}.pc .text{margin: 0 0 10px;}.pc .text p{font-size: 14px; color: var(--subtext);}.pc .area{width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; gap: 5px;}.pc .box{width: 100%; background: var(--secondback); border-radius: 10px; padding: 15px; line-height: 1; transition: .2s;}.pc .category{font-size: 12px; color: var(--subtext);}.pc .name{color: var(--maintext); font-weight: bold; margin: 5px 0 10px 0; transition: .2s;}.pc .impressions{font-size: 12px; color: var(--subtext); line-height: 1.2;}.pc .box:hover{background: var(--fourthback);}.pc .box:hover .name{color: var(--accentcolor);}.pc .big1,.pc .big2{grid-column: span 4;}.pc .small1,.pc .small2{grid-column: span 2;}@media screen and (max-width: 767px){.pc .big1{grid-column: span 12;}.pc .big2{grid-column: span 4; grid-row: span 2;}.pc .small1{grid-column: span 8;}.pc .small2{grid-column: span 3;}.pc .small2 .impressions{display: none;}}.devices .appleproduct{display: grid; gap: 5px; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; grid-template-rows: 200px 200px 200px; max-width: 100%; width: 1280px; padding: 0 15px; margin: 15px auto;}.devices .appleproduct article{background: var(--secondback); border-radius: 10px; position: relative;}.devices .appleproduct article::before{content: ""; position: absolute; bottom: 0; height: 120px; width: 100%; background: linear-gradient(#0000, #0004); border-radius: 10px;}.devices .appleproduct article .in{position: absolute; bottom: 0; padding: 10px; line-height: 1.2;}.devices .appleproduct .category{color: var(--secondtext); font-size: 12px;}.devices .appleproduct h3{font-size: 20px;}.devices .appleproduct .price{color: var(--accentcolor); font-size: 14px; margin: 5px 0 10px 0;}.devices .appleproduct .explain{font-size: 12px; color: var(--secondtext);}.devices .appleproduct .iPhone15Pro{grid-column: span 7; grid-row: span 2;}.devices .appleproduct .AirPodsPro2{grid-column: span 5; grid-row: span 1;}.devices .appleproduct .AppleWatchSE2{grid-column: span 5; grid-row: span 1;}.devices .appleproduct .iPhoneXR{grid-column: span 3; grid-row: span 1;}.devices .appleproduct .HomePodmini{grid-column: span 7; grid-row: span 1;}.devices .appleproduct .iPhone7{grid-column: span 2; grid-row: span 1;}@media screen and (max-width: 767px){.devices .appleproduct{display: grid; gap: 5px; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; grid-template-rows: 220px 200px 150px 150px;}.devices .appleproduct .iPhone15Pro{grid-column: span 3; grid-row: span 2;}.devices .appleproduct .AirPodsPro2{grid-column: span 3; grid-row: span 1;}.devices .appleproduct .AppleWatchSE2{grid-column: span 3; grid-row: span 1;}.devices .appleproduct .iPhoneXR{grid-column: span 3; grid-row: span 1;}.devices .appleproduct .HomePodmini{grid-column: span 3; grid-row: span 2;}.devices .appleproduct .iPhone7{grid-column: span 3; grid-row: span 1;}}@media screen and (max-width: 500px){.devices .appleproduct{display: grid; gap: 5px; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; grid-template-rows: 350px 150px 150px 150px 250px;}.devices .appleproduct .iPhone15Pro{grid-column: span 6; grid-row: span 1;}.devices .appleproduct .AirPodsPro2{grid-column: span 6; grid-row: span 1;}.devices .appleproduct .AppleWatchSE2{grid-column: span 6; grid-row: span 1;}.devices .appleproduct .iPhoneXR{grid-column: span 3; grid-row: span 1;}.devices .appleproduct .HomePodmini{grid-column: span 6; grid-row: span 1;}.devices .appleproduct .iPhone7{grid-column: span 3; grid-row: span 1;}}
+body:has(.displaydevice input[type="checkbox"]:checked) {
+    overflow: hidden;
+}
+
+main {
+    width: 100%;
+    margin: 60px auto;
+
+    .top {
+        width: min(100% - 40px, var(--width-l));
+        margin: 60px auto;
+
+        h1 {
+            font-size: 40px;
+        }
+
+        p {
+            color: var(--secondtext);
+        }
+    }
+
+    .search {
+        width: min(100%, var(--width-l) + 40px);
+        display: flex;
+        flex-wrap: nowrap;
+        position: sticky;
+        top: 60px;
+        overflow-x: auto;
+        z-index: 9;
+        gap: 5px;
+        padding: 0 20px;
+        margin: 0 auto 40px;
+
+        input[type="checkbox"] {
+            display: none;
+
+            &:checked+label {
+                background-color: var(--themecolor);
+                color: #fff;
+            }
+        }
+
+        label {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: var(--thirdback);
+            color: var(--secondtext);
+            border-radius: 99px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            white-space: nowrap;
+
+            /* テキスト選択を防ぐ */
+            &:hover {
+                background-color: var(--fourthback);
+            }
+
+            &:active {
+                transform: scale(.9);
+            }
+        }
+    }
+
+    .displaydevice {
+        width: min(100% - 40px, var(--width-l));
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-auto-rows: auto;
+        grid-auto-flow: dense;
+        align-items: start;
+        gap: 10px;
+
+        .device {
+            break-inside: avoid;
+            grid-column: span 3;
+            grid-row: span 2;
+            height: 100%;
+
+            &.hidden {
+                display: none;
+            }
+
+            &>label {
+                position: relative;
+                display: block;
+                width: 100%;
+                height: 100%;
+                background: var(--secondback);
+                border-radius: 20px;
+                overflow: hidden;
+                cursor: pointer;
+
+                img {
+                    width: 100%;
+                }
+
+                .texts {
+                    width: 100%;
+
+                    .category {
+                        opacity: .5;
+                        font-size: 12px;
+                        line-height: 1;
+                    }
+
+                    .price {
+                        color: var(--accentcolor);
+                    }
+
+                    .explain {
+                        opacity: .7;
+                        font-size: 14px;
+                        line-height: 1.4;
+                    }
+
+                    .area1,
+                    .area2 {
+                        margin: 10px;
+                    }
+
+                    .area3 {
+                        width: 100%;
+
+                        a {
+                            display: none;
+                            width: fit-content;
+                            background: var(--thirdback);
+                            padding: 6px 15px;
+                            border-radius: 99px;
+                            color: var(--maintext);
+
+                            &:hover {
+                                background: var(--fourthback);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:has(.card-layout-l) {
+                height: 100%;
+            }
+
+            .card-layout-l {
+                width: 100%;
+                height: 100%;
+                aspect-ratio: 5 / 4;
+
+                img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    z-index: 1;
+                    transform: scale(1);
+                    border-radius: 20px;
+                }
+
+                .texts {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    z-index: 3;
+                    transform: scale(1);
+
+                    p:not(.price),
+                    h3 {
+                        filter: drop-shadow(0 0 10px #0007);
+                    }
+
+                    h3,
+                    .category,
+                    .explain {
+                        color: #fff;
+                    }
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 40%;
+                    z-index: 2;
+                    display: block;
+                    backdrop-filter: blur(0);
+                    background: linear-gradient(#0000, #0007);
+                    opacity: 0;
+                    mask-image: linear-gradient(to top, rgb(0 0 0 / 100%) 50%, rgb(0 0 0 / 0%) 100%);
+                    animation: fadein 1s .65s forwards;
+                }
+            }
+
+            input:checked+label.card-layout-l::before {
+                display: none;
+            }
+
+            .card-layout-m {
+                img {
+                    aspect-ratio: 16 / 9;
+                    object-fit: cover;
+                    border-radius: 20px 20px 0 0;
+                }
+
+                .texts {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+
+                }
+            }
+
+
+            &:has(.card-layout-s) {
+                grid-row: span 1;
+                height: 100%;
+            }
+
+            .card-layout-s {
+                display: flex;
+                align-items: center;
+                height: 100%;
+
+                img {
+                    width: max(200px, 30%);
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 20px 0 0 20px;
+                }
+
+                .texts {
+                    .explain {
+                        display: none;
+                    }
+
+                    .area3 {
+                        display: none;
+                    }
+                }
+            }
+
+            &:not(:has(img)) {
+                grid-row: span 1;
+                height: 100%;
+
+                label {
+                    height: 100%;
+
+                    .texts {
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        padding: 5px;
+
+                        .area3 {
+                            margin: 0;
+                        }
+                    }
+                }
+
+                article {
+                    .area1 {
+                        margin: 10px;
+                    }
+                }
+            }
+
+            article {
+                position: fixed;
+                display: flex;
+                align-items: center;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                pointer-events: none;
+                opacity: 0;
+                z-index: 11;
+
+                &>label {
+                    width: 100%;
+                    height: 100%;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    cursor: pointer;
+                }
+
+                &>.content {
+                    width: min(100% - 40px, var(--width-s));
+                    margin: 0 auto;
+                    background: var(--secondback-t);
+                    border-radius: 30px;
+                    overflow: hidden;
+                    z-index: 12;
+                    filter: drop-shadow(5px 5px 20px #0004);
+
+                    img {
+                        width: 100%;
+                        border-radius: 30px 30px 0 0;
+                        aspect-ratio: 16 / 9;
+                        object-fit: cover;
+                    }
+
+                    .texts {
+                        padding: 10px;
+
+                        .category {
+                            color: var(--thirdtext);
+                            font-size: 12px;
+                            line-height: 1;
+                        }
+
+                        .price {
+                            color: var(--accentcolor);
+                        }
+
+                        .explain {
+                            color: var(--secondtext);
+                            font-size: 14px;
+                            line-height: 1.4;
+                        }
+
+                        .area1,
+                        .area2,
+                        .area3 {
+                            width: calc(100% - 20px);
+                            margin: 0 10px 10px;
+                        }
+
+                        .area3 {
+                            display: flex;
+                            justify-content: flex-end;
+
+                            a,
+                            label {
+                                display: block;
+                                width: fit-content;
+                                background: var(--btn);
+                                color: var(--btntext);
+                                padding: 6px 15px;
+                                margin-right: 5px;
+                                cursor: pointer;
+                                border-radius: 99px;
+                                transition: .2s;
+
+                                &:hover {
+                                    background: var(--btnhover);
+                                }
+                            }
+
+                            label {
+                                background: var(--thirdback);
+                                color: var(--maintext);
+
+                                &:hover {
+                                    background: var(--fourthback);
+                                }
+                            }
+
+                            .newly-appeared {
+                                display: flex;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:not(:has(img)) {
+                article {
+                    .area1 {
+                        margin: 10px !important;
+                    }
+                }
+            }
+
+            input {
+                display: none;
+            }
+
+            input:checked+label+article {
+                pointer-events: all;
+                opacity: 1;
+                backdrop-filter: blur(20px);
+            }
+
+        }
+    }
+}
+
+
+
+@supports (view-transition-name: none) {
+    @keyframes simple-bounce {
+        60% {
+            transform: scale(1.04);
+        }
+
+        80% {
+            transform: scale(0.98);
+        }
+    }
+
+    @keyframes fade-in-unblur {
+        from {
+            opacity: 0;
+            filter: blur(4px);
+            transform: translateY(8px);
+        }
+    }
+
+    @keyframes fade-out-blur {
+        to {
+            opacity: 0;
+            filter: blur(4px);
+            transform: translateY(8px);
+        }
+    }
+
+    /* カードのコンテナ（背景） */
+    .device.is-transitioning:has(input:not(:checked))>label,
+    .device.is-transitioning:has(input:checked) article .content {
+        view-transition-name: device-container;
+    }
+
+    ::view-transition-group(device-container) {
+        animation-duration: 0.6s;
+        animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+        transform-origin: center;
+        isolation: isolate;
+        z-index: 1;
+    }
+
+    /* カードの画像 */
+    .device.is-transitioning:has(input:not(:checked)) label img,
+    .device.is-transitioning:has(input:checked) article img {
+        view-transition-name: device-image;
+    }
+
+    ::view-transition-group(device-image) {
+        animation-duration: 0.6s;
+        animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+        transform-origin: center;
+        isolation: isolate;
+        z-index: 2;
+    }
+
+    /* テキスト要素1 */
+    .device.is-transitioning:has(input:not(:checked)) label .texts .area1,
+    .device.is-transitioning:has(input:checked) article .texts .area1 {
+        view-transition-name: device-texts1;
+    }
+
+    ::view-transition-group(device-texts1) {
+        animation-duration: 0.63s;
+        animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+        animation-delay: 0.01s;
+        transform-origin: center;
+        isolation: isolate;
+        z-index: 3;
+    }
+
+    /* テキスト要素2 */
+    .device.is-transitioning:has(input:not(:checked)) label .texts .area2,
+    .device.is-transitioning:has(input:checked) article .texts .area2 {
+        view-transition-name: device-texts2;
+    }
+
+    ::view-transition-group(device-texts2) {
+        animation-duration: 0.66s;
+        animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+        animation-delay: 0.02s;
+        transform-origin: center;
+        isolation: isolate;
+        z-index: 4;
+    }
+
+    /* テキスト要素3 */
+    .device.is-transitioning:has(input:not(:checked)) label .texts .area3,
+    .device.is-transitioning:has(input:checked) article .texts .area3 {
+        view-transition-name: device-texts3;
+    }
+
+    ::view-transition-group(device-texts3) {
+        animation-duration: 0.69s;
+        animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+        animation-delay: 0.02s;
+        transform-origin: center;
+        isolation: isolate;
+        z-index: 4;
+    }
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+        backdrop-filter: blur(0);
+    }
+
+    100% {
+        opacity: 1;
+        backdrop-filter: blur(20px);
+    }
+}
