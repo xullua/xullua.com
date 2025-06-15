@@ -51,7 +51,6 @@ main {
             user-select: none;
             white-space: nowrap;
 
-            /* テキスト選択を防ぐ */
             &:hover {
                 background-color: var(--fourthback);
             }
@@ -334,7 +333,7 @@ main {
 
                         .area3 {
                             overflow-x: auto;
-                            padding: 20px;
+                            padding: 0 20px 20px;
 
                             .btns {
                                 display: flex;
@@ -425,7 +424,7 @@ main {
         }
     }
 
-    /* カードのコンテナ（背景） */
+    /* 背景 */
     .device.is-transitioning:has(input:not(:checked))>label,
     .device.is-transitioning:has(input:checked) article .content {
         view-transition-name: device-container;
@@ -453,7 +452,7 @@ main {
         z-index: 2;
     }
 
-    /* テキスト要素1 */
+    /* テキスト1 */
     .device.is-transitioning:has(input:not(:checked)) label .texts .area1,
     .device.is-transitioning:has(input:checked) article .texts .area1 {
         view-transition-name: device-texts1;
@@ -468,7 +467,7 @@ main {
         z-index: 3;
     }
 
-    /* テキスト要素2 */
+    /* テキスト2 */
     .device.is-transitioning:has(input:not(:checked)) label .texts .area2,
     .device.is-transitioning:has(input:checked) article .texts .area2 {
         view-transition-name: device-texts2;
@@ -483,7 +482,7 @@ main {
         z-index: 4;
     }
 
-    /* テキスト要素3 */
+    /* テキスト3 */
     .device.is-transitioning:has(input:not(:checked)) label .texts .area3,
     .device.is-transitioning:has(input:checked) article .texts .area3 {
         view-transition-name: device-texts3;
