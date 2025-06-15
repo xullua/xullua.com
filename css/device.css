@@ -11,7 +11,8 @@ main {
         margin: 60px auto;
 
         h1 {
-            font-size: 40px;
+            font-size: 36px;
+            line-height: 1.3;
         }
 
         p {
@@ -102,6 +103,10 @@ main {
                         opacity: .5;
                         font-size: 12px;
                         line-height: 1;
+                    }
+
+                    h3 {
+                        line-height: 1.3;
                     }
 
                     .price {
@@ -226,7 +231,7 @@ main {
                 height: 100%;
 
                 img {
-                    width: max(200px, 30%);
+                    width: max(min(50vw - 30px,200px), 30%);
                     height: 100%;
                     object-fit: cover;
                     border-radius: 20px 0 0 20px;
