@@ -309,8 +309,6 @@ main {
                     }
 
                     .texts {
-                        padding: 10px;
-
                         .category {
                             color: var(--thirdtext);
                             font-size: 12px;
@@ -328,45 +326,49 @@ main {
                         }
 
                         .area1,
-                        .area2,
-                        .area3 {
+                        .area2 {
                             width: calc(100% - 20px);
                             margin: 0 10px 10px;
+                            padding: 10px;
                         }
 
                         .area3 {
-                            display: flex;
-                            justify-content: flex-end;
+                            overflow-x: auto;
+                            padding: 20px;
 
-                            a,
-                            label {
-                                display: block;
-                                width: fit-content;
-                                background: var(--btn);
-                                color: var(--btntext);
-                                padding: 6px 15px;
-                                margin-right: 5px;
-                                cursor: pointer;
-                                border-radius: 99px;
-                                transition: .2s;
-
-                                &:hover {
-                                    background: var(--btnhover);
-                                }
-                            }
-
-                            label {
-                                background: var(--thirdback);
-                                color: var(--maintext);
-
-                                &:hover {
-                                    background: var(--fourthback);
-                                }
-                            }
-
-                            .newly-appeared {
+                            .btns {
                                 display: flex;
+                                justify-content: flex-end;
+                                width: fit-content;
+
+                                a,
+                                label {
+                                    display: inline-block;
+                                    width: fit-content;
+                                    white-space: nowrap;
+                                    background: var(--btn);
+                                    color: var(--btntext);
+                                    padding: 6px 15px;
+                                    margin-right: 5px;
+                                    cursor: pointer;
+                                    border-radius: 99px;
+                                    transition: .2s;
+
+                                    &:hover {
+                                        background: var(--btnhover);
+                                    }
+                                }
+
+                                label {
+                                    background: var(--thirdback);
+                                    color: var(--maintext);
+
+                                    &:hover {
+                                        background: var(--fourthback);
+                                    }
+                                }
                             }
+
                         }
                     }
                 }
