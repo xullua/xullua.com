@@ -29,8 +29,8 @@
     },
     {
         "id": "airpods-pro-2",
-        "name": "AirPods Pro",
-        "description": "AppleWatchの最低グレードのもの。時計初心者だからまずはここから。",
+        "name": "AirPods Pro 2",
+        "description": "外部音取り込みモードが圧倒的。MagSafeで充電てきて便利",
         "category": "イヤホン",
         "price": 34028,
         "purchaseDate": "",
@@ -118,7 +118,7 @@
     {
         "id": "sigma1850f28",
         "name": "SIGMA 18-50mm F2.8",
-        "description": "コンパクトなカメラにコンパクトなレンズ。",
+        "description": "コンパクトなカメラに、コンパクトなレンズ。",
         "category": "カメラ",
         "price": 63000,
         "purchaseDate": "",
