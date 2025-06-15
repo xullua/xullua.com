@@ -169,8 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <p class="price">¥${device.price.toLocaleString()}</p>
                             </div>
                             <div class="area3">
-                                <a href="${device.links.amazon}" target="_blank" rel="noopener noreferrer">Amazon</a>
-                                <div class="newly-appeared">
+                                <div class="btns">
+                                    <a href="${device.links.amazon}" target="_blank" rel="noopener noreferrer">Amazon</a>
                                     ${otherLinksHtml}
                                     <label for="${device.id}">閉じる</label>
                                 </div>
