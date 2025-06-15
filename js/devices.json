@@ -1,0 +1,605 @@
+[
+    {
+        "id": "iphone-15-pro",
+        "name": "iPhone 15 Pro",
+        "description": "2023年のAppleのフラグシップスマホ",
+        "category": "スマートフォン",
+        "price": 159800,
+        "purchaseDate": "",
+        "imageUrl": "img/iphone15pro.webp",
+        "displaySize": "l",
+        "sections": [
+            "apple-product",
+            "main-device",
+            "usb-c"
+        ],
+        "links": {
+            "amazon": "",
+            "other": [
+                {
+                    "title":"YouTube",
+                    "url":"https://youtu.be/RRZPQqF5rvI"
+                },
+                {
+                    "title":"YouTube",
+                    "url":"https://youtu.be/ZNIFJT4tx_A"
+                }
+            ]
+        }
+    },
+    {
+        "id": "airpods-pro-2",
+        "name": "AirPods Pro",
+        "description": "AppleWatchの最低グレードのもの。時計初心者だからまずはここから。",
+        "category": "イヤホン",
+        "price": 34028,
+        "purchaseDate": "",
+        "imageUrl": "img/airpodspro2.webp",
+        "displaySize": "s",
+        "sections": [
+            "apple-product",
+            "main-device",
+            "audio"
+        ],
+        "links": {
+            "amazon": "",
+            "other": []
+        }
+    },
+    {
+        "id": "apple-watch-series-10",
+        "name": "Apple Watch Series 10",
+        "description": "最薄のAppleWatch。常時表示は使いやすい。",
+        "category": "腕時計",
+        "price": 59800,
+        "purchaseDate": "2024-09-20",
+        "imageUrl": "img/applewatchs10.webp",
+        "displaySize": "l",
+        "sections": [
+            "apple-product",
+            "main-device"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/4e3dkOT",
+            "other": [
+                {
+                    "title":"YouTube",
+                    "url":"https://youtu.be/hwDnel_rJu0"
+                },
+                {
+                    "title": "公式サイト",
+                    "url": "https://www.apple.com/jp/apple-watch-series-10/"
+                }
+            ]
+        }
+    },
+    {
+        "id": "m4macbookair",
+        "name": "M4 MacBook Air",
+        "description": "ハードウェアとしての完成度が凄まじい。512GBモデル",
+        "category": "パソコン",
+        "price": 179800,
+        "purchaseDate": "2025-03-31",
+        "imageUrl": "img/m4macbookair.webp",
+        "displaySize": "s",
+        "sections": [
+            "apple-product",
+            "main-device",
+            "usb-c"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3To70b3",
+            "other": [
+                {
+                    "title":"YouTube",
+                    "url":"https://youtu.be/Tz2ftVD82cM"
+                }
+            ]
+        }
+    },
+    {
+        "id": "sonya6700",
+        "name": "SONY α6700",
+        "description": "コンパクトなSONYのAPS-Cフラグシップ機",
+        "category": "カメラ",
+        "price": 160000,
+        "purchaseDate": "2025-03-09",
+        "imageUrl": "img/sony6700.webp",
+        "displaySize": "l",
+        "sections": [
+            "main-device",
+            "usb-c"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/44cVci5",
+            "other": []
+        }
+    },
+    {
+        "id": "sigma1850f28",
+        "name": "SIGMA 18-50mm F2.8",
+        "description": "コンパクトなカメラにコンパクトなレンズ。",
+        "category": "カメラ",
+        "price": 63000,
+        "purchaseDate": "",
+        "imageUrl": "img/sigma1850f28.webp",
+        "displaySize": "m",
+        "sections": [
+            "main-device"
+        ],
+        "links": {
+            "amazon": "",
+            "other": []
+        }
+    },
+    {
+        "id": "ac65w",
+        "name": "65W ACアダプタ",
+        "description": "小さくて強い",
+        "category": "ACアダプタ",
+        "price": 3140,
+        "purchaseDate": "",
+        "imageUrl": "img/elecomac65w.webp",
+        "displaySize": "s",
+        "sections": [
+            "main-device",
+            "usb-c"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/43UjaPf",
+            "other": []
+        }
+    },
+    {
+        "id": "usb32ccable",
+        "name": "USB3.2 Cケーブル",
+        "description": "0.5mと1.5m。最大100W",
+        "category": "ケーブル",
+        "price": "699 と 950",
+        "purchaseDate": "",
+        "imageUrl": "",
+        "displaySize": "s",
+        "sections": [
+            "main-device",
+            "usb-c"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/4kI2Qaf",
+            "other": [
+                {
+                    "title":"Amazon",
+                    "url":"https://amzn.to/402H9Jq"
+                }
+            ]
+        }
+    },
+    {
+        "id": "g703h",
+        "name": "G703h",
+        "description": "Logicoolの最高性能のセンサーを積んでいるマウスで価格も安く使いやすい。オススメ。",
+        "category": "マウス",
+        "price": 7818,
+        "purchaseDate": "",
+        "imageUrl": "img/g703h.webp",
+        "displaySize": "l",
+        "sections": [
+            "main-device"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3ArHkjV",
+            "other": []
+        }
+    },
+    {
+        "id": "g512",
+        "name": "G512",
+        "description": "押し心地も反応速度も十分。満足のいくキーボード。動画編集やWeb作成でテンキーあると地味に便利。",
+        "category": "キーボード",
+        "price": 11000,
+        "purchaseDate": "",
+        "imageUrl": "img/g503.webp",
+        "displaySize": "l",
+        "sections": [
+            "main-device"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3AvsARj",
+            "other": []
+        }
+    },
+    {
+        "id": "jblflip6",
+        "name": "JBL Flip 6",
+        "description": "ペットボトルサイズで持ち運びやすい",
+        "category": "Bluetoothスピーカー",
+        "price": 10500,
+        "purchaseDate": "",
+        "imageUrl": "img/jblflip6.webp",
+        "displaySize": "l",
+        "sections": [
+            "main-device",
+            "usb-c",
+            "audio"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3ArHkjV",
+            "other": []
+        }
+    },
+    {
+        "id": "g-pro-x",
+        "name": "G Pro X",
+        "description": "見た目も良く、音質は音楽を聴くには低音が足りない感ある感じだが、綺麗に出てる。",
+        "category": "ヘッドホン",
+        "price": 14000,
+        "purchaseDate": "",
+        "imageUrl": "img/gprpx.webp",
+        "displaySize": "s",
+        "sections": [
+            "main-device",
+            "audio"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3RfRSJS",
+            "other": []
+        }
+    },
+    {
+        "id": "ssd250",
+        "name": "USB-C SSD 250GB",
+        "description": "コンパクトで持ち運びが容易なSSD",
+        "category": "ストレージ",
+        "price": 4761,
+        "purchaseDate": "2024-05-31",
+        "imageUrl": "",
+        "displaySize": "m",
+        "sections": [
+            "main-device",
+            "usb-c"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/45pTTxw",
+            "other": []
+        }
+    },
+    {
+        "id": "asus-vg258qr",
+        "name": "ASUS VG258QR",
+        "description": "165Hzでぬるぬる。だけどTNパネルだから少し色が汚い。",
+        "category": "モニター",
+        "price": 26580,
+        "purchaseDate": "",
+        "imageUrl": "img/VG258QR.webp",
+        "displaySize": "s",
+        "sections": [
+            "pc-peripheral"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3pOu7Nb",
+            "other": []
+        }
+    },
+    {
+        "id": "fifine-t669",
+        "name": "FIFINE T669",
+        "description": "安くてマイクアームまでついてきて、素人には十分な音質。オススメ。",
+        "category": "マイク",
+        "price": 7599,
+        "purchaseDate": "",
+        "imageUrl": "img/t669.webp",
+        "displaySize": "m",
+        "sections": [
+            "pc-peripheral"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3AuPHLA",
+            "other": []
+        }
+    },
+    {
+        "id": "hp-p224",
+        "name": "HP P224",
+        "description": "IPSパネルで綺麗。使い心地の良いモニター。電源も内蔵されてて良き。2枚使ってる。",
+        "category": "モニター",
+        "price": "12000 × 2",
+        "purchaseDate": "",
+        "imageUrl": "img/p224.webp",
+        "displaySize": "s",
+        "sections": [
+            "pc-peripheral"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3CBJd0i",
+            "other": []
+        }
+    },
+    {
+        "id": "sdv60256",
+        "name": "SDカード UHS-Ⅱ V60 256GB",
+        "description": "強いSDカード",
+        "category": "ストレージ",
+        "price": 8980,
+        "purchaseDate": "",
+        "imageUrl": "",
+        "displaySize": "s",
+        "sections": [
+            "main-device"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/44eHsmW",
+            "other": []
+        }
+    },
+    {
+        "id": "homepod-mini",
+        "name": "HomePod mini",
+        "description": "この小さいボディーから出てるとは思えないほどパワフルな音質、強い低音。オススメ。2台でステレオペア。",
+        "category": "スマートスピーカー",
+        "price": 23600,
+        "purchaseDate": "",
+        "imageUrl": "img/homepodmini.webp",
+        "displaySize": "l",
+        "sections": [
+            "pc-peripheral",
+            "apple-product",
+            "usb-c",
+            "audio"
+        ],
+        "links": {
+            "amazon": "",
+            "other": [
+                {
+                    "title": "ブログで詳しく",
+                    "url": "blog/HomePodmini-review"
+                }
+            ]
+        }
+    },
+    {
+        "id": "ciosmartcobyduo",
+        "name": "CIO 1000mAh 20W×2",
+        "description": "シンプルで性能高くて使いやすい。が、CIOの製品には問題がある",
+        "category": "モバイルバッテリー",
+        "price": 2885,
+        "purchaseDate": "2023-07-10",
+        "imageUrl": "img/ciosmartcobyduo.webp",
+        "displaySize": "s",
+        "sections": [
+            "main-device",
+            "usb-c"
+        ],
+        "links": {
+            "amazon": "",
+            "other": []
+        }
+    },
+    {
+        "id": "io-data-gv-usb3-hd",
+        "name": "I-O DATA GV-USB3/HD",
+        "description": "OBSに取り組む際の音の遅延も少なく発熱もない、使いやすい。オススメ。",
+        "category": "キャプチャーボード",
+        "price": 12700,
+        "purchaseDate": "",
+        "imageUrl": "img/GV-USB3.webp",
+        "displaySize": "s",
+        "sections": [
+            "pc-peripheral"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3POlKvP",
+            "other": []
+        }
+    },
+    {
+        "id": "quntis-bar-light",
+        "name": "Quntis バーライト",
+        "description": "机が明るくなって良い。明るくて良き良き",
+        "category": "照明",
+        "price": 5780,
+        "purchaseDate": "",
+        "imageUrl": "img/QuntisL206.webp",
+        "displaySize": "m",
+        "sections": [
+            "pc-peripheral"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3Gx6UbB",
+            "other": []
+        }
+    },
+    {
+        "id": "led-clock",
+        "name": "LED 時計",
+        "description": "視認性も良く、どこに置いても映える見た目。オススメ。",
+        "category": "時計",
+        "price": 1500,
+        "purchaseDate": "",
+        "imageUrl": "img/ledclock.webp",
+        "displaySize": "s",
+        "sections": [
+            "pc-peripheral"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3wA5mIu",
+            "other": []
+        }
+    },
+    {
+        "id": "headphone-hanger",
+        "name": "ヘッドホン掛け",
+        "description": "質感が非常に高く、これがあるだけで楽にヘッドホンをしまえる。オススメ。",
+        "category": "収納",
+        "price": 1399,
+        "purchaseDate": "",
+        "imageUrl": "",
+        "displaySize": "s",
+        "sections": [
+            "pc-peripheral"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3QSRSzr",
+            "other": []
+        }
+    },
+    {
+        "id": "led-tape-light",
+        "name": "LED テープライト",
+        "description": "部屋も明るくなるし、雰囲気も醸し出せる。オススメ。",
+        "category": "照明",
+        "price": 2199,
+        "purchaseDate": "",
+        "imageUrl": "",
+        "displaySize": "s",
+        "sections": [
+            "pc-peripheral"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3CCkado",
+            "other": []
+        }
+    },
+    {
+        "id": "dual-monitor-arm",
+        "name": "デュアルモニターアーム",
+        "description": "モニターは絶対にモニターアームにつけるべき。机が広くなるし見た目も◎。オススメ。",
+        "category": "モニターアーム",
+        "price": 3999,
+        "purchaseDate": "",
+        "imageUrl": "",
+        "displaySize": "s",
+        "sections": [
+            "pc-peripheral"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3PSdB9x",
+            "other": []
+        }
+    },
+    {
+        "id": "under-desk-cable-tray",
+        "name": "机下ケーブル収納",
+        "description": "小さい机使っているので収納スペース拡張。コントローラーとか置いてる。",
+        "category": "収納",
+        "price": 2999,
+        "purchaseDate": "",
+        "imageUrl": "img/cabletray.webp",
+        "displaySize": "s",
+        "sections": [
+            "pc-peripheral"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3Tm7htJ",
+            "other": []
+        }
+    },
+    {
+        "id": "sony-wf-c500",
+        "name": "SONY WF-C500",
+        "description": "安くて安心と信頼のSONYのイヤホン。もちろん音質いい",
+        "category": "イヤホン",
+        "price": 8609,
+        "purchaseDate": "",
+        "imageUrl": "img/sony-wf-c500.webp",
+        "displaySize": "s",
+        "sections": [
+            "pc-peripheral",
+            "usb-c",
+            "audio"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3jOw3W7",
+            "other": []
+        }
+    },
+    {
+        "id": "nintendo-pro-controller",
+        "name": "Nintendo Proコン",
+        "description": "やっぱり純正しか勝たん。安定の使いやすさ。",
+        "category": "コントローラー",
+        "price": 7678,
+        "purchaseDate": "",
+        "imageUrl": "img/nintendo-procon.webp",
+        "displaySize": "m",
+        "sections": [
+            "pc-peripheral",
+            "usb-c"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3Cf68NO",
+            "other": []
+        }
+    },
+    {
+        "id": "sony-dualschock4",
+        "name": "SONY DUALSHOCK4",
+        "description": "小さい机使っているので収納スペース拡張。コントローラーとか置いてる。",
+        "category": "コントローラー",
+        "price": 6578,
+        "purchaseDate": "",
+        "imageUrl": "img/sony-DUALSHOCK.webp",
+        "displaySize": "m",
+        "sections": [
+            "pc-peripheral"
+        ],
+        "links": {
+            "amazon": "https://amzn.to/3jzOgGT",
+            "other": []
+        }
+    },
+    {
+        "id": "apple-watch-se-2",
+        "name": "Apple Watch SE",
+        "description": "AppleWatchの最低グレードのもの。時計初心者だからまずはここから。",
+        "category": "Watch",
+        "price": 34028,
+        "purchaseDate": "",
+        "imageUrl": "",
+        "displaySize": "m",
+        "sections": [
+            "apple-product"
+        ],
+        "links": {
+            "amazon": "",
+            "other": [
+                {
+                    "title":"YouTube",
+                    "url":"https://youtu.be/hSGphX_XAYQ"
+                }
+            ]
+        }
+    },
+    {
+        "id": "iphone-xr",
+        "name": "iPhone XR",
+        "description": "2018年にiPhoneXSと一緒に発売されたスマホ。価格を抑えつつ欲しい機能が詰め込まれた製品。",
+        "category": "iPhone",
+        "price": "????",
+        "purchaseDate": "",
+        "imageUrl": "",
+        "displaySize": "m",
+        "sections": [
+            "apple-product"
+        ],
+        "links": {
+            "amazon": "",
+            "other": []
+        }
+    },
+    {
+        "id": "iphone-7",
+        "name": "iPhone 7",
+        "description": "私が所持している唯一のホームボタン付きiPhone。",
+        "category": "iPhone",
+        "price": 0,
+        "purchaseDate": "",
+        "imageUrl": "",
+        "displaySize": "m",
+        "sections": [
+            "apple-product"
+        ],
+        "links": {
+            "amazon": "",
+            "other": []
+        }
+    }
+]
