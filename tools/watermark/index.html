@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@xullua">
+    <meta name="twitter:title" content="写真に枠付けデコ">
+    <meta name="twitter:description" content="写真から自動的に情報を抜き出し、枠をつけたウォーターマーク画像を素早く生成します。">
+    <meta name="description" content="写真から自動的に情報を抜き出し、枠をつけたウォーターマーク画像を素早く生成します。">
+    <meta name="twitter:image" content="https://xullua.com/img/watermark.webp">
+    <title>写真に枠付けデコ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../css/color.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <script>
+        $(function () {
+            $("header").load("../../header.html");
+            $("footer").load("../../footer.html");
+        });
+    </script>
+</head>
+
+<body>
+    <header></header>
+
+    <div class="container">
+        <h1>写真に枠付けデコ</h1>
+
+        <div class="file-drop-area">
+            <p>ここに画像をドラッグ＆ドロップするか、クリックしてファイルを選択</p>
+            <input type="file" id="imageLoader" accept="image/*" style="display: none;">
+        </div>
+
+        <div class="main-content">
+            <div class="preview-area">
+                <canvas id="previewCanvas"></canvas>
+                <div class="resolution-display">
+                    <span id="previewWidth"></span> x <span id="previewHeight"></span>
+                </div>
+            </div>
+
+            <div class="settings-panel">
+                <div class="setting-group">
+                    <h3>アスペクト比</h3>
+                    <select id="aspectRatioSelector">
+                        <option value="auto">自動</option>
+                        <option value="2.3333">21 : 9</option>
+                        <option value="1.7777">16 : 9</option>
+                        <option value="1.5">3 : 2</option>
+                        <option value="1.3333">4 : 3</option>
+                        <option value="1">1 : 1</option>
+                        <option value="0.8">4 : 5</option>
+                        <option value="0.75">3 : 4</option>
+                        <option value="0.6666">2 : 3</option>
+                        <option value="0.5625">9 : 16</option>
+                    </select>
+                    <div class="sub-options" id="crop-fit-options" style="display: none;">
+                        <label class="radio"><input type="radio" name="cropFit" value="crop" checked> はみ出し部分を切り取る（Crop）</label>
+                        <label class="radio" style="margin-top: 10px;"><input type="radio" name="cropFit" value="fit"> 全体がおさまるように縮小（Fit）</label>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3>テキスト設定</h3>
+                    <label for="fontSize">文字サイズ:</label>
+                    <input type="range" id="fontSize" min="10" max="200" value="80">
+
+                    <label>配置場所:</label>
+                    <div class="radio-group">
+                        <label class="radio"><input type="radio" name="textPlacement" value="margin" checked> 余白</label>
+                        <label class="radio"><input type="radio" name="textPlacement" value="image"> 画像内</label>
+                    </div>
+
+                    <div id="text-align-options">
+                        <label>水平位置:</label>
+                        <select id="textAlign">
+                            <option value="center">中央</option>
+                            <option value="right">右</option>
+                            <option value="left">左</option>
+                        </select>
+                    </div>
+
+                    <label class="checkbox"><input type="checkbox" id="textShadow"> 文字に影を付ける</label>
+
+                    <details>
+                        <summary>Exif情報を直接編集</summary>
+                        <div class="exif-editor">
+                            <label for="cameraModel">機種名:</label>
+                            <input type="text" id="cameraModel" placeholder="Nikon Z 8">
+                            <label for="focalLength">焦点距離:</label>
+                            <input type="text" id="focalLength" placeholder="50mm">
+                            <label for="shutterSpeed">SS:</label>
+                            <input type="text" id="shutterSpeed" placeholder="1/250s">
+                            <label for="fValue">F値:</label>
+                            <input type="text" id="fValue" placeholder="f/1.8">
+                            <label for="iso">ISO:</label>
+                            <input type="text" id="iso" placeholder="100">
+                            <label for="location">位置情報 (オプション):</label>
+                            <input type="text" id="location" placeholder="Tokyo, Japan">
+                        </div>
+                    </details>
+                </div>
+
+                <div class="setting-group" id="frame-settings">
+                    <h3>フレームと背景</h3>
+                    <div id="padding-option">
+                        <label for="padding">余白の大きさ:</label>
+                        <input type="range" id="padding" min="0" max="400" value="100">
+                    </div>
+
+                    <label>背景タイプ:</label>
+                    <div class="radio-group">
+                        <label class="radio"><input type="radio" name="backgroundType" value="blur" checked> 画像をぼかす</label>
+                        <label class="radio"><input type="radio" name="backgroundType" value="solid" checked> 単色</label>
+                    </div>
+
+                    <div class="sub-options" id="bg-blur-options">
+                        <label for="blur-d2">背景のぼかし具合:</label>
+                        <input type="range" id="blur-d2" min="0" max="100" value="80">
+                        <label for="blackness-d2">背景の黒み:</label>
+                        <input type="range" id="blackness-d2" min="0" max="90" value="25">
+                    </div>
+
+                    <div class="sub-options" id="bg-solid-options">
+                        <label>背景色:</label>
+                        <div class="color-options">
+                            <label class="radio"><input type="radio" name="bgColor" value="#ffffff" checked> 白</label>
+                            <label class="radio"><input type="radio" name="bgColor" value="#000000"> 黒</label>
+                            <input type="color" id="bgColorPicker" value="#ffffff">
+                        </div>
+                    </div>
+
+                    <label for="borderRadius">画像の角丸:</label>
+                    <input type="range" id="borderRadius" min="0" max="400" value="0">
+                    <label for="shadow">画像の影の濃さ:</label>
+                    <input type="range" id="shadow" min="0" max="100" value="0">
+                </div>
+
+                <details class="setting-group">
+                    <summary>
+                        <h3><i class="fa-solid fa-sliders"></i> 微調整</h3>
+                    </summary>
+                    <div class="fine-tune-container">
+                        <div class="fine-tune-group">
+                            <h4>写真</h4>
+                            <div class="fine-tune-control">
+                                <label>X</label>
+                                <input type="range" id="photoOffsetX" min="-200" max="200" value="0">
+                                <input type="number" id="photoOffsetXValue" class="fine-tune-value" min="-200" max="200"
+                                    value="0">
+                            </div>
+                            <div class="fine-tune-control">
+                                <label>Y</label>
+                                <input type="range" id="photoOffsetY" min="-200" max="200" value="0">
+                                <input type="number" id="photoOffsetYValue" class="fine-tune-value" min="-200" max="200"
+                                    value="0">
+                            </div>
+                            <div class="fine-tune-control">
+                                <label><i class="fa-solid fa-magnifying-glass"></i></label>
+                                <input type="range" id="photoScale" min="50" max="200" value="100">
+                                <input type="number" id="photoScaleValue" class="fine-tune-value" min="50" max="200"
+                                    value="100">
+                            </div>
+                        </div>
+                        <div class="fine-tune-group">
+                            <h4>機種名テキスト</h4>
+                            <div class="fine-tune-control">
+                                <label>X</label>
+                                <input type="range" id="modelOffsetX" min="-200" max="200" value="0">
+                                <input type="number" id="modelOffsetXValue" class="fine-tune-value" min="-200" max="200"
+                                    value="0">
+                            </div>
+                            <div class="fine-tune-control">
+                                <label>Y</label>
+                                <input type="range" id="modelOffsetY" min="-200" max="200" value="0">
+                                <input type="number" id="modelOffsetYValue" class="fine-tune-value" min="-200" max="200"
+                                    value="0">
+                            </div>
+                            <div class="fine-tune-control">
+                                <label><i class="fa-solid fa-magnifying-glass"></i></label>
+                                <input type="range" id="modelScale" min="50" max="200" value="100">
+                                <input type="number" id="modelScaleValue" class="fine-tune-value" min="50" max="200"
+                                    value="100">
+                            </div>
+                        </div>
+                        <div class="fine-tune-group">
+                            <h4>その他Exifテキスト</h4>
+                            <div class="fine-tune-control">
+                                <label>X</label>
+                                <input type="range" id="exifOffsetX" min="-200" max="200" value="0">
+                                <input type="number" id="exifOffsetXValue" class="fine-tune-value" min="-200" max="200"
+                                    value="0">
+                            </div>
+                            <div class="fine-tune-control">
+                                <label>Y</label>
+                                <input type="range" id="exifOffsetY" min="-200" max="200" value="0">
+                                <input type="number" id="exifOffsetYValue" class="fine-tune-value" min="-200" max="200"
+                                    value="0">
+                            </div>
+                            <div class="fine-tune-control">
+                                <label><i class="fa-solid fa-magnifying-glass"></i></label>
+                                <input type="range" id="exifScale" min="50" max="200" value="100">
+                                <input type="number" id="exifScaleValue" class="fine-tune-value" min="50" max="200"
+                                    value="100">
+                            </div>
+                        </div>
+                        <button id="resetFineTuneBtn" class="secondary-btn"><i
+                                class="fa-solid fa-arrow-rotate-left"></i> 微調整をリセット</button>
+                    </div>
+                </details>
+
+                <div class="setting-group">
+                    <h3>保存設定</h3>
+                    <label for="outputFormat">保存形式:</label>
+                    <select id="outputFormat">
+                        <option value="jpeg">JPEG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WEBP</option>
+                    </select>
+                    <div class="resolution-setting">
+                        <div>
+                            <label for="outputWidth">幅 (px)</label>
+                            <input type="number" id="outputWidth" min="1">
+                        </div>
+                        <div>
+                            <label for="outputHeight">高さ (px)</label>
+                            <input type="number" id="outputHeight" min="1">
+                        </div>
+                    </div>
+                    <label class="aspect-ratio-lock checkbox">
+                        <input type="checkbox" id="aspectLock" checked> 比率を維持する
+                    </label>
+                </div>
+
+                <div class="setting-group">
+                    <h3><i class="fa-solid fa-star"></i> プリセット</h3>
+                    <div id="preset-list" class="preset-list"></div>
+                    <button id="openSavePresetModalBtn" class="secondary-btn"><i class="fa-solid fa-plus"></i>
+                        新しいプリセットを登録</button>
+                    <p class="preset-note">注意: プリセットは、お使いのブラウザ内に保存されます。</p>
+                </div>
+
+                <button id="downloadBtn">画像をダウンロード</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="renameModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h4>プリセット名の変更</h4>
+            <input type="text" id="renameInput" placeholder="新しい名前">
+            <div class="modal-actions">
+                <button id="renameCancelBtn" class="secondary-btn">キャンセル</button>
+                <button id="renameConfirmBtn">変更</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="savePresetModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h4>プリセットの保存</h4>
+            <input type="text" id="savePresetNameInput" placeholder="プリセット名を入力">
+            <div class="modal-actions">
+                <button id="savePresetCancelBtn" class="secondary-btn">キャンセル</button>
+                <button id="savePresetConfirmBtn">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <footer></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>
