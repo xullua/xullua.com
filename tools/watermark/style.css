@@ -271,6 +271,7 @@ input[type="radio"] {
 #downloadBtn {
     width: 100%;
     padding: 15px;
+    margin: 0 0 15px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -635,5 +636,17 @@ label.radio {
     .secondary-btn {
         width: auto;
         margin-top: 0;
+    }
+}
+
+.explain {
+    font-size: 12px;
+    color: var(--thirdtext);
+    margin: 5px 0 0;
+    transition: 1s;
+
+    &:hover {
+        color: var(--help);
+        filter: drop-shadow(0 0 10px var(--help));
     }
 }

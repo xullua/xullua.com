@@ -77,6 +77,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function getFontFamily() {
+        const selectedValue = document.getElementById('fontselect').value;
+        if (selectedValue === 'lineseed') {
+            return "'LSeedJP'";
+        }
+        return selectedValue;
+    }
+
     function redrawCanvas() {
         if (!sourceImage.src) return;
         const placement = document.querySelector('input[name="textPlacement"]:checked').value;
@@ -122,8 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             const sourceRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
             if (sourceRatio > targetAspectRatio) {
-                canvasWidth = sourceImage.naturalWidth;
-                canvasHeight = canvasWidth / targetAspectRatio;
+                 canvasWidth = sourceImage.naturalWidth;
+                 canvasHeight = canvasWidth / targetAspectRatio;
             } else {
                 canvasHeight = sourceImage.naturalHeight;
                 canvasWidth = canvasHeight * targetAspectRatio;
@@ -131,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         previewCanvas.width = canvasWidth;
         previewCanvas.height = canvasHeight;
-
+        
         const imageArea = { x: 0, y: 0, width: canvasWidth, height: canvasHeight };
         const drawParams = calculateImageDrawParams(imageArea);
         const cropFitMode = document.querySelector('input[name="cropFit"]:checked').value;
@@ -139,30 +147,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         drawBackground();
         drawImageWithEffects(drawParams, !isFitMode);
-
+        
         const fontSize = parseInt(fontSizeInput.value, 10);
         const modelText = cameraModelInput.value;
         const exifLine = [focalLengthInput.value, shutterSpeedInput.value, fValueInput.value, isoInput.value ? `ISO ${isoInput.value}` : ''].filter(Boolean).join('  ');
         const locationText = locationInput.value;
         const textLines = [{ text: modelText, isModel: true }, { text: exifLine, isModel: false }, { text: locationText, isModel: false }].filter(line => line.text);
-
+        
         const align = textAlignInput.value;
         const padding = Math.round(drawParams.dWidth * 0.025);
         let x;
         if (align === 'left') x = drawParams.dx + padding;
         else if (align === 'center') x = drawParams.dx + drawParams.dWidth / 2;
         else x = drawParams.dx + drawParams.dWidth - padding;
-
+        
         let currentY = drawParams.dy + drawParams.dHeight - padding;
         setupTextShadow();
         ctx.textAlign = align;
+        const fontFamily = getFontFamily();
         for (let i = textLines.length - 1; i >= 0; i--) {
             const line = textLines[i];
             const isModel = line.isModel;
             const ft = isModel ? getFineTuneValues().model : getFineTuneValues().exif;
             const size = (isModel ? Math.round(fontSize * 1.1) : fontSize) * (ft.scale / 100);
-
-            ctx.font = `${isModel ? 'bold ' : ''}${size}px sans-serif`;
+            
+            ctx.font = `${isModel ? 'bold ' : ''}${size}px ${fontFamily}`;
             ctx.fillStyle = `rgba(255, 255, 255, ${isModel ? 1.0 : 0.75})`;
             ctx.fillText(line.text, x + ft.x, currentY + ft.y);
             currentY -= (size + Math.round(padding * 0.3));
@@ -177,10 +186,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const modelText = cameraModelInput.value;
         const exifLine = [focalLengthInput.value, shutterSpeedInput.value, fValueInput.value, isoInput.value ? `ISO ${isoInput.value}` : ''].filter(Boolean).join('  ');
         const locationText = locationInput.value;
-
+        
         const ftModel = getFineTuneValues().model;
         const ftExif = getFineTuneValues().exif;
-
+        
         const modelSize = Math.round(fontSize * 1.1) * (ftModel.scale / 100);
         const exifSize = fontSize * (ftExif.scale / 100);
 
@@ -192,29 +201,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const textIntrinsicPadding = (textBlockHeight > 0) ? Math.round(fontSize * 0.75) : 0;
         let canvasWidth, canvasHeight, imageArea;
-
+        
         if (isNaN(targetAspectRatio)) {
             canvasWidth = sourceImage.naturalWidth + globalPadding * 2;
             canvasHeight = globalPadding + sourceImage.naturalHeight + (globalPadding / 2) + textIntrinsicPadding + textBlockHeight + textIntrinsicPadding + (globalPadding / 2);
             imageArea = { x: globalPadding, y: globalPadding, width: sourceImage.naturalWidth, height: sourceImage.naturalHeight };
         } else {
             const baseWidth = sourceImage.naturalWidth;
-            canvasWidth = baseWidth + globalPadding * 2;
-            canvasHeight = canvasWidth / targetAspectRatio;
-
-            const requiredHeight = globalPadding + textBlockHeight + textIntrinsicPadding * 2 + (globalPadding / 2) * 2;
-
+            const totalHeightWithMargins = sourceImage.naturalHeight + textBlockHeight + textIntrinsicPadding * 2 + globalPadding;
+            const contentRatio = baseWidth / totalHeightWithMargins;
+            if (contentRatio > targetAspectRatio) {
+                canvasWidth = baseWidth + globalPadding * 2;
+                canvasHeight = canvasWidth / targetAspectRatio;
+            } else {
+                canvasHeight = totalHeightWithMargins + globalPadding;
+                canvasWidth = canvasHeight * targetAspectRatio;
+            }
             imageArea = {
-                x: globalPadding,
+                x: (canvasWidth - baseWidth) / 2,
                 y: globalPadding,
-                width: canvasWidth - globalPadding * 2,
-                height: canvasHeight - requiredHeight
+                width: baseWidth,
+                height: canvasHeight - globalPadding * 2 - textBlockHeight - textIntrinsicPadding * 2 - globalPadding
             };
         }
-
+        
         previewCanvas.width = canvasWidth;
         previewCanvas.height = canvasHeight;
-
+        
         const drawParams = calculateImageDrawParams(imageArea);
         drawBackground();
         drawImageWithEffects(drawParams);
@@ -226,10 +239,11 @@ document.addEventListener('DOMContentLoaded', () => {
             setupTextShadow();
             const textBlockTop = drawParams.dy + drawParams.dHeight + (globalPadding / 2) + textIntrinsicPadding;
             let currentY = textBlockTop;
+            const fontFamily = getFontFamily();
             textLines.forEach(line => {
                 const isModel = line.isModel;
                 const ft = isModel ? ftModel : ftExif;
-                ctx.font = `${isModel ? 'bold ' : ''}${line.size}px sans-serif`;
+                ctx.font = `${isModel ? 'bold ' : ''}${line.size}px ${fontFamily}`;
                 ctx.fillStyle = `rgba(${textColor}, ${isModel ? 1.0 : 0.75})`;
                 ctx.textBaseline = 'top';
                 ctx.fillText(line.text, x + ft.x, currentY + ft.y);
@@ -286,34 +300,33 @@ document.addEventListener('DOMContentLoaded', () => {
         previewCanvas.height = canvasHeight;
         drawBackground();
         drawImageWithEffects(drawParams);
-
+        
         const modelText = cameraModelInput.value;
         const exifLines = [focalLengthInput.value, shutterSpeedInput.value, fValueInput.value, isoInput.value ? `ISO ${isoInput.value}` : '', locationInput.value].filter(Boolean);
         const textColor = getTextColor();
         setupTextShadow();
         ctx.textAlign = 'left';
-
+        
         const ftModel = getFineTuneValues().model;
         const ftExif = getFineTuneValues().exif;
         const modelSize = Math.round(fontSize * 1.1) * (ftModel.scale / 100);
         const exifSize = fontSize * (ftExif.scale / 100);
-
+        
         const textX = drawParams.dx + drawParams.dWidth + textHorizontalMargin;
-
-        ctx.font = `bold ${modelSize}px sans-serif`;
+        const fontFamily = getFontFamily();
+        
+        ctx.font = `bold ${modelSize}px ${fontFamily}`;
         ctx.fillStyle = `rgba(${textColor}, 1.0)`;
         ctx.textBaseline = 'middle';
         ctx.fillText(modelText, textX + ftModel.x, (drawParams.dy + drawParams.dHeight / 2) + ftModel.y);
 
         const imageBottom = drawParams.dy + drawParams.dHeight;
         let currentY = imageBottom;
-
-        const needsMinMargin = globalPadding === 0 && (isNaN(targetAspectRatio) || cropFitMode !== 'fit');
-        if (needsMinMargin) {
+        if (cropFitMode !== 'fit' && globalPadding === 0) {
             currentY = Math.min(imageBottom, canvasHeight - fontSize);
         }
 
-        ctx.font = `${exifSize}px sans-serif`;
+        ctx.font = `${exifSize}px ${fontFamily}`;
         ctx.fillStyle = `rgba(${textColor}, 0.75)`;
         ctx.textBaseline = 'bottom';
         for (let i = exifLines.length - 1; i >= 0; i--) {

@@ -48,7 +48,7 @@
             <div class="settings-panel">
                 <div class="setting-group">
                     <h3>アスペクト比</h3>
-                    <select id="aspectRatioSelector">
+                    <select id="aspectRatioSelector" style="margin-top: 15px;">
                         <option value="auto">自動</option>
                         <option value="2.3333">21 : 9</option>
                         <option value="1.7777">16 : 9</option>
@@ -68,17 +68,24 @@
 
                 <div class="setting-group">
                     <h3>テキスト設定</h3>
-                    <label for="fontSize">文字サイズ:</label>
+                    <label for="fontSize">文字サイズ</label>
                     <input type="range" id="fontSize" min="10" max="200" value="80">
 
-                    <label>配置場所:</label>
+                    <label>フォント</label>
+                    <select id="fontselect">
+                        <option value="lineseed">xullua.com</option>
+                        <option value="sans-serif">ゴシック体</option>
+                        <option value="serif">明朝体</option>
+                    </select>
+
+                    <label>配置場所</label>
                     <div class="radio-group">
                         <label class="radio"><input type="radio" name="textPlacement" value="margin" checked> 余白</label>
                         <label class="radio"><input type="radio" name="textPlacement" value="image"> 画像内</label>
                     </div>
 
                     <div id="text-align-options">
-                        <label>水平位置:</label>
+                        <label>水平位置</label>
                         <select id="textAlign">
                             <option value="center">中央</option>
                             <option value="right">右</option>
@@ -91,17 +98,17 @@
                     <details>
                         <summary>Exif情報を直接編集</summary>
                         <div class="exif-editor">
-                            <label for="cameraModel">機種名:</label>
+                            <label for="cameraModel">機種名</label>
                             <input type="text" id="cameraModel" placeholder="Nikon Z 8">
-                            <label for="focalLength">焦点距離:</label>
+                            <label for="focalLength">焦点距離</label>
                             <input type="text" id="focalLength" placeholder="50mm">
-                            <label for="shutterSpeed">SS:</label>
+                            <label for="shutterSpeed">SS</label>
                             <input type="text" id="shutterSpeed" placeholder="1/250s">
-                            <label for="fValue">F値:</label>
+                            <label for="fValue">F値</label>
                             <input type="text" id="fValue" placeholder="f/1.8">
-                            <label for="iso">ISO:</label>
+                            <label for="iso">ISO</label>
                             <input type="text" id="iso" placeholder="100">
-                            <label for="location">位置情報 (オプション):</label>
+                            <label for="location">位置情報 (オプション)</label>
                             <input type="text" id="location" placeholder="Tokyo, Japan">
                         </div>
                     </details>
@@ -110,25 +117,26 @@
                 <div class="setting-group" id="frame-settings">
                     <h3>フレームと背景</h3>
                     <div id="padding-option">
-                        <label for="padding">余白の大きさ:</label>
+                        <label for="padding">余白の大きさ</label>
                         <input type="range" id="padding" min="0" max="400" value="100">
                     </div>
 
-                    <label>背景タイプ:</label>
+                    <label>背景タイプ</label>
                     <div class="radio-group">
                         <label class="radio"><input type="radio" name="backgroundType" value="blur" checked> 画像をぼかす</label>
                         <label class="radio"><input type="radio" name="backgroundType" value="solid" checked> 単色</label>
                     </div>
 
                     <div class="sub-options" id="bg-blur-options">
-                        <label for="blur-d2">背景のぼかし具合:</label>
+                        <label for="blur-d2">背景のぼかし具合</label>
                         <input type="range" id="blur-d2" min="0" max="100" value="80">
-                        <label for="blackness-d2">背景の黒み:</label>
+                        <label for="blackness-d2">背景の黒み</label>
                         <input type="range" id="blackness-d2" min="0" max="90" value="25">
+                        <p class="explain">iPhoneやMacなどWebkitブラウザでは背景のぼかしが使用できない問題があります。</p>
                     </div>
 
                     <div class="sub-options" id="bg-solid-options">
-                        <label>背景色:</label>
+                        <label>背景色</label>
                         <div class="color-options">
                             <label class="radio"><input type="radio" name="bgColor" value="#ffffff" checked> 白</label>
                             <label class="radio"><input type="radio" name="bgColor" value="#000000"> 黒</label>
@@ -136,9 +144,9 @@
                         </div>
                     </div>
 
-                    <label for="borderRadius">画像の角丸:</label>
+                    <label for="borderRadius">画像の角丸</label>
                     <input type="range" id="borderRadius" min="0" max="400" value="0">
-                    <label for="shadow">画像の影の濃さ:</label>
+                    <label for="shadow">画像の影の濃さ</label>
                     <input type="range" id="shadow" min="0" max="100" value="0">
                 </div>
 
@@ -217,7 +225,7 @@
 
                 <div class="setting-group">
                     <h3>保存設定</h3>
-                    <label for="outputFormat">保存形式:</label>
+                    <label for="outputFormat">保存形式</label>
                     <select id="outputFormat">
                         <option value="jpeg">JPEG</option>
                         <option value="png">PNG</option>
@@ -243,10 +251,11 @@
                     <div id="preset-list" class="preset-list"></div>
                     <button id="openSavePresetModalBtn" class="secondary-btn"><i class="fa-solid fa-plus"></i>
                         新しいプリセットを登録</button>
-                    <p class="preset-note">注意: プリセットは、お使いのブラウザ内に保存されます。</p>
+                    <p class="explain">プリセットは、お使いのブラウザ内に保存されます。</p>
                 </div>
 
                 <button id="downloadBtn">画像をダウンロード</button>
+                <p class="explain">iPhoneの場合ダウンロードをするとファイルに保存されます。この方法だと写真ライブラリの中に取り込むのに二度手間になりますので「ダウンロードしますか」の時に左にある「表示」を押し、その後共有から「画像を保存」で保存するのがおすすめです。</p>
             </div>
         </div>
     </div>
