@@ -130,8 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             const sourceRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
             if (sourceRatio > targetAspectRatio) {
-                 canvasWidth = sourceImage.naturalWidth;
-                 canvasHeight = canvasWidth / targetAspectRatio;
+                canvasWidth = sourceImage.naturalWidth;
+                canvasHeight = canvasWidth / targetAspectRatio;
             } else {
                 canvasHeight = sourceImage.naturalHeight;
                 canvasWidth = canvasHeight * targetAspectRatio;
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         previewCanvas.width = canvasWidth;
         previewCanvas.height = canvasHeight;
-        
+
         const imageArea = { x: 0, y: 0, width: canvasWidth, height: canvasHeight };
         const drawParams = calculateImageDrawParams(imageArea);
         const cropFitMode = document.querySelector('input[name="cropFit"]:checked').value;
@@ -147,20 +147,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         drawBackground();
         drawImageWithEffects(drawParams, !isFitMode);
-        
+
         const fontSize = parseInt(fontSizeInput.value, 10);
         const modelText = cameraModelInput.value;
         const exifLine = [focalLengthInput.value, shutterSpeedInput.value, fValueInput.value, isoInput.value ? `ISO ${isoInput.value}` : ''].filter(Boolean).join('  ');
         const locationText = locationInput.value;
         const textLines = [{ text: modelText, isModel: true }, { text: exifLine, isModel: false }, { text: locationText, isModel: false }].filter(line => line.text);
-        
+
         const align = textAlignInput.value;
         const padding = Math.round(drawParams.dWidth * 0.025);
         let x;
         if (align === 'left') x = drawParams.dx + padding;
         else if (align === 'center') x = drawParams.dx + drawParams.dWidth / 2;
         else x = drawParams.dx + drawParams.dWidth - padding;
-        
+
         let currentY = drawParams.dy + drawParams.dHeight - padding;
         setupTextShadow();
         ctx.textAlign = align;
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isModel = line.isModel;
             const ft = isModel ? getFineTuneValues().model : getFineTuneValues().exif;
             const size = (isModel ? Math.round(fontSize * 1.1) : fontSize) * (ft.scale / 100);
-            
+
             ctx.font = `${isModel ? 'bold ' : ''}${size}px ${fontFamily}`;
             ctx.fillStyle = `rgba(255, 255, 255, ${isModel ? 1.0 : 0.75})`;
             ctx.fillText(line.text, x + ft.x, currentY + ft.y);
@@ -186,10 +186,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const modelText = cameraModelInput.value;
         const exifLine = [focalLengthInput.value, shutterSpeedInput.value, fValueInput.value, isoInput.value ? `ISO ${isoInput.value}` : ''].filter(Boolean).join('  ');
         const locationText = locationInput.value;
-        
+
         const ftModel = getFineTuneValues().model;
         const ftExif = getFineTuneValues().exif;
-        
+
         const modelSize = Math.round(fontSize * 1.1) * (ftModel.scale / 100);
         const exifSize = fontSize * (ftExif.scale / 100);
 
@@ -201,33 +201,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const textIntrinsicPadding = (textBlockHeight > 0) ? Math.round(fontSize * 0.75) : 0;
         let canvasWidth, canvasHeight, imageArea;
-        
+
         if (isNaN(targetAspectRatio)) {
             canvasWidth = sourceImage.naturalWidth + globalPadding * 2;
             canvasHeight = globalPadding + sourceImage.naturalHeight + (globalPadding / 2) + textIntrinsicPadding + textBlockHeight + textIntrinsicPadding + (globalPadding / 2);
             imageArea = { x: globalPadding, y: globalPadding, width: sourceImage.naturalWidth, height: sourceImage.naturalHeight };
         } else {
             const baseWidth = sourceImage.naturalWidth;
-            const totalHeightWithMargins = sourceImage.naturalHeight + textBlockHeight + textIntrinsicPadding * 2 + globalPadding;
-            const contentRatio = baseWidth / totalHeightWithMargins;
-            if (contentRatio > targetAspectRatio) {
-                canvasWidth = baseWidth + globalPadding * 2;
-                canvasHeight = canvasWidth / targetAspectRatio;
-            } else {
-                canvasHeight = totalHeightWithMargins + globalPadding;
-                canvasWidth = canvasHeight * targetAspectRatio;
-            }
+            const requiredHeight = globalPadding + textBlockHeight + textIntrinsicPadding * 2 + (globalPadding / 2) * 2;
+            canvasWidth = baseWidth + globalPadding * 2;
+            canvasHeight = canvasWidth / targetAspectRatio;
+
+            const availableImageHeight = canvasHeight - requiredHeight;
             imageArea = {
-                x: (canvasWidth - baseWidth) / 2,
+                x: globalPadding,
                 y: globalPadding,
-                width: baseWidth,
-                height: canvasHeight - globalPadding * 2 - textBlockHeight - textIntrinsicPadding * 2 - globalPadding
+                width: canvasWidth - globalPadding * 2,
+                height: availableImageHeight
             };
+            if (availableImageHeight < 0) {
+                imageArea.height = 0; // Negative height check
+            }
         }
-        
+
         previewCanvas.width = canvasWidth;
         previewCanvas.height = canvasHeight;
-        
+
         const drawParams = calculateImageDrawParams(imageArea);
         drawBackground();
         drawImageWithEffects(drawParams);
@@ -300,21 +299,21 @@ document.addEventListener('DOMContentLoaded', () => {
         previewCanvas.height = canvasHeight;
         drawBackground();
         drawImageWithEffects(drawParams);
-        
+
         const modelText = cameraModelInput.value;
         const exifLines = [focalLengthInput.value, shutterSpeedInput.value, fValueInput.value, isoInput.value ? `ISO ${isoInput.value}` : '', locationInput.value].filter(Boolean);
         const textColor = getTextColor();
         setupTextShadow();
         ctx.textAlign = 'left';
-        
+
         const ftModel = getFineTuneValues().model;
         const ftExif = getFineTuneValues().exif;
         const modelSize = Math.round(fontSize * 1.1) * (ftModel.scale / 100);
         const exifSize = fontSize * (ftExif.scale / 100);
-        
+
         const textX = drawParams.dx + drawParams.dWidth + textHorizontalMargin;
         const fontFamily = getFontFamily();
-        
+
         ctx.font = `bold ${modelSize}px ${fontFamily}`;
         ctx.fillStyle = `rgba(${textColor}, 1.0)`;
         ctx.textBaseline = 'middle';
@@ -516,9 +515,9 @@ document.addEventListener('DOMContentLoaded', () => {
         sourceImage.averageLuminance = totalLuminance / (size * size);
     }
     function extractExifAndDraw() {
-        EXIF.getData(sourceImage, function() {
+        EXIF.getData(sourceImage, function () {
             cameraModelInput.value = EXIF.getTag(this, "Model") || '';
-            
+
             const focalLength = EXIF.getTag(this, "FocalLength");
             if (focalLength) {
                 const formattedFocalLength = parseFloat(focalLength).toFixed(1);
@@ -529,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const exposureTime = EXIF.getTag(this, "ExposureTime");
             if (exposureTime) {
-                shutterSpeedInput.value = exposureTime < 1 
+                shutterSpeedInput.value = exposureTime < 1
                     ? `1/${Math.round(1 / exposureTime)}s`
                     : `${exposureTime.toString()}s`;
             } else {
