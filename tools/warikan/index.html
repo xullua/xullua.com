@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@xullua">
+    <meta name="twitter:title" content="スマート割り勘">
+    <meta name="twitter:description" content="このサイトを使えば複数人で少しずつ立て替えて支払っていた場合でも、合計し、お金の移動を最小限に抑えて割り勘をすることができます。">
+    <meta name="description" content="このサイトを使えば複数人で少しずつ立て替えて支払っていた場合でも、合計し、お金の移動を最小限に抑えて割り勘をすることができます。">
+    <meta name="twitter:image" content="//xullua.com/img/warikan.webp">
+    <title>スマート割り勘</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../css/color.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <!-- アナリティクス -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JDKGJ1E005');
+    </script>
+    <script>
+        $(function () {
+            $("header").load("../../header.html");
+            $("footer").load("../../footer.html");
+        });
+    </script>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <header class="width-s"></header>
+    <div class="container">
+        <div class="header-section">
+            <h1>スマート割り勘</h1>
+            <p>支払いを入力して、最適な精算方法を計算します。複数人が分担して支払った場合でも最小限のお金の移動で割り勘できます。</p>
+        </div>
+
+        <main>
+            <section class="input-section">
+                <h2>1. 参加者と支払いを入力</h2>
+                <p class="explain">情報を入力してください。名前部分をタップすると名前を変更できます。立替額は事前に支払った額、控除額はその人の負担額を引き下げることができます。</p>
+                <div id="users-container">
+                </div>
+                <div class="actions">
+                    <button id="add-user-btn" class="btn">＋ 参加者を追加</button>
+                    <button id="reset-btn" class="btn btn-danger">リセット</button>
+                </div>
+            </section>
+
+            <div class="calculate-action">
+                <button id="calculate-btn" class="btn btn-primary">🧮 計算する</button>
+            </div>
+
+            <section id="result-section" class="result-section">
+                <h2>2. 計算結果</h2>
+                <div id="total-amount-display"></div>
+                <div id="settlement-display">
+                </div>
+                <button id="save-image-btn" class="btn">結果を画像で保存</button>
+            </section>
+        </main>
+    </div>
+    <footer class="width-s"></footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

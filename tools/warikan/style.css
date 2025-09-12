@@ -1,0 +1,233 @@
+/* 中央寄せのコンテナ */
+.container {
+    width: min(100% - 40px, var(--width-s));
+    margin: 70px auto;
+}
+
+/* ヘッダーセクション */
+.header-section {
+    text-align: center;
+    border-bottom: 1px solid var(--fourthback);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+
+    h1 {
+        color: var(--maintext);
+        margin: 0;
+    }
+
+    p {
+        color: var(--subtext);
+    }
+}
+
+/* メインコンテンツ */
+main {
+    h2 {
+        color: var(--subtext);
+    }
+}
+
+/* 入力欄のスタイル */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: none;
+    outline: 2px solid #0000;
+    outline-offset: 5px;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: var(--thirdback);
+    color: var(--maintext);
+    font-family: var(--font-family);
+    transition: .2s;
+
+    &:focus {
+        outline: 2px solid var(--themecolor);
+        outline-offset: 2px;
+    }
+}
+
+input[type="text"] {
+    background: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0;
+
+    &:focus {
+        padding: 3px 5px;
+    }
+}
+
+.explain {
+    font-size: 14px;
+    color: var(--subtext);
+    margin-bottom: 10px;
+}
+
+/* ボタンの共通スタイル */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: .2s;
+    color: var(--btntext);
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    & {
+        background-color: var(--support);
+        color: #fff;
+
+        &:hover {
+            background-color: var(--urlhover);
+        }
+    }
+
+    &.btn-danger {
+        min-width: 48px;
+        padding: 5px 10px;
+        font-size: 14px;
+        background-color: var(--accentcolor);
+        color: var(--btntext);
+
+        &:hover {
+            background-color: var(--accentcolorhover);
+        }
+    }
+
+    &.btn-primary {
+        width: 100%;
+        background-color: var(--themecolor);
+        padding: 15px;
+        font-size: 18px;
+
+        &:hover {
+            background-color: var(--themecolorhover);
+        }
+    }
+}
+
+/* 参加者ひとりの入力欄のスタイル */
+.user-entry {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background-color: var(--secondback);
+}
+
+/* 入力欄の行ごとのスタイル */
+.entry-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.user-entry .entry-row:last-child {
+    margin-bottom: 0;
+}
+
+/* 金額入力欄のグループ */
+.amount-group {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 5px;
+
+    input {
+        max-width: 200px;
+    }
+
+    label {
+        flex-shrink: 0;
+        /* ラベルが縮まないように */
+        font-size: 0.9em;
+    }
+}
+
+.actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.calculate-action {
+    margin: 30px 0 50px;
+    padding: 0 0 50px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+
+/* 結果セクション */
+.result-section {
+    background-color: var(--secondback);
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 30px;
+    display: none;
+}
+
+#total-amount-display {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--maintext);
+}
+
+/* 新しい明細カードのスタイル */
+.settlement-card {
+    background-color: var(--thirdback);
+    border-left: 3px solid var(--themecolor);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+
+    .user-name {
+        font-weight: bold;
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
+
+    .summary-line {
+        font-size: 0.9em;
+        color: var(--subtext);
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px dashed var(--line);
+
+        span {
+            margin-right: 15px;
+        }
+    }
+
+    .transaction-details {
+        font-size: 1em;
+        color: var(--maintext);
+    }
+}
+
+#save-image-btn {
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+/* フッターセクション */
+.footer-section {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--thirdtext);
+    font-size: 0.9em;
+}
