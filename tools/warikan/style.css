@@ -1,10 +1,8 @@
-/* 中央寄せのコンテナ */
 .container {
     width: min(100% - 40px, var(--width-s));
     margin: 70px auto;
 }
 
-/* ヘッダーセクション */
 .header-section {
     text-align: center;
     border-bottom: 1px solid var(--fourthback);
@@ -21,14 +19,12 @@
     }
 }
 
-/* メインコンテンツ */
 main {
     h2 {
         color: var(--subtext);
     }
 }
 
-/* 入力欄のスタイル */
 input[type="text"],
 input[type="number"] {
     width: 100%;
@@ -67,7 +63,6 @@ input[type="text"] {
     margin-bottom: 10px;
 }
 
-/* ボタンの共通スタイル */
 .btn {
     padding: 10px 20px;
     border: none;
@@ -115,7 +110,6 @@ input[type="text"] {
     }
 }
 
-/* 参加者ひとりの入力欄のスタイル */
 .user-entry {
     padding: 15px;
     margin-bottom: 10px;
@@ -123,7 +117,6 @@ input[type="text"] {
     background-color: var(--secondback);
 }
 
-/* 入力欄の行ごとのスタイル */
 .entry-row {
     display: flex;
     gap: 10px;
@@ -136,7 +129,6 @@ input[type="text"] {
     margin-bottom: 0;
 }
 
-/* 金額入力欄のグループ */
 .amount-group {
     display: flex;
     flex: 1;
@@ -150,7 +142,6 @@ input[type="text"] {
 
     label {
         flex-shrink: 0;
-        /* ラベルが縮まないように */
         font-size: 0.9em;
     }
 }
@@ -169,7 +160,6 @@ input[type="text"] {
 }
 
 
-/* 結果セクション */
 .result-section {
     background-color: var(--secondback);
     padding: 10px;
@@ -186,7 +176,6 @@ input[type="text"] {
     color: var(--maintext);
 }
 
-/* 新しい明細カードのスタイル */
 .settlement-card {
     background-color: var(--thirdback);
     border-left: 3px solid var(--themecolor);
@@ -224,7 +213,6 @@ input[type="text"] {
 }
 
 
-/* フッターセクション */
 .footer-section {
     text-align: center;
     margin-top: 40px;

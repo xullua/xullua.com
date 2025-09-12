@@ -12,9 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let users = [];
     let nextUserId = 1;
 
-    /**
-     * renderUsers
-     */
     const renderUsers = () => {
         usersContainer.innerHTML = '';
         if (users.length === 0) {
@@ -45,9 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    /**
-     * updateUser
-     */
     window.updateUser = (id, key, value) => {
         const user = users.find(u => u.id === id);
         if (user) {
@@ -60,9 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    /**
-     * addUser
-     */
     const addUser = () => {
         const newUser = {
             id: nextUserId++,
@@ -75,9 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         saveData();
     };
 
-    /**
-     * deleteUser
-     */
     window.deleteUser = (id) => {
         if (confirm('この参加者を削除しますか？')) {
             users = users.filter(user => user.id !== id);
@@ -86,17 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    /**
-     * saveData
-     */
     const saveData = () => {
         localStorage.setItem('warikanUsers', JSON.stringify(users));
         localStorage.setItem('warikanNextUserId', nextUserId);
     };
 
-    /**
-     * loadData
-     */
     const loadData = () => {
         const savedUsers = localStorage.getItem('warikanUsers');
         const savedNextUserId = localStorage.getItem('warikanNextUserId');
@@ -104,9 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (savedNextUserId) nextUserId = parseInt(savedNextUserId, 10);
     };
     
-    /**
-     * resetData
-     */
     const resetData = () => {
         if (confirm('全ての入力内容をリセットします。よろしいですか？')) {
             localStorage.clear();
@@ -114,9 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    /**
-     * calculateAndShowResult
-     */
     const calculateAndShowResult = () => {
         if (users.length < 2) {
             alert('参加者は2人以上必要です。');
@@ -131,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // ↓↓↓ 新しい計算ロジック ↓↓↓
         const commonAmount = totalAmount - totalDeductions;
         const commonShare = commonAmount / users.length;
         
@@ -151,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 finalShare: finalShare
             };
         });
-        // ↑↑↑ ここまでが変更箇所 ↑↑↑
         
         const idToNameMap = Object.fromEntries(balances.map(u => [u.id, u.name]));
 
@@ -241,9 +215,6 @@ document.addEventListener('DOMContentLoaded', () => {
         resultSection.scrollIntoView({ behavior: 'smooth' });
     };
 
-    /**
-     * saveAsImage
-     */
     const saveAsImage = () => {
         const totalClone = totalAmountDisplay.cloneNode(true);
         const settlementClone = settlementDisplay.cloneNode(true);
