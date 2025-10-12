@@ -33,10 +33,10 @@
                 <div class="select-wrap">
                     <select name="model" id="model-select">
                         <option value="" disabled selected>機種を選択してください</option>
-                        <option value="iPhone15ProMax">iPhone 15 Pro Max</option>
-                        <option value="iPhone15Pro">iPhone 15 Pro</option>
-                        <option value="iPhone15Plus">iPhone 15 Plus</option>
-                        <option value="iPhone15">iPhone 15</option>
+                        <option value="iPhone17">iPhone 17 シリーズ</option>
+                        <option value="iPhoneAir">iPhone Air</option>
+                        <option value="iPhone16">iPhone 16 シリーズ</option>
+                        <option value="iPhone15">iPhone 15 シリーズ</option>
                         <option value="iPhone14ProMax">iPhone 14 Pro Max</option>
                         <option value="iPhone14Pro">iPhone 14 Pro</option>
                         <option value="iPhone14Plus">iPhone 14 Plus</option>
@@ -250,9 +250,10 @@
     }
 
     /* 求め方：ppi ÷ 2.54 × 15 ÷ DPR */
-    .ruler #iPhone15ProMax,
-    .ruler #iPhone15Pro,
-    .ruler #iPhone15Plus,
+    /* 460ppi 3DPR */
+    .ruler #iPhone17,
+    .ruler #iPhoneAir,
+    .ruler #iPhone16,
     .ruler #iPhone15,
     .ruler #iPhone14ProMax,
     .ruler #iPhone14Pro,
