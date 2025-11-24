@@ -37,7 +37,8 @@
     --urlhover: #3ea5ff;
     --line: #aaaaaa;
     --header-back: #ffffffbb;
-    --headerback: linear-gradient(var(--firstback),#ffffffbb);
+    --headerback: linear-gradient(var(--firstback), #ffffffbb);
+    --iconback: linear-gradient(#e9e9ef, #a9a4c1);
     /* テーマカラー */
     --themecolor: #1c7eff;
     --themecolorhover: #539dff;
@@ -119,7 +120,8 @@
         --urlhover: #40a6ff;
         --line: #777777;
         --header-back: #000000bb;
-        --headerback: linear-gradient(var(--firstback),#202024aa);
+        --headerback: linear-gradient(var(--firstback), #202024aa);
+        --iconback: linear-gradient(#555a6f, #363448);
         /* テーマカラー */
         --themecolor: #5188ff;
         --themecolorhover: #7ca6ff;
