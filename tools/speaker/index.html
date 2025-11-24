@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スピーカー</title>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@xullua">
+    <meta name="twitter:title" content="スピーカー">
+    <meta name="twitter:description" content="名言や声明を簡単に画像に変換できます。">
+    <meta name="description" content="名言や声明を簡単に画像に変換できます。">
+    <meta name="twitter:image" content="https://xullua.com/img/speaker.webp">
+    <link rel="stylesheet" href="../../css/color.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/tools.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <!-- アナリティクス -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JDKGJ1E005');
+    </script>
+    <script>
+        $(function () {
+            $("header").load("../../header.html");
+            $("footer").load("../../footer.html");
+        });
+    </script>
+</head>
+
+<body>
+    <header></header>
+
+    <div class="tool-app">
+        <div class="tool-workspace">
+            <aside class="tool-sidebar">
+                <div class="toolsheader">
+                    <img src="../../img/speaker.svg" alt="">
+                    <div>
+                        <div class="flex-row" style="justify-content: space-between;">
+                            <h1>スピーカー</h1>
+                            <div class="flex-row">
+                                <button id="historyBtn" class="icon-btn" title="履歴"><i
+                                        class="fa-solid fa-clock-rotate-left"></i></button>
+                                <button id="newBtn" class="icon-btn" title="新規作成"><i
+                                        class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <p class="description">公式声明のような画像を簡単に作成できます。</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h2>デザイン</h2>
+                    <div class="box-selector">
+                        <label>
+                            <input type="radio" name="template" value="mfa" checked>
+                            <span class="box-title">中国外交部風</span>
+                            <span class="box-desc">公式声明のような厳格なデザイン</span>
+                        </label>
+                        <!-- Future templates -->
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h2>本文</h2>
+                    <div class="toolbar">
+                        <button type="button" data-command="bold" title="太字"><i class="fa-solid fa-bold"></i></button>
+                        <div class="color-picker-wrapper">
+                            <input type="color" id="textColorPicker" value="#ffffff">
+                            <button type="button" id="textColorBtn" title="文字色"><i
+                                    class="fa-solid fa-font"></i></button>
+                        </div>
+                    </div>
+                    <div id="quoteInput" class="rich-input" contenteditable="true" placeholder="ここにテキストを入力...">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h2>情報</h2>
+                    <label>出典・発言者</label>
+                    <input type="text" id="sourceInput" placeholder="例：中国外交部">
+
+                    <label>日付</label>
+                    <input type="text" id="dateInput" placeholder="例：2024年1月1日">
+
+                    <label>アイコン画像</label>
+                    <div class="icon-selector">
+                        <button id="uploadIconBtn" class="icon-btn box-style" title="画像をアップロード"><i
+                                class="fa-solid fa-upload"></i></button>
+                        <input type="file" id="iconUpload" accept="image/*" style="display: none;">
+                        <button id="noIconBtn" class="icon-btn box-style" title="アイコンなし"><i
+                                class="fa-solid fa-ban"></i></button>
+                        <div class="preset-icons" id="presetIcons">
+                            <!-- Presets injected by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h2>装飾</h2>
+
+                    <div id="templateSettings-mfa" class="template-settings active">
+                        <label>背景色</label>
+                        <div class="color-options">
+                            <label class="color-circle">
+                                <input type="radio" name="bgColor" value="red" checked>
+                                <span style="background: #ce0000;"></span>
+                            </label>
+                            <label class="color-circle">
+                                <input type="radio" name="bgColor" value="orange">
+                                <span style="background: #b34700;"></span>
+                            </label>
+                            <label class="color-circle">
+                                <input type="radio" name="bgColor" value="blue">
+                                <span style="background: #1c7eff;"></span>
+                            </label>
+                            <label class="color-circle custom-color-circle">
+                                <input type="radio" name="bgColor" value="custom">
+                                <span></span>
+                                <input type="color" id="customBgColor" value="#ce0000">
+                            </label>
+                        </div>
+                        <button id="regenBgBtn" class="secondary-btn"><i class="fa-solid fa-arrows-rotate"></i>
+                            背景模様を再生成</button>
+
+                        <details class="layout-details" style="margin-top: 16px;">
+                            <summary>レイアウト調整</summary>
+                            <div class="layout-controls" style="margin-top: 10px;">
+                                <label>行間 (Line Height)</label>
+                                <input type="range" id="lineHeightRange" min="1.0" max="3.0" step="0.1" value="1.8">
+
+                                <label>文字サイズ (Font Size)</label>
+                                <input type="range" id="fontSizeRange" min="12" max="64" step="1" value="32">
+
+                                <label>余白 (Padding)</label>
+                                <input type="range" id="paddingRange" min="20" max="150" step="5" value="60">
+
+                                <label>アイコンサイズ</label>
+                                <input type="range" id="iconSizeRange" min="40" max="200" step="5" value="60">
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h2>保存設定</h2>
+                    <label>画像の横幅 (px)</label>
+                    <input type="number" id="outputWidth" value="1080" min="100">
+                </div>
+
+                <button id="shareBtn" class="secondary-btn"><i class="fa-solid fa-share-nodes"></i>
+                    設定をURLで共有</button>
+                <button id="downloadBtn" class="primary-btn"><i class="fa-solid fa-download"></i> 画像を保存</button>
+            </aside>
+
+            <main class="tool-preview">
+                <div id="previewContainer" class="mfa-style">
+                    <canvas id="bgCanvas"></canvas>
+                    <div class="content-layer">
+                        <div class="mfa-header">
+                            <div class="mfa-icon-wrapper">
+                                <img id="previewIcon" src="" alt="" style="display: none;">
+                            </div>
+                        </div>
+                        <div class="mfa-content-wrapper">
+                            <div class="mfa-body">
+                                <div id="previewText"></div>
+                            </div>
+                            <div class="mfa-footer">
+                                <div class="mfa-footer-content">
+                                    <span id="previewSource">SOURCE</span>
+                                    <span id="previewDate">DATE</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Common Modal Structure -->
+    <div id="commonModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Title</h3>
+                <button class="icon-btn close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="modalBody" class="modal-body">
+                <!-- Content injected by JS -->
+            </div>
+            <div id="modalActions" class="modal-actions"
+                style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+                <!-- Buttons injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Settings Template (Hidden) -->
+    <template id="shareSettingsTemplate">
+        <div class="share-settings">
+            <p class="description" style="margin-bottom: 15px;">共有する項目を選択してください。</p>
+            <div class="toggle-group">
+                <div class="toggle-row">
+                    <span>本文</span>
+                    <label class="ios-toggle">
+                        <input type="checkbox" id="shareText" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-row">
+                    <span>出典・日付</span>
+                    <label class="ios-toggle">
+                        <input type="checkbox" id="shareInfo" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-row">
+                    <span>アイコン画像</span>
+                    <label class="ios-toggle">
+                        <input type="checkbox" id="shareIcon">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-row">
+                    <span>色・背景模様</span>
+                    <label class="ios-toggle">
+                        <input type="checkbox" id="shareColor" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-row">
+                    <span>レイアウト調整</span>
+                    <label class="ios-toggle">
+                        <input type="checkbox" id="shareLayout" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div id="urlLengthWarning" class="warning-box"
+                style="display: none; margin-top: 15px; padding: 10px; background: #fff3cd; color: #856404; border-radius: 6px; font-size: 0.85rem; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-triangle-exclamation"></i> URLが長くなっています。送信媒体によっては無効化される可能性があります。
+            </div>
+        </div>
+    </template>
+
+    <!-- History Template (Hidden) -->
+    <template id="historyTemplate">
+        <div id="historyList" class="history-list"></div>
+    </template>
+
+    <footer></footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

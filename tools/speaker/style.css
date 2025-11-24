@@ -1,0 +1,271 @@
+/* tools/quote-generator/style.css */
+@import url('https://xullua.com/css/color.css');
+
+/* Force scrollbar to prevent ResizeObserver loop */
+.tool-preview {
+    overflow-y: scroll !important;
+}
+
+/* Editor Panel Specifics */
+.toolbar {
+    display: flex;
+    gap: 5px;
+    background: var(--thirdback);
+    padding: 5px;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+}
+
+.toolbar button {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: var(--maintext);
+    border-radius: 4px;
+}
+
+.toolbar button:hover {
+    background: var(--firstback);
+}
+
+.toolbar .color-picker-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.toolbar .color-picker-wrapper input[type="color"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+}
+
+.rich-input {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
+    border-radius: 0 0 10px 10px;
+    background: var(--firstback);
+    color: var(--maintext);
+    font-size: 1rem;
+    line-height: 1.6;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    margin-bottom: 16px;
+}
+
+.rich-input:focus {
+    outline: 2px solid var(--themecolor);
+}
+
+.rich-input[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: var(--subtext);
+    opacity: 0.6;
+}
+
+/* Template Selector */
+.template-settings {
+    display: none;
+}
+
+.template-settings.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Icon Selector */
+.icon-selector {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.icon-selector .icon-btn.box-style {
+    width: 50px;
+    height: 50px;
+    border: 2px dashed var(--line);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: var(--firstback);
+    color: var(--subtext);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.icon-selector .icon-btn.box-style:hover {
+    border-color: var(--themecolor);
+    color: var(--themecolor);
+}
+
+.icon-selector .preset-icons {
+    display: flex;
+    gap: 5px;
+}
+
+.icon-selector .preset-icons .preset-icon-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 5px;
+    cursor: pointer;
+    background: #333;
+    /* Dark background for white icons */
+    transition: all 0.2s;
+}
+
+.icon-selector .preset-icons .preset-icon-btn:hover {
+    border-color: var(--themecolor);
+    background: #444;
+}
+
+.icon-selector .preset-icons .preset-icon-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Preview Container */
+#previewContainer {
+    width: 100%;
+    /* max-width: 600px; Removed to maximize preview */
+    height: auto;
+    align-self: center;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+#previewContainer canvas#bgCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#previewContainer .content-layer {
+    position: relative;
+    z-index: 1;
+    padding: var(--preview-padding, 60px);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* aspect-ratio: 1 / 1; Removed to allow JS controlled min-height */
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+/* MFA Style */
+.mfa-style {
+    color: #000;
+}
+
+/* Aggressively apply font to all elements inside mfa-style */
+.mfa-style,
+.mfa-style * {
+    font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif !important;
+}
+
+.mfa-style .mfa-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.mfa-style .mfa-icon-wrapper {
+    width: var(--preview-icon-size, 60px);
+    height: var(--preview-icon-size, 60px);
+    margin-bottom: 15px;
+}
+
+.mfa-style .mfa-icon-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.mfa-style .mfa-content-wrapper {
+    width: fit-content;
+    /* Shrink to fit content */
+    min-width: 50%;
+    /* Minimum width to look decent */
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.mfa-style .mfa-body {
+    flex-grow: 1;
+    font-size: var(--preview-font-size, 32px);
+    line-height: var(--preview-line-height, 1.8);
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mfa-style .mfa-body b,
+.mfa-style .mfa-body strong {
+    font-weight: 900;
+}
+
+.mfa-style .mfa-footer {
+    margin-top: auto;
+    width: 100%;
+}
+
+.mfa-style .mfa-footer-content {
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    padding-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: calc(var(--preview-font-size, 32px) * 0.6);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: normal;
+    flex-wrap: wrap;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

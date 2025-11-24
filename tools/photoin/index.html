@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フォトイン</title>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@xullua">
+    <meta name="twitter:title" content="フォトイン">
+    <meta name="twitter:description" content="写真を身近な場所に埋め込むことができます。">
+    <meta name="description" content="写真を身近な場所に埋め込むことができます。">
+    <meta name="twitter:image" content="https://xullua.com/img/photoin.webp">
+    <link rel="stylesheet" href="../../css/color.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/tools.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <!-- アナリティクス -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JDKGJ1E005');
+    </script>
+    <script>
+        $(function () {
+            $(".header").load("../../header.html");
+            $("footer").load("../../footer.html");
+        });
+    </script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-app">
+        <div class="tool-workspace">
+            <aside class="tool-sidebar">
+                <div class="toolsheader">
+                    <img src="../../img/photoin.svg" alt="">
+                    <div>
+                        <div class="flex-row" style="justify-content: space-between;">
+                            <h1>フォトイン</h1>
+                            <div class="flex-row">
+                                <button id="historyBtn" class="icon-btn" title="履歴">
+                                    <span class="material-symbols-rounded">history</span>
+                                </button>
+                                <button id="newBtn" class="icon-btn" title="新規作成">
+                                    <span class="material-symbols-rounded">add</span>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="description">写真を身近な場所に埋め込む</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h2>デザイン</h2>
+                    <div class="box-selector">
+                        <label>
+                            <input type="radio" name="template" value="googlemaps" checked>
+                            <span class="box-title">Google Maps風</span>
+                            <span class="box-desc">地図アプリのようなデザイン</span>
+                        </label>
+                        <!-- Future templates -->
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h2>画像</h2>
+                    <label class="file-upload-btn"
+                        style="display: flex; align-items: center; justify-content: center; padding: 12px; background-color: var(--firstback); border: 1px dashed var(--line); border-radius: 8px; cursor: pointer;">
+                        <span>写真を選択</span>
+                        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                    </label>
+
+                    <div class="slider-group" style="margin-top: 16px;">
+                        <div class="slider-row" style="display: flex; align-items: center; gap: 10px;">
+                            <span style="width: 40px;">Zoom</span>
+                            <input type="range" id="zoomSlider" min="0.01" max="2" step="0.005" value="1">
+                        </div>
+                        <div class="slider-row" style="display: flex; align-items: center; gap: 10px;">
+                            <span style="width: 40px;">X</span>
+                            <input type="range" id="xSlider" min="-500" max="500" step="10" value="0">
+                        </div>
+                        <div class="slider-row" style="display: flex; align-items: center; gap: 10px;">
+                            <span style="width: 40px;">Y</span>
+                            <input type="range" id="ySlider" min="-500" max="500" step="10" value="0">
+                        </div>
+                        <button id="resetImageBtn" class="secondary-btn small full-width"
+                            style="margin-top: 8px; width: fit-content;">リセット</button>
+                    </div>
+                </div>
+
+                <div id="templateSettings-googlemaps" class="template-settings active">
+                    <div class="control-group">
+                        <h2>言語</h2>
+                        <div class="box-selector">
+                            <label>
+                                <input type="radio" name="language" value="ja" checked>
+                                <span class="box-title">日本語</span>
+                                <span class="box-desc">JA</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="language" value="en">
+                                <span class="box-title">英語</span>
+                                <span class="box-desc">EN</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="language" value="ko">
+                                <span class="box-title">韓国語</span>
+                                <span class="box-desc">KR</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h2>設定</h2>
+                        <div class="input-row">
+                            <label>
+                                <span>アスペクト比</span>
+                                <div class="box-selector">
+                                    <label>
+                                        <input type="radio" name="aspectRatio" value="9:16" checked>
+                                        <span class="box-title">9:16</span>
+                                        <span class="box-desc">ストーリー</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="aspectRatio" value="4:5">
+                                        <span class="box-title">4:5</span>
+                                        <span class="box-desc">投稿</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="aspectRatio" value="1:1">
+                                        <span class="box-title">1:1</span>
+                                        <span class="box-desc">正方形</span>
+                                    </label>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="input-row">
+                            <label>
+                                <span>横幅 (px)</span>
+                                <input type="number" id="outputWidth" value="1080">
+                            </label>
+                        </div>
+
+                        <div class="input-row">
+                            <label>
+                                <span>フレームテーマ</span>
+                                <div class="box-selector">
+                                    <label>
+                                        <input type="radio" name="themeMode" value="light" checked>
+                                        <span class="box-title">ライト</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="themeMode" value="dark">
+                                        <span class="box-title">ダーク</span>
+                                    </label>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h2>詳細情報</h2>
+                        <label>
+                            <span>場所名</span>
+                            <input type="text" id="placeName" placeholder="例: 東京タワー">
+                        </label>
+
+                        <div class="input-row" style="display: flex; gap: 10px;">
+                            <label style="flex: 1;">
+                                <span>評価 (1.0-5.0)</span>
+                                <input type="number" id="rating" value="4.5" step="0.1" min="1" max="5">
+                            </label>
+                            <label style="flex: 1;">
+                                <span>クチコミ数</span>
+                                <input type="text" id="reviewCount" value="(1,234)">
+                            </label>
+                        </div>
+
+                        <label>
+                            <span>カテゴリ</span>
+                            <input type="text" id="category" placeholder="例: 観光名所">
+                        </label>
+
+                        <label>
+                            <span>営業状況 / 時間</span>
+                            <input type="text" id="statusText" value="営業中 ⋅ 21:00まで">
+                        </label>
+
+                        <label>
+                            <span>場所 / 距離</span>
+                            <input type="text" id="locationText" value="東京都港区 ⋅ 2.5 km">
+                        </label>
+                    </div>
+                </div>
+
+                <button id="shareBtn" class="secondary-btn"><span class="material-symbols-rounded">share</span>
+                    設定をURLで共有</button>
+                <button id="downloadBtn" class="primary-btn"><span
+                        class="material-symbols-rounded">download</span>画像を保存</button>
+            </aside>
+
+            <main class="tool-preview">
+                <div id="canvasContainer" class="canvas-container ratio-9-16">
+                    <div id="previewFrame" class="preview-frame light-mode">
+                        <div class="image-container">
+                            <img id="targetImage" src="" alt="" draggable="false">
+                        </div>
+
+                        <!-- Overlay Card -->
+                        <div class="overlay-card">
+                            <div class="card-handle"></div>
+                            <div class="card-header-row">
+                                <h2 id="displayPlaceName">場所名</h2>
+                                <div class="header-actions">
+                                    <span class="material-symbols-rounded icon-btn">bookmark</span>
+                                    <span class="material-symbols-rounded icon-btn">ios_share</span>
+                                    <span class="material-symbols-rounded icon-btn">close</span>
+                                </div>
+                            </div>
+
+                            <div class="rating-row">
+                                <span id="displayRating" class="rating-num">4.5</span>
+                                <div class="stars-container">
+                                    <div class="stars-bg">★★★★★</div>
+                                    <div class="stars-fill" style="width: 90%;">★★★★★</div>
+                                </div>
+                                <span id="displayReviewCount" class="review-count">(1,234)</span>
+                            </div>
+
+                            <div class="meta-row">
+                                <span id="displayCategory">カテゴリ</span>
+                                <span class="separator">·</span>
+                                <span id="displayLocation">場所</span>
+                            </div>
+
+                            <div class="status-row">
+                                <span id="displayStatus" class="status-open">営業中</span>
+                            </div>
+
+                            <div class="card-actions">
+                                <div class="action-pill primary">
+                                    <span class="material-symbols-rounded">directions</span>
+                                    <span data-i18n="directions">経路</span>
+                                </div>
+                                <div class="action-pill">
+                                    <span class="material-symbols-rounded">navigation</span>
+                                    <span data-i18n="start">ナビ開始</span>
+                                </div>
+                                <div class="action-pill">
+                                    <span class="material-symbols-rounded">call</span>
+                                    <span data-i18n="call">電話</span>
+                                </div>
+                                <div class="action-pill">
+                                    <span class="material-symbols-rounded">storefront</span>
+                                    <span data-i18n="save">保存</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Common Modal Structure -->
+    <div id="commonModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Title</h3>
+                <button class="icon-btn close-modal"><span class="material-symbols-rounded">close</span></button>
+            </div>
+            <div id="modalBody" class="modal-body">
+                <!-- Content injected by JS -->
+            </div>
+            <div id="modalActions" class="modal-actions"
+                style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+                <!-- Buttons injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Settings Template (Hidden) -->
+    <template id="shareSettingsTemplate">
+        <div class="share-options">
+            <div class="toggle-group">
+                <p class="description" style="margin-bottom: 15px;">共有する項目を選択してください。</p>
+                <div class="toggle-row">
+                    <span>設定を含める</span>
+                    <label class="ios-toggle">
+                        <input type="checkbox" id="shareSettings" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-row">
+                    <span>テキストを含める</span>
+                    <label class="ios-toggle">
+                        <input type="checkbox" id="shareText" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-row">
+                    <span>画像を含める</span>
+                    <label class="ios-toggle">
+                        <input type="checkbox" id="shareImage">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div id="urlLengthWarning" class="warning-box"
+                style="display: none; margin-top: 15px; padding: 10px; background: #fff3cd; color: #856404; border-radius: 6px; font-size: 0.85rem; align-items: center; gap: 8px;">
+                <span class="material-symbols-rounded" style="font-size: 16px;">warning</span>
+                URLが長くなっています。送信媒体によっては無効化される可能性があります。
+            </div>
+        </div>
+    </template>
+
+    <!-- History Template (Hidden) -->
+    <template id="historyTemplate">
+        <div id="historyList" class="history-list">
+            <!-- History items injected by JS -->
+        </div>
+    </template>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"
+        style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--support); color: #fff; padding: 12px 24px; border-radius: 50px; z-index: 2000;">
+        <span id="toastMessage"></span>
+    </div>
+    <footer></footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

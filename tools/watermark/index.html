@@ -12,9 +12,10 @@
     <meta name="description" content="写真から自動的に情報を抜き出し、枠をつけたウォーターマーク画像を素早く生成します。">
     <meta name="twitter:image" content="https://xullua.com/img/watermark.webp">
     <title>写真に枠付けデコ</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../css/color.css">
     <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/tools.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -38,75 +39,166 @@
 <body>
     <header></header>
 
-    <div class="container">
-        <h1>写真に枠付けデコ</h1>
+    <div class="tool-app">
+        <div class="tool-workspace">
+            <aside class="tool-sidebar settings-panel">
+                <div class="toolsheader">
+                    <img src="../../img/watermark.svg" alt="">
+                    <div>
+                        <h1>写真に枠付けデコ</h1>
+                        <p class="description">写真から自動的に情報を抜き出し、枠をつけたウォーターマーク画像を素早く生成します。</p>
 
-        <div class="file-drop-area">
-            <p>ここに画像をドラッグ＆ドロップするか、クリックしてファイルを選択</p>
-            <input type="file" id="imageLoader" accept="image/*" style="display: none;">
-        </div>
-
-        <div class="main-content">
-            <div class="preview-area">
-                <canvas id="previewCanvas"></canvas>
-                <div class="resolution-display">
-                    <span id="previewWidth"></span> x <span id="previewHeight"></span>
-                </div>
-            </div>
-
-            <div class="settings-panel">
-                <div class="setting-group">
-                    <h3>アスペクト比</h3>
-                    <select id="aspectRatioSelector" style="margin-top: 15px;">
-                        <option value="auto">自動</option>
-                        <option value="2.3333">21 : 9</option>
-                        <option value="1.7777">16 : 9</option>
-                        <option value="1.5">3 : 2</option>
-                        <option value="1.3333">4 : 3</option>
-                        <option value="1">1 : 1</option>
-                        <option value="0.8">4 : 5</option>
-                        <option value="0.75">3 : 4</option>
-                        <option value="0.6666">2 : 3</option>
-                        <option value="0.5625">9 : 16</option>
-                    </select>
-                    <div class="sub-options" id="crop-fit-options" style="display: none;">
-                        <label class="radio"><input type="radio" name="cropFit" value="crop" checked> はみ出し部分を切り取る（Crop）</label>
-                        <label class="radio" style="margin-top: 10px;"><input type="radio" name="cropFit" value="fit"> 全体がおさまるように縮小（Fit）</label>
                     </div>
                 </div>
 
-                <div class="setting-group">
-                    <h3>テキスト設定</h3>
+                <div class="control-group">
+                    <h2>画像選択</h2>
+                    <div class="file-drop-area">
+                        <p>ここに画像をドラッグ＆ドロップするか、クリックしてファイルを選択</p>
+                        <input type="file" id="imageLoader" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="control-group setting-group">
+                    <h2>アスペクト比</h2>
+                    <div>
+                        <div class="box-selector radio-group">
+                            <label class="radio">
+                                <input type="radio" name="aspectRatioMode" value="auto" checked>
+                                <span class="box-title">自動</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="aspectRatioMode" value="manual">
+                                <span class="box-title">指定</span>
+                                <span class="box-desc">任意のアスペクト比</span>
+                            </label>
+                        </div>
+                        <div class="box-selector radio-group">
+                            <label class="radio">
+                                <input type="radio" name="aspectRatioOrientation" value="landscape" checked>
+                                <span class="box-title">横</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="aspectRatioOrientation" value="portrait">
+                                <span class="box-title">縦</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="aspectRatioOrientation" value="square">
+                                <span class="box-title">正方形</span>
+                            </label>
+                        </div>
+                        <div class="box-selector radio-group" id="ratio-group-landscape">
+                            <label class="radio">
+                                <input type="radio" name="targetAspectRatio" value="2.3333" checked>
+                                <span class="box-title">21：9</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="targetAspectRatio" value="1.7777">
+                                <span class="box-title">16：9</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="targetAspectRatio" value="1.5">
+                                <span class="box-title">3：2</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="targetAspectRatio" value="1.3333">
+                                <span class="box-title">4：3</span>
+                            </label>
+                        </div>
+                        <div class="box-selector radio-group" id="ratio-group-portrait">
+                            <label class="radio">
+                                <input type="radio" name="targetAspectRatio" value="0.8" checked>
+                                <span class="box-title">4：5</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="targetAspectRatio" value="0.75">
+                                <span class="box-title">3：4</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="targetAspectRatio" value="0.6666">
+                                <span class="box-title">2：3</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="targetAspectRatio" value="0.5625">
+                                <span class="box-title">9：16</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="sub-options" id="crop-fit-options" style="display: none;">
+                        <div class="box-selector radio-group">
+                            <label class="radio">
+                                <input type="radio" name="cropFit" value="crop" checked>
+                                <span class="box-title">クロップ</span>
+                                <span class="box-desc">はみ出し部分を切り取る</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="cropFit" value="fit">
+                                <span class="box-title">フィット</span>
+                                <span class="box-desc">全体がおさまるように縮小</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group setting-group">
+                    <h2>テキスト設定</h2>
                     <label for="fontSize">文字サイズ</label>
                     <input type="range" id="fontSize" min="10" max="200" value="80">
 
                     <label>フォント</label>
-                    <select id="fontselect">
-                        <option value="lineseed">xullua.com</option>
-                        <option value="sans-serif">ゴシック体</option>
-                        <option value="serif">明朝体</option>
-                    </select>
+                    <div class="box-selector" id="fontselect">
+                        <label class="radio">
+                            <input type="radio" name="fontselect" value="lineseed" checked>
+                            <span class="box-title">xullua.com</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="fontselect" value="sans-serif">
+                            <span class="box-title">ゴシック体</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="fontselect" value="serif">
+                            <span class="box-title">明朝体</span>
+                        </label>
+                    </div>
 
                     <label>配置場所</label>
-                    <div class="radio-group">
-                        <label class="radio"><input type="radio" name="textPlacement" value="margin" checked> 余白</label>
-                        <label class="radio"><input type="radio" name="textPlacement" value="image"> 画像内</label>
+                    <div class="box-selector radio-group">
+                        <label class="radio">
+                            <input type="radio" name="textPlacement" value="margin" checked>
+                            <span class="box-title">余白</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="textPlacement" value="image">
+                            <span class="box-title">画像内</span>
+                        </label>
                     </div>
 
-                    <div id="text-align-options">
-                        <label>水平位置</label>
-                        <select id="textAlign">
-                            <option value="center">中央</option>
-                            <option value="right">右</option>
-                            <option value="left">左</option>
-                        </select>
+                    <div class="box-selector" id="text-align-options">
+                        <label class="radio">
+                            <input type="radio" name="textAlign" value="left">
+                            <span class="box-title">左</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="textAlign" value="center" checked>
+                            <span class="box-title">中央</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="textAlign" value="right">
+                            <span class="box-title">右</span>
+                        </label>
                     </div>
 
-                    <label class="checkbox"><input type="checkbox" id="textShadow"> 文字に影を付ける</label>
+                    <div class="toggle-row">
+                        <span>文字に影を付ける</span>
+                        <label class="ios-toggle">
+                            <input type="checkbox" id="textShadow">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
 
-                    <details>
+                    <details class="layout-details" style="margin-top: 16px;">
                         <summary>Exif情報を直接編集</summary>
-                        <div class="exif-editor">
+                        <div class="exif-editor" style="margin-top: 10px;">
                             <label for="cameraModel">機種名</label>
                             <input type="text" id="cameraModel" placeholder="Nikon Z 8">
                             <label for="focalLength">焦点距離</label>
@@ -123,17 +215,23 @@
                     </details>
                 </div>
 
-                <div class="setting-group" id="frame-settings">
-                    <h3>フレームと背景</h3>
+                <div class="control-group setting-group" id="frame-settings">
+                    <h2>フレームと背景</h2>
                     <div id="padding-option">
                         <label for="padding">余白の大きさ</label>
                         <input type="range" id="padding" min="0" max="400" value="100">
                     </div>
 
                     <label>背景タイプ</label>
-                    <div class="radio-group">
-                        <label class="radio"><input type="radio" name="backgroundType" value="blur" checked> 画像をぼかす</label>
-                        <label class="radio"><input type="radio" name="backgroundType" value="solid" checked> 単色</label>
+                    <div class="box-selector radio-group">
+                        <label class="radio">
+                            <input type="radio" name="backgroundType" value="blur" checked>
+                            <span class="box-title">画像をぼかす</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="backgroundType" value="solid">
+                            <span class="box-title">単色</span>
+                        </label>
                     </div>
 
                     <div class="sub-options" id="bg-blur-options">
@@ -147,146 +245,178 @@
                     <div class="sub-options" id="bg-solid-options">
                         <label>背景色</label>
                         <div class="color-options">
-                            <label class="radio"><input type="radio" name="bgColor" value="#ffffff" checked> 白</label>
-                            <label class="radio"><input type="radio" name="bgColor" value="#000000"> 黒</label>
-                            <input type="color" id="bgColorPicker" value="#ffffff">
+                            <label class="color-circle">
+                                <input type="radio" name="bgColor" value="#ffffff" checked>
+                                <span style="background: #ffffff;"></span>
+                            </label>
+                            <label class="color-circle">
+                                <input type="radio" name="bgColor" value="#000000">
+                                <span style="background: #000000;"></span>
+                            </label>
+                            <label class="color-circle custom-color-circle">
+                                <input type="radio" name="bgColor" value="custom">
+                                <span></span>
+                                <input type="color" id="bgColorPicker" value="#ffffff">
+                            </label>
                         </div>
                     </div>
 
-                    <label for="borderRadius">画像の角丸</label>
+                    <label for="borderRadius" style="margin-top: 30px;">画像の角丸</label>
                     <input type="range" id="borderRadius" min="0" max="400" value="0">
                     <label for="shadow">画像の影の濃さ</label>
                     <input type="range" id="shadow" min="0" max="100" value="0">
                 </div>
 
-                <details class="setting-group">
-                    <summary>
-                        <h3><i class="fa-solid fa-sliders"></i> 微調整</h3>
-                    </summary>
-                    <div class="fine-tune-container">
-                        <div class="fine-tune-group">
-                            <h4>写真</h4>
-                            <div class="fine-tune-control">
-                                <label>X</label>
-                                <input type="range" id="photoOffsetX" min="-200" max="200" value="0">
-                                <input type="number" id="photoOffsetXValue" class="fine-tune-value" min="-200" max="200"
-                                    value="0">
+                <div class="control-group setting-group">
+                    <details class="layout-details">
+                        <summary>
+                            <i class="fa-solid fa-sliders"></i> 微調整
+                        </summary>
+                        <div class="fine-tune-container">
+                            <div class="fine-tune-group">
+                                <h4>写真</h4>
+                                <div class="fine-tune-control">
+                                    <label>X</label>
+                                    <input type="range" id="photoOffsetX" min="-200" max="200" value="0">
+                                    <input type="number" id="photoOffsetXValue" class="fine-tune-value" min="-200"
+                                        max="200" value="0">
+                                </div>
+                                <div class="fine-tune-control">
+                                    <label>Y</label>
+                                    <input type="range" id="photoOffsetY" min="-200" max="200" value="0">
+                                    <input type="number" id="photoOffsetYValue" class="fine-tune-value" min="-200"
+                                        max="200" value="0">
+                                </div>
+                                <div class="fine-tune-control">
+                                    <label><i class="fa-solid fa-magnifying-glass"></i></label>
+                                    <input type="range" id="photoScale" min="50" max="200" value="100">
+                                    <input type="number" id="photoScaleValue" class="fine-tune-value" min="50" max="200"
+                                        value="100">
+                                </div>
                             </div>
-                            <div class="fine-tune-control">
-                                <label>Y</label>
-                                <input type="range" id="photoOffsetY" min="-200" max="200" value="0">
-                                <input type="number" id="photoOffsetYValue" class="fine-tune-value" min="-200" max="200"
-                                    value="0">
+                            <div class="fine-tune-group">
+                                <h4>機種名テキスト</h4>
+                                <div class="fine-tune-control">
+                                    <label>X</label>
+                                    <input type="range" id="modelOffsetX" min="-200" max="200" value="0">
+                                    <input type="number" id="modelOffsetXValue" class="fine-tune-value" min="-200"
+                                        max="200" value="0">
+                                </div>
+                                <div class="fine-tune-control">
+                                    <label>Y</label>
+                                    <input type="range" id="modelOffsetY" min="-200" max="200" value="0">
+                                    <input type="number" id="modelOffsetYValue" class="fine-tune-value" min="-200"
+                                        max="200" value="0">
+                                </div>
+                                <div class="fine-tune-control">
+                                    <label><i class="fa-solid fa-magnifying-glass"></i></label>
+                                    <input type="range" id="modelScale" min="50" max="200" value="100">
+                                    <input type="number" id="modelScaleValue" class="fine-tune-value" min="50" max="200"
+                                        value="100">
+                                </div>
                             </div>
-                            <div class="fine-tune-control">
-                                <label><i class="fa-solid fa-magnifying-glass"></i></label>
-                                <input type="range" id="photoScale" min="50" max="200" value="100">
-                                <input type="number" id="photoScaleValue" class="fine-tune-value" min="50" max="200"
-                                    value="100">
+                            <div class="fine-tune-group">
+                                <h4>その他Exifテキスト</h4>
+                                <div class="fine-tune-control">
+                                    <label>X</label>
+                                    <input type="range" id="exifOffsetX" min="-200" max="200" value="0">
+                                    <input type="number" id="exifOffsetXValue" class="fine-tune-value" min="-200"
+                                        max="200" value="0">
+                                </div>
+                                <div class="fine-tune-control">
+                                    <label>Y</label>
+                                    <input type="range" id="exifOffsetY" min="-200" max="200" value="0">
+                                    <input type="number" id="exifOffsetYValue" class="fine-tune-value" min="-200"
+                                        max="200" value="0">
+                                </div>
+                                <div class="fine-tune-control">
+                                    <label><i class="fa-solid fa-magnifying-glass"></i></label>
+                                    <input type="range" id="exifScale" min="50" max="200" value="100">
+                                    <input type="number" id="exifScaleValue" class="fine-tune-value" min="50" max="200"
+                                        value="100">
+                                </div>
                             </div>
+                            <button id="resetFineTuneBtn" class="secondary-btn"><i
+                                    class="fa-solid fa-arrow-rotate-left"></i> 微調整をリセット</button>
                         </div>
-                        <div class="fine-tune-group">
-                            <h4>機種名テキスト</h4>
-                            <div class="fine-tune-control">
-                                <label>X</label>
-                                <input type="range" id="modelOffsetX" min="-200" max="200" value="0">
-                                <input type="number" id="modelOffsetXValue" class="fine-tune-value" min="-200" max="200"
-                                    value="0">
-                            </div>
-                            <div class="fine-tune-control">
-                                <label>Y</label>
-                                <input type="range" id="modelOffsetY" min="-200" max="200" value="0">
-                                <input type="number" id="modelOffsetYValue" class="fine-tune-value" min="-200" max="200"
-                                    value="0">
-                            </div>
-                            <div class="fine-tune-control">
-                                <label><i class="fa-solid fa-magnifying-glass"></i></label>
-                                <input type="range" id="modelScale" min="50" max="200" value="100">
-                                <input type="number" id="modelScaleValue" class="fine-tune-value" min="50" max="200"
-                                    value="100">
-                            </div>
-                        </div>
-                        <div class="fine-tune-group">
-                            <h4>その他Exifテキスト</h4>
-                            <div class="fine-tune-control">
-                                <label>X</label>
-                                <input type="range" id="exifOffsetX" min="-200" max="200" value="0">
-                                <input type="number" id="exifOffsetXValue" class="fine-tune-value" min="-200" max="200"
-                                    value="0">
-                            </div>
-                            <div class="fine-tune-control">
-                                <label>Y</label>
-                                <input type="range" id="exifOffsetY" min="-200" max="200" value="0">
-                                <input type="number" id="exifOffsetYValue" class="fine-tune-value" min="-200" max="200"
-                                    value="0">
-                            </div>
-                            <div class="fine-tune-control">
-                                <label><i class="fa-solid fa-magnifying-glass"></i></label>
-                                <input type="range" id="exifScale" min="50" max="200" value="100">
-                                <input type="number" id="exifScaleValue" class="fine-tune-value" min="50" max="200"
-                                    value="100">
-                            </div>
-                        </div>
-                        <button id="resetFineTuneBtn" class="secondary-btn"><i
-                                class="fa-solid fa-arrow-rotate-left"></i> 微調整をリセット</button>
-                    </div>
-                </details>
+                    </details>
+                </div>
 
-                <div class="setting-group">
-                    <h3>保存設定</h3>
+                <div class="control-group setting-group">
+                    <h2>保存設定</h2>
                     <label for="outputFormat">保存形式</label>
                     <select id="outputFormat">
                         <option value="jpeg">JPEG</option>
                         <option value="png">PNG</option>
                         <option value="webp">WEBP</option>
                     </select>
-                    <div class="resolution-setting">
-                        <div>
+                    <div class="resolution-setting" style="display: flex; gap: 10px; margin-top: 10px;">
+                        <div style="flex: 1;">
                             <label for="outputWidth">幅 (px)</label>
                             <input type="number" id="outputWidth" min="1">
                         </div>
-                        <div>
+                        <div style="flex: 1;">
                             <label for="outputHeight">高さ (px)</label>
                             <input type="number" id="outputHeight" min="1">
                         </div>
                     </div>
-                    <label class="aspect-ratio-lock checkbox">
-                        <input type="checkbox" id="aspectLock" checked> 比率を維持する
-                    </label>
+                    <div class="toggle-row">
+                        <span>比率を維持する</span>
+                        <label class="ios-toggle">
+                            <input type="checkbox" id="aspectLock" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
                 </div>
 
-                <div class="setting-group">
-                    <h3><i class="fa-solid fa-star"></i> プリセット</h3>
+                <div class="control-group setting-group">
+                    <h2><i class="fa-solid fa-star"></i> プリセット</h2>
                     <div id="preset-list" class="preset-list"></div>
                     <button id="openSavePresetModalBtn" class="secondary-btn"><i class="fa-solid fa-plus"></i>
                         新しいプリセットを登録</button>
                     <p class="explain">プリセットは、お使いのブラウザ内に保存されます。</p>
                 </div>
 
-                <button id="downloadBtn">画像をダウンロード</button>
-                <p class="explain">iPhoneの場合ダウンロードをするとファイルに保存されます。この方法だと写真ライブラリの中に取り込むのに二度手間になりますので「ダウンロードしますか」の時に左にある「表示」を押し、その後共有から「画像を保存」で保存するのがおすすめです。</p>
-            </div>
+                <button id="downloadBtn" class="primary-btn">画像を保存</button>
+                <p class="explain">
+                    iPhoneの場合ダウンロードをするとファイルに保存されます。この方法だと写真ライブラリの中に取り込むのに二度手間になりますので「ダウンロードしますか」の時に左にある「表示」を押し、その後共有から「画像を保存」で保存するのがおすすめです。
+                </p>
+            </aside>
+
+            <main class="tool-preview preview-area">
+                <div id="previewContainer" class="preview-container"
+                    style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                    <canvas id="previewCanvas"></canvas>
+                </div>
+                <div class="resolution-display">
+                    <span id="previewWidth"></span> x <span id="previewHeight"></span>
+                </div>
+            </main>
         </div>
     </div>
 
-    <div id="renameModal" class="modal-overlay" style="display: none;">
+    <div id="renameModal" class="modal hidden">
         <div class="modal-content">
-            <h4>プリセット名の変更</h4>
+            <div class="modal-header">
+                <h3>プリセット名の変更</h3>
+            </div>
             <input type="text" id="renameInput" placeholder="新しい名前">
             <div class="modal-actions">
                 <button id="renameCancelBtn" class="secondary-btn">キャンセル</button>
-                <button id="renameConfirmBtn">変更</button>
+                <button id="renameConfirmBtn" class="primary-btn">変更</button>
             </div>
         </div>
     </div>
 
-    <div id="savePresetModal" class="modal-overlay" style="display: none;">
+    <div id="savePresetModal" class="modal hidden">
         <div class="modal-content">
-            <h4>プリセットの保存</h4>
+            <div class="modal-header">
+                <h3>プリセットの保存</h3>
+            </div>
             <input type="text" id="savePresetNameInput" placeholder="プリセット名を入力">
             <div class="modal-actions">
                 <button id="savePresetCancelBtn" class="secondary-btn">キャンセル</button>
-                <button id="savePresetConfirmBtn">保存</button>
+                <button id="savePresetConfirmBtn" class="primary-btn">保存</button>
             </div>
         </div>
     </div>

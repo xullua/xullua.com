@@ -6,11 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = previewCanvas.getContext('2d');
     const downloadBtn = document.getElementById('downloadBtn');
     const allSettingInputs = document.querySelectorAll('.settings-panel input, .settings-panel select');
-    const aspectRatioSelector = document.getElementById('aspectRatioSelector');
+    // const aspectRatioSelector = document.getElementById('aspectRatioSelector'); // Removed
+    const aspectRatioModeInputs = document.querySelectorAll('input[name="aspectRatioMode"]');
+    const aspectRatioOrientationInputs = document.querySelectorAll('input[name="aspectRatioOrientation"]');
+    const targetAspectRatioInputs = document.querySelectorAll('input[name="targetAspectRatio"]');
+    const ratioGroupLandscape = document.getElementById('ratio-group-landscape');
+    const ratioGroupPortrait = document.getElementById('ratio-group-portrait');
     const cropFitInputs = document.querySelectorAll('input[name="cropFit"]');
     const cropFitOptions = document.getElementById('crop-fit-options');
     const textPlacementInputs = document.querySelectorAll('input[name="textPlacement"]');
-    const textAlignInput = document.getElementById('textAlign');
+    // const textAlignInput = document.getElementById('textAlign'); // Removed
+    const textAlignInputs = document.querySelectorAll('input[name="textAlign"]');
+    const fontSelectInputs = document.querySelectorAll('input[name="fontselect"]');
     const fontSizeInput = document.getElementById('fontSize');
     const textShadowInput = document.getElementById('textShadow');
     const paddingInput = document.getElementById('padding');
@@ -78,18 +85,90 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getFontFamily() {
-        const selectedValue = document.getElementById('fontselect').value;
+        const selectedInput = document.querySelector('input[name="fontselect"]:checked');
+        const selectedValue = selectedInput ? selectedInput.value : 'lineseed';
         if (selectedValue === 'lineseed') {
             return "'LSeedJP'";
         }
         return selectedValue;
     }
 
+    function updateTextAlignUI() {
+        const placement = document.querySelector('input[name="textPlacement"]:checked').value;
+        const leftAlignInput = document.querySelector('input[name="textAlign"][value="left"]');
+        const leftAlignLabel = leftAlignInput ? leftAlignInput.closest('label') : null;
+
+        if (placement === 'margin') {
+            if (leftAlignLabel) leftAlignLabel.style.display = 'none';
+            // If left is selected, switch to center
+            if (leftAlignInput && leftAlignInput.checked) {
+                const centerInput = document.querySelector('input[name="textAlign"][value="center"]');
+                if (centerInput) {
+                    centerInput.checked = true;
+                    // Manually trigger change event if needed, or rely on the caller
+                    // But since we are inside a change handler usually, we might not need to trigger another one.
+                    // However, to be safe and ensure UI updates:
+                    centerInput.dispatchEvent(new Event('change'));
+                }
+            }
+        } else {
+            if (leftAlignLabel) leftAlignLabel.style.display = 'flex'; // Restore display
+        }
+    }
+
+    function updateAspectRatioUI() {
+        const modeInput = document.querySelector('input[name="aspectRatioMode"]:checked');
+        const mode = modeInput ? modeInput.value : 'auto';
+
+        // Find the container for orientation options (parent of the first orientation input)
+        const orientationContainer = aspectRatioOrientationInputs[0].closest('.box-selector');
+
+        if (mode === 'auto') {
+            if (orientationContainer) orientationContainer.style.display = 'none';
+            if (ratioGroupLandscape) ratioGroupLandscape.style.display = 'none';
+            if (ratioGroupPortrait) ratioGroupPortrait.style.display = 'none';
+        } else {
+            if (orientationContainer) orientationContainer.style.display = 'flex';
+
+            const orientationInput = document.querySelector('input[name="aspectRatioOrientation"]:checked');
+            const orientation = orientationInput ? orientationInput.value : 'landscape';
+
+            if (orientation === 'landscape') {
+                if (ratioGroupLandscape) ratioGroupLandscape.style.display = 'flex';
+                if (ratioGroupPortrait) ratioGroupPortrait.style.display = 'none';
+            } else if (orientation === 'portrait') {
+                if (ratioGroupLandscape) ratioGroupLandscape.style.display = 'none';
+                if (ratioGroupPortrait) ratioGroupPortrait.style.display = 'flex';
+            } else { // square
+                if (ratioGroupLandscape) ratioGroupLandscape.style.display = 'none';
+                if (ratioGroupPortrait) ratioGroupPortrait.style.display = 'none';
+            }
+        }
+    }
+
     function redrawCanvas() {
         if (!sourceImage.src) return;
+        if (!sourceImage.src) return;
         const placement = document.querySelector('input[name="textPlacement"]:checked').value;
-        const align = textAlignInput.value;
-        const targetAspectRatio = parseFloat(aspectRatioSelector.value);
+        const alignInput = document.querySelector('input[name="textAlign"]:checked');
+        const align = alignInput ? alignInput.value : 'center';
+
+        let targetAspectRatio = NaN;
+        const modeInput = document.querySelector('input[name="aspectRatioMode"]:checked');
+        if (modeInput && modeInput.value === 'manual') {
+            const orientationInput = document.querySelector('input[name="aspectRatioOrientation"]:checked');
+            const orientation = orientationInput ? orientationInput.value : 'landscape';
+
+            if (orientation === 'square') {
+                targetAspectRatio = 1;
+            } else {
+                const selectedRatio = document.querySelector('input[name="targetAspectRatio"]:checked');
+                if (selectedRatio) {
+                    targetAspectRatio = parseFloat(selectedRatio.value);
+                }
+            }
+        }
+
         const cropFitMode = document.querySelector('input[name="cropFit"]:checked').value;
 
         if (isNaN(targetAspectRatio)) {
@@ -154,7 +233,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const locationText = locationInput.value;
         const textLines = [{ text: modelText, isModel: true }, { text: exifLine, isModel: false }, { text: locationText, isModel: false }].filter(line => line.text);
 
-        const align = textAlignInput.value;
+
+
+        const alignInput = document.querySelector('input[name="textAlign"]:checked');
+        const align = alignInput ? alignInput.value : 'center';
         const padding = Math.round(drawParams.dWidth * 0.025);
         let x;
         if (align === 'left') x = drawParams.dx + padding;
@@ -425,8 +507,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 tempCtx.filter = `blur(${blurValue}px)`;
 
                 const margin = blurValue * 2;
+                const dstX = -margin;
+                const dstY = -margin;
+                const dstW = tempCanvas.width + margin * 2;
+                const dstH = tempCanvas.height + margin * 2;
 
-                tempCtx.drawImage(sourceImage, -margin, -margin, tempCanvas.width + margin * 2, tempCanvas.height + margin * 2);
+                // Calculate cover crop
+                const srcW = sourceImage.naturalWidth;
+                const srcH = sourceImage.naturalHeight;
+                const srcRatio = srcW / srcH;
+                const dstRatio = dstW / dstH;
+
+                let sx, sy, sWidth, sHeight;
+
+                if (srcRatio > dstRatio) {
+                    sHeight = srcH;
+                    sWidth = srcH * dstRatio;
+                    sx = (srcW - sWidth) / 2;
+                    sy = 0;
+                } else {
+                    sWidth = srcW;
+                    sHeight = srcW / dstRatio;
+                    sx = 0;
+                    sy = (srcH - sHeight) / 2;
+                }
+
+                tempCtx.drawImage(sourceImage, sx, sy, sWidth, sHeight, dstX, dstY, dstW, dstH);
 
                 ctx.drawImage(tempCanvas, 0, 0);
 
@@ -491,7 +597,7 @@ document.addEventListener('DOMContentLoaded', () => {
         reader.onload = e => {
             sourceImage.onload = () => {
                 calculateAverageLuminance();
-                extractExifAndDraw();
+                extractExifAndDraw(file);
             };
             sourceImage.src = e.target.result;
         };
@@ -514,8 +620,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         sourceImage.averageLuminance = totalLuminance / (size * size);
     }
-    function extractExifAndDraw() {
-        EXIF.getData(sourceImage, function () {
+    function extractExifAndDraw(file) {
+        EXIF.getData(file, function () {
             cameraModelInput.value = EXIF.getTag(this, "Model") || '';
 
             const focalLength = EXIF.getTag(this, "FocalLength");
@@ -688,6 +794,61 @@ document.addEventListener('DOMContentLoaded', () => {
         saveOnlyInputs.forEach(input => input.addEventListener('change', saveSettings));
         backgroundTypeInputs.forEach(input => input.addEventListener('change', updateBackgroundOptionsVisibility));
 
+        textPlacementInputs.forEach(input => {
+            input.addEventListener('change', () => {
+                updateTextAlignUI();
+                redrawCanvas();
+                saveSettings();
+            });
+        });
+
+        // New Aspect Ratio Event Listeners
+        aspectRatioModeInputs.forEach(input => {
+            input.addEventListener('change', () => {
+                updateAspectRatioUI();
+                redrawCanvas();
+                saveSettings();
+            });
+        });
+        aspectRatioOrientationInputs.forEach(input => {
+            input.addEventListener('change', () => {
+                // Set default ratio based on orientation
+                const orientation = input.value;
+                if (orientation === 'landscape') {
+                    const ratioInput = document.querySelector('input[name="targetAspectRatio"][value="1.5"]');
+                    if (ratioInput) ratioInput.checked = true;
+                } else if (orientation === 'portrait') {
+                    const ratioInput = document.querySelector('input[name="targetAspectRatio"][value="0.8"]');
+                    if (ratioInput) ratioInput.checked = true;
+                }
+
+                updateAspectRatioUI();
+                redrawCanvas();
+                saveSettings();
+            });
+        });
+
+        targetAspectRatioInputs.forEach(input => {
+            input.addEventListener('change', () => {
+                redrawCanvas();
+                saveSettings();
+            });
+        });
+
+        textAlignInputs.forEach(input => {
+            input.addEventListener('change', () => {
+                redrawCanvas();
+                saveSettings();
+            });
+        });
+
+        fontSelectInputs.forEach(input => {
+            input.addEventListener('change', () => {
+                redrawCanvas();
+                saveSettings();
+            });
+        });
+
         let lastChangedByUserInput = null;
         outputWidthInput.addEventListener('focus', () => lastChangedByUserInput = 'width');
         outputHeightInput.addEventListener('focus', () => lastChangedByUserInput = 'height');
@@ -710,7 +871,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         openSavePresetModalBtn.addEventListener('click', () => {
             savePresetNameInput.value = '';
-            savePresetModal.style.display = 'flex';
+            savePresetModal.classList.remove('hidden');
+            setTimeout(() => savePresetModal.classList.add('active'), 10);
         });
         savePresetConfirmBtn.addEventListener('click', () => {
             const name = savePresetNameInput.value.trim();
@@ -721,9 +883,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const settings = JSON.parse(localStorage.getItem('exifGeneratorSettings'));
             const newPreset = { id: Date.now(), name, settings };
             savePresets([newPreset, ...presets]);
-            savePresetModal.style.display = 'none';
+
+            savePresetModal.classList.remove('active');
+            setTimeout(() => savePresetModal.classList.add('hidden'), 200);
         });
-        savePresetCancelBtn.addEventListener('click', () => savePresetModal.style.display = 'none');
+        savePresetCancelBtn.addEventListener('click', () => {
+            savePresetModal.classList.remove('active');
+            setTimeout(() => savePresetModal.classList.add('hidden'), 200);
+        });
 
         presetList.addEventListener('click', e => {
             const target = e.target;
@@ -744,7 +911,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 renamingPresetId = id;
                 const preset = presets.find(p => p.id == id);
                 renameInput.value = preset.name;
-                renameModal.style.display = 'flex';
+                renameModal.classList.remove('hidden');
+                setTimeout(() => renameModal.classList.add('active'), 10);
             } else if (target.closest('.delete')) {
                 if (confirm('このプリセットを削除しますか？')) {
                     savePresets(presets.filter(p => p.id != id));
@@ -758,9 +926,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const newPresets = presets.map(p => p.id == renamingPresetId ? { ...p, name: newName } : p);
                 savePresets(newPresets);
             }
-            renameModal.style.display = 'none';
+
+            renameModal.classList.remove('active');
+            setTimeout(() => renameModal.classList.add('hidden'), 200);
         });
-        renameCancelBtn.addEventListener('click', () => renameModal.style.display = 'none');
+        renameCancelBtn.addEventListener('click', () => {
+            renameModal.classList.remove('active');
+            setTimeout(() => renameModal.classList.add('hidden'), 200);
+        });
 
         resetFineTuneBtn.addEventListener('click', () => {
             Object.values(fineTuneInputs).forEach(input => input.value = input.id.includes('Scale') ? 100 : 0);
@@ -776,9 +949,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    presets = getPresets();
-    renderPresets();
-    loadSettings();
+    try {
+        presets = getPresets();
+        renderPresets();
+    } catch (e) {
+        console.error("Error loading presets:", e);
+        presets = [];
+    }
+
+    try {
+        loadSettings();
+        updateAspectRatioUI(); // Initialize UI state
+        updateTextAlignUI(); // Initialize Text Align UI state
+
+    } catch (e) {
+        console.error("Error loading settings:", e);
+    }
+
     setupEventListeners();
     updateBackgroundOptionsVisibility();
     redrawCanvas();
