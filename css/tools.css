@@ -21,6 +21,10 @@
     flex-direction: column;
 }
 
+body:has(.modal.active) {
+    overflow: hidden;
+}
+
 /* ワークスペース (サイドバー + プレビュー) */
 .tool-workspace {
     display: flex;
@@ -149,7 +153,7 @@ select {
     outline-offset: 6px;
     border-radius: 10px;
     margin: 4px 0 16px;
-    font-size: 14px;
+    font-size: 16px;
     background-color: var(--firstback);
     color: var(--maintext);
     transition: 0.2s;
@@ -170,7 +174,6 @@ select {
 
     label {
         flex: 1;
-        min-width: 100px;
         cursor: pointer;
         outline: 2px solid var(--line);
         outline-offset: 0px;
