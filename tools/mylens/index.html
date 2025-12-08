@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myレンズ</title>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@xullua">
+    <meta name="twitter:title" content="Myレンズ">
+    <meta name="twitter:description" content="自分が所有するレンズをグラフ上にまとめて表記、そしてシェアできます。">
+    <meta name="description" content="自分が所有するレンズをグラフ上にまとめて表記、そしてシェアできます。">
+    <meta name="twitter:image" content="https://xullua.com/img/mylens.webp">
+    <link rel="stylesheet" href="../../css/color.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="mylens.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
+    <!-- アナリティクス -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JDKGJ1E005');
+    </script>
+    <script>
+        $(function () {
+            $("header").load("../../header.html");
+            $("footer").load("../../footer.html");
+        });
+    </script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- lz-string & html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+    <header></header>
+
+    <div class="app-container">
+        <div class="top">
+            <img src="../../img/mylensicon.webp" alt="">
+            <div>
+                <h1>Myレンズ <span id="view-mode-badge" class="view-mode-badge hidden">閲覧モード</span></h1>
+                <p>自身のレンズ構成を可視化・共有</p>
+            </div>
+        </div>
+
+        <main id="capture-target">
+            <!-- Chart Header & Options -->
+            <section class="chart-header-row">
+                <div class="user-profile">
+                    <input type="text" id="input-user-name" placeholder="User Name" class="minimal-input">
+                </div>
+                <div class="chart-stats-wrapper">
+                    <div class="chart-stats">
+                        <span id="val-total-weight">0g</span>
+                        <span class="divider">|</span>
+                        <span id="val-total-price">¥0</span>
+                    </div>
+                </div>
+                <!-- Watermark -->
+                <div class="watermark-center" id="watermark">xla.jp/mylens</div>
+            </section>
+
+            <!-- Chart Area -->
+            <section class="chart-section">
+                <div class="chart-wrapper">
+                    <div class="chart-container">
+                        <canvas id="lensChart"></canvas>
+
+                        <!-- Floating Bottom Right Toggle & Filter -->
+                        <div class="chart-float-controls">
+                            <select id="select-maker-filter" class="maker-select">
+                                <option value="ALL">全て</option>
+                            </select>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-35mm">
+                                <span class="slider"></span>
+                                <span class="label-text">35mm換算</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Accessories Grid Display -->
+            <section id="acc-grid-section" class="acc-grid-section hidden">
+                <div id="acc-grid-container" class="acc-grid">
+                    <!-- Accessories will be rendered here -->
+                </div>
+            </section>
+
+            <!-- Action Toolbar -->
+            <section class="action-toolbar">
+                <div class="toolbar-group manage-group">
+                    <button id="btn-open-list" class="tool-btn primary">
+                        <span class="material-symbols-rounded">edit</span>
+                        <span class="btn-label">レンズ・機材リスト編集</span>
+                    </button>
+                    <button id="btn-new" class="tool-btn secondary icon-only-mobile">
+                        <span class="material-symbols-rounded">add</span>
+                        <span class="btn-label">新規</span>
+                    </button>
+                    <button id="btn-history" class="tool-btn secondary icon-only-mobile">
+                        <span class="material-symbols-rounded">history</span>
+                        <span class="btn-label">履歴</span>
+                    </button>
+                </div>
+                <div class="toolbar-group export-group">
+                    <button id="btn-share-menu" class="tool-btn highlight">
+                        <span class="material-symbols-rounded">ios_share</span>
+                        <span class="btn-label">共有 / 保存</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Gear List Modal -->
+            <div id="modal-list" class="modal hidden">
+                <div class="modal-content large-modal">
+                    <div class="modal-header">
+                        <h2>機材リスト</h2>
+                        <button class="close-btn" id="btn-close-list">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="list-section">
+                            <div class="section-header">
+                                <h3>レンズ</h3>
+                                <button id="btn-add-lens" class="sm-btn primary">+ 追加</button>
+                            </div>
+                            <div id="lens-list-container" class="list-container"></div>
+                        </div>
+                        <div class="list-section">
+                            <div class="section-header">
+                                <h3>アクセサリ (ボディ等)</h3>
+                                <button id="btn-add-acc" class="sm-btn primary">+ 追加</button>
+                            </div>
+                            <div id="acc-list-container" class="list-container"></div>
+                        </div>
+                        <div class="modal-footer-actions">
+                            <button id="btn-reset" class="text-btn danger">サンプルデータに戻す</button>
+                            <button id="btn-clear" class="text-btn danger">全削除</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Lens Modal -->
+            <div id="modal-add" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modal-title">レンズを追加</h2>
+                        <button class="close-btn" id="btn-close-modal">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-add-lens">
+
+                            <div class="name-preview-plain" id="name-preview"></div>
+
+                            <!-- Status Toggle -->
+                            <div class="status-selector">
+                                <label class="status-option">
+                                    <input type="radio" name="lens-status" value="1" checked>
+                                    <span class="status-chip owned">所持中</span>
+                                </label>
+                                <label class="status-option">
+                                    <input type="radio" name="lens-status" value="0">
+                                    <span class="status-chip past">過去</span>
+                                </label>
+                                <label class="status-option">
+                                    <input type="radio" name="lens-status" value="2">
+                                    <span class="status-chip wish">欲しい</span>
+                                </label>
+                            </div>
+
+                            <!-- Type/Sensor Toggles -->
+                            <div class="toggle-stack">
+                                <div class="custom-toggle-container full-width-toggle">
+                                    <div class="toggle-bg"></div>
+                                    <label class="toggle-option"><input type="radio" name="lens-type" value="0"
+                                            checked><span>単焦点</span></label>
+                                    <label class="toggle-option"><input type="radio" name="lens-type"
+                                            value="1"><span>ズーム</span></label>
+                                </div>
+                                <div class="custom-toggle-container full-width-toggle sensor-toggle">
+                                    <div class="toggle-bg"></div>
+                                    <label class="toggle-option"><input type="radio" name="sensor-type" value="0"
+                                            checked><span>フルサイズ</span></label>
+                                    <label class="toggle-option"><input type="radio" name="sensor-type"
+                                            value="1"><span>APS-C</span></label>
+                                    <label class="toggle-option"><input type="radio" name="sensor-type"
+                                            value="2"><span>M4/3</span></label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>会社名 (Maker)</label>
+                                <input type="text" id="input-maker" pattern="[a-zA-Z0-9\s]+" placeholder="Sony">
+                            </div>
+
+                            <div class="form-row mmf"
+                                style="border-top: 1px solid var(--line); padding-top: 16px; margin-top: 4px;">
+                                <div class="form-group"><label>焦点距離 <span id="label-fl-wide">(mm)</span></label><input
+                                        type="number" id="input-fl-min" min="1" max="2000" required></div>
+                                <div class="form-group"><label>F値 <span id="label-f-wide">(Wide)</span></label><input
+                                        type="number" id="input-f-min" step="0.1" min="0.5" max="64" required></div>
+                            </div>
+                            <div id="zoom-points-section" class="hidden">
+                                <label
+                                    style="display:block; margin-bottom:8px; font-size:0.85rem; color:#aaa;">ズーム中間域のF値
+                                    (任意)</label>
+                                <div id="zoom-points-list"></div>
+                                <button type="button" id="btn-add-point" class="sm-btn secondary"
+                                    style="width:100%; margin-bottom:16px;">+ ポイント追加</button>
+                            </div>
+                            <div class="form-row mmf" id="row-tele">
+                                <div class="form-group"><label>焦点距離 (Tele)</label><input type="number" id="input-fl-max"
+                                        min="1" max="2000"></div>
+                                <div class="form-group"><label>F値 (Tele)</label><input type="number" id="input-f-max"
+                                        step="0.1" min="0.5" max="64"></div>
+                            </div>
+
+                            <div class="form-row"
+                                style="border-top: 1px solid var(--line); padding-top: 16px; margin-top: 4px;">
+                                <div class="form-group"><label>接頭辞</label><input type="text" id="input-prefix"
+                                        pattern="[a-zA-Z0-9\s]+" placeholder="FE"></div>
+                                <div class="form-group"><label>接尾辞</label><input type="text" id="input-suffix"
+                                        pattern="[a-zA-Z0-9\s]+" placeholder="GM, Art"></div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group"><label>重量 (g)</label><input type="number" id="input-weight"
+                                        min="0" placeholder="0"></div>
+                                <div class="form-group"><label>価格 (円)</label><input type="number" id="input-price"
+                                        min="0" step="1000" placeholder="0"></div>
+                            </div>
+
+                            <div class="form-actions">
+                                <input type="hidden" id="edit-index" value="-1">
+                                <button type="submit" class="primary full-width" id="btn-submit">追加</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Accessory Modal -->
+            <div id="modal-acc" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modal-title-acc">アクセサリを追加</h2>
+                        <button class="close-btn" id="btn-close-acc">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-add-acc">
+                            <div class="form-group">
+                                <label>名称 (Body, Mic, etc)</label>
+                                <input type="text" id="input-acc-name" required placeholder="Sony a7 IV">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group"><label>重量 (g)</label><input type="number" id="input-acc-weight"
+                                        min="0" placeholder="0"></div>
+                                <div class="form-group"><label>価格 (円)</label><input type="number" id="input-acc-price"
+                                        min="0" step="1000" placeholder="0"></div>
+                            </div>
+                            <div class="form-actions">
+                                <input type="hidden" id="edit-index-acc" value="-1">
+                                <button type="submit" class="primary full-width" id="btn-submit-acc">追加</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Share & Export Modal -->
+            <div id="modal-share" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>共有と保存</h2>
+                        <button class="close-btn" id="btn-close-share">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="share-section">
+                            <h3><span class="material-symbols-rounded icon-inline">link</span> リンクで共有</h3>
+                            <p class="description-text">この構成を閲覧専用モードで共有します。</p>
+                            <div class="share-input-group">
+                                <input type="text" id="share-url-input" readonly>
+                                <button id="btn-copy-url" class="primary">コピー</button>
+                            </div>
+                        </div>
+                        <div class="share-section"
+                            style="margin-top: 24px; border-top: 1px solid var(--line); padding-top: 24px;">
+                            <h3><span class="material-symbols-rounded icon-inline">image</span> 画像として保存</h3>
+                            <p class="description-text">現在のグラフを画像(PNG)でダウンロードします。</p>
+                            <button id="btn-save-image" class="tool-btn primary full-width">
+                                <span class="material-symbols-rounded">download</span> 画像を保存
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Modal -->
+            <div id="modal-history" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>履歴</h2>
+                        <button class="close-btn" id="btn-close-history">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="history-list-container">
+                            <!-- Helper Text -->
+                            <p style="color:#666; font-size:0.9rem; margin-bottom:16px;">
+                                変更は自動的に履歴に保存されます。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <footer></footer>
+    <div id="notification-container"></div>
+    <script src="mylens.js"></script>
+</body>
+
+</html>
