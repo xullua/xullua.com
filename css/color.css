@@ -7,10 +7,6 @@
     --main-text: var(--maintext);
     --sub-text: var(--secondtext);
     --third-text: var(--thirdtext);
-    --blue-1: #8991ff;
-    --blue-2: #eaeaff;
-    --blue-3: #3232aa;
-    --yellow-1: #bdbd00;
     --top-hello-gradation: linear-gradient(#00000046 70%, #f0f0f4);
 
     /* テキスト,背景 */
@@ -33,6 +29,7 @@
     --btn: #3a3a3a;
     --btnhover: #000000;
     --btntext: #ffffff;
+    --danger: #ff0000;
     --url: #1f7dff;
     --urlhover: #3ea5ff;
     --line: #aaaaaa;
@@ -83,19 +80,6 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --main-back: #1f1f1f;
-        --sub-back: #000000;
-        --third-back: #000000;
-        --four-back: #1f1f1f;
-        --main-text: #eeeeee;
-        --sub-text: #bebebe;
-        --third-text: #dddddd;
-        --blue-1: #8991ff;
-        --blue-2: #000030;
-        --blue-3: #4d4dff;
-        --yellow-1: #FFFF00;
-        --top-hello-gradation: linear-gradient(#18181c33 70%, #18181c);
-
         /* テキスト,背景 */
         --firstback: #18181c;
         --secondback: #000000;
@@ -116,6 +100,7 @@
         --btn: #d1d1d1;
         --btnhover: #ffffff;
         --btntext: #000000;
+        --danger: #ff0000;
         --url: #569cff;
         --urlhover: #40a6ff;
         --line: #777777;
