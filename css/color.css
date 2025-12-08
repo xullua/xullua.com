@@ -7,7 +7,7 @@
     --main-text: var(--maintext);
     --sub-text: var(--secondtext);
     --third-text: var(--thirdtext);
-    --top-hello-gradation: linear-gradient(#00000046 70%, #f0f0f4);
+    --top-hello-gradation: linear-gradient(#00000000 70%, var(--firstback));
 
     /* テキスト,背景 */
     --firstback: #f0f0f4;
