@@ -20,9 +20,17 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/style.css">
 
+  <!--googlefonts-->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
   <!-- JS -->
   <script src="js/toppage.js" async></script>
   <script src="js/main.js" async></script>
+  <script src="js/index.js" async></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- アナリティクス -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
@@ -240,7 +248,7 @@
           </div>
         </div>
       </article>
-      
+
       <!--<article>
         <div class="content">
           <img src="img/x-search-command-generate.webp" style="filter: blur(0px); object-position: 50% 90%;">
@@ -632,7 +640,8 @@
               </a>
               <a class="select" href="//x.com/xlasub">
                 <div class="left">
-                  <img loading="lazy" src="https://pbs.twimg.com/profile_images/1789928286682021888/bxgkMe8D_400x400.jpg" alt="">
+                  <img loading="lazy"
+                    src="https://pbs.twimg.com/profile_images/1789928286682021888/bxgkMe8D_400x400.jpg" alt="">
                   <div class="name">
                     <h4>ぞるあ</h4>
                     <p>＠XlaSub</p>
@@ -644,7 +653,8 @@
               </a>
               <a class="select" href="//x.com/xlascope">
                 <div class="left">
-                  <img loading="lazy" src="https://pbs.twimg.com/profile_images/1795851343510618112/WrmYdZSC_400x400.jpg" alt="">
+                  <img loading="lazy"
+                    src="https://pbs.twimg.com/profile_images/1795851343510618112/WrmYdZSC_400x400.jpg" alt="">
                   <div class="name">
                     <h4>スコープ</h4>
                     <p>＠XlaScope</p>
@@ -656,7 +666,8 @@
               </a>
               <a class="select" href="//x.com/xuiiua">
                 <div class="left">
-                  <img loading="lazy" src="https://pbs.twimg.com/profile_images/1789928504177627136/k9o15SWO_400x400.jpg" alt="">
+                  <img loading="lazy"
+                    src="https://pbs.twimg.com/profile_images/1789928504177627136/k9o15SWO_400x400.jpg" alt="">
                   <div class="name">
                     <h4>ぞるあ2</h4>
                     <p>＠Xuiiua</p>
@@ -789,80 +800,187 @@
 
   <!-- 自己紹介 -->
   <section class="profile" id="profile">
-    <h2>私について</h2>
-    <div class="area">
-      <div class="box myname">
-        <div class="in">
-          <img src="img/xulluaiconwhiteblock.webp">
-          <div class="naeme">
-            <h3>ぞるあ</h3>
-            <p>@Xullua</p>
+    <h2>プロフィール</h2>
+    <div class="area" id="scroll-area">
+      <!-- プロフィール -->
+      <article class="box active" id="slide-0">
+        <h3>あ、<wbr>こんにちは<br>ぞるあ<wbr>です。</h3>
+        <p class="explain">
+          ここから私について簡単に紹介します。
+        </p>
+        <p class="emoji">
+          <span>✋</span>
+          <span>😎</span>
+        </p>
+      </article>
+
+      <!-- X -->
+      <article class="box" id="slide-1" style="background-color: rgba(29, 161, 242, 0.1);">
+        <div>
+          <h4>あーだ<wbr>こーだ</h4>
+          <p>Xで興味のあることを自由気ままに投稿</p>
+          <a href="//x.com/xullua" rel="noopener noreferrer">フォローする</a>
+        </div>
+        <img src="img/iphonexscreen.webp" alt="iPhoneでXアプリを表示している画面" loading="lazy">
+      </article>
+
+      <!-- 写真 -->
+      <article class="box" id="slide-2">
+        <img class="box-bg" src="img/profile-camera.webp" alt="写真" loading="lazy">
+        <div class="box-overlay"></div>
+        <div class="box-content">
+          <div class="category">写真</div>
+          <h4>パシャ！<wbr>パシャ！</h4>
+          <p>カメラを使ってその瞬間を捉え、思い出として残すことが好きです。</p>
+        </div>
+      </article>
+
+      <!-- 映像制作 -->
+      <article class="box" id="slide-3">
+        <div class="box-overlay"></div>
+        <div class="box-content">
+          <div>
+            <div class="category">映像・モーショングラフィックス</div>
+            <h4>繋げ、動かせ</h4>
+            <p>写真に加え、動きのある映像で思い出を残したい。<br>またモーショングラフィックスも。</p>
           </div>
         </div>
-      </div>
-      <div class="box spec">
-        <p>男</p>
-        <p>170cm</p>
-        <p>55kg</p>
-        <p>学生</p>
-      </div>
-      <div class="box abouttext">
-        <p>
-          ゲームやガジェットにまつわる話が好きな学生です。
-          映像や画像をはじめとしたデザインも好きで生きながら常に「このデザイン良いな」「このデザインこうするべきだろ」とツッコミを入れながら生活しています。
-          簡単に言えば趣味病(職業病みたいな)ですかね。<br>
-          現実世界では成績は真ん中程度のつまらない人間です。春、、、来ないかな。。。
-        </p>
-      </div>
-      <div class="box twitter">
-        <img src="img/twitter.svg" alt="">
-        <h4>Twitter</h4>
-        <p>Twitterに生息しています。毎日アクティブです。日常を基本としてツイートしてます。</p>
-      </div>
-      <div class="box skill1">
-        <img src="img/edit.svg" alt="">
-        <h4>動画編集</h4>
-        <p>昔から動画を作るのが好きです。繋がりが気持ちいアニメーションを取り入れた動画を作るのが好きです。最近は成長してないのでしたいところ</p>
-      </div>
-      <div class="box skill1">
-        <img src="img/picture.svg" alt="">
-        <h4>画像編集</h4>
-        <p>コラ画像をはじめとしたものを作るのが好きです。違和感がないように作るのは得意ですが、センスのいいものは作れません。</p>
-      </div>
-      <div class="box skill2">
-        <img src="img/code.svg" alt="">
-        <h4>HTML / CSS</h4>
-        <p>まぁまぁできるようになったと思いたいです。ただ他のプログラミング言語に関しては全くできないのでできるようになりたいです。色々なことができるようになる日はいつ来るかな。。。</p>
-      </div>
-      <div class="box favorite">
-        <img src="img/favorite.svg" alt="">
-        <div class="more">
-          <h4>好きなこと</h4>
-          <p>「何かを作ること」が好きです。例えば工作や、動画/画像/写真や、料理など</p>
+      </article>
+
+      <!-- 画像・動画編集 -->
+      <article class="box" id="slide-4">
+        <div class="box-overlay"></div>
+        <div class="box-content">
+          <div class="texts">
+            <div class="category">写真/動画編集</div>
+            <h4>撮ったなら、編集もね。</h4>
+            <p>思い出をそのまま形にしたり、新たな世界観を加えたり。何をするにも自分次第。</p>
+          </div>
+          <div class="imgs">
+            <img src="img/djistudio_icon.webp" alt="DJI Studio" loading="lazy">
+            <img src="img/figma_icon.webp" alt="Figma" loading="lazy">
+            <img src="img/adobeaudition_icon.webp" alt="Adobe Audition" loading="lazy">
+            <img src="img/adobeillustrator_icon.webp" alt="Adobe Illustrator" loading="lazy">
+            <img src="img/adobephotoshop_icon.webp" alt="Adobe Photoshop" loading="lazy">
+            <img src="img/adobeaftereffects_icon.webp" alt="Adobe After Effects" loading="lazy">
+            <img src="img/DaVinciesolve_icon.webp" alt="DaVinci Resolve" loading="lazy">
+            <img src="img/adobelightroom_icon.webp" alt="Adobe Lightroom" loading="lazy">
+            <img src="img/alightmotion_icon.webp" alt="Alight Motion" loading="lazy">
+            <img src="img/adobepremierepro_icon.webp" alt="Adobe Premiere Pro" loading="lazy">
+          </div>
         </div>
-      </div>
-      <div class="box sns">
-        <a href="https://twitter.com/xullua" target="_blank"><img src="img/twitter.webp"></a>
-        <a href="https://instagram.com/xullua" target="_blank"><img src="img/instagram.webp"></a>
-        <a href="https://youtube.com/xullua" target="_blank"><img src="img/youtube.webp"></a>
-      </div>
-      <div class="box dislike">
-        <img src="img/dislike.svg" alt="">
-        <div class="more">
-          <h4>嫌いなこと</h4>
-          <p>責任を負うことがものすごく嫌いです。依頼を受けない理由の1つもこれです...</p>
+      </article>
+
+      <!-- プログラミング -->
+      <article class="box" id="slide-5">
+        <video src="img/profile-programming.mp4" class="box-bg" autoplay muted loop></video>
+        <div class="box-overlay"></div>
+        <div class="box-content">
+          <div>
+            <div class="category">プログラミング</div>
+            <h4>カチカチ<wbr>カチカチ</h4>
+            <p>自分の書いたコードでどのデバイスでも綺麗なデザインで表現でき、動かせる。これが楽しい。</p>
+          </div>
         </div>
-      </div>
-      <div class="box profilecontact">
-        <div class="in">
-          <a href="contact">問い合わせ</a>
-          <a href="https://twitter.com/messages/compose?recipient_id=1146016040343592967">TwitterDM</a>
+      </article>
+
+      <!-- ガジェット -->
+      <article class="box" id="slide-6">
+        <img class="box-bg" src="img/profile-gadget.webp" alt="ガジェット" loading="lazy">
+        <div class="box-overlay"></div>
+        <div class="box-content">
+          <div>
+            <div class="category">ガジェット</div>
+            <h4>この時代に<wbr>生まれて<wbr>よかった。</h4>
+            <p>最新テクノロジーに触れるのが好きで、それを用いてQOLが向上していくのは面白い。</p>
+          </div>
         </div>
-      </div>
+      </article>
+
+      <!-- Webデザイン -->
+      <article class="box" id="slide-7">
+        <img class="box-bg" src="img/profile-design.webp" alt="デザイン" loading="lazy">
+        <div class="box-overlay"></div>
+        <div class="box-content">
+          <div>
+            <div class="category">デザイン</div>
+            <h4>その美しさ、どこから？</h4>
+            <p>何かを作るのが好きだが、それの最終はデザインで終わる。ここをいかに美しく、そして皆が自然と理解しやすく仕上げられるか。</p>
+          </div>
+        </div>
+      </article>
     </div>
-    <p style="font-size: 12px; text-align: center; color: var(--sub-text); margin: 10px 0 0;">
-      ホバーやタッチをしてより詳しい情報を見ることができます。
-    </p>
+
+    <!-- 全体ナビゲーション -->
+    <div class="carousel-controls" id="carousel-nav">
+      <div class="indicators" id="indicators"></div>
+      <button class="auto-play-toggle" id="auto-play-btn" onclick="toggleAutoPlay()">
+        <span class="material-symbols-outlined">pause</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ツール -->
+  <section class="indextools" id="tools">
+    <h2>強力な<br>Webツール</h2>
+    <p class="topexplain">ぞるあが作成した簡単で分かりやすいWebツールです。きっと使いやすいはず。</p>
+    <div class="grid">
+      <article>
+        <img loading="lazy" src="//xullua.com/img/water-remove.webp" alt="">
+        <div class="text">
+          <h5>最も人気</h5>
+          <h3>スマホ水抜き</h3>
+          <p>スマホの水抜き音を流せるサイト</p>
+          <a href="tools/water-remove">使用する</a>
+        </div>
+      </article>
+      <article>
+        <img loading="lazy" src="//xullua.com/img/watermark.webp" alt="">
+        <div class="text">
+          <h5>ぞるあイチオシ</h5>
+          <h3>写真に枠付けデコ</h3>
+          <p>ウォーターマークを付けれます</p>
+          <a href="tools/watermark">使用する</a>
+        </div>
+      </article>
+      <article>
+        <img loading="lazy" src="//xullua.com/img/warikan.webp" alt="">
+        <div class="text">
+          <h5></h5>
+          <h3>スマート割り勘</h3>
+          <p>複数人で複雑な割り勘を、最小限のお金の移動で</p>
+          <a href="tools/warikan">使用する</a>
+        </div>
+      </article>
+      <article>
+        <img loading="lazy" src="//xullua.com/tools/icons/samune.webp" alt="">
+        <div class="text">
+          <h5></h5>
+          <h3>アイコン生成</h3>
+          <p>Adobe風のアイコンを生成できます</p>
+          <a href="tools/icons">使用する</a>
+        </div>
+      </article>
+      <article>
+        <img loading="lazy" src="//xullua.com/img/eboard.webp" alt="">
+        <div class="text">
+          <h5></h5>
+          <h3>カスタム電光掲示板メーカー</h3>
+          <p>デバイスに大きな文字を</p>
+          <a href="tools/eboard">使用する</a>
+        </div>
+      </article>
+      <article>
+        <img loading="lazy" src="//xullua.com/img/mylens.webp" alt="">
+        <div class="text">
+          <h5>NEW</h5>
+          <h3>Myレンズ</h3>
+          <p>自分のレンズをグラフィカルに表示</p>
+          <a href="tools/mylens">使用する</a>
+        </div>
+      </article>
+    </div>
+    <p style="text-align: center; margin: 15px 0 0;"><a href="tools">全てのツールを見る</a></p>
   </section>
 
   <!-- 壁紙宣伝 -->
@@ -1240,69 +1358,6 @@
     <div class="move">
       <p>その他にも色々なデザインを安く製作しています。<br>PayPayやクレカでの支払いも対応しています。<br><a href="https://xla.jp/store">ストア</a></p>
     </div>
-  </section>
-
-  <!-- ツール -->
-  <section class="indextools" id="tools">
-    <h2>強力な<br>Webツール</h2>
-    <p class="topexplain">ぞるあが作成した簡単で分かりやすいWebツールです。きっと使いやすいはず。</p>
-    <div class="grid">
-      <article>
-        <img loading="lazy" src="https://xullua.com/tools/mbti/mbti.webp" alt="">
-        <div class="text">
-          <h5>NEW</h5>
-          <h3>クイックMBTI診断</h3>
-          <p>素早く簡易的にあなたの性格の特徴を診断します</p>
-          <a href="tools/mbti">使用する</a>
-        </div>
-      </article>
-      <article>
-        <img loading="lazy" src="https://xullua.com/img/water-remove.webp" alt="">
-        <div class="text">
-          <h5>人気上昇中</h5>
-          <h3>スマホ水抜き</h3>
-          <p>スマホの水抜き音を流せるサイト</p>
-          <a href="tools/water-remove">使用する</a>
-        </div>
-      </article>
-      <article>
-        <img loading="lazy" src="https://xullua.com/img/oishiiyami-.webp" alt="">
-        <div class="text">
-          <h5>最も人気</h5>
-          <h3>美味しいヤミー</h3>
-          <p>美味しいヤミーを素早くコピーできる</p>
-          <a href="tools/oishiiyami-">使用する</a>
-        </div>
-      </article>
-      <article>
-        <img loading="lazy" src="https://xullua.com/img/countersamune.webp" alt="">
-        <div class="text">
-          <h5></h5>
-          <h3>文字数カウント</h3>
-          <p>文字数を素早くカウントすることができます</p>
-          <a href="tools/counter">使用する</a>
-        </div>
-      </article>
-      <article>
-        <img loading="lazy" src="https://xullua.com/tools/icons/samune.webp" alt="">
-        <div class="text">
-          <h5></h5>
-          <h3>アイコン生成</h3>
-          <p>Adobe風のアイコンを生成できます</p>
-          <a href="tools/icons">使用する</a>
-        </div>
-      </article>
-      <article>
-        <img loading="lazy" src="https://calculator.xullua.com/calculatorsamune.png" alt="">
-        <div class="text">
-          <h5></h5>
-          <h3>電卓</h3>
-          <p>iPhone風のデザインの電卓</p>
-          <a href="https://calculator.xullua.com">使用する</a>
-        </div>
-      </article>
-    </div>
-    <p style="text-align: center; margin: 15px 0 0;"><a href="tools">全てのツールを見る</a></p>
   </section>
 
   <!-- instagram宣伝 -->
