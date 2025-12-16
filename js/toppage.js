@@ -1,16 +1,16 @@
 //トップ背景ランダム表示
-if ($('.top-hello').length) {
-    var imgpass = "画像ファイルまでのパス";
-    var imgfile = [];
-    imgfile[0] = '//xullua.com/img/top-hello1.webp';
-    imgfile[1] = '//xullua.com/img/top-hello2.webp';
-    imgfile[2] = '//xullua.com/img/top-hello3.webp';
-    imgfile[3] = '//xullua.com/img/top-hello4.webp';
-    imgfile[4] = '//xullua.com/img/top-hello5.webp';
-    imgfile[5] = '//xullua.com/img/top-hello6.webp';
-    var n = Math.floor(Math.random() * imgfile.length);
-    var bgbox = $('.top-hello');
-    bgbox.css('background-image', 'url(' + imgfile[n] + ')');
+const topHelloElement = document.querySelector('.top-hello');
+if (topHelloElement) {
+    const imgfile = [
+        '//xullua.com/img/top-hello1.webp',
+        '//xullua.com/img/top-hello2.webp',
+        '//xullua.com/img/top-hello3.webp',
+        '//xullua.com/img/top-hello4.webp',
+        '//xullua.com/img/top-hello5.webp',
+        '//xullua.com/img/top-hello6.webp'
+    ];
+    const n = Math.floor(Math.random() * imgfile.length);
+    topHelloElement.style.backgroundImage = 'url(' + imgfile[n] + ')';
 }
 
 

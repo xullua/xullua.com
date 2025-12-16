@@ -71,6 +71,9 @@ async function loadCommonFiles() {
                 oldScript.remove();
             });
         }
+        
+        // Header/Footer の読み込み完了を通知
+        window.dispatchEvent(new Event('commonFilesLoaded'));
     } catch (error) {
         // エラー処理
     }
