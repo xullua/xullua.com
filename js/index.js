@@ -7,8 +7,8 @@ const CONSTANTS = {
     SECTION_THRESHOLD: 0.3
 };
 
-const container = document.getElementById('scroll-area');
-const indicatorsContainer = document.getElementById('indicators');
+let container = document.getElementById('scroll-area');
+let indicatorsContainer = document.getElementById('indicators');
 
 const state = {
     autoPlayInterval: null,
@@ -353,23 +353,49 @@ function setupVideoEvents() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (!container || !indicatorsContainer) {
-        console.warn('Profile section elements not found');
-        return;
-    }
-    
-    setupIndicators();
-    setupScrollObserver();
-    setupVideoEvents();
-    setupSectionObserver();
-    setupDragScroll();
-    startAutoPlay();
+    // DOM が準備されるまで待つ。必要な要素が見つからない場合は、jQuery ready までリトライ
+    const initProfile = () => {
+        if (!container || !indicatorsContainer) {
+            // 要素がまだ見つからない場合は、少し待って再試行
+            if (!container) {
+                const newContainer = document.getElementById('scroll-area');
+                if (newContainer) window.container = newContainer;
+            }
+            if (!indicatorsContainer) {
+                const newIndicators = document.getElementById('indicators');
+                if (newIndicators) window.indicatorsContainer = newIndicators;
+            }
+            
+            if (!container || !indicatorsContainer) {
+                console.warn('Profile section elements not found, retrying...');
+                setTimeout(initProfile, 100);
+                return;
+            }
+        }
+        
+        setupIndicators();
+        setupScrollObserver();
+        setupVideoEvents();
+        setupSectionObserver();
+        setupDragScroll();
+        startAutoPlay();
 
-    let scrollTimeout;
-    container.addEventListener('scroll', () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            resetAutoPlay();
-        }, CONSTANTS.SCROLL_DEBOUNCE);
-    }, { passive: true });
+        let scrollTimeout;
+        container.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                resetAutoPlay();
+            }, CONSTANTS.SCROLL_DEBOUNCE);
+        }, { passive: true });
+    };
+    
+    // jQuery が読み込まれたか確認して実行
+    if (typeof jQuery !== 'undefined') {
+        jQuery(() => {
+            initProfile();
+        });
+    } else {
+        // jQuery が無い場合は直接実行
+        initProfile();
+    }
 });
