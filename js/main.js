@@ -41,9 +41,35 @@ async function loadCommonFiles() {
         
         if (headerElement) {
             headerElement.innerHTML = headerHtml;
+            
+            // innerHTML では script タグが実行されないため、手動で実行
+            const scripts = headerElement.querySelectorAll('script');
+            scripts.forEach(oldScript => {
+                const newScript = document.createElement('script');
+                if (oldScript.src) {
+                    newScript.src = oldScript.src;
+                } else {
+                    newScript.textContent = oldScript.textContent;
+                }
+                document.body.appendChild(newScript);
+                oldScript.remove();
+            });
         }
         if (footerElement) {
             footerElement.innerHTML = footerHtml;
+            
+            // footer のスクリプトも同様に実行
+            const scripts = footerElement.querySelectorAll('script');
+            scripts.forEach(oldScript => {
+                const newScript = document.createElement('script');
+                if (oldScript.src) {
+                    newScript.src = oldScript.src;
+                } else {
+                    newScript.textContent = oldScript.textContent;
+                }
+                document.body.appendChild(newScript);
+                oldScript.remove();
+            });
         }
     } catch (error) {
         // エラー処理
