@@ -353,24 +353,20 @@ function setupVideoEvents() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM が準備されるまで待つ。必要な要素が見つからない場合は、jQuery ready までリトライ
+    // jQuery ready が確実に実行されるまで待つ
     const initProfile = () => {
+        // 現在の要素を再度取得
+        if (!container || container === null) {
+            container = document.getElementById('scroll-area');
+        }
+        if (!indicatorsContainer || indicatorsContainer === null) {
+            indicatorsContainer = document.getElementById('indicators');
+        }
+        
         if (!container || !indicatorsContainer) {
-            // 要素がまだ見つからない場合は、少し待って再試行
-            if (!container) {
-                const newContainer = document.getElementById('scroll-area');
-                if (newContainer) window.container = newContainer;
-            }
-            if (!indicatorsContainer) {
-                const newIndicators = document.getElementById('indicators');
-                if (newIndicators) window.indicatorsContainer = newIndicators;
-            }
-            
-            if (!container || !indicatorsContainer) {
-                console.warn('Profile section elements not found, retrying...');
-                setTimeout(initProfile, 100);
-                return;
-            }
+            console.warn('Profile section elements not found, retrying...');
+            setTimeout(initProfile, 100);
+            return;
         }
         
         setupIndicators();
@@ -389,13 +385,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     };
     
-    // jQuery が読み込まれたか確認して実行
-    if (typeof jQuery !== 'undefined') {
-        jQuery(() => {
-            initProfile();
-        });
+    // jQuery が存在する場合は jQuery ready で実行
+    // async script のため DOMContentLoaded では jQuery がまだ無い可能性がある
+    if (typeof jQuery !== 'undefined' && jQuery.ready) {
+        jQuery(initProfile);
     } else {
-        // jQuery が無い場合は直接実行
-        initProfile();
+        // フォールバック：jQuery 無しまたは既に ready な場合
+        setTimeout(initProfile, 50);
     }
 });
