@@ -21,10 +21,19 @@
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/style.css">
 
+  <!--googlefonts-->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
   <!-- JS -->
+  <script src="../js/toppage.js?v=1" async></script>
+  <script src="../js/main.js?v=1" async></script>
+  <script src="../js/index.js?v=1" async></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="../js/toppage.js" async></script>
-  <script src="../js/main.js" async></script>
+  
   <!-- アナリティクス -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
   <script>
@@ -333,7 +342,7 @@
   </section>
 
   <!-- トップワード応募 -->
-  <section class="vote-top-words" id="vote-top-words">
+  <section class="vote-top-words" id="vote-top-words" style="display: none;">
     <div class="back">
       <p class="mini">Top Short Message</p>
       <h2>Looking for<br>Good Sense</h2>
@@ -415,83 +424,302 @@
     <iframe name="hidden_iframe" style="display:none;" onload="page_transition()"></iframe>
   </section>
 
-  <!-- 自己紹介 -->
-  <section class="profile" id="profile">
-    <h2>About Me</h2>
-    <div class="area">
-      <div class="box myname">
-        <div class="in">
-          <img src="../img/xulluaiconwhiteblock.webp">
-          <div class="name">
-            <h3>Xullua</h3>
-            <p>@Xullua</p>
+  <!-- SNS -->
+  <section class="linktosns">
+    <div class="box x">
+      <input type="checkbox" name="" id="linktox" class="headerhidden">
+      <label for="linktox" style="background: #000;">
+        <img src="../img/twitter.svg" alt="">
+        <div class="buttom">
+          <h3>X</h3>
+          <p>＠Xullua</p>
+          <p>＠XlaScope</p>
+        </div>
+      </label>
+      <article>
+        <label for="linktox" class="backblur"></label>
+        <div class="content">
+          <div>
+            <div class="top">
+              <h3>X</h3>
+            </div>
+            <div class="accounts">
+              <a class="select" href="//x.com/xullua">
+                <div class="left">
+                  <img loading="lazy" src="../img/favicon.ico" alt="">
+                  <div class="name">
+                    <h4>Xullua</h4>
+                    <p>＠Xullua</p>
+                  </div>
+                </div>
+                <div class="right">
+                  <p>main</p>
+                </div>
+              </a>
+              <a class="select" href="//x.com/xlasub">
+                <div class="left">
+                  <img loading="lazy"
+                    src="https://pbs.twimg.com/profile_images/1789928286682021888/bxgkMe8D_400x400.jpg" alt="">
+                  <div class="name">
+                    <h4>Xullua</h4>
+                    <p>＠XlaSub</p>
+                  </div>
+                </div>
+                <div class="right">
+                  <p>sub</p>
+                </div>
+              </a>
+              <a class="select" href="//x.com/xlascope">
+                <div class="left">
+                  <img loading="lazy"
+                    src="https://pbs.twimg.com/profile_images/1795851343510618112/WrmYdZSC_400x400.jpg" alt="">
+                  <div class="name">
+                    <h4>Scope</h4>
+                    <p>＠XlaScope</p>
+                  </div>
+                </div>
+                <div class="right">
+                  <p>article distribution</p>
+                </div>
+              </a>
+              <a class="select" href="//x.com/xuiiua">
+                <div class="left">
+                  <img loading="lazy"
+                    src="https://pbs.twimg.com/profile_images/1789928504177627136/k9o15SWO_400x400.jpg" alt="">
+                  <div class="name">
+                    <h4>Xullua2</h4>
+                    <p>＠Xuiiua</p>
+                  </div>
+                </div>
+                <div class="right">
+                  <p>spare</p>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="box spec">
-        <p>Man</p>
-        <p>Japanease</p>
-      </div>
-      <div class="box abouttext">
-        <p>
-          I am a student who likes to talk about gadgets.
-          I also like design, including video and images, and I am always making comments like "this design is good" or
-          "this design should be like this" while living my life.
-        </p>
-      </div>
-      <div class="box twitter">
-        <img src="../img/twitter.svg" alt="">
-        <h4>Twitter</h4>
-        <p>I inhabit Twitter. I am active every day. I tweet about everyday life as a basic.</p>
-      </div>
-      <div class="box skill1">
-        <img src="../img/edit.svg" alt="">
-        <h4>Video Editing</h4>
-        <p>I have always loved making videos. I like to make videos that incorporate animation with pleasant
-          connections.</p>
-      </div>
-      <div class="box skill1">
-        <img src="../img/picture.svg" alt="">
-        <h4>Image Editing</h4>
-        <p>I like to create false images and other things. I am good at making things that look right, but I can't make
-          things with good taste.</p>
-      </div>
-      <div class="box skill2">
-        <img src="../img/code.svg" alt="">
-        <h4>HTML / CSS</h4>
-        <p>I would like to think that I can do it to some extent. I would like to be able to do other programming
-          languages, but I can't do them at all. I wonder when the day will come when I will be able to do many
-          things...</p>
-      </div>
-      <div class="box favorite">
-        <img src="../img/favorite.svg" alt="">
-        <div class="more">
-          <h4>Likes</h4>
-          <p>I like "making something." For example, crafts, videos/images/photos, cooking, etc.</p>
-        </div>
-      </div>
-      <div class="box sns">
-        <a href="https://twitter.com/xullua" target="_blank"><img src="../img/twitter.webp"></a>
-        <a href="https://instagram.com/xullua" target="_blank"><img src="../img/instagram.webp"></a>
-        <a href="https://youtube.com/xullua" target="_blank"><img src="../img/youtube.webp"></a>
-      </div>
-      <div class="box dislike">
-        <img src="../img/dislike.svg" alt="">
-        <div class="more">
-          <h4>Dislikes</h4>
-          <p>I dislike being responsible immensely.</p>
-        </div>
-      </div>
-      <div class="box profilecontact">
-        <div class="in">
-          <a href="contact">Contact</a>
-          <a href="https://twitter.com/messages/compose?recipient_id=1146016040343592967">TwitterDM</a>
-        </div>
-      </div>
+      </article>
     </div>
-    <p style="font-size: 12px; text-align: center; color: var(--sub-text); margin: 10px 0 0;">
-      Hover or touch to see more detailed information.
-    </p>
+    <div class="box instagram">
+      <input type="checkbox" name="" id="linktoinstagram" class="headerhidden">
+      <label for="linktoinstagram" style="background: linear-gradient(135deg,#7913ff,#ff002b);">
+        <img src="../img/instagram.svg" alt="">
+        <div class="buttom">
+          <h3>Instagram</h3>
+          <p>＠Xullua</p>
+        </div>
+      </label>
+      <article>
+        <label for="linktoinstagram" class="backblur"></label>
+        <div class="content">
+          <div>
+            <div class="top">
+              <h3>Instagram</h3>
+            </div>
+            <div class="accounts">
+              <a class="select" href="//instagram.com/xullua">
+                <div class="left">
+                  <img src="../img/favicon.ico" alt="">
+                  <div class="name">
+                    <h4>Xullua</h4>
+                    <p>＠Xullua</p>
+                  </div>
+                </div>
+                <div class="right">
+                  <p></p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="box youtube">
+      <input type="checkbox" name="" id="linktoyoutube" class="headerhidden">
+      <label for="linktoyoutube" style="background: #f00;">
+        <img src="../img/youtube.svg" alt="">
+        <div class="buttom">
+          <h3>YouTube</h3>
+          <p>＠Xullua</p>
+        </div>
+      </label>
+      <article>
+        <label for="linktoyoutube" class="backblur"></label>
+        <div class="content">
+          <div>
+            <div class="top">
+              <h3>YouTube</h3>
+            </div>
+            <div class="accounts">
+              <a class="select" href="//youtube.com/xullua">
+                <div class="left">
+                  <img src="../img/favicon.ico" alt="">
+                  <div class="name">
+                    <h4>Xullua</h4>
+                    <p>＠Xullua</p>
+                  </div>
+                </div>
+                <div class="right">
+                  <p>main</p>
+                </div>
+              </a>
+              <a class="select" href="//youtube.com/@twitterjp">
+                <div class="left">
+                  <img src="../img/favicon.ico" alt="">
+                  <div class="name">
+                    <h4>Xullua</h4>
+                    <p>＠TwitterJP</p>
+                  </div>
+                </div>
+                <div class="right">
+                  <p>motion graphics</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="box tiktok">
+      <input type="checkbox" name="" id="linktotiktok" class="headerhidden">
+      <label for="linktotiktok" style="background: #000;">
+        <img src="../img/tiktok.svg" alt="">
+        <div class="buttom">
+          <h3>TikTok</h3>
+          <p>＠xla.jp</p>
+        </div>
+      </label>
+      <article>
+        <label for="linktotiktok" class="backblur"></label>
+        <div class="content">
+          <div>
+            <div class="top">
+              <h3>TikTok</h3>
+            </div>
+            <div class="accounts">
+              <a class="select" href="//tiktok.com/@xla.jp">
+                <div class="left">
+                  <img src="../img/favicon.ico" alt="">
+                  <div class="name">
+                    <h4>Xullua</h4>
+                    <p>＠xla.jp</p>
+                  </div>
+                </div>
+                <div class="right">
+                  <p></p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 自己紹介 -->
+  <section class="profile" id="profile">
+    <h2>It's me</h2>
+    <div class="area" id="scroll-area">
+      <article class="box active" id="slide-0">
+        <h3>Ah, <wbr>hello<br>I'm Xullua<wbr>.</h3>
+        <p class="explain">
+          Here is a brief introduction about me.
+        </p>
+        <p class="emoji">
+          <span>✋</span>
+          <span>😎</span>
+        </p>
+      </article>
+      <article class="box" id="slide-1" style="background-color: rgba(29, 161, 242, 0.1);">
+        <div>
+          <h4>tweeeeeeet!</h4>
+          <p>Freely posting about interests on X</p>
+          <a href="//x.com/xullua" rel="noopener noreferrer">Follow</a>
+        </div>
+        <img src="../img/iphonexscreen.webp" alt="iPhoneでXアプリを表示している画面" loading="lazy">
+      </article>
+      <article class="box" id="slide-2">
+        <img class="box-bg" src="../img/profile-camera.webp" alt="写真" loading="lazy">
+        <div class="box-overlay"></div>
+        <div class="box-content">
+          <div class="category">Camera photos</div>
+          <h4>Snap!<wbr> Snap!</h4>
+          <p>I enjoy capturing moments with my camera and preserving them as memories.</p>
+        </div>
+      </article>
+      <article class="box" id="slide-3">
+        <div class="box-overlay"></div>
+        <div class="box-content">
+          <div>
+            <div class="category">Movies & Motion Graphics</div>
+            <h4>Connect, Move</h4>
+            <p>In addition to photos, I want to preserve memories with moving images.<br>Also, motion graphics. </p>
+          </div>
+        </div>
+      </article>
+      <article class="box" id="slide-4">
+        <div class="box-overlay"></div>
+        <div class="box-content">
+          <div class="texts">
+            <div class="category">Photos/Movies Editing</div>
+            <h4>If I took it, edit it too</h4>
+            <p>Preserve memories as they are or add a new world view. It's all up to you.</p>
+          </div>
+          <div class="imgs">
+            <img src="../img/djistudio_icon.webp" alt="DJI Studio" loading="lazy">
+            <img src="../img/figma_icon.webp" alt="Figma" loading="lazy">
+            <img src="../img/adobeaudition_icon.webp" alt="Adobe Audition" loading="lazy">
+            <img src="../img/adobeillustrator_icon.webp" alt="Adobe Illustrator" loading="lazy">
+            <img src="../img/adobephotoshop_icon.webp" alt="Adobe Photoshop" loading="lazy">
+            <img src="../img/adobeaftereffects_icon.webp" alt="Adobe After Effects" loading="lazy">
+            <img src="../img/DaVinciesolve_icon.webp" alt="DaVinci Resolve" loading="lazy">
+            <img src="../img/adobelightroom_icon.webp" alt="Adobe Lightroom" loading="lazy">
+            <img src="../img/alightmotion_icon.webp" alt="Alight Motion" loading="lazy">
+            <img src="../img/adobepremierepro_icon.webp" alt="Adobe Premiere Pro" loading="lazy">
+          </div>
+        </div>
+      </article>
+      <article class="box" id="slide-5">
+        <video src="../img/profile-programming.mp4" class="box-bg" autoplay muted loop></video>
+        <div class="box-overlay"></div>
+        <div class="box-content">
+          <div>
+            <div class="category">Programming</div>
+            <h4>Click Click<wbr>Click Click</h4>
+            <p>With the code I write, I can create beautiful designs that work seamlessly on any device. This is what I enjoy.</p>
+          </div>
+        </div>
+      </article>
+      <article class="box" id="slide-6">
+        <img class="box-bg" src="../img/profile-gadget.webp" alt="Gadget" loading="lazy">
+        <div class="box-overlay"></div>
+        <div class="box-content">
+          <div>
+            <div class="category">Gadgets</div>
+            <h4>Born in this era is a great blessing</h4>
+            <p>I enjoy exploring the latest technology and find it fascinating how it can improve quality of life.</p>
+          </div>
+        </div>
+      </article>
+      <article class="box" id="slide-7">
+        <img class="box-bg" src="../img/profile-design.webp" alt="Design" loading="lazy">
+        <div class="box-overlay"></div>
+        <div class="box-content">
+          <div>
+            <div class="category">Design</div>
+            <h4>Where does its beauty come from?</h4>
+            <p>I like creating things, but it all ends with design. The key is how to make it beautiful and easy for everyone to naturally understand.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="carousel-controls" id="carousel-nav">
+      <div class="indicators" id="indicators"></div>
+      <button class="auto-play-toggle" id="auto-play-btn" onclick="toggleAutoPlay()">
+        <span class="material-symbols-outlined">pause</span>
+      </button>
+    </div>
   </section>
 
   <!-- 壁紙宣伝 -->
