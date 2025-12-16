@@ -31,9 +31,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
   <!-- JS -->
-  <script src="js/toppage.js?v=1" async></script>
-  <script src="js/main.js?v=1" async></script>
-  <script src="js/index.js?v=1" async></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- アナリティクス -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
@@ -51,6 +48,9 @@
       $("#footer").load("footer.html");
     });
   </script>
+  <script src="js/toppage.js?v=2" async></script>
+  <script src="js/main.js?v=2" async></script>
+  <script src="js/index.js?v=2" async></script>
 </head>
 
 
@@ -805,7 +805,6 @@
   <section class="profile" id="profile">
     <h2>プロフィール</h2>
     <div class="area" id="scroll-area">
-      <!-- プロフィール -->
       <article class="box active" id="slide-0">
         <h3>あ、<wbr>こんにちは<br>ぞるあ<wbr>です。</h3>
         <p class="explain">
@@ -816,8 +815,6 @@
           <span>😎</span>
         </p>
       </article>
-
-      <!-- X -->
       <article class="box" id="slide-1" style="background-color: rgba(29, 161, 242, 0.1);">
         <div>
           <h4>あーだ<wbr>こーだ</h4>
@@ -826,8 +823,6 @@
         </div>
         <img src="img/iphonexscreen.webp" alt="iPhoneでXアプリを表示している画面" loading="lazy">
       </article>
-
-      <!-- 写真 -->
       <article class="box" id="slide-2">
         <img class="box-bg" src="img/profile-camera.webp" alt="写真" loading="lazy">
         <div class="box-overlay"></div>
@@ -837,8 +832,6 @@
           <p>カメラを使ってその瞬間を捉え、思い出として残すことが好きです。</p>
         </div>
       </article>
-
-      <!-- 映像制作 -->
       <article class="box" id="slide-3">
         <div class="box-overlay"></div>
         <div class="box-content">
@@ -849,8 +842,6 @@
           </div>
         </div>
       </article>
-
-      <!-- 画像・動画編集 -->
       <article class="box" id="slide-4">
         <div class="box-overlay"></div>
         <div class="box-content">
@@ -873,8 +864,6 @@
           </div>
         </div>
       </article>
-
-      <!-- プログラミング -->
       <article class="box" id="slide-5">
         <video src="img/profile-programming.mp4" class="box-bg" autoplay muted loop></video>
         <div class="box-overlay"></div>
@@ -886,8 +875,6 @@
           </div>
         </div>
       </article>
-
-      <!-- ガジェット -->
       <article class="box" id="slide-6">
         <img class="box-bg" src="img/profile-gadget.webp" alt="ガジェット" loading="lazy">
         <div class="box-overlay"></div>
@@ -899,8 +886,6 @@
           </div>
         </div>
       </article>
-
-      <!-- Webデザイン -->
       <article class="box" id="slide-7">
         <img class="box-bg" src="img/profile-design.webp" alt="デザイン" loading="lazy">
         <div class="box-overlay"></div>
@@ -914,7 +899,6 @@
       </article>
     </div>
 
-    <!-- 全体ナビゲーション -->
     <div class="carousel-controls" id="carousel-nav">
       <div class="indicators" id="indicators"></div>
       <button class="auto-play-toggle" id="auto-play-btn" onclick="toggleAutoPlay()">
