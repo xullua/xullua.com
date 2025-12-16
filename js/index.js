@@ -353,44 +353,76 @@ function setupVideoEvents() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // jQuery ready が確実に実行されるまで待つ
+    // プロファイルセクションの初期化
     const initProfile = () => {
-        // 現在の要素を再度取得
-        if (!container || container === null) {
-            container = document.getElementById('scroll-area');
-        }
-        if (!indicatorsContainer || indicatorsContainer === null) {
-            indicatorsContainer = document.getElementById('indicators');
-        }
+        // 毎回最新の要素を取得（再取得）
+        const latestContainer = document.getElementById('scroll-area');
+        const latestIndicators = document.getElementById('indicators');
         
-        if (!container || !indicatorsContainer) {
-            console.warn('Profile section elements not found, retrying...');
-            setTimeout(initProfile, 100);
+        if (!latestContainer || !latestIndicators) {
+            // 要素が見つからない場合は少し待ってリトライ
+            setTimeout(initProfile, 50);
             return;
         }
         
-        setupIndicators();
-        setupScrollObserver();
-        setupVideoEvents();
-        setupSectionObserver();
-        setupDragScroll();
-        startAutoPlay();
+        // グローバル変数を更新
+        container = latestContainer;
+        indicatorsContainer = latestIndicators;
+        
+        try {
+            setupIndicators();
+            setupScrollObserver();
+            setupVideoEvents();
+            setupSectionObserver();
+            setupDragScroll();
+            startAutoPlay();
 
-        let scrollTimeout;
-        container.addEventListener('scroll', () => {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                resetAutoPlay();
-            }, CONSTANTS.SCROLL_DEBOUNCE);
-        }, { passive: true });
+            let scrollTimeout;
+            container.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    resetAutoPlay();
+                }, CONSTANTS.SCROLL_DEBOUNCE);
+            }, { passive: true });
+        } catch (error) {
+            // エラー処理
+        }
     };
     
-    // jQuery が存在する場合は jQuery ready で実行
-    // async script のため DOMContentLoaded では jQuery がまだ無い可能性がある
-    if (typeof jQuery !== 'undefined' && jQuery.ready) {
-        jQuery(initProfile);
-    } else {
-        // フォールバック：jQuery 無しまたは既に ready な場合
-        setTimeout(initProfile, 50);
-    }
+    // DOMContentLoaded が発火した時点で初期化
+    initProfile();
 });
+
+
+
+
+// ヘッダーのスクロール処理（透明 ⇄ 背景表示の切り替え）
+function initHeaderScroll() {
+    const header = document.getElementById('header');
+    if (!header) return;
+    
+    function handleScroll() {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollY > 50) {
+            header.classList.remove('transparent');
+        } else {
+            header.classList.add('transparent');
+        }
+    }
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    handleScroll();
+}
+
+async function loadCommonFilesOriginal() {
+    await loadCommonFiles();
+    setTimeout(initHeaderScroll, 100);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadCommonFilesOriginal);
+} else {
+    loadCommonFilesOriginal();
+}
