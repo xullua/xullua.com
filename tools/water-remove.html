@@ -5,12 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>スマホの水抜き音を流せるサイト</title>
-    <meta name="description" content="スマホのスピーカーに詰まった水を排出する音を再生します。籠った音の場合は水が詰まっているかもしれません。">
+    <title>水抜き音を1タップ再生｜iPhone・スマホのスピーカー水抜き</title>
+    <meta name="description"
+        content="水抜き音を1タップで再生できるサイトです。iPhone・Androidのスピーカー水抜きを通信量を抑えてすぐ試せます。165Hzを中心に複数周波数と音タイプを選べます。">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://xullua.com/tools/water-remove.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="xullua.com">
+    <meta property="og:url" content="https://xullua.com/tools/water-remove.html">
+    <meta property="og:title" content="水抜き音を1タップ再生｜iPhone・スマホのスピーカー水抜き">
+    <meta property="og:description" content="iPhone・Androidのスピーカー水抜き音を1タップで再生。通信量を抑えて水抜き音をすぐ流せます。">
+    <meta property="og:image" content="https://xullua.com/img/water-remove.webp">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@xullua">
-    <meta name="twitter:title" content="スマホの水抜き音を流せるサイト">
-    <meta name="twitter:description" content="スマホのスピーカーに詰まった水を排出する音を再生します。籠った音の場合は水が詰まっているかもしれません。">
+    <meta name="twitter:title" content="水抜き音を1タップ再生｜iPhone・スマホのスピーカー水抜き">
+    <meta name="twitter:description" content="iPhone・Androidのスピーカー水抜き音を1タップで再生。通信量を抑えてすぐ使えます。">
     <meta name="twitter:image" content="https://xullua.com/img/water-remove.webp">
     <link rel="shortcut icon" href="../img/favicon.ico">
     <link rel="stylesheet" href="../css/color.css">
@@ -23,18 +32,50 @@
 
         gtag('config', 'G-JDKGJ1E005');
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/main.js" async></script>
     <!-- 広告 -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8816279824306037"
         crossorigin="anonymous"></script>
-    <script>
-        $(function () {
-            $("#header").load("../header.html");
-            $("#footer").load("../footer.html");
-            $("#othertools").load("othertools.html");
-        });
-    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "水抜き音は何Hzがいいですか？",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "本ページでは165Hzをメインに、複数の周波数を選択できます。端末や水の状態で効果が変わるため、1〜2分ずつ試してください。"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "再生しても改善しない場合はどうすればいいですか？",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "音量やマナーモードを確認し、端末をスピーカー側が下になるよう傾けて再生してください。塩水・飲料が入った場合や改善しない場合は、早めに修理相談をおすすめします。"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "iPhoneでも使えますか？",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "使えます。iPhoneは底面右側のスピーカーから音が出るため、右側を下向きにして再生すると排水しやすくなります。"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "固定音と上下スイープはどちらがいいですか？",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "端末や詰まり方で相性が変わるため、まず固定音を試し、変化が少ない場合は上下スイープに切り替える使い方がおすすめです。"
+                    }
+                }
+            ]
+        }
+        </script>
 </head>
 
 <style>
@@ -42,124 +83,280 @@
         width: min(var(--width-l) - 20px, 100% - 40px);
         margin: 0 auto;
         padding: 70px 0;
-    }
+        h1 {
+            line-height: 1.2;
+            margin: 0 0 10px 0;
+        }
 
-    h1 {
-        line-height: 1.2;
-        margin: 0 0 10px 0;
-    }
+        .topexplain {
+            color: var(--subtext);
+            line-height: 1.3;
+            margin: 0 0 10px 0;
+        }
 
-    main .topexplain {
-        color: var(--subtext);
-        line-height: 1.3;
-        margin: 0 0 10px 0;
-    }
+        h2 {
+            margin: 0;
+            font-size: 22px;
+            line-height: 1.3;
+        }
 
-    main .explain {
-        background-color: var(--explainback);
-        padding: 10px 15px 10px;
-        border-radius: 15px;
-        margin: 5px 0;
-    }
+        .help {
+            background: var(--helpback);
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            line-height: 1.1;
 
-    main .explain:has(input:checked) {
-        padding: 10px 15px 7px;
-    }
+            p {
+                margin: 5px 0;
+            }
+        }
 
-    main .help {
-        background: var(--helpback);
-        padding: 10px 15px;
-        border-radius: 15px;
-        font-size: 14px;
-        line-height: 1.1;
-    }
+        .playerArea {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 15px 0 0;
+        }
 
-    main .help p {
-        margin: 5px 0;
-    }
+        .explain {
+            background-color: var(--explainback);
+            padding: 10px 15px 10px;
+            border-radius: 15px;
+            margin: 8px 0;
 
-    main .explain article p {
-        margin: 0 0 8px 0;
-        line-height: 1.2;
-    }
+            &:has(input:checked) {
+                padding: 10px 15px 7px;
+            }
 
-    main label {
-        display: block;
-        cursor: pointer;
-        position: relative;
-    }
+            article {
+                p {
+                    margin: 0 0 8px 0;
+                    line-height: 1.2;
+                }
 
-    main input+label::before {
-        position: absolute;
-        content: "";
-        width: 10px;
-        height: 10px;
-        top: 9px;
-        right: 0;
-        border-top: 2px solid var(--maintext);
-        border-left: 2px solid var(--maintext);
-        transform: rotate(-45deg);
-        transition: .2s;
-    }
+                .faqQuestion {
+                    font-weight: bold;
+                    color: var(--secondtext);
+                    font-size: 12px;
+                    margin: 5px 0 2px;
+                }
 
-    main input:checked+label::before {
-        top: 7px;
-        right: 3px;
-        transform: rotate(-135deg);
-    }
+                .faqAnswer {
+                    margin-bottom: 15px;
+                }
+            }
 
-    main input,
-    main input+label+article {
-        display: none;
-    }
+            label {
+                display: block;
+                cursor: pointer;
+                position: relative;
+            }
 
-    main input:checked+label+article {
-        display: block;
+            input+label::before {
+                position: absolute;
+                content: "";
+                width: 10px;
+                height: 10px;
+                top: 9px;
+                right: 0;
+                border-top: 2px solid var(--maintext);
+                border-left: 2px solid var(--maintext);
+                transform: rotate(-45deg);
+                transition: .2s;
+            }
+
+            input:checked+label::before {
+                top: 7px;
+                right: 3px;
+                transform: rotate(-135deg);
+            }
+
+            input,
+            input+label+article {
+                display: none;
+            }
+
+            input:checked+label+article {
+                display: block;
+            }
+        }
     }
 
     .btn {
         text-align: center;
+
+        #playStopButton {
+            width: 130px;
+            height: 130px;
+            aspect-ratio: 1 / 1;
+            margin: 60px 0 20px;
+            outline: none;
+            border-radius: 50%;
+            font-size: 30px;
+            cursor: pointer;
+            transition: 1s;
+            background: none;
+            color: var(--maintext);
+            outline: 2px solid #0000;
+            outline-offset: 15px;
+            border: 3px solid var(--accentcolor);
+            filter: drop-shadow(0 0 10px var(--accentcolor));
+            font-family: 'LSeedJP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ ゴシック', 'MS Gothic', HiraKakuProN-W3, 'TakaoExゴシック', TakaoExGothic, 'MotoyaLCedar', 'Droid Sans Japanese', sans-serif;
+
+            &:hover {
+                transition: .2s;
+                color: var(--maintext);
+                outline: 2px solid var(--accentcolor);
+                outline-offset: 5px;
+                background: var(--accentcolor);
+                border: 20px solid var(--accentcolor);
+                filter: drop-shadow(0 0 10px var(--accentcolor));
+            }
+
+            &:active {
+                transition: .2s;
+                transform: scale(.9);
+                font-size: 30px;
+                background: none;
+                border: 5px solid var(--accentcolor);
+                filter: drop-shadow(0 0 20px var(--accentcolor));
+                color: var(--accentcolor);
+                outline: 2px solid var(--accentcolor);
+                outline-offset: 0px;
+            }
+        }
+
+        .status {
+            margin: 8px auto 0;
+            color: var(--subtext);
+            display: block;
+            width: fit-content;
+            text-align: center;
+            white-space: normal;
+        }
+
+        .status.is-playing {
+            text-align: left;
+            white-space: pre;
+        }
     }
 
-    #playStopButton {
-        width: 130px;
-        height: 130px;
-        aspect-ratio: 1 / 1;
-        margin: 60px 0;
-        outline: none;
-        border-radius: 50%;
-        font-size: 30px;
-        cursor: pointer;
-        transition: 1s;
-        background: none;
-        color: var(--maintext);
-        outline: 2px solid #0000;
-        outline-offset: 15px;
-        border: 3px solid var(--accentcolor);
-        filter: drop-shadow(0 0 10px var(--accentcolor));
-        font-family: 'LSeedJP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ ゴシック', 'MS Gothic', HiraKakuProN-W3, 'TakaoExゴシック', TakaoExGothic, 'MotoyaLCedar', 'Droid Sans Japanese', sans-serif;
+    .controlPanel {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        .controlBlock {
+            margin: 0;
+            padding: 0;
+            border: none;
+            min-width: 150px;
+
+            .controlTitle {
+                margin: 0 0 6px;
+                font-size: 14px;
+                color: var(--subtext);
+                line-height: 1;
+            }
+
+            .controlGroup {
+                --row-height: 40px;
+                --row-gap: 6px;
+                --highlight-index: 0;
+                position: relative;
+                display: grid;
+                gap: var(--row-gap);
+                padding: 4px;
+                border: 1px solid var(--linecolor);
+                border-radius: 12px;
+                background: var(--secondback);
+
+                .controlHighlight {
+                    position: absolute;
+                    left: 4px;
+                    right: 4px;
+                    height: var(--row-height);
+                    top: calc(4px + (var(--row-height) + var(--row-gap)) * var(--highlight-index));
+                    border-radius: 9px;
+                    background: var(--accentcolor);
+                    transition: top .28s ease;
+                    pointer-events: none;
+                }
+
+                .controlInput {
+                    position: absolute;
+                    opacity: 0;
+                    pointer-events: none;
+                }
+
+                .controlLabel {
+                    position: relative;
+                    z-index: 1;
+                    min-width: 142px;
+                    height: var(--row-height);
+                    padding: 0 12px;
+                    display: flex;
+                    align-items: center;
+                    border-radius: 9px;
+                    color: var(--maintext);
+                    cursor: pointer;
+                    user-select: none;
+                }
+
+                .controlInput:checked+.controlLabel {
+                    color: #fff
+                }
+            }
+        }
+
+        .frequencyGroup {
+            .controlGroup:has(#freq-165:checked) {
+                --highlight-index: 0;
+            }
+
+            .controlGroup:has(#freq-180:checked) {
+                --highlight-index: 1;
+            }
+
+            .controlGroup:has(#freq-200:checked) {
+                --highlight-index: 2;
+            }
+        }
+
+        .modeGroup {
+            .controlGroup:has(#mode-steady:checked) {
+                --highlight-index: 0;
+            }
+
+            .controlGroup:has(#mode-sweep:checked) {
+                --highlight-index: 1;
+            }
+        }
     }
 
-    #playStopButton:hover {
-        transition: .2s;
-        color: var(--maintext);
-        outline: 2px solid var(--accentcolor);
-        outline-offset: 5px;
-        background: var(--accentcolor);
-        border: 20px solid var(--accentcolor);
-        filter: drop-shadow(0 0 10px var(--accentcolor));
-    }
+    @media (max-width: 640px) {
+        main {
+            .playerArea {
+                flex-direction: column;
+            }
+        }
 
-    #playStopButton:active {
-        transition: .2s;
-        transform: scale(.9);
-        font-size: 30px;
-        background: none;
-        border: 5px solid var(--accentcolor);
-        filter: drop-shadow(0 0 20px var(--accentcolor));
-        color: var(--accentcolor);
-        outline: 2px solid var(--accentcolor);
-        outline-offset: 0px;
+        .controlPanel {
+            width: 100%;
+
+            .controlBlock {
+                width: 100%;
+
+                .controlGroup {
+                    .controlLabel {
+                        min-width: 100%;
+                    }
+                }
+            }
+        }
     }
 </style>
 
@@ -168,25 +365,74 @@
     <main>
         <h1>スマホの水抜き</h1>
         <p class="topexplain">
-            スマホのスピーカーに水が詰まって音が籠ったりする際は、165Hzの音を再生することによって効率的にスマホのスピーカーから水を排除することができます。このサイトを使用すればYouTubeなどで音を再生するよりも大幅にデータ通信量を減らして再生できます。
+            iPhone・Androidのスピーカーに水が詰まって音がこもる場合、165Hz周辺の低音を再生することで排水を補助できます。映像を使わないため、YouTubeより通信量を抑えてすぐ再生できます。
         </p>
         <div class="help">
             <p>・iPhoneの場合底面のスピーカーは右側のみです。</p>
             <p>・サイレント(マナー)モードの場合音が出ないことがあります。</p>
+            <p>・本機能は改善を補助するもので、完全な修理を保証するものではありません。</p>
         </div>
+        
         <div class="explain">
             <input type="checkbox" name="water-remove-explain" id="water-remove-explain">
             <label for="water-remove-explain">
-                <h3>手順</h3>
+                <h2>手順</h2>
             </label>
             <article>
                 <p>ステップ1：サイレント（マナー）モードをオフにし、音量を最大にします。</p>
-                <p>ステップ2：再生します。</p>
+                <p>ステップ2：再生ボタンを押し、1〜2分ほど流します。</p>
                 <p>ステップ3：スピーカーから排出された水をふき取ります。</p>
                 <p>ステップ4：音量やサイレントモードを確認して完了です。</p>
             </article>
         </div>
-        <div class="btn"><button id="playStopButton">再生</button></div>
+        <div class="explain">
+            <input type="checkbox" name="water-remove-faq" id="water-remove-faq">
+            <label for="water-remove-faq">
+                <h2>よくある質問</h2>
+            </label>
+            <article>
+                <p class="faqQuestion">Q. 何回くらい再生すればいい？</p>
+                <p class="faqAnswer">A. 1〜2分を目安に、状態を確認しながら数回試してください。</p>
+                <p class="faqQuestion">Q. 固定音とスイープ音の違いは？</p>
+                <p class="faqAnswer">A. 固定音は同じ周波数を継続再生、上下スイープは周波数をゆるく上下させる音です。端末との相性で切り替えてください。</p>
+                <p class="faqQuestion">Q. iPhoneでも使える？</p>
+                <p class="faqAnswer">A. 使えます。iPhoneは底面右側のスピーカーから音が出るため、右側を下向きにすると排水しやすくなります。</p>
+                <p class="faqQuestion">Q. スピーカー水抜き音はどれを選べばいい？</p>
+                <p class="faqAnswer">A. まずは標準165Hzを試し、変化が少ない場合に180Hzや200Hz、上下スイープへ切り替える方法がおすすめです。</p>
+                <p class="faqQuestion">Q. 再生しても改善しない場合は？</p>
+                <p class="faqAnswer">A. 塩水や飲料の可能性がある場合は腐食リスクがあるため、早めに修理相談をおすすめします。</p>
+            </article>
+        </div>
+        <div class="playerArea">
+            <div class="btn">
+                <button id="playStopButton">再生</button>
+                <p id="playStatus" class="status" aria-live="polite">停止中</p>
+            </div>
+            <div class="controlPanel" aria-label="音声設定">
+                <fieldset class="controlBlock frequencyGroup">
+                    <p class="controlTitle">周波数</p>
+                    <div id="frequencyButtons" class="controlGroup">
+                        <span class="controlHighlight" aria-hidden="true"></span>
+                        <input class="controlInput" type="radio" name="frequency" id="freq-165" value="165" checked>
+                        <label class="controlLabel" for="freq-165">標準 165Hz</label>
+                        <input class="controlInput" type="radio" name="frequency" id="freq-180" value="180">
+                        <label class="controlLabel" for="freq-180">強め 180Hz</label>
+                        <input class="controlInput" type="radio" name="frequency" id="freq-200" value="200">
+                        <label class="controlLabel" for="freq-200">高め 200Hz</label>
+                    </div>
+                </fieldset>
+                <fieldset class="controlBlock modeGroup">
+                    <p class="controlTitle">音タイプ</p>
+                    <div id="modeButtons" class="controlGroup">
+                        <span class="controlHighlight" aria-hidden="true"></span>
+                        <input class="controlInput" type="radio" name="soundMode" id="mode-steady" value="steady" checked>
+                        <label class="controlLabel" for="mode-steady">固定音</label>
+                        <input class="controlInput" type="radio" name="soundMode" id="mode-sweep" value="sweep">
+                        <label class="controlLabel" for="mode-sweep">上下スイープ</label>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
     </main>
     <section style="margin: 0 auto; width: min(var(--width-l) - 40px, 100% - 40px);">
         <script async
@@ -202,42 +448,231 @@
     <section id="othertools" style="width: min(100%,1280px); margin: 0 auto;"></section>
     <footer id="footer"></footer>
     <script>
-        var audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        var oscillator;
+        var audioContext;
+        var oscillator = null;
+        var gainNode = null;
         var isPlaying = false;
+        var currentFrequency = 165;
+        var playMode = 'steady';
+        var sweepIntervalId = null;
+        var statusAnimationId = null;
+        var statusDotCount = 1;
+        var playStopButton = document.getElementById('playStopButton');
+        var playStatus = document.getElementById('playStatus');
+        var frequencyInputs = document.querySelectorAll('input[name="frequency"]');
+        var modeInputs = document.querySelectorAll('input[name="soundMode"]');
 
-        function playSound() {
+        function loadOtherTools() {
+            var target = document.getElementById('othertools');
+            if (!target) {
+                return;
+            }
+
+            fetch('othertools.html')
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error('failed');
+                    }
+                    return response.text();
+                })
+                .then(function (html) {
+                    target.innerHTML = html;
+                })
+                .catch(function () {
+                });
+        }
+
+        function createAudioContextIfNeeded() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function clearSweepInterval() {
+            if (sweepIntervalId) {
+                clearInterval(sweepIntervalId);
+                sweepIntervalId = null;
+            }
+        }
+
+        function runSweepCycle(startTime) {
+            var lowFrequency = Math.max(145, currentFrequency - 20);
+            var highFrequency = currentFrequency + 25;
+
+            oscillator.frequency.cancelScheduledValues(startTime);
+            oscillator.frequency.setValueAtTime(lowFrequency, startTime);
+            oscillator.frequency.linearRampToValueAtTime(highFrequency, startTime + 0.9);
+            oscillator.frequency.linearRampToValueAtTime(lowFrequency, startTime + 1.8);
+        }
+
+        function applySoundMode() {
+            if (!audioContext || !oscillator) {
+                return;
+            }
+
+            clearSweepInterval();
+            var now = audioContext.currentTime;
+
+            if (playMode === 'sweep') {
+                runSweepCycle(now);
+                sweepIntervalId = setInterval(function () {
+                    if (!isPlaying || !audioContext || !oscillator) {
+                        return;
+                    }
+                    runSweepCycle(audioContext.currentTime);
+                }, 1800);
+                return;
+            }
+
+            oscillator.frequency.cancelScheduledValues(now);
+            oscillator.frequency.setValueAtTime(currentFrequency, now);
+        }
+
+        function trackEvent(eventName, params) {
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, params || {});
+            }
+        }
+
+        async function playSound() {
+            createAudioContextIfNeeded();
+            if (audioContext.state === 'suspended') {
+                await audioContext.resume();
+            }
+
             oscillator = audioContext.createOscillator();
+            gainNode = audioContext.createGain();
             oscillator.type = 'sine';
-            oscillator.frequency.value = 165;
-            oscillator.connect(audioContext.destination);
+            gainNode.gain.value = 0.18;
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
             oscillator.start();
-
-            setInterval(function () {
-                if (isPlaying) {
-                    oscillator.stop(audioContext.currentTime + 3);
-                    oscillator.start(audioContext.currentTime + 3.5);
-                }
-            }, 5000);
+            applySoundMode();
         }
 
         function stopSound() {
-            oscillator.stop();
+            if (!oscillator) {
+                return;
+            }
+
+            clearSweepInterval();
+
+            try {
+                oscillator.stop();
+            } catch (e) {
+            }
+
             oscillator.disconnect();
+            if (gainNode) {
+                gainNode.disconnect();
+            }
+            oscillator = null;
+            gainNode = null;
         }
 
-        document.getElementById('playStopButton').addEventListener('click', function () {
-            if (!isPlaying) {
-                playSound();
-                isPlaying = true;
-                document.getElementById('playStopButton').textContent = '停止';
-            } else {
+        function renderStatusText() {
+            if (isPlaying) {
+                var dots = '.'.repeat(statusDotCount).padEnd(3, '\u00A0');
+                playStatus.textContent = '再生中' + dots;
+                return;
+            }
+
+            playStatus.textContent = '停止中';
+        }
+
+        function startStatusAnimation() {
+            stopStatusAnimation();
+            statusDotCount = 1;
+            renderStatusText();
+
+            statusAnimationId = setInterval(function () {
+                if (!isPlaying) {
+                    return;
+                }
+
+                statusDotCount = statusDotCount >= 3 ? 1 : statusDotCount + 1;
+                renderStatusText();
+            }, 450);
+        }
+
+        function stopStatusAnimation() {
+            if (statusAnimationId) {
+                clearInterval(statusAnimationId);
+                statusAnimationId = null;
+            }
+        }
+
+        function updatePlayUi() {
+            playStopButton.textContent = isPlaying ? '停止' : '再生';
+            playStatus.classList.toggle('is-playing', isPlaying);
+            renderStatusText();
+        }
+
+        playStopButton.addEventListener('click', async function () {
+            if (isPlaying) {
                 stopSound();
                 isPlaying = false;
-                document.getElementById('playStopButton').textContent = '再生';
+                stopStatusAnimation();
+                updatePlayUi();
+                trackEvent('water_remove_stop', { frequency_hz: currentFrequency, mode: playMode });
+                return;
+            }
+
+            try {
+                await playSound();
+                isPlaying = true;
+                updatePlayUi();
+                startStatusAnimation();
+                trackEvent('water_remove_play', { frequency_hz: currentFrequency, mode: playMode });
+            } catch (error) {
+                playStatus.textContent = '再生に失敗しました。音量とマナーモードを確認して再試行してください。';
+                isPlaying = false;
+                stopStatusAnimation();
+                updatePlayUi();
+                trackEvent('water_remove_error', { message: 'play_failed' });
             }
         });
 
+        frequencyInputs.forEach(function (input) {
+            input.addEventListener('change', function () {
+                if (!input.checked) {
+                    return;
+                }
+
+                currentFrequency = Number(input.value);
+                updatePlayUi();
+                trackEvent('water_remove_frequency_change', { frequency_hz: currentFrequency });
+
+                if (isPlaying) {
+                    applySoundMode();
+                }
+            });
+        });
+
+        modeInputs.forEach(function (input) {
+            input.addEventListener('change', function () {
+                if (!input.checked) {
+                    return;
+                }
+
+                playMode = input.value || 'steady';
+                updatePlayUi();
+                trackEvent('water_remove_mode_change', { mode: playMode, frequency_hz: currentFrequency });
+
+                if (isPlaying) {
+                    applySoundMode();
+                }
+            });
+        });
+
+        window.addEventListener('beforeunload', function () {
+            stopSound();
+            isPlaying = false;
+            stopStatusAnimation();
+        });
+
+        loadOtherTools();
+        updatePlayUi();
     </script>
 </body>
-<html>
+</html>
