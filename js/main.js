@@ -22,11 +22,46 @@ function setFont() {
 window.onload = setFont;
 
 // Header/Footer を読み込む関数
+let commonBasePathCache = null;
+
+async function resolveCommonBasePath() {
+    if (commonBasePathCache !== null) {
+        return commonBasePathCache;
+    }
+
+    const forcedBasePath = window.commonFilesBasePath;
+    if (typeof forcedBasePath === 'string') {
+        commonBasePathCache = forcedBasePath;
+        return commonBasePathCache;
+    }
+
+    const candidates = ['', '../', '../../'];
+
+    for (const basePath of candidates) {
+        try {
+            const [headerRes, footerRes] = await Promise.all([
+                fetch(`${basePath}header.html`),
+                fetch(`${basePath}footer.html`)
+            ]);
+
+            if (headerRes.ok && footerRes.ok) {
+                commonBasePathCache = basePath;
+                return commonBasePathCache;
+            }
+        } catch (error) {
+        }
+    }
+
+    commonBasePathCache = '';
+    return commonBasePathCache;
+}
+
 async function loadCommonFiles() {
     try {
+        const basePath = await resolveCommonBasePath();
         const [headerRes, footerRes] = await Promise.all([
-            fetch("header.html"),
-            fetch("footer.html")
+            fetch(`${basePath}header.html`),
+            fetch(`${basePath}footer.html`)
         ]);
         
         if (!headerRes.ok || !footerRes.ok) {
