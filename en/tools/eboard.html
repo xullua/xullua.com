@@ -5,562 +5,1995 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Electric Bulletin Board</title>
-    <meta name="description"
-        content="You can project the text in large size while scrolling it like an electric bulletin board. You can use your phone to communicate text to someone.">
+    <title>Custom LED Signboard Maker | Web App</title>
+    <meta name="description" content="Free LED signboard maker. Create scrolling text in your browser and show it fullscreen on mobile or PC. Great for quiet communication and event or store guidance displays.">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@xullua">
-    <meta name="twitter:title" content="Custom Electric Bulletin Board">
-    <meta name="twitter:description"
-        content="You can project the text in large size while scrolling it like an electric bulletin board. You can use your phone to communicate text to someone.">
+    <meta name="twitter:title" content="Custom LED Signboard Maker">
+    <meta name="twitter:description" content="Free LED signboard maker for browser. Create scrolling text and show it fullscreen on mobile or PC for quiet communication and event guidance.">
     <meta name="twitter:image" content="https://xullua.com/img/eboard.webp">
 
     <link rel="shortcut icon" href="../../img/favicon.ico">
-    <!-- CSS -->
     <link rel="stylesheet" href="../../css/color.css">
     <link rel="stylesheet" href="../../css/base.css">
 
-    <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- アナリティクス -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script src="../../js/main.js" async></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-JDKGJ1E005');
     </script>
-    <!-- 共通部分 -->
-    <script>
-        $(function () {
-            $("header").load("../header.html");
-            $("footer").load("../footer.html");
-        });
-    </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://xullua.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Tools",
+                    "item": "https://xullua.com/en/tools/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "LED Signboard Maker",
+                    "item": "https://xullua.com/en/tools/eboard.html"
+                }
+            ]
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Custom LED Signboard Maker",
+            "alternateName": ["LED signboard", "Scrolling text maker"],
+            "url": "https://xullua.com/en/tools/eboard.html",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "inLanguage": "en",
+            "browserRequirements": "JavaScript enabled",
+            "description": "Free web app to create scrolling text and display it fullscreen in the browser. Useful for quiet communication and event or store guidance displays.",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "JPY"
+            },
+            "featureList": [
+                "Scroll and flip-card display modes",
+                "Color, font, and speed controls",
+                "Local settings persistence",
+                "Mobile and PC support"
+            ]
+        }
+        </script>
 </head>
 
 <body>
-    <header class="width-s en"></header>
+    <header id="header" class="width-s ja en"></header>
     <main>
         <section class="explain">
-            <h1>Electric Bulletin Board</h1>
+            <h1>LED Signboard</h1>
             <p>
-                Text can be projected in large size while scrolling like an electronic bulletin board. It can be used to
-                convey a message to someone silently or through a window using a smartphone, or to display information
-                using a large monitor such as a PC.
+                Display large scrolling text like an LED signboard. Use it on your phone for quiet communication, through-window messaging, or guidance displays at events and stores.
             </p>
         </section>
+
         <section class="content">
             <div id="preview-container">
                 <div id="preview"></div>
             </div>
+
+            <div class="mode-switch">
+                <div class="mode-tab-panel">
+                    <span class="mode-active-bg" aria-hidden="true"></span>
+                    <input class="mode-input" type="radio" name="display-mode" id="mode-scroll" value="scroll"
+                        checked>
+                    <label class="mode-label" id="mode-label-scroll" for="mode-scroll">Scroll</label>
+                    <input class="mode-input" type="radio" name="display-mode" id="mode-flip" value="flip">
+                    <label class="mode-label" id="mode-label-flip" for="mode-flip">Flip Cards</label>
+                </div>
+            </div>
+
             <div id="setting">
-                <div class="text">
+                <div class="text mode-scroll-item">
                     <h3>Text</h3>
                     <div>
-                        <input type="text" name="" id="">
+                        <input type="text" id="display-text">
                     </div>
                 </div>
-                <div class="font">
+
+                <div class="font mode-scroll-item">
                     <h3>Font</h3>
-                    <div>
-                        <input type="radio" name="font" id="font0">
-                        <label for="font0">Default</label>
-                        <input type="radio" name="font" id="font1" checked>
-                        <label for="font1">Gothic</label>
-                        <input type="radio" name="font" id="font2">
-                        <label for="font2">Mincho</label>
+                    <div class="vtab-options">
+                        <span class="active-bg" aria-hidden="true"></span>
+                        <input class="tab-input" type="radio" name="font" id="font0">
+                        <label class="tab-label" for="font0">Default</label>
+                        <input class="tab-input" type="radio" name="font" id="font1" checked>
+                        <label class="tab-label" for="font1">Sans Serif</label>
+                        <input class="tab-input" type="radio" name="font" id="font2">
+                        <label class="tab-label" for="font2">Serif</label>
                     </div>
                 </div>
-                <div class="font-color">
+
+                <div class="font-color mode-scroll-item">
                     <h3>Text Color</h3>
                     <div>
-                        <input type="radio" name="font-color" id="font-color1" checked>
-                        <label for="font-color1">Mono</label>
-                        <input type="radio" name="font-color" id="font-color2">
-                        <label for="font-color2">Gradation</label>
-                        <div class="font-color-single">
-                            <input type="color" name="" id="">
+                        <div class="vtab-options">
+                            <span class="active-bg" aria-hidden="true"></span>
+                            <input class="tab-input" type="radio" name="font-color" id="font-color1" checked>
+                            <label class="tab-label" for="font-color1">Single Color</label>
+                            <input class="tab-input" type="radio" name="font-color" id="font-color2">
+                            <label class="tab-label" for="font-color2">Gradient</label>
+                        </div>
+
+                        <div class="font-color-single color-palette" id="font-color-palette">
+                            <input class="swatch-input" type="radio" name="font-single-preset" id="font-single-white"
+                                value="#ffffff" checked>
+                            <label class="swatch" for="font-single-white" style="--swatch:#ffffff;"
+                                aria-label="White"></label>
+
+                            <input class="swatch-input" type="radio" name="font-single-preset" id="font-single-black"
+                                value="#000000">
+                            <label class="swatch" for="font-single-black" style="--swatch:#000000;"
+                                aria-label="Black"></label>
+
+                            <input class="swatch-input" type="radio" name="font-single-preset" id="font-single-yellow"
+                                value="#ffd400">
+                            <label class="swatch" for="font-single-yellow" style="--swatch:#ffd400;"
+                                aria-label="Yellow"></label>
+
+                            <input class="swatch-input" type="radio" name="font-single-preset" id="font-single-red"
+                                value="#ff3131">
+                            <label class="swatch" for="font-single-red" style="--swatch:#ff3131;"
+                                aria-label="Red"></label>
+
+                            <input class="swatch-input" type="radio" name="font-single-preset" id="font-single-custom"
+                                value="custom">
+                            <label class="swatch rainbow" for="font-single-custom" aria-label="Choose custom text color">
+                                <input type="color" id="font-color-custom" value="#ffffff">
+                            </label>
                         </div>
                     </div>
                 </div>
-                <div class="background-color">
+
+                <div class="background-color mode-scroll-item">
                     <h3>Background Color</h3>
-                    <div><input type="color"></div>
+                    <div class="color-palette bg-color-palette" id="bg-color-palette">
+                        <input class="swatch-input" type="radio" name="bg-preset" id="bg-black" value="#000000" checked>
+                        <label class="swatch" for="bg-black" style="--swatch:#000000;" aria-label="Black"></label>
+
+                        <input class="swatch-input" type="radio" name="bg-preset" id="bg-white" value="#ffffff">
+                        <label class="swatch" for="bg-white" style="--swatch:#ffffff;" aria-label="White"></label>
+
+                        <input class="swatch-input" type="radio" name="bg-preset" id="bg-red" value="#df0000">
+                        <label class="swatch" for="bg-red" style="--swatch:#df0000;" aria-label="Red"></label>
+
+                        <input class="swatch-input" type="radio" name="bg-preset" id="bg-yellow" value="#ffd400">
+                        <label class="swatch" for="bg-yellow" style="--swatch:#ffd400;" aria-label="Yellow"></label>
+
+                        <input class="swatch-input" type="radio" name="bg-preset" id="bg-custom" value="custom">
+                        <label class="swatch rainbow" for="bg-custom" aria-label="Choose custom background color">
+                            <input type="color" id="bg-color-custom" value="#000000">
+                        </label>
+                    </div>
                 </div>
-                <div class="scrollspeed">
-                    <h3>Scrolling Speed</h3>
+
+                <div class="scrollspeed mode-scroll-item">
+                    <h3>Display Speed</h3>
                     <div>
                         <input type="range" id="scrollspeed" min="3" max="25" value="4" step="0.1">
                         <label for="scrollspeed"><span id="scrollspeed-value">4</span><span
-                                style="font-size: .8rem;">s</span></label>
+                                style="font-size: .8rem;">sec</span></label>
                     </div>
                 </div>
-                <div class="font-size">
-                    <h3>Font Size</h3>
-                    <div>
-                        <input type="radio" name="font-size" id="font-size100" checked>
-                        <label for="font-size100">100%</label>
-                        <input type="radio" name="font-size" id="font-size150">
-                        <label for="font-size150">150%</label>
-                        <input type="radio" name="font-size" id="font-size200">
-                        <label for="font-size200">200%</label>
+
+                <div class="font-size mode-scroll-item">
+                    <h3>Text Size</h3>
+                    <div class="vtab-options">
+                        <span class="active-bg" aria-hidden="true"></span>
+                        <input class="tab-input" type="radio" name="font-size" id="font-size100" checked>
+                        <label class="tab-label" for="font-size100">100%</label>
+                        <input class="tab-input" type="radio" name="font-size" id="font-size150">
+                        <label class="tab-label" for="font-size150">150%</label>
+                        <input class="tab-input" type="radio" name="font-size" id="font-size200">
+                        <label class="tab-label" for="font-size200">200%</label>
                     </div>
                 </div>
+
+                <div class="flip-editor mode-flip-item">
+                    <h3>Flip Cards</h3>
+                    <div class="flip-editor-body">
+                        <div id="flip-cards"></div>
+                        <div class="flip-add-row">
+                            <button type="button" id="add-flip-card">+ Add Card</button>
+                            <p id="flip-add-limit" aria-live="polite"></p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="start-btn">
-                    <button class="start">PLAY</button>
+                    <button class="start">Show</button>
                 </div>
             </div>
         </section>
+
         <section id="screen">
             <div class="textbox"></div>
-            <button class="close">CLOSE</button>
+            <button class="close">Close</button>
         </section>
+
         <section class="notes">
             <ul>
-                <li>The preview may differ from the actual display.</li>
-                <li>In the font selection, the Gothic and Mincho fonts are the browser or device defaults. If you change
-                    from the default settings, it may not behave as expected.</li>
-                <li>While selecting a gradient, the text color cannot be selected from the color pad.</li>
+                <li>The preview and actual fullscreen display may differ slightly.</li>
+                <li>Sans Serif and Serif use your browser or device defaults. If your defaults are customized, appearance may vary.</li>
+                <li>While Gradient is selected, single-color presets are disabled.</li>
             </ul>
         </section>
+
+        <section>
+            <script async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8816279824306037"
+                crossorigin="anonymous"></script>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8816279824306037"
+                data-ad-slot="6249943805" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </section>
     </main>
-    <footer class="width-s en"></footer>
-</body>
+    <footer id="footer" class="width-s"></footer>
 
-<style>
-    .explain {
-        width: min(100% - 40px, var(--width-s));
-        margin: 60px auto 20px;
+    <style>
+        .explain {
+            width: min(100% - 40px, var(--width-s));
+            margin: 60px auto 20px;
 
-        p {
-            color: var(--subtext);
-            font-size: 14px;
-            line-height: 1.2;
-        }
-    }
-
-    .content {
-        width: min(100% - 40px, var(--width-s));
-        margin: 20px auto 60px;
-        padding: 20px 0;
-
-        #preview-container {
-            width: 100%;
-            height: 60px;
-            margin: 0 0 20px;
-            border-radius: 15px;
-            position: sticky;
-            top: 60px;
-            left: 0;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            filter: drop-shadow(0 0 10px #0005);
-
-            #preview {
-                width: auto;
-                padding: 10px;
-                white-space: nowrap;
-                overflow: hidden;
-                display: inline-block;
-                max-width: none;
-                font-weight: 900;
+            p {
+                color: var(--subtext);
+                font-size: 14px;
+                line-height: 1.2;
             }
         }
 
-        #setting {
-            &>div {
-                background: var(--secondback);
-                padding: 5px;
-                margin: 5px 0;
-                border-radius: 20px;
-                display: flex;
-                justify-content: space-between;
+        .content {
+            width: min(100% - 40px, var(--width-s));
+            margin: 20px auto 60px;
+            padding: 20px 0;
 
-                h3 {
-                    padding: 5px 10px;
-                    margin: 0;
+            #preview-container {
+                width: 100%;
+                height: 60px;
+                margin: 0 0 20px;
+                border-radius: 15px;
+                position: sticky;
+                top: 60px;
+                left: 0;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                outline: 3px solid var(--firstback);
+                border: 2px solid #7c7c7c5e;
+                z-index: 5;
+
+                #preview {
+                    width: auto;
+                    padding: 0;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    display: inline-flex;
+                    align-items: center;
+                    max-width: none;
+                    font-weight: 900;
+                    line-height: 1;
+                    will-change: transform;
+                }
+            }
+
+            .mode-switch {
+                background: none;
+                margin: 0 0 12px;
+                display: flex;
+                justify-content: flex-end;
+                position: sticky;
+                top: 130px;
+                z-index: 4;
+            }
+
+            .mode-tab-panel {
+                --mode-tab-height: 40px;
+                --mode-tab-radius: 30px;
+                --mode-tab-padding: 5px;
+                --mode-tab-gap: 8px;
+                --mode-tab-count: 2;
+                --mode-tab-active-width: calc((100% - var(--mode-tab-padding) * 2 - var(--mode-tab-gap) * (var(--mode-tab-count) - 1)) / var(--mode-tab-count));
+                position: relative;
+                display: grid;
+                grid-template-columns: repeat(var(--mode-tab-count), minmax(0, 1fr));
+                gap: var(--mode-tab-gap);
+                border-radius: var(--mode-tab-radius);
+                padding: var(--mode-tab-padding);
+                background: var(--secondback);
+                width: fit-content;
+                max-width: 100%;
+
+                .mode-active-bg {
+                    position: absolute;
+                    z-index: 0;
+                    top: var(--mode-tab-padding);
+                    left: var(--mode-tab-padding);
+                    width: var(--mode-tab-active-width);
+                    height: var(--mode-tab-height);
+                    border-radius: calc(var(--mode-tab-radius) - var(--mode-tab-padding));
+                    background: var(--accentcolor);
+                    transition: left .4s cubic-bezier(.2, 1.28, .32, 1), width .3s ease, top .3s ease, height .3s ease;
+                    pointer-events: none;
                 }
 
-                &>div {
-                    display: flex;
-                    text-align: center;
-                    flex-direction: column;
-                    align-items: flex-end;
-                    gap: 5px;
-                    padding: 5px;
-                    width: 50%;
+                .mode-input {
+                    display: none;
+                }
 
-                    input[type="radio"] {
+                .mode-label {
+                    position: relative;
+                    z-index: 1;
+                    height: var(--mode-tab-height);
+                    border-radius: calc(var(--mode-tab-radius) - var(--mode-tab-padding));
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0 10px;
+                    color: var(--maintext);
+                    cursor: pointer;
+                    user-select: none;
+                    transition: .2s;
+
+                    &:hover {
+                        background: var(--thirdback);
+                    }
+                }
+
+                .mode-input:checked+:is(.mode-label) {
+                    color: #fff;
+
+                    &:is(:hover, :focus-visible) {
+                        background: none;
+                        transition: 0s;
+                    }
+                }
+
+                &:has(#mode-scroll:checked) .mode-active-bg {
+                    left: var(--mode-tab-padding);
+                }
+
+                &:has(#mode-flip:checked) .mode-active-bg {
+                    left: calc(100% - var(--mode-tab-padding) - var(--mode-tab-active-width));
+                }
+
+                @supports (anchor-name: --mode-selected) and (left: anchor(--mode-selected left)) and (width: anchor-size(--mode-selected width)) {
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    .mode-label {
+                        min-width: max-content;
+                        padding: 0 16px;
+                    }
+
+                    &:has(#mode-scroll:checked) #mode-label-scroll,
+                    &:has(#mode-flip:checked) #mode-label-flip {
+                        anchor-name: --mode-selected;
+                    }
+
+                    .mode-active-bg {
+                        left: anchor(--mode-selected left);
+                        top: anchor(--mode-selected top);
+                        width: anchor-size(--mode-selected width);
+                        height: anchor-size(--mode-selected height);
+                    }
+                }
+            }
+
+            #setting {
+                &>div {
+                    background: var(--secondback);
+                    padding: 5px;
+                    margin: 5px 0;
+                    border-radius: 20px;
+                    display: flex;
+                    justify-content: space-between;
+
+                    h3 {
+                        padding: 5px 10px;
+                        margin: 0;
+                    }
+
+                    &.mode-scroll-item>div {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 8px;
+                        padding: 5px;
+                        width: min(60%, 320px);
+
+                        input[type="text"] {
+                            outline: none;
+                            border: none;
+                            padding: 10px;
+                            font-size: 16px;
+                            background: var(--thirdback);
+                            border-radius: 10px;
+                            width: min(100%, 300px);
+                        }
+
+                        input[type="range"] {
+                            width: 150px;
+                            height: 5px;
+                            appearance: none;
+                            background: var(--thirdback);
+                            border-radius: 10px;
+                            outline: none;
+                            cursor: pointer;
+
+                            &::-webkit-slider-thumb {
+                                appearance: none;
+                                width: 20px;
+                                height: 20px;
+                                background: var(--accentcolor);
+                                border-radius: 50%;
+                                cursor: pointer;
+                            }
+
+                            &::-moz-range-thumb {
+                                width: 20px;
+                                height: 20px;
+                                background: var(--accentcolor);
+                                border-radius: 50%;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    &.mode-scroll-item.is-hidden {
                         display: none;
                     }
 
-                    label {
-                        display: block;
-                        width: min(100%, 150px);
-                        background: var(--thirdback);
-                        padding: 5px 10px;
-                        border-radius: 10px;
-                        cursor: pointer;
-                        transition: .2s;
-
-                        &:hover {
-                            background: var(--fourthback);
-                        }
-
-                        &:active {
-                            transform: scale(.9);
-                        }
+                    &.mode-scroll-item.mode-enter-left,
+                    &.mode-flip-item.mode-enter-left {
+                        animation: modeSlideInLeft .26s ease;
                     }
 
-                    input[type="radio"]:checked+label {
-                        color: #fff;
-                        background: var(--accentcolor);
+                    &.mode-scroll-item.mode-enter-right,
+                    &.mode-flip-item.mode-enter-right {
+                        animation: modeSlideInRight .26s ease;
                     }
 
-                    input[type="text"] {
-                        outline: none;
-                        border: none;
-                        padding: 10px;
-                        font-size: 16px;
-                        background: var(--thirdback);
-                        border-radius: 10px;
-                        width: min(100%, 300px);
-                    }
-
-                    input[type="color"] {
-                        display: block;
-                        width: 100px;
-                        height: 38px;
-                        border-radius: 10px;
-                        outline: none;
-                        border: none;
-                        appearance: none;
-                        cursor: pointer;
+                    &.mode-flip-item {
+                        display: none;
                         background: none;
-                    }
+                        padding: 0;
+                        margin: 0;
 
-                    input[type="range"] {
-                        width: 150px;
-                        height: 5px;
-                        appearance: none;
-                        background: var(--thirdback);
-                        border-radius: 10px;
-                        outline: none;
-                        cursor: pointer;
-
-                        &::-webkit-slider-thumb {
-                            appearance: none;
-                            width: 20px;
-                            height: 20px;
-                            background: var(--accentcolor);
-                            border-radius: 50%;
-                            cursor: pointer;
+                        &.is-active {
+                            display: block;
                         }
 
-                        &::-moz-range-thumb {
-                            width: 20px;
-                            height: 20px;
-                            background: var(--accentcolor);
-                            border-radius: 50%;
-                            cursor: pointer;
+                        h3 {
+                            display: none;
+                        }
+
+                        .flip-editor-body {
+                            width: 100%;
+                            max-width: 960px;
+                            display: grid;
+                            gap: 14px;
+                            padding: 0;
+                        }
+
+                        #flip-cards {
+                            display: grid;
+                            gap: 14px;
+                            width: 100%;
+                        }
+
+                        .flip-card {
+                            background: var(--secondback);
+                            border-radius: 30px;
+                            padding: 14px;
+                            display: grid;
+                            gap: 12px;
+
+                            .flip-card-head {
+                                display: grid;
+                                grid-template-columns: 76px minmax(0, 1fr);
+                                gap: 10px;
+                                align-items: center;
+                            }
+
+                            .flip-card-number {
+                                margin: 0;
+                                width: 64px;
+                                height: 64px;
+                                border-radius: 50%;
+                                background: #000;
+                                color: #fff;
+                                display: grid;
+                                place-items: center;
+                                font-size: 32px;
+                                font-weight: 700;
+                            }
+
+                            .flip-text {
+                                width: 100%;
+                                outline: none;
+                                border: none;
+                                padding: 12px 14px;
+                                font-size: 24px;
+                                background: var(--thirdback);
+                                border-radius: 18px;
+                                color: var(--maintext);
+                            }
+
+                            .flip-card-body {
+                                display: grid;
+                                grid-template-columns: max-content minmax(0, 1fr);
+                                grid-template-areas:
+                                    "font textcolor"
+                                    "font bgcolor"
+                                    "font speed";
+                                gap: 12px;
+                            }
+
+                            .flip-font-pane {
+                                grid-area: font;
+                                background: none;
+                                border-radius: 0;
+                                padding: 0;
+                                align-self: stretch;
+                                width: fit-content;
+                                justify-self: start;
+                            }
+
+                            .flip-font-options {
+                                --verticaltab-height: 48px;
+                                --verticaltab-radius: 18px;
+                                --verticaltab-padding: 4px;
+                                --verticaltab-gap: 6px;
+                                position: relative;
+                                display: grid;
+                                gap: var(--verticaltab-gap);
+                                border-radius: var(--verticaltab-radius);
+                                padding: var(--verticaltab-padding);
+                                background: var(--firstback);
+                                width: fit-content;
+
+                                .active-bg {
+                                    position: absolute;
+                                    top: var(--verticaltab-padding);
+                                    left: var(--verticaltab-padding);
+                                    right: var(--verticaltab-padding);
+                                    height: var(--verticaltab-height);
+                                    border-radius: calc(var(--verticaltab-radius) - var(--verticaltab-padding));
+                                    background: var(--accentcolor);
+                                    transition: top .35s cubic-bezier(.2, 1.3, .3, 1);
+                                    pointer-events: none;
+                                }
+
+                                .tab-input {
+                                    display: none;
+                                }
+
+                                .tab-label {
+                                    position: relative;
+                                    z-index: 1;
+                                    height: var(--verticaltab-height);
+                                    border-radius: calc(var(--verticaltab-radius) - var(--verticaltab-padding));
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: flex-start;
+                                    padding: 0 12px;
+                                    color: var(--maintext);
+                                    cursor: pointer;
+                                    user-select: none;
+                                    transition: .2s;
+
+                                    &:hover {
+                                        background: var(--thirdback);
+                                    }
+                                }
+
+                                .tab-input:checked+:is(.tab-label) {
+                                    color: #fff;
+
+                                    &:is(:hover, :focus-visible) {
+                                        background: none;
+                                        transition: 0s;
+                                    }
+                                }
+
+                                &:has(.font-inherit:checked) .active-bg {
+                                    top: var(--verticaltab-padding);
+                                }
+
+                                &:has(.font-sans:checked) .active-bg {
+                                    top: calc(var(--verticaltab-padding) + var(--verticaltab-height) + var(--verticaltab-gap));
+                                }
+
+                                &:has(.font-serif:checked) .active-bg {
+                                    top: calc(var(--verticaltab-padding) + (var(--verticaltab-height) + var(--verticaltab-gap)) * 2);
+                                }
+                            }
+
+                            .flip-text-color-row {
+                                grid-area: textcolor;
+                            }
+
+                            .flip-bg-color-row {
+                                grid-area: bgcolor;
+                            }
+
+                            .flip-row {
+                                background: var(--thirdback);
+                                border-radius: 99px;
+                                padding: 5px 10px 5px 14px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                gap: 10px;
+                            }
+
+                            .flip-row-title {
+                                margin: 0;
+                                font-size: 12px;
+                                color: var(--maintext);
+                                white-space: nowrap;
+                            }
+
+                            .flip-color-palette {
+                                display: flex;
+                                align-items: center;
+                                justify-content: flex-end;
+                                gap: 8px;
+                                flex-wrap: nowrap;
+                            }
+
+                            .flip-swatch-input {
+                                display: none;
+                            }
+
+                            .flip-swatch {
+                                --swatch-size: 34px;
+                                width: var(--swatch-size);
+                                height: var(--swatch-size);
+                                border-radius: 50%;
+                                background: var(--swatch, #fff);
+                                border: 2px solid var(--firstback);
+                                outline: 2px solid #0000;
+                                cursor: pointer;
+                                display: block;
+                                transition: .2s;
+                            }
+
+                            .flip-swatch-input:checked+.flip-swatch {
+                                outline: 2px solid #fff;
+                                box-shadow: 0 0 0 3px var(--accentcolor);
+                            }
+
+                            .flip-swatch.rainbow {
+                                position: relative;
+                                background: conic-gradient(from 0deg,
+                                        #ff0000,
+                                        #ff7a00,
+                                        #ffee00,
+                                        #12ff00,
+                                        #00d5ff,
+                                        #2b65ff,
+                                        #9c00ff,
+                                        #ff00b7,
+                                        #ff0000);
+                                overflow: hidden;
+
+                                input[type="color"] {
+                                    position: absolute;
+                                    inset: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    opacity: 0;
+                                    cursor: pointer;
+                                }
+                            }
+
+                            .flip-speed-control {
+                                display: flex;
+                                align-items: center;
+                                justify-content: flex-end;
+                                gap: 8px;
+
+                                .flip-duration-range {
+                                    width: 100%;
+                                    height: 5px;
+                                    appearance: none;
+                                    background: var(--firstback);
+                                    border-radius: 10px;
+                                    outline: none;
+                                    cursor: pointer;
+
+                                    &::-webkit-slider-thumb {
+                                        appearance: none;
+                                        width: 22px;
+                                        height: 22px;
+                                        background: var(--accentcolor);
+                                        border-radius: 50%;
+                                        cursor: pointer;
+                                    }
+
+                                    &::-moz-range-thumb {
+                                        width: 22px;
+                                        height: 22px;
+                                        background: var(--accentcolor);
+                                        border-radius: 50%;
+                                        cursor: pointer;
+                                    }
+                                }
+
+                                .flip-duration-value {
+                                    min-width: 36px;
+                                    text-align: right;
+                                    color: var(--maintext);
+                                    font-size: 14px;
+                                }
+
+                                .flip-duration-unit {
+                                    color: var(--subtext);
+                                    font-size: 12px;
+                                }
+                            }
+
+                            .flip-speed-row {
+                                grid-area: speed;
+                            }
+                        }
+
+                        .flip-add-row {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            min-height: 56px;
+
+                            button {
+                                border: none;
+                                background: var(--secondback);
+                                color: #fff;
+                                border-radius: 999px;
+                                padding: 12px 28px;
+                                font-size: 16px;
+                                cursor: pointer;
+                            }
+
+                            p {
+                                margin: 0;
+                                font-size: 14px;
+                                color: var(--subtext);
+                                opacity: .75;
+                                display: none;
+                            }
+
+                            &.is-limit {
+                                button {
+                                    display: none;
+                                }
+
+                                p {
+                                    display: block;
+                                }
+                            }
+                        }
+
+                        @media (max-width: 500px) {
+                            .flip-card .flip-card-body {
+                                grid-template-columns: max-content minmax(0, 1fr);
+                                grid-template-areas:
+                                    "font textcolor"
+                                    "font bgcolor"
+                                    "speed speed";
+                                align-items: start;
+                            }
+
+                            .flip-card .flip-row {
+                                flex-direction: column;
+                                align-items: flex-start;
+                                border-radius: 20px;
+                                padding: 10px 12px;
+                            }
+
+                            .flip-card .flip-color-palette {
+                                width: 100%;
+                                justify-content: flex-end;
+                            }
+
+                            .flip-card .flip-swatch {
+                                --swatch-size: 30px;
+                            }
+
+                            .flip-card .flip-speed-row {
+                                width: 100%;
+                            }
+
+                            .flip-card .flip-speed-row .flip-speed-control {
+                                width: 100%;
+                                justify-content: flex-end;
+                            }
+
+                            .flip-card .flip-speed-control .flip-duration-range {
+                                width: min(220px, 70vw);
+                            }
                         }
                     }
-                }
 
-                &.scrollspeed div {
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: flex-end;
-                    gap: 0;
+                    .vtab-options {
+                        --verticaltab-height: 38px;
+                        --verticaltab-radius: 18px;
+                        --verticaltab-padding: 4px;
+                        --verticaltab-gap: 6px;
+                        position: relative;
+                        display: grid;
+                        gap: var(--verticaltab-gap);
+                        border: 1px solid var(--linecolor);
+                        border-radius: var(--verticaltab-radius);
+                        padding: var(--verticaltab-padding);
+                        background: var(--firstback);
+                        width: fit-content;
+                        max-width: 100%;
+                        z-index: 1;
 
-                    label {
-                        text-align: right;
-                        display: inline-block;
-                        width: min(75px, 100%);
-                        padding: 5px 10px;
+                        .active-bg {
+                            position: absolute;
+                            top: var(--verticaltab-padding);
+                            left: var(--verticaltab-padding);
+                            right: var(--verticaltab-padding);
+                            height: var(--verticaltab-height);
+                            border-radius: calc(var(--verticaltab-radius) - var(--verticaltab-padding));
+                            background: var(--accentcolor);
+                            transition: top .35s cubic-bezier(.2, 1.3, .3, 1);
+                            pointer-events: none;
+                        }
+
+                        .tab-input {
+                            display: none;
+                        }
+
+                        .tab-label {
+                            position: relative;
+                            z-index: 1;
+                            height: var(--verticaltab-height);
+                            border-radius: calc(var(--verticaltab-radius) - var(--verticaltab-padding));
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+                            padding: 0 12px;
+                            color: var(--maintext);
+                            cursor: pointer;
+                            user-select: none;
+                            transition: .2s;
+
+                            &:hover {
+                                background: var(--thirdback);
+                            }
+                        }
+
+                        .tab-input:checked+:is(.tab-label) {
+                            color: #fff;
+
+                            &:is(:hover, :focus-visible) {
+                                background: none;
+                                transition: 0s;
+                            }
+                        }
+                    }
+
+                    .color-palette {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        flex-wrap: wrap;
+                        gap: 10px;
+                        width: fit-content;
+
+                        .swatch-input {
+                            display: none;
+                        }
+
+                        .swatch {
+                            --swatch-size: 42px;
+                            width: var(--swatch-size);
+                            height: var(--swatch-size);
+                            border-radius: 50%;
+                            background: var(--swatch, #fff);
+                            border: 2px solid var(--firstback);
+                            outline: 2px solid #0000;
+                            outline-offset: 0;
+                            cursor: pointer;
+                            display: block;
+                            transition: .2s;
+
+                            &:hover {
+                                transform: scale(1.05);
+                            }
+                        }
+
+                        .swatch-input:checked+.swatch {
+                            outline: 2px solid #fff;
+                            box-shadow: 0 0 0 3px var(--accentcolor);
+                            transform: scale(1.02);
+                        }
+
+                        .swatch.rainbow {
+                            position: relative;
+                            background: conic-gradient(from 0deg,
+                                    #ff0000,
+                                    #ff7a00,
+                                    #ffee00,
+                                    #12ff00,
+                                    #00d5ff,
+                                    #2b65ff,
+                                    #9c00ff,
+                                    #ff00b7,
+                                    #ff0000);
+                            overflow: hidden;
+
+                            input[type="color"] {
+                                position: absolute;
+                                inset: 0;
+                                width: 100%;
+                                height: 100%;
+                                opacity: 0;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    .font-color-single.is-disabled {
+                        opacity: .45;
+                        pointer-events: none;
+                    }
+
+                    &.background-color .color-palette {
+                        flex-direction: row;
+                        flex-wrap: nowrap;
+                        justify-content: flex-end;
+                    }
+
+                    &.text>div {
+                        align-items: flex-end;
+                    }
+
+                    &.font-color>div {
+                        align-items: flex-end;
+                    }
+
+                    &.font-color .color-palette {
+                        justify-content: flex-end;
+                    }
+
+                    &.background-color>div {
+                        flex-direction: row;
+                        align-items: center;
+                    }
+
+                    &.font .vtab-options:has(#font0:checked) .active-bg {
+                        top: var(--verticaltab-padding);
+                    }
+
+                    &.font .vtab-options,
+                    &.font-size .vtab-options {
+                        width: fit-content;
+                    }
+
+                    &.font .vtab-options .tab-label,
+                    &.font-size .vtab-options .tab-label {
+                        width: fit-content;
+                        min-width: max-content;
+                        justify-self: start;
+                    }
+
+                    &.font .vtab-options:has(#font1:checked) .active-bg {
+                        top: calc(var(--verticaltab-padding) + var(--verticaltab-height) + var(--verticaltab-gap));
+                    }
+
+                    &.font .vtab-options:has(#font2:checked) .active-bg {
+                        top: calc(var(--verticaltab-padding) + (var(--verticaltab-height) + var(--verticaltab-gap)) * 2);
+                    }
+
+                    &.font-color .vtab-options:has(#font-color1:checked) .active-bg {
+                        top: var(--verticaltab-padding);
+                    }
+
+                    &.font-color .vtab-options:has(#font-color2:checked) .active-bg {
+                        top: calc(var(--verticaltab-padding) + var(--verticaltab-height) + var(--verticaltab-gap));
+                    }
+
+                    &.font-size .vtab-options:has(#font-size100:checked) .active-bg {
+                        top: var(--verticaltab-padding);
+                    }
+
+                    &.font-size .vtab-options:has(#font-size150:checked) .active-bg {
+                        top: calc(var(--verticaltab-padding) + var(--verticaltab-height) + var(--verticaltab-gap));
+                    }
+
+                    &.font-size .vtab-options:has(#font-size200:checked) .active-bg {
+                        top: calc(var(--verticaltab-padding) + (var(--verticaltab-height) + var(--verticaltab-gap)) * 2);
+                    }
+
+                    &.scrollspeed div {
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: flex-end;
+                        gap: 0;
+
+                        label[for="scrollspeed"] {
+                            text-align: right;
+                            display: inline-block;
+                            width: min(75px, 100%);
+                            min-width: min(75px, 100%);
+                            padding: 5px 10px;
+                            background: none;
+                            border-radius: 99px;
+                        }
+                    }
+
+                    &:last-child {
                         background: none;
-                        border-radius: 99px;
-                    }
-                }
+                        padding: 0;
+                        position: sticky;
+                        bottom: 20px;
+                        left: 0;
+                        pointer-events: none;
+                        display: flex;
+                        flex-direction: row-reverse;
+                        z-index: 10;
 
-                &:last-child {
-                    background: none;
-                    padding: 0;
-                    position: sticky;
-                    bottom: 20px;
-                    left: 0;
-                    pointer-events: none;
-                    display: flex;
-                    flex-direction: row-reverse;
+                        button {
+                            pointer-events: all;
+                            outline: 2px solid #0000;
+                            outline-offset: 5px;
+                            border: none;
+                            filter: drop-shadow(0 0 10px var(--firstback));
+                            padding: 10px 30px;
+                            color: #fff;
+                            background: var(--themecolor);
+                            border-radius: 99px;
+                            font-size: 18px;
+                            cursor: pointer;
+                            transition: .2s;
 
-                    button {
-                        pointer-events: all;
-                        outline: 2px solid #0000;
-                        outline-offset: 5px;
-                        border: none;
-                        padding: 10px 30px;
-                        color: #fff;
-                        background: var(--themecolor);
-                        border-radius: 99px;
-                        font-size: 18px;
-                        cursor: pointer;
-                        transition: .2s;
-
-                        &:hover {
-                            background: var(--themecolorhover);
-                            outline: 2px solid var(--themecolorhover);
-                            outline-offset: 2px;
+                            &:hover {
+                                background: var(--themecolorhover);
+                                outline: 2px solid var(--themecolorhover);
+                                outline-offset: 2px;
+                            }
                         }
                     }
                 }
             }
         }
-    }
 
-    /* スクロールアニメーション */
-    @keyframes scroll {
-        0% {
-            transform: translateX(90%);
-            /* 画面右端から開始 */
+        @keyframes scroll {
+            0% {
+                transform: translateX(var(--start-x, 100%));
+            }
+
+            100% {
+                transform: translateX(var(--end-x, -100%));
+            }
         }
 
-        100% {
-            transform: translateX(-90%);
-            /* テキスト全体が左に移動 */
-        }
-    }
+        @keyframes modeSlideInLeft {
+            from {
+                transform: translateX(-16px);
+                opacity: 0;
+            }
 
-    /* グラデーションアニメーション */
-    @keyframes gradient {
-        0% {
-            color: #ff0000;
-        }
-
-        33.33% {
-            color: #00ff00;
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
-        66.66% {
-            color: #0000ff;
+        @keyframes modeSlideInRight {
+            from {
+                transform: translateX(16px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
-        100% {
-            color: #ff0000;
+        @keyframes gradient {
+            0% {
+                color: #ff0000;
+            }
+
+            33.33% {
+                color: #00ff00;
+            }
+
+            66.66% {
+                color: #0000ff;
+            }
+
+            100% {
+                color: #ff0000;
+            }
         }
-    }
 
-    /* 表示画面のスタイル */
-    #screen {
-        display: none;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
-        z-index: 999;
-    }
-
-    body.no-scroll {
-        overflow: hidden;
-    }
-
-    .textbox {
-        white-space: nowrap;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: color 0.5s ease;
-        width: auto;
-        max-height: 100vh;
-        background-color: transparent;
-        font-weight: 900;
-    }
-
-    .close {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 99px;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        color: #fff7;
-        background: #fff3;
-        backdrop-filter: difference;
-        transition: .2s;
-
-        &:hover {
-            color: #fff;
-            background: #fff5;
+        #screen {
+            display: none;
+            align-items: center;
+            justify-content: flex-start;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 999;
+            padding: 0;
         }
-    }
 
-    .notes {
-        width: min(100% - 40px, var(--width-s));
-        margin: 20px auto 60px;
-
-        ul {
-            padding: 0 0 0 20px;
-            font-size: 14px;
-            color: var(--subtext);
+        body.no-scroll {
+            overflow: hidden;
         }
-    }
-</style>
 
-<script>
-    const preview = document.getElementById('preview');
-    const textbox = document.querySelector('.textbox');
-    const startBtn = document.querySelector('.start');
-    const closeBtn = document.querySelector('.close');
-    const screenSection = document.getElementById('screen');
-    const textInput = document.querySelector('.text input');
-    const fontColorSingleInput = document.querySelector('.font-color-single input[type="color"]');
-    const bgColorInput = document.querySelector('.background-color input[type="color"]');
-    const fontColorRadios = document.querySelectorAll('input[name="font-color"]');
-    const scrollSpeedInput = document.getElementById('scrollspeed');
-    const scrollSpeedValue = document.getElementById('scrollspeed-value');
-    const fontSizeRadios = document.querySelectorAll('input[name="font-size"]');
-    const fontRadios = document.querySelectorAll('input[name="font"]');
+        .textbox {
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            flex: 0 0 auto;
+            width: auto;
+            max-height: 100vh;
+            background-color: transparent;
+            font-weight: 900;
+            line-height: 1;
+            will-change: transform;
+        }
 
-    textInput.placeholder = '表示するテキストを入力';
-    fontColorSingleInput.value = '#ffffff';
-    bgColorInput.value = '#000000';
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 99px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            color: #fff7;
+            background: #fff3;
+            backdrop-filter: difference;
+            opacity: 1;
+            transition: opacity .35s ease, color .2s, background .2s;
 
-    let isGradient = false;
+            &:hover {
+                color: #fff;
+                background: #fff5;
+            }
 
-    function updatePreviewStyles() {
-        preview.textContent = textInput.value || 'プレビュー';
+            &.is-faded {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
 
-        const selectedFont = document.querySelector('input[name="font"]:checked').id;
-        const fontFamily = selectedFont === 'font0' ? 'inherit' : selectedFont === 'font1' ? 'sans-serif' : 'serif';
-        preview.style.setProperty('font-family', fontFamily, 'important');
+        .notes {
+            width: min(100% - 40px, var(--width-s));
+            margin: 20px auto 60px;
 
-        preview.style.animation = `scroll ${getScrollDuration()}s linear infinite${isGradient ? ', gradient 1.5s linear infinite' : ''}`;
-        if (!isGradient) {
-            preview.style.color = fontColorSingleInput.value;
-        } else {
-            preview.style.color = '';
+            ul {
+                padding: 0 0 0 20px;
+                font-size: 14px;
+                color: var(--subtext);
+            }
+        }
+    </style>
+
+    <script>
+        const preview = document.getElementById('preview');
+        const previewContainer = document.getElementById('preview-container');
+        const textbox = document.querySelector('.textbox');
+        const startBtn = document.querySelector('.start');
+        const closeBtn = document.querySelector('.close');
+        const screenSection = document.getElementById('screen');
+        const textInput = document.getElementById('display-text');
+        const fontColorPalette = document.getElementById('font-color-palette');
+        const fontSinglePresetRadios = document.querySelectorAll('input[name="font-single-preset"]');
+        const fontSingleCustomRadio = document.getElementById('font-single-custom');
+        const fontColorCustomInput = document.getElementById('font-color-custom');
+        const bgPresetRadios = document.querySelectorAll('input[name="bg-preset"]');
+        const bgCustomRadio = document.getElementById('bg-custom');
+        const bgColorCustomInput = document.getElementById('bg-color-custom');
+        const fontColorRadios = document.querySelectorAll('input[name="font-color"]');
+        const scrollSpeedInput = document.getElementById('scrollspeed');
+        const scrollSpeedValue = document.getElementById('scrollspeed-value');
+        const fontSizeRadios = document.querySelectorAll('input[name="font-size"]');
+        const fontRadios = document.querySelectorAll('input[name="font"]');
+        const modeRadios = document.querySelectorAll('input[name="display-mode"]');
+        const modeTabPanel = document.querySelector('.mode-tab-panel');
+        const modeActiveBg = document.querySelector('.mode-active-bg');
+        const scrollModeItems = document.querySelectorAll('#setting > .mode-scroll-item');
+        const flipModePanel = document.querySelector('#setting > .mode-flip-item');
+        const flipCards = document.getElementById('flip-cards');
+        const addFlipCardBtn = document.getElementById('add-flip-card');
+        const flipAddLimit = document.getElementById('flip-add-limit');
+        const flipAddRow = document.querySelector('.flip-add-row');
+
+        textInput.placeholder = 'Enter text to display';
+
+        let isGradient = false;
+        let autoSpeedBaseDuration = Number(scrollSpeedInput.value);
+        let autoSpeedScale = 1;
+        let isProgrammaticSpeedUpdate = false;
+        let currentMode = 'scroll';
+        let flipPlaybackTimer = null;
+        let flipPreviewTimer = null;
+        let flipCardSerial = 0;
+        let closeBtnFadeTimer = null;
+        let lastCloseBtnRevealAt = 0;
+
+        const STORAGE_KEY = 'eboardSettingsV1';
+        const CLOSE_BTN_FADE_DELAY = 3000;
+
+        function animateModeContent(direction) {
+            const animationClass = direction === 'to-flip' ? 'mode-enter-right' : 'mode-enter-left';
+            const targets = currentMode === 'flip' ? [flipModePanel] : Array.from(scrollModeItems);
+            targets.forEach((element) => {
+                element.classList.remove('mode-enter-left', 'mode-enter-right');
+                void element.offsetWidth;
+                element.classList.add(animationClass);
+            });
         }
 
         function getScrollDuration() {
-            return scrollSpeedInput.value;
+            return Number(scrollSpeedInput.value);
         }
 
-        const selectedSize = document.querySelector('input[name="font-size"]:checked').id;
-        const sizeMap = {
-            'font-size100': 1,
-            'font-size150': 1.5,
-            'font-size200': 2
-        };
-        const baseFontSize = 30;
-        preview.style.fontSize = `${baseFontSize * sizeMap[selectedSize]}px`;
+        function getAutoBaseDurationFromText(value) {
+            const text = (value || '').trim();
+            if (!text) return 4;
+            const length = Array.from(text).length;
+            const duration = 3 + length * 0.35;
+            return Math.min(25, Math.max(3, Number(duration.toFixed(1))));
+        }
 
-        preview.parentElement.style.backgroundColor = bgColorInput.value;
+        function setScrollDuration(value) {
+            const clamped = Math.min(25, Math.max(3, Number(value.toFixed(1))));
+            isProgrammaticSpeedUpdate = true;
+            scrollSpeedInput.value = clamped;
+            scrollSpeedValue.textContent = clamped;
+            isProgrammaticSpeedUpdate = false;
+        }
 
-        scrollSpeedValue.textContent = scrollSpeedInput.value;
-    }
+        function applyAutoSpeedFromText() {
+            autoSpeedBaseDuration = getAutoBaseDurationFromText(textInput.value || 'Preview');
+            setScrollDuration(autoSpeedBaseDuration * autoSpeedScale);
+        }
 
-    textInput.addEventListener('input', updatePreviewStyles);
+        function getSelectedFontSingleColor() {
+            const selected = document.querySelector('input[name="font-single-preset"]:checked');
+            if (!selected) return '#ffffff';
+            return selected.value === 'custom' ? fontColorCustomInput.value : selected.value;
+        }
 
-    fontRadios.forEach(radio => {
-        radio.addEventListener('change', updatePreviewStyles);
-    });
+        function getSelectedBackgroundColor() {
+            const selected = document.querySelector('input[name="bg-preset"]:checked');
+            if (!selected) return '#000000';
+            return selected.value === 'custom' ? bgColorCustomInput.value : selected.value;
+        }
 
-    fontColorRadios.forEach(radio => {
-        radio.addEventListener('change', () => {
-            isGradient = radio.id === 'font-color2';
-            fontColorSingleInput.disabled = isGradient;
-            fontColorSingleInput.style.opacity = isGradient ? 0.5 : 1;
-            updatePreviewStyles();
+        function applyScrollAnimation(targetEl, containerEl) {
+            const containerWidth = containerEl.clientWidth;
+            const textWidth = targetEl.scrollWidth;
+            targetEl.style.setProperty('--start-x', `${containerWidth}px`);
+            targetEl.style.setProperty('--end-x', `${-textWidth}px`);
+            targetEl.style.animation = `scroll ${getScrollDuration()}s linear infinite${isGradient ? ', gradient 1.5s linear infinite' : ''}`;
+        }
+
+        function updateScrollPreviewStyles() {
+            applyAutoSpeedFromText();
+            preview.textContent = textInput.value || 'Preview';
+            previewContainer.style.justifyContent = 'flex-start';
+
+            const selectedFont = document.querySelector('input[name="font"]:checked').id;
+            const fontFamily = selectedFont === 'font0' ? 'inherit' : selectedFont === 'font1' ? 'sans-serif' : 'serif';
+            preview.style.setProperty('font-family', fontFamily, 'important');
+
+            if (!isGradient) {
+                preview.style.color = getSelectedFontSingleColor();
+            } else {
+                preview.style.color = '';
+            }
+
+            const selectedSize = document.querySelector('input[name="font-size"]:checked').id;
+            const sizeMap = {
+                'font-size100': 1,
+                'font-size150': 1.5,
+                'font-size200': 2
+            };
+            const baseFontSize = 30;
+            preview.style.fontSize = `${baseFontSize * sizeMap[selectedSize]}px`;
+            previewContainer.style.backgroundColor = getSelectedBackgroundColor();
+            applyScrollAnimation(preview, previewContainer);
+            scrollSpeedValue.textContent = scrollSpeedInput.value;
+        }
+
+        function applyScrollScreenStyles() {
+            textbox.textContent = textInput.value;
+
+            const selectedFont = document.querySelector('input[name="font"]:checked').id;
+            const fontFamily = selectedFont === 'font0' ? 'inherit' : selectedFont === 'font1' ? 'sans-serif' : 'serif';
+            textbox.style.setProperty('font-family', fontFamily, 'important');
+
+            if (!isGradient) {
+                textbox.style.color = getSelectedFontSingleColor();
+            } else {
+                textbox.style.color = '';
+            }
+
+            const selectedSize = document.querySelector('input[name="font-size"]:checked').id;
+            const sizeMap = {
+                'font-size100': 1,
+                'font-size150': 1.5,
+                'font-size200': 2
+            };
+            const baseFontSize = window.innerHeight * 0.5;
+            textbox.style.fontSize = `${baseFontSize * sizeMap[selectedSize]}px`;
+
+            screenSection.style.backgroundColor = getSelectedBackgroundColor();
+            textbox.style.backgroundColor = 'transparent';
+            applyScrollAnimation(textbox, screenSection);
+            screenSection.style.justifyContent = 'flex-start';
+        }
+
+        function getAllFlipCardsState() {
+            return Array.from(flipCards.querySelectorAll('.flip-card')).map((card) => {
+                const text = card.querySelector('.flip-text')?.value || '';
+                const font = card.querySelector('.flip-font-radio:checked')?.value || 'sans-serif';
+
+                const textColorSelected = card.querySelector('.flip-text-color-radio:checked');
+                const color = textColorSelected?.value === 'custom'
+                    ? (card.querySelector('.flip-text-color-custom')?.value || '#ffffff')
+                    : (textColorSelected?.value || '#ffffff');
+
+                const bgColorSelected = card.querySelector('.flip-bg-color-radio:checked');
+                const bg = bgColorSelected?.value === 'custom'
+                    ? (card.querySelector('.flip-bg-color-custom')?.value || '#000000')
+                    : (bgColorSelected?.value || '#000000');
+
+                const duration = Math.min(30, Math.max(0.5, Number(card.querySelector('.flip-duration-range')?.value || 1.5)));
+                return { text, font, color, bg, duration };
+            });
+        }
+
+        function saveSettingsToStorage() {
+            const selectedFont = document.querySelector('input[name="font"]:checked');
+            const selectedFontColor = document.querySelector('input[name="font-color"]:checked');
+            const selectedFontSingle = document.querySelector('input[name="font-single-preset"]:checked');
+            const selectedBg = document.querySelector('input[name="bg-preset"]:checked');
+            const selectedFontSize = document.querySelector('input[name="font-size"]:checked');
+
+            const payload = {
+                mode: currentMode,
+                scroll: {
+                    text: textInput.value || '',
+                    fontId: selectedFont?.id || 'font1',
+                    fontColorId: selectedFontColor?.id || 'font-color1',
+                    fontSinglePresetId: selectedFontSingle?.id || 'font-single-white',
+                    fontCustom: fontColorCustomInput.value || '#ffffff',
+                    bgPresetId: selectedBg?.id || 'bg-black',
+                    bgCustom: bgColorCustomInput.value || '#000000',
+                    speed: getScrollDuration(),
+                    fontSizeId: selectedFontSize?.id || 'font-size100'
+                },
+                flip: {
+                    cards: getAllFlipCardsState().slice(0, 5)
+                }
+            };
+
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+            } catch (error) {
+                console.warn('Failed to save settings', error);
+            }
+        }
+
+        function setCheckedById(id) {
+            if (!id) return false;
+            const el = document.getElementById(id);
+            if (!el || el.type !== 'radio') return false;
+            el.checked = true;
+            return true;
+        }
+
+        function loadSettingsFromStorage() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return null;
+                const parsed = JSON.parse(raw);
+                if (!parsed || typeof parsed !== 'object') return null;
+                return parsed;
+            } catch (error) {
+                console.warn('Failed to load settings', error);
+                return null;
+            }
+        }
+
+        function applyStoredScrollSettings(scrollSettings) {
+            if (!scrollSettings) return;
+
+            textInput.value = scrollSettings.text || '';
+            setCheckedById(scrollSettings.fontId);
+            setCheckedById(scrollSettings.fontColorId);
+            setCheckedById(scrollSettings.fontSinglePresetId);
+            setCheckedById(scrollSettings.bgPresetId);
+            setCheckedById(scrollSettings.fontSizeId);
+
+            if (scrollSettings.fontCustom) {
+                fontColorCustomInput.value = scrollSettings.fontCustom;
+            }
+            if (scrollSettings.bgCustom) {
+                bgColorCustomInput.value = scrollSettings.bgCustom;
+            }
+
+            const selectedFontColor = document.querySelector('input[name="font-color"]:checked');
+            isGradient = selectedFontColor?.id === 'font-color2';
+            fontColorPalette.classList.toggle('is-disabled', isGradient);
+
+            const savedSpeed = Number(scrollSettings.speed);
+            if (!Number.isNaN(savedSpeed)) {
+                autoSpeedBaseDuration = getAutoBaseDurationFromText(textInput.value || 'Preview');
+                autoSpeedScale = autoSpeedBaseDuration > 0 ? savedSpeed / autoSpeedBaseDuration : 1;
+                setScrollDuration(savedSpeed);
+            }
+        }
+
+        function applyStoredFlipSettings(flipSettings) {
+            const cards = Array.isArray(flipSettings?.cards) ? flipSettings.cards.slice(0, 5) : [];
+            flipCards.innerHTML = '';
+            flipCardSerial = 0;
+
+            if (cards.length === 0) {
+                addFlipCard({ text: 'Message 1', font: 'sans-serif', color: '#ffffff', bg: '#000000', duration: 1.5 });
+                addFlipCard({ text: 'Message 2', font: 'sans-serif', color: '#ffd400', bg: '#000000', duration: 1.5 });
+                return;
+            }
+
+            cards.forEach((card) => {
+                addFlipCard({
+                    text: typeof card.text === 'string' ? card.text : '',
+                    font: card.font || 'sans-serif',
+                    color: card.color || '#ffffff',
+                    bg: card.bg || '#000000',
+                    duration: Math.min(30, Math.max(0.5, Number(card.duration || 1.5)))
+                });
+            });
+        }
+
+        function clearCloseButtonFadeTimer() {
+            if (closeBtnFadeTimer) {
+                clearTimeout(closeBtnFadeTimer);
+                closeBtnFadeTimer = null;
+            }
+        }
+
+        function scheduleCloseButtonFade() {
+            clearCloseButtonFadeTimer();
+            if (!isScreenOpen()) return;
+            closeBtnFadeTimer = window.setTimeout(() => {
+                closeBtn.classList.add('is-faded');
+            }, CLOSE_BTN_FADE_DELAY);
+        }
+
+        function showCloseButtonTemporarily() {
+            if (!isScreenOpen()) return;
+            closeBtn.classList.remove('is-faded');
+            scheduleCloseButtonFade();
+        }
+
+        function handleScreenActivity() {
+            if (!isScreenOpen()) return;
+            const now = Date.now();
+            if (now - lastCloseBtnRevealAt < 120) return;
+            lastCloseBtnRevealAt = now;
+            showCloseButtonTemporarily();
+        }
+
+        function createFlipCard(data) {
+            flipCardSerial += 1;
+            const cardId = flipCardSerial;
+            const textPresets = ['#ffffff', '#000000', '#ffd400', '#ff3131'];
+            const bgPresets = ['#000000', '#ffffff', '#df0000', '#ffd400'];
+            const textUseCustom = !textPresets.includes(data.color.toLowerCase());
+            const bgUseCustom = !bgPresets.includes(data.bg.toLowerCase());
+
+            const card = document.createElement('article');
+            card.className = 'flip-card';
+            card.dataset.cardId = String(cardId);
+            card.innerHTML = `
+                <div class="flip-card-head">
+                    <p class="flip-card-number">1</p>
+                    <input type="text" class="flip-text" placeholder="Enter text here" value="${data.text}">
+                </div>
+                <div class="flip-card-body">
+                    <div class="flip-font-pane">
+                        <div class="flip-font-options">
+                            <span class="active-bg" aria-hidden="true"></span>
+                            <input class="tab-input flip-font-radio font-inherit" type="radio" name="flip-font-${cardId}" id="flip-font-${cardId}-inherit" value="inherit" ${data.font === 'inherit' ? 'checked' : ''}>
+                            <label class="tab-label" for="flip-font-${cardId}-inherit">Default</label>
+                            <input class="tab-input flip-font-radio font-sans" type="radio" name="flip-font-${cardId}" id="flip-font-${cardId}-sans" value="sans-serif" ${data.font === 'sans-serif' ? 'checked' : ''}>
+                            <label class="tab-label" for="flip-font-${cardId}-sans">Sans Serif</label>
+                            <input class="tab-input flip-font-radio font-serif" type="radio" name="flip-font-${cardId}" id="flip-font-${cardId}-serif" value="serif" ${data.font === 'serif' ? 'checked' : ''}>
+                            <label class="tab-label" for="flip-font-${cardId}-serif">Serif</label>
+                        </div>
+                    </div>
+                    <div class="flip-row flip-text-color-row">
+                            <p class="flip-row-title">Text Color</p>
+                            <div class="flip-color-palette">
+                                <input class="flip-swatch-input flip-text-color-radio" type="radio" name="flip-text-color-${cardId}" id="flip-text-color-${cardId}-w" value="#ffffff" ${data.color.toLowerCase() === '#ffffff' ? 'checked' : ''}>
+                                <label class="flip-swatch" for="flip-text-color-${cardId}-w" style="--swatch:#ffffff;"></label>
+                                <input class="flip-swatch-input flip-text-color-radio" type="radio" name="flip-text-color-${cardId}" id="flip-text-color-${cardId}-b" value="#000000" ${data.color.toLowerCase() === '#000000' ? 'checked' : ''}>
+                                <label class="flip-swatch" for="flip-text-color-${cardId}-b" style="--swatch:#000000;"></label>
+                                <input class="flip-swatch-input flip-text-color-radio" type="radio" name="flip-text-color-${cardId}" id="flip-text-color-${cardId}-y" value="#ffd400" ${data.color.toLowerCase() === '#ffd400' ? 'checked' : ''}>
+                                <label class="flip-swatch" for="flip-text-color-${cardId}-y" style="--swatch:#ffd400;"></label>
+                                <input class="flip-swatch-input flip-text-color-radio" type="radio" name="flip-text-color-${cardId}" id="flip-text-color-${cardId}-r" value="#ff3131" ${data.color.toLowerCase() === '#ff3131' ? 'checked' : ''}>
+                                <label class="flip-swatch" for="flip-text-color-${cardId}-r" style="--swatch:#ff3131;"></label>
+                                <input class="flip-swatch-input flip-text-color-radio" type="radio" name="flip-text-color-${cardId}" id="flip-text-color-${cardId}-custom" value="custom" ${textUseCustom ? 'checked' : ''}>
+                                <label class="flip-swatch rainbow" for="flip-text-color-${cardId}-custom">
+                                    <input type="color" class="flip-text-color-custom" value="${textUseCustom ? data.color : '#ffffff'}">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flip-row flip-bg-color-row">
+                            <p class="flip-row-title">Background Color</p>
+                            <div class="flip-color-palette">
+                                <input class="flip-swatch-input flip-bg-color-radio" type="radio" name="flip-bg-color-${cardId}" id="flip-bg-color-${cardId}-k" value="#000000" ${data.bg.toLowerCase() === '#000000' ? 'checked' : ''}>
+                                <label class="flip-swatch" for="flip-bg-color-${cardId}-k" style="--swatch:#000000;"></label>
+                                <input class="flip-swatch-input flip-bg-color-radio" type="radio" name="flip-bg-color-${cardId}" id="flip-bg-color-${cardId}-w" value="#ffffff" ${data.bg.toLowerCase() === '#ffffff' ? 'checked' : ''}>
+                                <label class="flip-swatch" for="flip-bg-color-${cardId}-w" style="--swatch:#ffffff;"></label>
+                                <input class="flip-swatch-input flip-bg-color-radio" type="radio" name="flip-bg-color-${cardId}" id="flip-bg-color-${cardId}-r" value="#df0000" ${data.bg.toLowerCase() === '#df0000' ? 'checked' : ''}>
+                                <label class="flip-swatch" for="flip-bg-color-${cardId}-r" style="--swatch:#df0000;"></label>
+                                <input class="flip-swatch-input flip-bg-color-radio" type="radio" name="flip-bg-color-${cardId}" id="flip-bg-color-${cardId}-y" value="#ffd400" ${data.bg.toLowerCase() === '#ffd400' ? 'checked' : ''}>
+                                <label class="flip-swatch" for="flip-bg-color-${cardId}-y" style="--swatch:#ffd400;"></label>
+                                <input class="flip-swatch-input flip-bg-color-radio" type="radio" name="flip-bg-color-${cardId}" id="flip-bg-color-${cardId}-custom" value="custom" ${bgUseCustom ? 'checked' : ''}>
+                                <label class="flip-swatch rainbow" for="flip-bg-color-${cardId}-custom">
+                                    <input type="color" class="flip-bg-color-custom" value="${bgUseCustom ? data.bg : '#000000'}">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flip-row flip-speed-row">
+                            <p class="flip-row-title">Display Speed</p>
+                            <div class="flip-speed-control">
+                                <input type="range" class="flip-duration-range" min="0.5" max="30" step="0.1" value="${data.duration}">
+                                <span class="flip-duration-value">${data.duration}</span>
+                                <span class="flip-duration-unit">sec</span>
+                            </div>
+                        </div>
+                </div>
+            `;
+            return card;
+        }
+
+        function updateFlipCardLabels() {
+            const cards = flipCards.querySelectorAll('.flip-card');
+            cards.forEach((card, index) => {
+                const number = card.querySelector('.flip-card-number');
+                number.textContent = String(index + 1);
+            });
+
+            const reachedLimit = cards.length >= 5;
+            addFlipCardBtn.disabled = reachedLimit;
+            flipAddRow.classList.toggle('is-limit', reachedLimit);
+            flipAddLimit.textContent = reachedLimit ? 'You cannot add more cards.' : '';
+            if (!reachedLimit) {
+                addFlipCardBtn.textContent = `+ Add Card ${cards.length + 1}`;
+            }
+        }
+
+        function addFlipCard(data) {
+            const cards = flipCards.querySelectorAll('.flip-card');
+            if (cards.length >= 5) return;
+            flipCards.appendChild(createFlipCard(data));
+            updateFlipCardLabels();
+        }
+
+        function getFlipCardsData() {
+            return Array.from(flipCards.querySelectorAll('.flip-card'))
+                .map((card) => {
+                    const text = card.querySelector('.flip-text').value.trim();
+                    const font = card.querySelector('.flip-font-radio:checked')?.value || 'sans-serif';
+
+                    const textColorSelected = card.querySelector('.flip-text-color-radio:checked');
+                    const color = textColorSelected?.value === 'custom'
+                        ? card.querySelector('.flip-text-color-custom').value
+                        : (textColorSelected?.value || '#ffffff');
+
+                    const bgColorSelected = card.querySelector('.flip-bg-color-radio:checked');
+                    const bg = bgColorSelected?.value === 'custom'
+                        ? card.querySelector('.flip-bg-color-custom').value
+                        : (bgColorSelected?.value || '#000000');
+
+                    const duration = Math.min(30, Math.max(0.5, Number(card.querySelector('.flip-duration-range').value || 1)));
+                    return { text, font, color, bg, duration };
+                })
+                .filter((card) => card.text.length > 0);
+        }
+
+        function showSingleFlipPreviewCard(card) {
+            preview.textContent = card.text;
+            preview.style.animation = 'none';
+            preview.style.setProperty('font-family', card.font, 'important');
+            preview.style.color = card.color;
+            preview.style.fontSize = '30px';
+            previewContainer.style.backgroundColor = card.bg;
+            previewContainer.style.justifyContent = 'center';
+        }
+
+        function stopFlipPreviewPlayback() {
+            if (flipPreviewTimer) {
+                clearTimeout(flipPreviewTimer);
+                flipPreviewTimer = null;
+            }
+        }
+
+        function startFlipPreviewPlayback(cards) {
+            stopFlipPreviewPlayback();
+
+            if (cards.length === 0) {
+                showSingleFlipPreviewCard({ text: 'Preview', font: 'sans-serif', color: '#ffffff', bg: '#000000' });
+                return;
+            }
+
+            let index = 0;
+            const playNext = () => {
+                const card = cards[index];
+                showSingleFlipPreviewCard(card);
+                index = (index + 1) % cards.length;
+                flipPreviewTimer = window.setTimeout(playNext, card.duration * 1000);
+            };
+
+            playNext();
+        }
+
+        function showFlipPreview() {
+            startFlipPreviewPlayback(getFlipCardsData());
+        }
+
+        function getFitFontSizeForFlip(text, fontFamily) {
+            if (!text) return 24;
+
+            const maxWidth = window.innerWidth * 0.98;
+            const maxHeight = window.innerHeight * 0.9;
+            let low = 16;
+            let high = Math.floor(window.innerWidth);
+            let best = low;
+
+            const fits = (size) => {
+                textbox.style.setProperty('font-family', fontFamily, 'important');
+                textbox.style.fontSize = `${size}px`;
+                return textbox.scrollWidth <= maxWidth && textbox.scrollHeight <= maxHeight;
+            };
+
+            while (low <= high) {
+                const mid = Math.floor((low + high) / 2);
+                if (fits(mid)) {
+                    best = mid;
+                    low = mid + 1;
+                } else {
+                    high = mid - 1;
+                }
+            }
+
+            return best;
+        }
+
+        function showFlipCard(card) {
+            textbox.textContent = card.text;
+            textbox.style.animation = 'none';
+            textbox.style.setProperty('font-family', card.font, 'important');
+            textbox.style.color = card.color;
+            const fitSize = getFitFontSizeForFlip(card.text, card.font);
+            textbox.style.fontSize = `${fitSize}px`;
+            screenSection.style.backgroundColor = card.bg;
+            screenSection.style.justifyContent = 'center';
+            textbox.style.maxWidth = '98vw';
+        }
+
+        function stopFlipPlayback() {
+            if (flipPlaybackTimer) {
+                clearTimeout(flipPlaybackTimer);
+                flipPlaybackTimer = null;
+            }
+        }
+
+        function startFlipPlayback(cards) {
+            stopFlipPlayback();
+            let index = 0;
+
+            const playNext = () => {
+                const card = cards[index];
+                showFlipCard(card);
+                index = (index + 1) % cards.length;
+                flipPlaybackTimer = window.setTimeout(playNext, card.duration * 1000);
+            };
+
+            playNext();
+        }
+
+        function updateModePanelVisibility(mode) {
+            scrollModeItems.forEach((item) => {
+                item.classList.toggle('is-hidden', mode !== 'scroll');
+            });
+            flipModePanel.classList.toggle('is-active', mode === 'flip');
+        }
+
+        function updateModeActiveBgPosition() {
+            if (!modeTabPanel || !modeActiveBg) return;
+            const selectedMode = document.querySelector('input[name="display-mode"]:checked');
+            if (!selectedMode) return;
+
+            const targetLabel = modeTabPanel.querySelector(`label[for="${selectedMode.id}"]`);
+            if (!targetLabel) return;
+
+            const panelRect = modeTabPanel.getBoundingClientRect();
+            const labelRect = targetLabel.getBoundingClientRect();
+            modeActiveBg.style.left = `${labelRect.left - panelRect.left}px`;
+            modeActiveBg.style.top = `${labelRect.top - panelRect.top}px`;
+            modeActiveBg.style.width = `${labelRect.width}px`;
+            modeActiveBg.style.height = `${labelRect.height}px`;
+        }
+
+        function isScreenOpen() {
+            return screenSection.style.display === 'flex';
+        }
+
+        function updateScreenByMode(mode = currentMode) {
+            if (!isScreenOpen()) return;
+
+            if (mode === 'scroll') {
+                stopFlipPlayback();
+                applyScrollScreenStyles();
+                return;
+            }
+
+            const cards = getFlipCardsData();
+            if (cards.length > 0) {
+                startFlipPlayback(cards);
+            } else {
+                stopFlipPlayback();
+            }
+        }
+
+        function refreshByMode(mode = currentMode) {
+            if (mode === 'scroll') {
+                stopFlipPreviewPlayback();
+                updateScrollPreviewStyles();
+            } else {
+                showFlipPreview();
+            }
+
+            updateScreenByMode(mode);
+        }
+
+        function handleScrollModeInput(beforeRefresh) {
+            if (currentMode !== 'scroll') return;
+            if (typeof beforeRefresh === 'function') {
+                beforeRefresh();
+            }
+            refreshByMode('scroll');
+        }
+
+        function setMode(mode) {
+            const prevMode = currentMode;
+            currentMode = mode;
+            updateModePanelVisibility(mode);
+            if (prevMode !== mode) {
+                animateModeContent(mode === 'flip' ? 'to-flip' : 'to-scroll');
+            }
+            refreshByMode(mode);
+            updateModeActiveBgPosition();
+            saveSettingsToStorage();
+        }
+
+        textInput.addEventListener('input', () => {
+            handleScrollModeInput();
+            saveSettingsToStorage();
         });
-    });
 
-    fontColorSingleInput.addEventListener('input', () => {
-        if (!isGradient) updatePreviewStyles();
-    });
+        fontRadios.forEach((radio) => {
+            radio.addEventListener('change', () => {
+                handleScrollModeInput();
+                saveSettingsToStorage();
+            });
+        });
 
-    bgColorInput.addEventListener('input', updatePreviewStyles);
+        fontColorRadios.forEach((radio) => {
+            radio.addEventListener('change', () => {
+                isGradient = radio.id === 'font-color2';
+                fontColorPalette.classList.toggle('is-disabled', isGradient);
+                handleScrollModeInput();
+                saveSettingsToStorage();
+            });
+        });
 
-    scrollSpeedInput.addEventListener('input', () => {
-        updatePreviewStyles();
-    });
+        fontSinglePresetRadios.forEach((radio) => {
+            radio.addEventListener('change', () => {
+                if (currentMode !== 'scroll' || isGradient) return;
+                refreshByMode('scroll');
+                saveSettingsToStorage();
+            });
+        });
 
-    fontSizeRadios.forEach(radio => {
-        radio.addEventListener('change', updatePreviewStyles);
-    });
+        fontColorCustomInput.addEventListener('input', () => {
+            fontSingleCustomRadio.checked = true;
+            if (currentMode !== 'scroll' || isGradient) return;
+            refreshByMode('scroll');
+            saveSettingsToStorage();
+        });
 
-    startBtn.addEventListener('click', () => {
-        if (!textInput.value) {
-            alert('Enter text');
-            return;
-        }
+        bgPresetRadios.forEach((radio) => {
+            radio.addEventListener('change', () => {
+                handleScrollModeInput();
+                saveSettingsToStorage();
+            });
+        });
 
-        screenSection.style.display = 'flex';
-        screenSection.style.alignItems = 'center';
-        screenSection.style.justifyContent = 'center';
-        screenSection.style.width = '100vw';
-        screenSection.style.height = '100vh';
+        bgColorCustomInput.addEventListener('input', () => {
+            bgCustomRadio.checked = true;
+            handleScrollModeInput();
+            saveSettingsToStorage();
+        });
 
-        document.body.classList.add('no-scroll');
+        scrollSpeedInput.addEventListener('input', () => {
+            handleScrollModeInput(() => {
+                if (!isProgrammaticSpeedUpdate) {
+                    const currentSpeed = getScrollDuration();
+                    autoSpeedScale = autoSpeedBaseDuration > 0 ? currentSpeed / autoSpeedBaseDuration : 1;
+                }
+            });
+            saveSettingsToStorage();
+        });
 
-        textbox.style.width = 'auto';
-        textbox.style.height = 'auto';
-        textbox.style.maxHeight = '100vh';
+        fontSizeRadios.forEach((radio) => {
+            radio.addEventListener('change', () => {
+                handleScrollModeInput();
+                saveSettingsToStorage();
+            });
+        });
 
-        textbox.textContent = textInput.value;
+        addFlipCardBtn.addEventListener('click', () => {
+            addFlipCard({ text: '', font: 'sans-serif', color: '#ffffff', bg: '#000000', duration: 1.5 });
+            if (currentMode === 'flip') {
+                showFlipPreview();
+            }
+            saveSettingsToStorage();
+        });
 
-        const selectedFont = document.querySelector('input[name="font"]:checked').id;
-        const fontFamily = selectedFont === 'font0' ? 'inherit' : selectedFont === 'font1' ? 'sans-serif' : 'serif';
-        textbox.style.setProperty('font-family', fontFamily, 'important');
+        flipCards.addEventListener('input', (event) => {
+            const target = event.target;
 
-        textbox.style.animation = `scroll ${getScrollDuration()}s linear infinite${isGradient ? ', gradient 1.5s linear infinite' : ''}`;
-        if (!isGradient) {
-            textbox.style.color = fontColorSingleInput.value;
-        } else {
+            if (target.classList.contains('flip-duration-range')) {
+                const valueEl = target.closest('.flip-speed-control')?.querySelector('.flip-duration-value');
+                if (valueEl) valueEl.textContent = target.value;
+            }
+
+            if (target.classList.contains('flip-text-color-custom') || target.classList.contains('flip-bg-color-custom')) {
+                const label = target.closest('label');
+                const radioId = label?.getAttribute('for');
+                const radio = radioId ? document.getElementById(radioId) : null;
+                if (radio) {
+                    radio.checked = true;
+                }
+            }
+
+            if (currentMode === 'flip') {
+                refreshByMode('flip');
+            }
+            saveSettingsToStorage();
+        });
+
+        modeRadios.forEach((radio) => {
+            radio.addEventListener('change', () => {
+                setMode(radio.value);
+            });
+        });
+
+        startBtn.addEventListener('click', () => {
+            if (currentMode === 'scroll') {
+                if (!textInput.value) {
+                    alert('Please enter text.');
+                    return;
+                }
+            }
+
+            if (currentMode === 'flip') {
+                const cards = getFlipCardsData();
+                if (cards.length === 0) {
+                    alert('Please enter text in at least one flip card.');
+                    return;
+                }
+            }
+
+            screenSection.style.display = 'flex';
+            screenSection.style.alignItems = 'center';
+            screenSection.style.width = '100vw';
+            screenSection.style.height = '100vh';
+
+            document.body.classList.add('no-scroll');
+            textbox.style.width = 'auto';
+            textbox.style.height = 'auto';
+            textbox.style.maxHeight = '100vh';
+            showCloseButtonTemporarily();
+
+            if (currentMode === 'scroll') {
+                updateScreenByMode('scroll');
+            } else {
+                updateScreenByMode('flip');
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            refreshByMode();
+            updateModeActiveBgPosition();
+        });
+
+        ['pointerdown', 'pointermove', 'touchstart', 'mousemove'].forEach((eventName) => {
+            screenSection.addEventListener(eventName, handleScreenActivity, { passive: true });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && screenSection.style.display === 'flex') {
+                closeBtn.click();
+                return;
+            }
+            handleScreenActivity();
+        });
+
+        closeBtn.addEventListener('click', () => {
+            stopFlipPlayback();
+            screenSection.style.display = 'none';
+            textbox.style.animation = 'none';
             textbox.style.color = '';
+            document.body.classList.remove('no-scroll');
+            closeBtn.classList.remove('is-faded');
+            clearCloseButtonFadeTimer();
+        });
+
+        const storedSettings = loadSettingsFromStorage();
+        applyStoredScrollSettings(storedSettings?.scroll);
+        applyStoredFlipSettings(storedSettings?.flip);
+
+        const initialMode = storedSettings?.mode === 'flip' ? 'flip' : 'scroll';
+        const initialModeRadio = document.getElementById(initialMode === 'flip' ? 'mode-flip' : 'mode-scroll');
+        if (initialModeRadio) {
+            initialModeRadio.checked = true;
         }
 
-        function getScrollDuration() {
-            return scrollSpeedInput.value;
-        }
-
-        screenSection.style.backgroundColor = bgColorInput.value;
-        textbox.style.backgroundColor = 'transparent';
-
-        const selectedSize = document.querySelector('input[name="font-size"]:checked').id;
-        const sizeMap = {
-            'font-size100': 1,
-            'font-size150': 1.5,
-            'font-size200': 2
-        };
-        const baseFontSize = window.innerHeight * 0.5;
-        textbox.style.fontSize = `${baseFontSize * sizeMap[selectedSize]}px`;
-    });
-
-    closeBtn.addEventListener('click', () => {
-        screenSection.style.display = 'none';
-        textbox.style.animation = 'none';
-        textbox.style.color = '';
-        document.body.classList.remove('no-scroll');
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && screenSection.style.display === 'flex') {
-            closeBtn.click();
-        }
-    });
-
-    updatePreviewStyles();
-
-</script>
+        updateFlipCardLabels();
+        setMode(initialMode);
+        saveSettingsToStorage();
+        requestAnimationFrame(updateModeActiveBgPosition);
+    </script>
+</body>
 
 </html>
