@@ -5,11 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPhone用Web定規</title>
-    <meta name="description" content="iPhoneに実寸の定規を表示させて長さを測ることができます。Web上で完結して簡単に使用できます。">
+    <title>全iPhone用Web定規</title>
+    <meta name="description" content="iPhoneに実寸のWeb定規を表示して長さを測れるスマホものさしです。iPhone 15/16/17など全ての機種に対応。拡大率100%で手軽に使えます。">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+    <link rel="canonical" href="https://xullua.com/tools/ruler/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Xullua">
+    <meta property="og:url" content="https://xullua.com/tools/ruler/">
+    <meta property="og:title" content="全iPhone用Web定規">
+    <meta property="og:description" content="iPhone画面に実寸の定規を表示して測定できます。iPhone 15/16/17など全ての機種に対応。">
+    <meta property="og:image" content="https://xullua.com/tools/ruler/rulersamune.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@xullua">
-    <meta name="twitter:title" content="iPhone用Web定規">
+    <meta name="twitter:title" content="全iPhone用Web定規">
     <meta name="twitter:description" content="iPhoneに実寸の定規を表示させて長さを測ることができます。">
     <meta name="twitter:image" content="https://xullua.com/tools/ruler/rulersamune.png">
     <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -23,12 +31,56 @@
 
         gtag('config', 'G-JDKGJ1E005');
     </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "iPhone用Web定規",
+            "url": "https://xullua.com/tools/ruler/",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "iOS",
+            "inLanguage": "ja",
+            "description": "iPhone画面に実寸の定規を表示して長さを測れるWebアプリです。",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "JPY"
+            }
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "ホーム",
+                    "item": "https://xullua.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "ツール",
+                    "item": "https://xullua.com/tools/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "iPhone用Web定規",
+                    "item": "https://xullua.com/tools/ruler/"
+                }
+            ]
+        }
+        </script>
 </head>
 
 <body>
     <main>
         <section class="select">
             <div class="top">
+                <p class="breadcrumbs"><a href="https://xullua.com/">ホーム</a> / <a href="https://xullua.com/tools/">ツール</a> / iPhone用Web定規</p>
                 <h1><span id="model-name">iPhone</span>用Web定規</h1>
                 <div class="select-wrap">
                     <select name="model" id="model-select">
@@ -69,6 +121,14 @@
                         <option value="iPhoneSE1">iPhone SE（第1世代）</option>
                     </select>
                 </div>
+                <p id="zoom-warning" class="zoom-warning" hidden>
+                    拡大率が100%ではありません。実寸がずれる可能性があります。
+                </p>
+                <p id="auto-detected-note" class="auto-detected-note" hidden></p>
+                <p id="candidate-note" class="auto-detected-note" hidden></p>
+                <p id="device-warning" class="device-warning" hidden>
+                    画面情報と選択中の機種が一致しない可能性があります。
+                </p>
                 <h2>使用の前に</h2>
                 <p>
                     ・実値とは異なる可能性があります。<br>
@@ -77,7 +137,7 @@
                 </p>
                 <h2>ここにない</h2>
                 <p>
-                    ここに使用している端末がない場合は、お使いの端末のppiとDPRが同じiPhoneを選択することで使用できます。
+                    ここに使用している端末がない場合は、画面サイズが近いiPhoneを選択してください。
                 </p>
             </div>
             <section>
@@ -120,133 +180,161 @@
         margin: 0 auto;
         padding: 0;
         position: relative;
-    }
 
-    .select {
-        background: var(--secondback);
-        margin: 10px 120px 10px 10px;
-        border-radius: 10px;
-        padding: 20px 15px 90px;
-        height: calc(100vh - 20px);
-        min-height: calc(100vh - 20px);
-        position: relative;
+        .select {
+            background: var(--secondback);
+            margin: 10px 120px 10px 10px;
+            border-radius: 30px;
+            padding: 20px 15px 90px;
+            height: calc(100vh - 20px);
+            min-height: calc(100vh - 20px);
+            position: relative;
+
+            .top {
+                margin-bottom: 20px;
+
+                h2 {
+                    font-size: 14px;
+                    color: var(--maintext);
+                    margin-top: 10px;
+                }
+
+                .breadcrumbs {
+                    font-size: 11px;
+                    margin: 0 0 8px;
+
+                    a {
+                        color: var(--secondtext);
+                    }
+                }
+
+                p {
+                    font-size: 12px;
+                    line-height: 1.4;
+                    color: var(--subtext);
+                }
+            }
+
+            .select-wrap {
+                position: relative;
+                background: var(--thirdback);
+                margin: 10px 0 20px 0;
+                border-radius: 10px;
+                width: 80%;
+
+                &::before {
+                    position: absolute;
+                    top: 13px;
+                    right: 15px;
+                    content: "";
+                    width: 7px;
+                    height: 7px;
+                    border-bottom: 2px solid var(--secondtext);
+                    border-right: 2px solid var(--secondtext);
+                    transform: rotate(45deg);
+                }
+
+                select {
+                    outline: none;
+                    border: none;
+                    appearance: none;
+                    -moz-appearance: none;
+                    -webkit-appearance: none;
+                    cursor: pointer;
+                    font-family: 'LSeedJP', sans-serif;
+                    background: var(--thirdback);
+                    color: var(--maintext);
+                    padding: 10px 15px;
+                    border-radius: 10px;
+                    width: 100%;
+                    font-size: 14px;
+
+                    &:hover {
+                        background: var(--fourthback);
+                    }
+
+                    &::selection {
+                        display: none;
+                    }
+                }
+            }
+
+            .zoom-warning {
+                font-size: 12px;
+                line-height: 1.4;
+                margin-bottom: 8px;
+                color: var(--accentred);
+            }
+
+            .auto-detected-note,
+            .device-warning {
+                font-size: 12px;
+                line-height: 1.4;
+                color: var(--subtext);
+                margin: 0 0 8px;
+            }
+
+            .device-warning {
+                color: var(--accentred);
+            }
+
+            .ad {
+                width: 100%;
+                height: 220px;
+                margin: 20px 0;
+            }
+
+            .rulerfooter {
+                position: absolute;
+                bottom: 20px;
+                left: 15px;
+
+                picture {
+                    display: block;
+                    width: 99px;
+                    height: 33px;
+                }
+
+                .logo {
+                    display: block;
+                    margin: 0;
+                    width: 99px;
+                }
+
+                p {
+                    line-height: 1;
+
+                    a {
+                        font-size: 10px;
+                        margin-right: 6px;
+                        color: var(--secondtext);
+                    }
+                }
+            }
+        }
+
+        .ruler {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            picture {
+                display: block;
+            }
+
+            img {
+                height: 100%;
+            }
+
+            #ruler-image {
+                display: none;
+            }
+        }
     }
 
     h1 {
         font-size: 20px;
         line-height: 1;
-    }
-
-    .select-wrap {
-        position: relative;
-        background: var(--thirdback);
-        margin: 10px 0 20px 0;
-        border-radius: 10px;
-        width: 80%;
-    }
-
-    select {
-        outline: none;
-        border: none;
-        appearance: none;
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        cursor: pointer;
-        font-family: 'LSeedJP', sans-serif;
-        background: var(--thirdback);
-        color: var(--maintext);
-        padding: 10px 15px;
-        border-radius: 10px;
-        width: 100%;
-        font-size: 14px;
-    }
-
-    select:hover {
-        background: var(--fourthback);
-    }
-
-    select::selection {
-        display: none;
-    }
-
-    .select-wrap::before {
-        position: absolute;
-        top: 13px;
-        right: 15px;
-        content: "";
-        width: 7px;
-        height: 7px;
-        border-bottom: 2px solid var(--secondtext);
-        border-right: 2px solid var(--secondtext);
-        transform: rotate(45deg);
-    }
-
-    .top {
-        margin-bottom: 20px;
-    }
-
-    .top h2 {
-        font-size: 14px;
-        color: var(--maintext);
-        margin-top: 10px;
-    }
-
-    .top p {
-        font-size: 12px;
-        line-height: 1.4;
-        color: var(--subtext);
-    }
-
-    .ad {
-        width: 100%;
-        height: 220px;
-        margin: 20px 0;
-    }
-
-    .rulerfooter {
-        position: absolute;
-        bottom: 20px;
-        left: 15px;
-    }
-
-    .rulerfooter picture {
-        display: block;
-        width: 99px;
-        height: 33px;
-    }
-
-    .rulerfooter .logo {
-        display: block;
-        margin: 0;
-        width: 99px;
-    }
-
-    .rulerfooter p {
-        line-height: 1;
-    }
-
-    .rulerfooter p a {
-        font-size: 10px;
-        margin-right: 6px;
-        color: var(--secondtext);
-    }
-
-    .ruler {
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-
-    .ruler picture {
-        display: block;
-    }
-
-    .ruler img {
-        height: 100%;
-    }
-
-    .ruler #ruler-image {
-        display: none;
     }
 
     /* 求め方：ppi ÷ 2.54 × 15 ÷ DPR */
@@ -308,14 +396,315 @@
     const modelSelect = document.getElementById("model-select");
     const modelImage = document.getElementById("ruler-image");
     const modelName = document.getElementById("model-name");
+    const zoomWarning = document.getElementById("zoom-warning");
+    const autoDetectedNote = document.getElementById("auto-detected-note");
+    const candidateNote = document.getElementById("candidate-note");
+    const deviceWarning = document.getElementById("device-warning");
+
+    const storageKeys = {
+        model: "rulerSelectedModel",
+        visited: "rulerHasVisited"
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const shouldResetState = urlParams.has("resetRulerState");
+    const debugDetection = urlParams.has("debugDetection");
+
+    if (shouldResetState) {
+        localStorage.removeItem(storageKeys.model);
+        localStorage.removeItem(storageKeys.visited);
+    }
+
+    const initialDevicePixelRatio = window.devicePixelRatio || 1;
+    let lastSelectedModel = "";
+    let hasSentZoomWarningEvent = false;
+    let hasSentMismatchWarningEvent = false;
+
+    const modelSignatures = {
+        "393x852@3": ["iPhone17", "iPhone16", "iPhone15", "iPhone14Pro"],
+        "430x932@3": ["iPhone14ProMax", "iPhone14Plus", "iPhone13ProMax", "iPhone12ProMax"],
+        "393x852@2": ["iPhoneAir"],
+        "390x844@3": ["iPhone14", "iPhone13", "iPhone13Pro", "iPhone12", "iPhone12Pro"],
+        "428x926@3": ["iPhone14Plus", "iPhone13ProMax", "iPhone12ProMax"],
+        "375x812@3": ["iPhone13mini", "iPhone12mini", "iPhone11Pro", "iPhoneXS", "iPhoneX"],
+        "414x896@3": ["iPhone11ProMax", "iPhoneXSMax"],
+        "414x896@2": ["iPhone11", "iPhoneXR"],
+        "390x844@2": ["iPhone12", "iPhone11"],
+        "375x667@2": ["iPhoneSE3", "iPhoneSE2", "iPhone8", "iPhone7", "iPhone6s", "iPhone6"],
+        "414x736@3": ["iPhone8Plus", "iPhone7Plus", "iPhone6sPlus", "iPhone6Plus"],
+        "320x568@2": ["iPhoneSE1"]
+    };
+
+    function getSelectedLabel() {
+        const selectedOption = modelSelect.options[modelSelect.selectedIndex];
+        return selectedOption ? selectedOption.textContent : "iPhone";
+    }
+
+    function getLabelByValue(value) {
+        const option = Array.from(modelSelect.options).find(function (item) {
+            return item.value === value;
+        });
+        return option ? option.textContent : value;
+    }
+
+    function saveModelSelection(model) {
+        localStorage.setItem(storageKeys.model, model);
+    }
+
+    function getCurrentDeviceInfo() {
+        const width = Math.min(screen.width, screen.height);
+        const height = Math.max(screen.width, screen.height);
+        const dpr = Math.round((window.devicePixelRatio || 1) * 10) / 10;
+        const signature = `${width}x${height}@${dpr}`;
+        return { width, height, dpr, signature };
+    }
+
+    function getDetectionResult() {
+        const ua = navigator.userAgent || "";
+        const isIPhone = /iPhone/i.test(ua);
+        if (!isIPhone) {
+            return { isIPhone: false, candidates: [], confidence: "none", matchedSignature: "" };
+        }
+
+        const deviceInfo = getCurrentDeviceInfo();
+        const exactCandidates = modelSignatures[deviceInfo.signature];
+        if (exactCandidates && exactCandidates.length > 0) {
+            return {
+                isIPhone: true,
+                candidates: exactCandidates.slice(0, 3),
+                confidence: "high",
+                matchedSignature: deviceInfo.signature
+            };
+        }
+
+        const nearestGroups = Object.keys(modelSignatures)
+            .map(function (key) {
+                const parts = key.split("@");
+                const wh = parts[0].split("x");
+                const groupWidth = Number(wh[0]);
+                const groupHeight = Number(wh[1]);
+                const groupDpr = Number(parts[1]);
+                const distance =
+                    Math.abs(groupWidth - deviceInfo.width) +
+                    Math.abs(groupHeight - deviceInfo.height) +
+                    Math.abs(groupDpr - deviceInfo.dpr) * 120;
+                return { key, distance };
+            })
+            .sort(function (left, right) {
+                return left.distance - right.distance;
+            })
+            .slice(0, 3);
+
+        const mergedCandidates = [];
+        nearestGroups.forEach(function (group) {
+            (modelSignatures[group.key] || []).forEach(function (model) {
+                if (!mergedCandidates.includes(model) && mergedCandidates.length < 3) {
+                    mergedCandidates.push(model);
+                }
+            });
+        });
+
+        const bestDistance = nearestGroups.length > 0 ? nearestGroups[0].distance : Number.MAX_SAFE_INTEGER;
+        const confidence = bestDistance <= 4 ? "medium" : "low";
+
+        return {
+            isIPhone: true,
+            candidates: mergedCandidates,
+            confidence,
+            matchedSignature: ""
+        };
+    }
+
+    function renderCandidateNote(detectionResult) {
+        if (!detectionResult.isIPhone || detectionResult.candidates.length === 0) {
+            candidateNote.hidden = true;
+            return;
+        }
+
+        const labels = detectionResult.candidates.map(function (value) {
+            return getLabelByValue(value);
+        });
+        const confidenceLabel = detectionResult.confidence === "high"
+            ? "高"
+            : detectionResult.confidence === "medium"
+                ? "中"
+                : "低";
+
+        candidateNote.textContent = "推定候補: " + labels.join(" / ") + "（推定精度: " + confidenceLabel + "）";
+        candidateNote.hidden = false;
+    }
+
+        /*
+            GA4 計測マッピング（tools/ruler）
+
+            ■ イベント: ruler_auto_selected（自動推定で機種を選択した）
+            - ruler_detected_model（推定機種_自動選択）
+                自動選択された機種ID（例: iPhone15）
+            - ruler_confidence（推定精度）
+                推定の信頼度（high / medium / low）
+            - ruler_candidates（推定候補一覧）
+                上位候補の機種ID連結文字列（区切り: |）
+
+            ■ イベント: ruler_manual_changed（ユーザーが機種選択を変更した）
+            - ruler_from_model（変更前機種）
+                変更前に選択されていた機種ID
+            - ruler_to_model（変更後機種）
+                変更後に選択された機種ID
+
+            ■ イベント: ruler_zoom_warning_shown（ズーム警告を表示した）
+            - ruler_scale（ズーム倍率）
+                visualViewport.scale の値
+            - ruler_width_ratio（画面幅比率）
+                innerWidth / visualViewport.width の値
+            - ruler_dpr（DPR）
+                devicePixelRatio の値
+
+            ■ イベント: ruler_mismatch_warning_shown（機種不一致警告を表示した）
+            - ruler_selected_model（選択中機種）
+                警告表示時点の現在選択機種ID
+            - ruler_top_candidate（最上位推定機種）
+                判定ロジック上の最有力候補機種ID
+            - ruler_confidence（推定精度）
+                判定時の信頼度（high / medium / low）
+        */
+
+    function sendAnalyticsEvent(eventName, params) {
+        if (typeof window.gtag !== "function") {
+            return;
+        }
+        window.gtag("event", eventName, params || {});
+    }
+
+    function applyModelSelection(selectedValue) {
+        if (!selectedValue) {
+            return;
+        }
+        modelImage.style.height = "";
+        modelImage.setAttribute("id", selectedValue);
+        modelName.textContent = getSelectedLabel();
+    }
+
+    function updateDeviceMismatchWarning() {
+        const detectionResult = getDetectionResult();
+        if (!detectionResult.isIPhone || !modelSelect.value) {
+            deviceWarning.hidden = true;
+            return;
+        }
+
+        const isInCandidates = detectionResult.candidates.includes(modelSelect.value);
+        if (!isInCandidates) {
+            deviceWarning.textContent = "画面情報と選択中の機種が一致しない可能性があります。";
+            deviceWarning.hidden = false;
+            if (!hasSentMismatchWarningEvent) {
+                sendAnalyticsEvent("ruler_mismatch_warning_shown", {
+                    ruler_selected_model: modelSelect.value,
+                    ruler_top_candidate: detectionResult.candidates[0] || "",
+                    ruler_confidence: detectionResult.confidence
+                });
+                hasSentMismatchWarningEvent = true;
+            }
+            return;
+        }
+
+        if (detectionResult.confidence === "low") {
+            deviceWarning.textContent = "端末推定の精度が低いため、機種を手動で確認してください。";
+            deviceWarning.hidden = false;
+            if (!hasSentMismatchWarningEvent) {
+                sendAnalyticsEvent("ruler_mismatch_warning_shown", {
+                    ruler_selected_model: modelSelect.value,
+                    ruler_top_candidate: detectionResult.candidates[0] || "",
+                    ruler_confidence: detectionResult.confidence
+                });
+                hasSentMismatchWarningEvent = true;
+            }
+            return;
+        }
+
+        deviceWarning.hidden = true;
+        hasSentMismatchWarningEvent = false;
+    }
+
+    function updateZoomWarning() {
+        const viewport = window.visualViewport;
+        const scale = viewport ? (viewport.scale || 1) : 1;
+        const widthRatio = viewport && viewport.width ? (window.innerWidth / viewport.width) : 1;
+        const dprChanged = Math.abs((window.devicePixelRatio || 1) - initialDevicePixelRatio) > 0.01;
+        const isZoomed = Math.abs(scale - 1) > 0.01 || Math.abs(widthRatio - 1) > 0.02 || dprChanged;
+        zoomWarning.hidden = !isZoomed;
+
+        if (isZoomed && !hasSentZoomWarningEvent) {
+            sendAnalyticsEvent("ruler_zoom_warning_shown", {
+                ruler_scale: Number(scale.toFixed(3)),
+                ruler_width_ratio: Number(widthRatio.toFixed(3)),
+                ruler_dpr: Number((window.devicePixelRatio || 1).toFixed(3))
+            });
+            hasSentZoomWarningEvent = true;
+        }
+
+        if (!isZoomed) {
+            hasSentZoomWarningEvent = false;
+        }
+    }
+
+    function initializeSelection() {
+        const detectionResult = getDetectionResult();
+        const detectedModel = detectionResult.candidates[0] || "";
+        const savedModel = localStorage.getItem(storageKeys.model);
+        const initialModel = savedModel || detectedModel;
+        const isFirstVisit = debugDetection || !localStorage.getItem(storageKeys.visited);
+
+        if (initialModel) {
+            modelSelect.value = initialModel;
+            applyModelSelection(initialModel);
+        }
+
+        if (isFirstVisit && (!savedModel || debugDetection) && detectedModel) {
+            autoDetectedNote.textContent = "あなたのデバイスは" + getLabelByValue(detectedModel) + "と推定されたので自動選択されました。";
+            autoDetectedNote.hidden = false;
+            sendAnalyticsEvent("ruler_auto_selected", {
+                ruler_detected_model: detectedModel,
+                ruler_confidence: detectionResult.confidence,
+                ruler_candidates: detectionResult.candidates.join("|")
+            });
+        }
+
+        renderCandidateNote(detectionResult);
+
+        localStorage.setItem(storageKeys.visited, "1");
+        updateDeviceMismatchWarning();
+        lastSelectedModel = modelSelect.value || "";
+    }
 
     modelSelect.addEventListener("change", function () {
         const selectedValue = modelSelect.value;
-        modelImage.setAttribute("id", selectedValue);
-        modelName.textContent = selectedValue;
+        const beforeModel = lastSelectedModel;
+        saveModelSelection(selectedValue);
+        applyModelSelection(selectedValue);
+        autoDetectedNote.hidden = true;
+        updateDeviceMismatchWarning();
+        if (beforeModel && selectedValue && beforeModel !== selectedValue) {
+            sendAnalyticsEvent("ruler_manual_changed", {
+                ruler_from_model: beforeModel,
+                ruler_to_model: selectedValue
+            });
+        }
+        lastSelectedModel = selectedValue;
     });
 
     modelName.style.textTransform = "none";
+    initializeSelection();
+    updateZoomWarning();
+
+    window.addEventListener("resize", updateZoomWarning);
+    window.addEventListener("resize", updateDeviceMismatchWarning);
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", updateZoomWarning);
+        window.visualViewport.addEventListener("scroll", updateZoomWarning);
+        window.visualViewport.addEventListener("resize", updateDeviceMismatchWarning);
+    }
+
+    window.addEventListener("orientationchange", updateZoomWarning);
+    window.addEventListener("pageshow", updateZoomWarning);
 </script>
 
 </html>

@@ -266,23 +266,24 @@
                 --row-height: 40px;
                 --row-gap: 6px;
                 --highlight-index: 0;
+                --group-radius: 20px;
+                --group-padding: 4px;
                 position: relative;
                 display: grid;
                 gap: var(--row-gap);
-                padding: 4px;
-                border: 1px solid var(--linecolor);
-                border-radius: 12px;
+                padding: var(--group-padding);
+                border-radius: var(--group-radius);
                 background: var(--secondback);
 
                 .controlHighlight {
                     position: absolute;
-                    left: 4px;
-                    right: 4px;
+                    left: var(--group-padding);
+                    right: var(--group-padding);
                     height: var(--row-height);
-                    top: calc(4px + (var(--row-height) + var(--row-gap)) * var(--highlight-index));
-                    border-radius: 9px;
+                    top: calc(var(--group-padding) + (var(--row-height) + var(--row-gap)) * var(--highlight-index));
+                    border-radius: calc(var(--group-radius) - var(--group-padding));
                     background: var(--accentcolor);
-                    transition: top .28s ease;
+                    transition: top .4s cubic-bezier(.2, 1.3, .3, 1);
                     pointer-events: none;
                 }
 
@@ -300,14 +301,24 @@
                     padding: 0 12px;
                     display: flex;
                     align-items: center;
-                    border-radius: 9px;
+                    border-radius: calc(var(--group-radius) - var(--group-padding));
                     color: var(--maintext);
                     cursor: pointer;
                     user-select: none;
+                    transition: .2s;
+
+                    &:hover {
+                        background: var(--thirdback);
+                    }
                 }
 
                 .controlInput:checked+.controlLabel {
-                    color: #fff
+                    color: #fff;
+
+                    &:is(:hover, :focus-visible) {
+                        background: none;
+                        transition: 0s;
+                    }
                 }
             }
         }
@@ -457,6 +468,8 @@
         var sweepIntervalId = null;
         var statusAnimationId = null;
         var statusDotCount = 1;
+        var playbackStartedAtMs = null;
+        var segmentStartedAtMs = null;
         var playStopButton = document.getElementById('playStopButton');
         var playStatus = document.getElementById('playStatus');
         var frequencyInputs = document.querySelectorAll('input[name="frequency"]');
@@ -532,6 +545,63 @@
             if (typeof gtag === 'function') {
                 gtag('event', eventName, params || {});
             }
+        }
+
+        /*
+        GA4 カスタム定義の登録一覧 このページ用
+
+        カスタムディメンション イベントスコープ
+        - 水抜き周波数            -> waterremove_frequency_hz
+        - 水抜き音タイプ          -> waterremove_mode
+        - 水抜き区間終了理由      -> waterremove_segment_reason
+        - 水抜きエラーメッセージ  -> waterremove_message
+
+        カスタム指標 イベントスコープ
+        - 水抜き総再生秒数        -> waterremove_total_seconds
+        - 水抜き区間再生秒数      -> waterremove_duration_seconds
+
+        メモ:
+        - GA4の「ディメンション名（表示名）」は日本語でOK
+        - event parameter は英数字とアンダースコア推奨（現在の実装は対応済み）
+        */
+
+        function getNowMs() {
+            if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
+                return performance.now();
+            }
+            return Date.now();
+        }
+
+        function getElapsedSeconds(startMs) {
+            if (!startMs) {
+                return 0;
+            }
+
+            return Math.max(0, Number(((getNowMs() - startMs) / 1000).toFixed(1)));
+        }
+
+        function createWaterremoveParams(extra) {
+            var base = {
+                waterremove_frequency_hz: currentFrequency,
+                waterremove_mode: playMode
+            };
+
+            if (!extra) {
+                return base;
+            }
+
+            return Object.assign(base, extra);
+        }
+
+        function trackPlaybackSegment(reason) {
+            if (!segmentStartedAtMs) {
+                return;
+            }
+
+            trackEvent('water_remove_play_segment', createWaterremoveParams({
+                waterremove_duration_seconds: getElapsedSeconds(segmentStartedAtMs),
+                waterremove_segment_reason: reason
+            }));
         }
 
         async function playSound() {
@@ -610,26 +680,35 @@
 
         playStopButton.addEventListener('click', async function () {
             if (isPlaying) {
+                trackPlaybackSegment('stop');
+                trackEvent('water_remove_play_stop', createWaterremoveParams({
+                    waterremove_total_seconds: getElapsedSeconds(playbackStartedAtMs)
+                }));
                 stopSound();
                 isPlaying = false;
+                playbackStartedAtMs = null;
+                segmentStartedAtMs = null;
                 stopStatusAnimation();
                 updatePlayUi();
-                trackEvent('water_remove_stop', { frequency_hz: currentFrequency, mode: playMode });
                 return;
             }
 
             try {
                 await playSound();
                 isPlaying = true;
+                playbackStartedAtMs = getNowMs();
+                segmentStartedAtMs = playbackStartedAtMs;
                 updatePlayUi();
                 startStatusAnimation();
-                trackEvent('water_remove_play', { frequency_hz: currentFrequency, mode: playMode });
+                trackEvent('water_remove_play_start', createWaterremoveParams());
             } catch (error) {
                 playStatus.textContent = '再生に失敗しました。音量とマナーモードを確認して再試行してください。';
                 isPlaying = false;
+                playbackStartedAtMs = null;
+                segmentStartedAtMs = null;
                 stopStatusAnimation();
                 updatePlayUi();
-                trackEvent('water_remove_error', { message: 'play_failed' });
+                trackEvent('water_remove_error', createWaterremoveParams({ waterremove_message: 'play_failed' }));
             }
         });
 
@@ -639,9 +718,16 @@
                     return;
                 }
 
+                if (isPlaying) {
+                    trackPlaybackSegment('frequency_change');
+                }
+
                 currentFrequency = Number(input.value);
+                if (isPlaying) {
+                    segmentStartedAtMs = getNowMs();
+                }
                 updatePlayUi();
-                trackEvent('water_remove_frequency_change', { frequency_hz: currentFrequency });
+                trackEvent('water_remove_frequency_change', createWaterremoveParams());
 
                 if (isPlaying) {
                     applySoundMode();
@@ -655,9 +741,16 @@
                     return;
                 }
 
+                if (isPlaying) {
+                    trackPlaybackSegment('mode_change');
+                }
+
                 playMode = input.value || 'steady';
+                if (isPlaying) {
+                    segmentStartedAtMs = getNowMs();
+                }
                 updatePlayUi();
-                trackEvent('water_remove_mode_change', { mode: playMode, frequency_hz: currentFrequency });
+                trackEvent('water_remove_mode_change', createWaterremoveParams());
 
                 if (isPlaying) {
                     applySoundMode();
@@ -666,8 +759,17 @@
         });
 
         window.addEventListener('beforeunload', function () {
+            if (isPlaying) {
+                trackPlaybackSegment('page_unload');
+                trackEvent('water_remove_play_stop', createWaterremoveParams({
+                    waterremove_total_seconds: getElapsedSeconds(playbackStartedAtMs),
+                    waterremove_segment_reason: 'page_unload'
+                }));
+            }
             stopSound();
             isPlaying = false;
+            playbackStartedAtMs = null;
+            segmentStartedAtMs = null;
             stopStatusAnimation();
         });
 
