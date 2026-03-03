@@ -421,7 +421,6 @@
                         display: flex;
                         flex-direction: column;
                         align-items: flex-start;
-                        gap: 8px;
                         padding: 5px;
                         width: min(60%, 320px);
 
@@ -847,6 +846,7 @@
                         --verticaltab-gap: 6px;
                         position: relative;
                         display: grid;
+                        grid-template-columns: max-content;
                         gap: var(--verticaltab-gap);
                         border: 1px solid var(--linecolor);
                         border-radius: var(--verticaltab-radius);
@@ -915,6 +915,7 @@
 
                         .swatch {
                             --swatch-size: 42px;
+                            flex: 0 0 auto;
                             width: var(--swatch-size);
                             height: var(--swatch-size);
                             border-radius: 50%;
@@ -969,7 +970,7 @@
 
                     &.background-color .color-palette {
                         flex-direction: row;
-                        flex-wrap: nowrap;
+                        flex-wrap: wrap;
                         justify-content: flex-end;
                     }
 
@@ -1001,9 +1002,10 @@
 
                     &.font .vtab-options .tab-label,
                     &.font-size .vtab-options .tab-label {
-                        width: fit-content;
+                        width: 100%;
                         min-width: max-content;
-                        justify-self: start;
+                        justify-self: stretch;
+                        box-sizing: border-box;
                     }
 
                     &.font .vtab-options:has(#font1:checked) .active-bg {
@@ -1081,6 +1083,25 @@
                                 outline: 2px solid var(--themecolorhover);
                                 outline-offset: 2px;
                             }
+                        }
+                    }
+
+                    @media (max-width: 760px) {
+                        &.font-color .color-palette,
+                        &.background-color .color-palette {
+                            gap: 6px;
+                        }
+
+                        &.font-color .color-palette .swatch,
+                        &.background-color .color-palette .swatch {
+                            --swatch-size: 34px;
+                        }
+                    }
+
+                    @media (max-width: 420px) {
+                        &.font-color .color-palette .swatch,
+                        &.background-color .color-palette .swatch {
+                            --swatch-size: 30px;
                         }
                     }
                 }
@@ -1279,9 +1300,6 @@
                     - eboard_flip_total_cards: eboard_切替表示_カード総数
                     - eboard_flip_filled_cards: eboard_切替表示_入力済みカード数
                     - eboard_flip_avg_duration_sec: eboard_切替表示_平均表示秒数
-
-                    ※ 重複エラーを避けるため、[B] の数値パラメータは
-                      「カスタム指標のみ」で登録する運用に統一する。
                 */
 
         function toSafeAnalyticsText(value, maxLength = 100) {
