@@ -43,34 +43,101 @@
 <body>
     <header class="width-s"></header>
     <main>
+        <section class="intro" style="display: block;">
+            <h1>ワードウルフ</h1>
+            <button class="start-trigger">始める</button>
+
+            <h2>ワードウルフって何？</h2>
+            <p>
+                全員に似たお題が配られますが、<b>ウルフだけ別のお題</b>です。
+                ゲームが始まったら話し合いの中で違和感を見つけ、ウルフを探り、最後の投票でウルフを当てるゲームです。
+                自分と異なることを言っている人がいても、自分がウルフの可能性があるので要注意！
+            </p>
+            <ol>
+                <li>全員が順番にお題を確認（他の人には見せない）</li>
+                <li>時間内に自由に会話して、お互いのヒントを探る</li>
+                <li>怪しい人に投票して、ウルフを当てられたら市民の勝ち / ウルフが最後までバレなければウルフの勝ち</li>
+            </ol>
+
+            <h2>このサイトでの遊び方</h2>
+            <p>1台の端末を使用します。設定後、順番に回し1人ずつお題を確認します。全員確認後にゲーム開始です。</p>
+            <ul>
+                <li>プレイヤー人数・ウルフ人数・時間を設定</li>
+                <li>プレイヤー名を入力（空欄可）</li>
+                <li>各プレイヤーがお題を確認</li>
+                <li>全員確認後に会話スタート、最後に答え合わせ</li>
+            </ul>
+        </section>
+
+        <nav class="progress" id="setup-progress" aria-label="ゲーム開始までの進行" style="display: none;">
+            <ol>
+                <li data-step="setting">設定</li>
+                <li data-step="playername">名前入力</li>
+                <li data-step="playercheck">お題確認</li>
+                <li data-step="gamestart">開始</li>
+            </ol>
+            <p id="progress-remaining"></p>
+        </nav>
+
         <section class="start" style="display: block;">
             <h2>ワードウルフを開始する</h2>
             <p>この場にいる人と一緒に一台の端末を使用してワードウルフをプレイします。</p>
-            <button id="start-btn">開始</button>
+            <button class="start-trigger" id="start-btn">開始</button>
         </section>
 
         <section class="setting" style="display: none;">
             <h2>ゲーム設定</h2>
-            <h3>プレイヤー数</h3>
-            <input type="number" id="player-count" min="3" placeholder="3">
+            <div class="preset-panel" id="preset-panel" style="display: none;">
+                <div id="preset-list"></div>
+            </div>
 
-            <h3>ウルフの人数</h3>
-            <input type="number" id="wolf-count" min="1" value="1">
+            <div class="setting-form" id="setting-form" style="display: none;">
+                <h3>プレイヤー数</h3>
+                <input type="number" id="player-count" min="3" placeholder="3">
 
-            <h3>お題のカテゴリー</h3>
-            <select id="category-select">
-                <option value="all">全て</option>
-                <option value="観光地" style="display: none;">観光地</option>
-                <option value="恋愛">恋愛</option>
-            </select>
+                <h3>ウルフの人数</h3>
+                <input type="number" id="wolf-count" min="1" value="1">
 
-            <h3>時間制限</h3>
-            <input type="number" id="time-limit-m" value="3"><span>分</span>
-            <input type="number" id="time-limit-s" value="0"><span>秒</span>
+                <h3>お題のカテゴリー</h3>
+                <div id="category-select" class="category-checkbox-group" role="group" aria-label="お題のカテゴリー">
+                    <label class="category-option">
+                        <input type="checkbox" name="category" value="all" checked>
+                        <span>全て</span>
+                    </label>
+                    <label class="category-option">
+                        <input type="checkbox" name="category" value="恋愛">
+                        <span>恋愛</span>
+                    </label>
+                    <label class="category-option">
+                        <input type="checkbox" name="category" value="食べ物">
+                        <span>食べ物</span>
+                    </label>
+                    <label class="category-option">
+                        <input type="checkbox" name="category" value="学校">
+                        <span>学校</span>
+                    </label>
+                    <label class="category-option">
+                        <input type="checkbox" name="category" value="仕事">
+                        <span>仕事</span>
+                    </label>
+                    <label class="category-option">
+                        <input type="checkbox" name="category" value="趣味">
+                        <span>趣味</span>
+                    </label>
+                    <label class="category-option">
+                        <input type="checkbox" name="category" value="旅行">
+                        <span>旅行</span>
+                    </label>
+                </div>
 
-            <p id="error-msg" style="display: none;"></p>
+                <h3>時間制限</h3>
+                <input type="number" id="time-limit-m" value="3"><span>分</span>
+                <input type="number" id="time-limit-s" value="0"><span>秒</span>
 
-            <button id="next-btn">次へ</button>
+                <p id="error-msg" style="display: none;"></p>
+
+                <button id="next-btn">次へ</button>
+            </div>
         </section>
 
         <section class="playername" style="display: none;">
@@ -103,11 +170,13 @@
         </section>
 
         <section class="playinggame" style="display: none;">
-            <h2>ゲーム進行中</h2>
-            <p>みんなで話しあってウルフを探し出しましょう。</p>
-            <div class="time">
-                <h3>残り時間</h3>
-                <p id="time-remaining">0分0秒</p>
+            <div class="playing-top">
+                <h2>ゲーム進行中</h2>
+                <p>みんなで話しあってウルフを探し出しましょう。</p>
+                <div class="time">
+                    <p id="time-remaining">0分00秒</p>
+                    <p id="time-status" aria-live="polite"></p>
+                </div>
             </div>
 
             <div class="hint"></div>
@@ -118,6 +187,18 @@
         </section>
 
         <section class="answer" style="display: none;"></section>
+
+        <div class="preset-modal" id="preset-modal" aria-hidden="true">
+            <div class="modalLayer">
+                <button class="modalBackdrop" id="preset-modal-backdrop" aria-label="閉じる"></button>
+                <div class="modalCenter">
+                    <div class="preset-choice-actions" role="dialog" aria-modal="true" aria-label="プリセット操作">
+                        <button id="preset-modal-quick" type="button">そのままスタート</button>
+                        <button id="preset-modal-edit" type="button">編集してからスタート</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <footer class="width-s"></footer>
 

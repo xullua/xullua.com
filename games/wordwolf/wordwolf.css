@@ -6,6 +6,12 @@ main {
     overflow-x: hidden;
 }
 
+body.is-playing main {
+    min-height: 100svh;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
 section {
     animation: sectionanime .5s var(--easing27);
 }
@@ -14,6 +20,7 @@ section {
     0% {
         transform: translateX(50px);
     }
+
     100% {
         transform: translateX(0);
     }
@@ -51,10 +58,7 @@ input[type="number"] {
     font-size: 16px;
     transition: .2s;
 
-    &:hover {
-        border: 2px solid var(--line);
-    }
-
+    &:hover,
     &:focus {
         border: 2px solid var(--line);
     }
@@ -79,19 +83,156 @@ select {
     border: 2px solid var(--secondback);
     transition: .2s;
 
-    &:hover {
-        border: 2px solid var(--line);
-    }
-
+    &:hover,
     &:focus {
         border: 2px solid var(--line);
+    }
+}
+
+.category-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 20px;
+}
+
+.category-option {
+    input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    span {
+        display: inline-block;
+        padding: 6px 14px;
+        border-radius: 999px;
+        border: 2px solid var(--secondback);
+        background: var(--secondback);
+        color: var(--maintext);
+        cursor: pointer;
+        transition: .2s;
+        user-select: none;
+    }
+
+    input:checked + span {
+        background: var(--btn);
+        border-color: var(--btn);
+        color: var(--btntext);
+    }
+
+    span:hover {
+        border-color: var(--line);
+    }
+}
+
+.intro {
+    margin: 0 0 30px;
+
+    p {
+        color: var(--subtext);
+        margin: 0 0 12px;
+    }
+
+    h1 {
+        margin: 0 0 10px;
+    }
+
+    h2 {
+        margin: 30px 0 10px;
+    }
+
+    button {
+        margin: 0 0 18px;
+    }
+
+    ol,
+    ul {
+        color: var(--subtext);
+    }
+
+    ol {
+        margin: 0;
+        padding: 0 0 0 22px;
+
+        li {
+            margin: 8px 0;
+        }
+    }
+
+    ul {
+        margin: 10px 0 0;
+        padding: 0 0 0 20px;
+
+        li {
+            margin: 8px 0;
+        }
+    }
+}
+
+.progress {
+    margin: 0 0 20px;
+    width: 100%;
+
+    ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 0;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    li {
+        flex: 1 0 180px;
+        position: relative;
+        background: var(--secondback);
+        border: 1px solid var(--line);
+        padding: 10px 20px 10px 36px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--subtext);
+        clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%, 20px 50%);
+        margin-right: -12px;
+        white-space: nowrap;
+    }
+
+    li:first-child {
+        clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);
+        padding-left: 20px;
+    }
+
+    li:last-child {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 20px 50%);
+        margin-right: 0;
+        padding-right: 14px;
+    }
+
+    li.current {
+        background: var(--btn);
+        border-color: var(--btnhover);
+        color: var(--btntext);
+        z-index: 2;
+    }
+
+    li.done {
+        border-color: var(--btn);
+        color: var(--btn);
+        background: color-mix(in srgb, var(--btn) 12%, var(--secondback));
+    }
+
+    p {
+        margin: 8px 0 0;
+        font-size: 13px;
+        color: var(--subtext);
     }
 }
 
 .start {
     p {
         color: var(--subtext);
-        margin-bottom: 30px;
+        margin-bottom: 18px;
     }
 }
 
@@ -100,9 +241,57 @@ select {
         margin: 0 0 20px;
     }
 
+    .preset-panel {
+        margin: 0 0 24px;
+
+        #preset-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .preset-item {
+            width: 100%;
+            text-align: left;
+            background: var(--secondback);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 12px;
+            margin: 0;
+
+            &:hover {
+                border-color: var(--btn);
+            }
+
+            &.new {
+                background: var(--firstback);
+                border-style: dashed;
+            }
+
+            p {
+                margin: 0 0 6px;
+                font-size: 13px;
+                color: var(--maintext);
+            }
+
+            .preset-meta {
+                color: var(--subtext);
+            }
+        }
+    }
+
+    .setting-form {
+        button {
+            margin: 20px 0 0;
+        }
+    }
+
     input,
     select {
         margin: 0 0 20px 0;
+    }
+
+    .category-option input {
+        margin: 0;
     }
 
     #error-msg {
@@ -112,22 +301,18 @@ select {
         padding: 10px 15px;
         border-radius: 15px;
     }
-
-    button {
-        margin: 20px 0 0;
-    }
 }
 
 .playername {
     p {
         color: var(--subtext);
-        margin: 0 0 20px
+        margin: 0 0 20px;
     }
 
     input {
         display: block;
         margin: 5px 0;
-        width: min(100%,300px);
+        width: min(100%, 300px);
     }
 
     button {
@@ -177,8 +362,6 @@ select {
         outline: 2px solid var(--btn);
         outline-offset: -2px;
         color: var(--btn);
-        font-weight: ;
-        transition: .2s;
 
         &:hover {
             outline: 2px solid var(--btnhover);
@@ -188,68 +371,238 @@ select {
 }
 
 .playinggame {
-    h2+p {
-        color: var(--subtext);
-        margin: 0 0 20px;
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    justify-items: center;
+    align-items: stretch;
+    text-align: center;
+    padding: 70px 0 24px;
+
+    .playing-top {
+        align-self: start;
     }
 
-    div {
-        margin: 0 0 20px;
+    h2 {
+        margin: 0 0 4px;
+    }
+
+    h2+p {
+        color: var(--subtext);
+        margin: 0;
+    }
+
+    .time {
+        margin: 10px 0 0;
+        min-height: 102px;
+        display: grid;
+        place-items: center;
     }
 
     #time-remaining {
-        font-size: 20px;
+        margin: 0;
+        line-height: 1.1;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+            font-weight: 700;
+
+        .timer-digit {
+            display: inline-block;
+            font-size: clamp(38px, 9vw, 54px);
+            transform-origin: center top;
+        }
+
+        .timer-digit.is-updated {
+            animation: timerDigitDrop .48s cubic-bezier(.3, 2, .7, .8) both;
+        }
+
+        .timer-unit {
+            display: inline-block;
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 600;
+            margin: 0 .14em 0 .06em;
+            opacity: .88;
+        }
+    }
+
+    #time-status {
+        min-height: 1.3em;
+        color: var(--help);
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity .2s;
+
+        &.is-visible {
+            opacity: 1;
+        }
     }
 
     .hint {
-        h3+p {
-            font-size: 14px;
-            margin: 0 0 15px;
-            color: var(--subtext);
-        }
+        width: 100%;
+        max-width: min(760px, 100%);
+        min-height: 380px;
+        display: grid;
+        justify-items: center;
+        align-content: center;
+        align-self: center;
 
-        input {
-            display: none;
-        }
+        .hint-intro {
+            transition: opacity .35s ease, filter .35s ease;
 
-        label {
-            display: block;
-            width: fit-content;
-            cursor: pointer;
-            font-size: 14px;
-            border: 1px solid var(--btn);
-            color: var(--btn);
-            padding: 5px 12px;
-            margin: 5px 0;
-            border-radius: 99px;
-            transition: .2s;
+            h3 {
+                margin: 0 0 8px;
+            }
 
-            &:hover {
-                border: 1px solid var(--btnhover);
-                color: var(--btnhover);
+            p {
+                margin: 0;
+                font-size: 14px;
+                color: var(--subtext);
             }
         }
 
-        input:checked+label {
-            display: none;
+        .hint-intro.is-hidden {
+            opacity: 0;
+            filter: blur(10px);
         }
 
-        input+label+p {
-            display: none;
+        .hint-reveal-btn {
+            margin: 12px 0 10px;
+            padding: 8px 16px;
+            font-size: 15px;
+            position: relative;
+            z-index: 40;
+
+            &:disabled {
+                opacity: .55;
+                cursor: default;
+            }
+
+            &:disabled:hover {
+                background: var(--btn);
+            }
         }
 
-        input:checked+label+p {
-            display: block;
+        .hint-hand {
+            list-style: none;
+            padding: 0;
+            position: relative;
+            width: min(760px, 100%);
+            height: 380px;
+            margin: 16px 0 0;
+
+            .hint-card {
+                --card-bg: linear-gradient(160deg, #3b82f6 0%, #1d4ed8 100%);
+                --card-angle: 17deg;
+                --card-offset: calc(sibling-index() - (sibling-count() + 1) / 2);
+                --card-spread: 58px;
+                --card-nudge: 0px;
+                --card-hover-tilt: 0deg;
+                position: absolute;
+                left: 50%;
+                bottom: -20%;
+                width: clamp(200px, 31vw, 280px);
+                aspect-ratio: 7 / 10;
+                border-radius: 30px;
+                padding: 14px 16px;
+                background: var(--card-bg);
+                color: #fff;
+                box-shadow: 0 18px 34px rgb(0 0 0 / .22);
+                transform-origin: center bottom;
+                opacity: 0;
+                transform:
+                    translateX(calc(-50% + var(--card-offset) * var(--card-spread) + var(--card-nudge)))
+                    rotate(calc(var(--card-offset) * var(--card-angle) + var(--card-hover-tilt)))
+                    translateY(-152px)
+                    scale(calc(1 - abs(var(--card-offset)) * .06));
+                transition: transform .55s cubic-bezier(.2, 1.25, .28, 1), box-shadow .3s ease, filter .25s ease;
+                filter: saturate(.95);
+
+                &.is-visible {
+                    opacity: 1;
+                    animation: hintCardAppear .62s cubic-bezier(.2, 1.2, .28, 1);
+                }
+
+                &:hover {
+                    filter: saturate(1.12) brightness(1.04);
+                    box-shadow: 0 26px 44px rgb(0 0 0 / .28);
+                    transform:
+                        translateX(calc(-50% + var(--card-offset) * var(--card-spread) + var(--card-nudge)))
+                        rotate(calc((var(--card-offset) * var(--card-angle) + var(--card-hover-tilt)) * .65))
+                        translateY(-170px)
+                        scale(calc(1.03 - abs(var(--card-offset)) * .03));
+                    z-index: 20;
+                }
+            }
+
+            &:has(.hint-card:nth-child(1):hover) {
+                .hint-card:nth-child(2),
+                .hint-card:nth-child(3),
+                .hint-card:nth-child(n + 4) {
+                    --card-nudge: 42px;
+                    --card-hover-tilt: 8deg;
+                }
+            }
+
+            &:has(.hint-card:nth-child(2):hover) {
+                .hint-card:nth-child(1) {
+                    --card-nudge: -34px;
+                    --card-hover-tilt: -7deg;
+                }
+
+                .hint-card:nth-child(3),
+                .hint-card:nth-child(n + 4) {
+                    --card-nudge: 34px;
+                    --card-hover-tilt: 7deg;
+                }
+            }
+
+            &:has(.hint-card:nth-child(3):hover) {
+                .hint-card:nth-child(1),
+                .hint-card:nth-child(2) {
+                    --card-nudge: -42px;
+                    --card-hover-tilt: -8deg;
+                }
+
+                .hint-card:nth-child(n + 4) {
+                    --card-nudge: 28px;
+                    --card-hover-tilt: 6deg;
+                }
+            }
+
+        }
+
+        .hint-emoji {
+            margin: 15px 0 30px;
+            font-size: clamp(24px, 2.6vw, 34px);
+            line-height: 1;
+            text-align: center;
+        }
+
+        .hint-card-text {
+            margin: 0;
+            text-align: center;
+            font-size: clamp(20px, 2.8vw, 42px);
+            line-height: 1.45;
+            text-wrap: balance;
+            word-break: break-word;
         }
     }
 
-    button {
-        margin: 30px 0 0;
+    .end {
+        margin-top: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-self: end;
 
-        &:hover {
-            filter: drop-shadow(0 0 5px var(--accentcolor));
-            background: var(--accentcolor);
-            color: #fff;
+        button {
+            margin: 0;
+
+            &:hover {
+                filter: drop-shadow(0 0 5px var(--accentcolor));
+                background: var(--accentcolor);
+                color: #fff;
+            }
         }
     }
 }
@@ -275,17 +628,146 @@ select {
             color: var(--accentcolor);
         }
 
-        td:first-child,th:first-child{
-            border-left:none;
+        td:first-child,
+        th:first-child {
+            border-left: none;
         }
-        tr:first-child td,tr:first-child th{
-            border-top:none;
+
+        tr:first-child td,
+        tr:first-child th {
+            border-top: none;
         }
     }
+
     div {
         display: flex;
+
         button {
             margin: 0 5px 0 0;
         }
+    }
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.preset-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    pointer-events: none;
+
+    .modalLayer {
+        width: 100%;
+        height: 100%;
+    }
+
+    .modalBackdrop {
+        position: absolute;
+        inset: 0;
+        border: none;
+        border-radius: 0;
+        background: rgb(0 0 0 / 0);
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        transition: .2s;
+        cursor: pointer;
+    }
+
+    .modalCenter {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .preset-choice-actions {
+        display: grid;
+        gap: 10px;
+        width: min(100%, 320px);
+        transform: scale(.95);
+        opacity: 0;
+        transition: .25s;
+
+        button {
+            width: 100%;
+            background: none;
+            color: var(--maintext);
+            filter: drop-shadow(0 0 10px #77777744);
+            font-size: 24px;
+            text-align: left;
+
+            &:hover {
+                color: var(--accentcolor);
+                background: none;
+            }
+        }
+    }
+
+    &.is-open {
+        pointer-events: auto;
+
+        .modalBackdrop {
+            background: rgba(120, 120, 120, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .preset-choice-actions {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+@keyframes timerDigitDrop {
+    0% {
+        opacity: 0;
+        transform: translateY(-14px) scaleY(.74);
+        filter: blur(10px);
+    }
+
+    65% {
+        opacity: 1;
+        transform: translateY(2px) scaleY(1.06);
+        filter: blur(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes hintCardAppear {
+    0% {
+        transform:
+            translateX(calc(-50% + var(--card-offset) * var(--card-spread)))
+            rotate(calc(var(--card-offset) * var(--card-angle) + var(--card-hover-tilt)))
+            translateY(-124px)
+            scale(.65);
+        opacity: 0;
+    }
+
+    65% {
+        transform:
+            translateX(calc(-50% + var(--card-offset) * var(--card-spread)))
+            rotate(calc(var(--card-offset) * var(--card-angle) + var(--card-hover-tilt)))
+            translateY(-160px)
+            scale(calc(1.05 - abs(var(--card-offset)) * .04));
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateX(calc(-50% + var(--card-offset) * var(--card-spread)))
+            rotate(calc(var(--card-offset) * var(--card-angle) + var(--card-hover-tilt)))
+            translateY(-152px)
+            scale(calc(1 - abs(var(--card-offset)) * .06));
+        opacity: 1;
     }
 }
