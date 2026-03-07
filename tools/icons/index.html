@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adobe風アイコンジェネレーター</title>
     <meta name="description" content="Adobe風のアイコンを好きな文字、色、サイズで作成できます。.pngか.icoで保存できるのでWindowsでもiPhoneでも簡単に設定できます。">
+    <link rel="canonical" href="https://xullua.com/tools/icons/">
+    <meta property="og:url" content="https://xullua.com/tools/icons/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@xullua">
     <meta name="twitter:title" content="Adobe風アイコンジェネレーター">
@@ -19,11 +21,22 @@
     <link rel="stylesheet" href="manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>window.XU_CANONICAL_PATH = '/tools/icons/';</script>
     <script src="../../js/main.js" async></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
-    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-JDKGJ1E005'); </script>
-    <script>$(function () { $("#header").load("../../header.html"); $("#footer").load("../../footer.html");$("#othertools").load("../othertools.html"); }); </script>
+    <script>window.XU_UI_VERSION = 'icons_v1';</script>
+    <script src="../../js/tools-analytics.js"></script>
+    <script>
+        if (window.XuAnalytics) {
+            window.XuAnalytics.trackToolEvent({
+                eventName: 'tool_page_init',
+                actionName: 'page_init',
+                actionGroup: 'lifecycle',
+                trigger: 'system',
+                resultStatus: 'success'
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -72,7 +85,7 @@
                 href="https://store.xullua.com/?category_id=62a4317139da5f6a8efa7cbf">入手する</a>
         </section>
     </main>
-    <div id="othertools" style="width: min(1280px,100% - 10px);margin: 0 auto;"></div>
+    <div id="othertools" data-common-path="tools/othertools.html" style="width: min(1280px,100% - 10px);margin: 0 auto;"></div>
     <footer id="footer"></footer>
 </body>
 <style>

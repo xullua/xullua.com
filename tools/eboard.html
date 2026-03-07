@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>カスタム電光掲示板メーカー | Web版</title>
     <meta name="description" content="無料で使える電光掲示板メーカー。ブラウザだけで流れる文字を作成し、スマホ・PCで全画面表示できます。会話しづらい場面でのメッセージ共有や、イベント・店舗での案内表示に使えるインストール不要の電光掲示板サイトです。">
+    <link rel="canonical" href="https://xullua.com/tools/eboard">
+    <meta property="og:url" content="https://xullua.com/tools/eboard">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@xullua">
@@ -19,13 +21,10 @@
     <link rel="stylesheet" href="../../css/base.css">
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>window.XU_CANONICAL_PATH = '/tools/eboard';</script>
     <script src="../../js/main.js" async></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-JDKGJ1E005');
-    </script>
+    <script>window.XU_UI_VERSION = 'eboard_v2';</script>
+    <script src="../../js/tools-analytics.js"></script>
         <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -1273,6 +1272,7 @@
         let closeBtnFadeTimer = null;
         let lastCloseBtnRevealAt = 0;
         let analyticsSnapshotTimer = null;
+        let displayStartedAtMs = null;
 
         const STORAGE_KEY = 'eboardSettingsV1';
         const CLOSE_BTN_FADE_DELAY = 3000;
@@ -1367,12 +1367,47 @@
         }
 
         function trackEboardAnalyticsEvent(eventName, extraParams = {}) {
-            if (typeof window.gtag !== 'function') return;
-
             const payload = {
                 ...getEboardAnalyticsParams(),
                 ...extraParams
             };
+
+            if (window.XuAnalytics) {
+                const eventConfigMap = {
+                    eboard_page_init: { actionName: 'page_init', actionGroup: 'lifecycle', trigger: 'system' },
+                    eboard_mode_change: { actionName: 'mode_change', actionGroup: 'settings', trigger: 'input_change' },
+                    eboard_settings_snapshot: { actionName: 'settings_snapshot', actionGroup: 'settings', trigger: 'input_change' },
+                    eboard_display_start: { actionName: 'display_start', actionGroup: 'playback', trigger: 'button' },
+                    eboard_display_close: { actionName: 'display_close', actionGroup: 'playback', trigger: 'button' },
+                    eboard_validation_error: { actionName: 'validation_error', actionGroup: 'error', trigger: 'button', resultStatus: 'error' }
+                };
+
+                const config = eventConfigMap[eventName] || {
+                    actionName: 'custom_action',
+                    actionGroup: 'lifecycle',
+                    trigger: 'system'
+                };
+
+                window.XuAnalytics.trackToolEvent({
+                    eventName,
+                    actionName: config.actionName,
+                    actionGroup: config.actionGroup,
+                    trigger: config.trigger,
+                    mode: currentMode,
+                    resultStatus: config.resultStatus || 'success',
+                    errorCode: payload.error_code || '',
+                    durationSec: typeof payload.eboard_display_duration_sec === 'number'
+                        ? payload.eboard_display_duration_sec
+                        : (typeof payload.eboard_scroll_speed_sec === 'number' ? payload.eboard_scroll_speed_sec : undefined),
+                    valueNum: typeof payload.eboard_scroll_text_length === 'number'
+                        ? payload.eboard_scroll_text_length
+                        : undefined,
+                    extraParams: payload
+                });
+                return;
+            }
+
+            if (typeof window.gtag !== 'function') return;
 
             window.gtag('event', eventName, payload);
         }
@@ -2060,6 +2095,10 @@
         startBtn.addEventListener('click', () => {
             if (currentMode === 'scroll') {
                 if (!textInput.value) {
+                    trackEboardAnalyticsEvent('eboard_validation_error', {
+                        eboard_trigger: 'start_button',
+                        error_code: 'missing_scroll_text'
+                    });
                     alert('テキストを入力してください');
                     return;
                 }
@@ -2068,10 +2107,18 @@
             if (currentMode === 'flip') {
                 const cards = getFlipCardsData();
                 if (cards.length === 0) {
+                    trackEboardAnalyticsEvent('eboard_validation_error', {
+                        eboard_trigger: 'start_button',
+                        error_code: 'missing_flip_cards'
+                    });
                     alert('切替表示カードにテキストを入力してください');
                     return;
                 }
             }
+
+            displayStartedAtMs = (window.performance && typeof window.performance.now === 'function')
+                ? window.performance.now()
+                : Date.now();
 
             screenSection.style.display = 'flex';
             screenSection.style.alignItems = 'center';
@@ -2121,8 +2168,17 @@
             closeBtn.classList.remove('is-faded');
             clearCloseButtonFadeTimer();
 
+            const closedAtMs = (window.performance && typeof window.performance.now === 'function')
+                ? window.performance.now()
+                : Date.now();
+            const displayDurationSec = displayStartedAtMs
+                ? Number(((closedAtMs - displayStartedAtMs) / 1000).toFixed(2))
+                : 0;
+            displayStartedAtMs = null;
+
             trackEboardAnalyticsEvent('eboard_display_close', {
-                eboard_trigger: 'close_button'
+                eboard_trigger: 'close_button',
+                eboard_display_duration_sec: Math.max(0, displayDurationSec)
             });
         });
 

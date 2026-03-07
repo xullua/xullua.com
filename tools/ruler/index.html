@@ -24,13 +24,8 @@
     <link rel="stylesheet" href="../../css/color.css">
     <link rel="stylesheet" href="../../css/base.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-JDKGJ1E005');
-    </script>
+    <script>window.XU_UI_VERSION = 'ruler_v2';</script>
+    <script src="../../js/tools-analytics.js"></script>
         <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -569,10 +564,41 @@
         */
 
     function sendAnalyticsEvent(eventName, params) {
-        if (typeof window.gtag !== "function") {
+        const payload = params || {};
+        const eventConfigMap = {
+            ruler_page_init: { actionName: 'page_init', actionGroup: 'lifecycle', trigger: 'system' },
+            ruler_auto_selected: { actionName: 'auto_selected', actionGroup: 'lifecycle', trigger: 'auto_detect' },
+            ruler_manual_changed: { actionName: 'manual_changed', actionGroup: 'settings', trigger: 'input_change' },
+            ruler_zoom_warning_shown: { actionName: 'zoom_warning_shown', actionGroup: 'warning', trigger: 'system', resultStatus: 'warning' },
+            ruler_mismatch_warning_shown: { actionName: 'mismatch_warning_shown', actionGroup: 'warning', trigger: 'system', resultStatus: 'warning' }
+        };
+
+        const config = eventConfigMap[eventName] || {
+            actionName: 'custom_action',
+            actionGroup: 'lifecycle',
+            trigger: 'system'
+        };
+
+        if (window.XuAnalytics) {
+            window.XuAnalytics.trackToolEvent({
+                eventName,
+                actionName: config.actionName,
+                actionGroup: config.actionGroup,
+                trigger: config.trigger,
+                mode: eventName === 'ruler_manual_changed' ? 'manual' : 'auto',
+                resultStatus: config.resultStatus || 'success',
+                durationSec: undefined,
+                valueNum: typeof payload.ruler_scale === 'number'
+                    ? payload.ruler_scale
+                    : (typeof payload.ruler_width_ratio === 'number' ? payload.ruler_width_ratio : undefined),
+                extraParams: payload
+            });
             return;
         }
-        window.gtag("event", eventName, params || {});
+
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', eventName, payload);
+        }
     }
 
     function applyModelSelection(selectedValue) {
@@ -694,6 +720,13 @@
     modelName.style.textTransform = "none";
     initializeSelection();
     updateZoomWarning();
+    const initialDetection = getDetectionResult();
+    sendAnalyticsEvent('ruler_page_init', {
+        ruler_selected_model: modelSelect.value || '',
+        ruler_top_candidate: initialDetection.candidates[0] || '',
+        ruler_confidence: initialDetection.confidence,
+        ruler_is_iphone: initialDetection.isIPhone ? 'yes' : 'no'
+    });
 
     window.addEventListener("resize", updateZoomWarning);
     window.addEventListener("resize", updateDeviceMismatchWarning);

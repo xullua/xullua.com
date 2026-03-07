@@ -8,9 +8,11 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@xullua">
     <meta name="twitter:title" content="フォトイン">
-    <meta name="twitter:description" content="写真を身近な場所に埋め込むことができます。">
-    <meta name="description" content="写真を身近な場所に埋め込むことができます。">
+    <meta name="twitter:description" content="写真を身近な場所に埋め込むことができます。例えばGoogleMapの中に埋め込んでテキストをカスタマイズしたり">
+    <meta name="description" content="写真を身近な場所に埋め込むことができます。例えばGoogleMapの中に埋め込んでテキストをカスタマイズしたり">
     <meta name="twitter:image" content="https://xullua.com/img/photoin.webp">
+    <link rel="canonical" href="https://xullua.com/tools/photoin/">
+    <meta property="og:url" content="https://xullua.com/tools/photoin/">
     <link rel="stylesheet" href="../../css/color.css">
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/tools.css">
@@ -27,27 +29,28 @@
     <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <!-- アナリティクス -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>window.XU_CANONICAL_PATH = '/tools/photoin/';</script>
+    <script>window.XU_UI_VERSION = 'photoin_v1';</script>
+    <script src="../../js/tools-analytics.js"></script>
+    <script src="../../js/main.js" async></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-JDKGJ1E005');
-    </script>
-    <script>
-        $(function () {
-            $(".header").load("../../header.html");
-            $("footer").load("../../footer.html");
-        });
+        if (window.XuAnalytics) {
+            window.XuAnalytics.trackToolEvent({
+                eventName: 'tool_page_init',
+                actionName: 'page_init',
+                actionGroup: 'lifecycle',
+                trigger: 'system',
+                resultStatus: 'success'
+            });
+        }
     </script>
 </head>
 
 <body>
-    <header class="header"></header>
+    <header id="header" class="header"></header>
     <div class="tool-app">
         <div class="tool-workspace">
             <aside class="tool-sidebar">
@@ -345,7 +348,7 @@
         style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--support); color: #fff; padding: 12px 24px; border-radius: 50px; z-index: 2000;">
         <span id="toastMessage"></span>
     </div>
-    <footer></footer>
+    <footer id="footer"></footer>
     <script src="script.js"></script>
 </body>
 

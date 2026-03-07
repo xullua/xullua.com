@@ -11,11 +11,12 @@
     <meta name="twitter:description" content="自分が所有するレンズをグラフ上にまとめて表記、そしてシェアできます。">
     <meta name="description" content="自分が所有するレンズをグラフ上にまとめて表記、そしてシェアできます。">
     <meta name="twitter:image" content="https://xullua.com/img/mylens.webp">
+    <link rel="canonical" href="https://xullua.com/tools/mylens/">
+    <meta property="og:url" content="https://xullua.com/tools/mylens/">
     <link rel="stylesheet" href="../../css/color.css">
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="mylens.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
     <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -23,29 +24,28 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
     <!-- アナリティクス -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>window.XU_CANONICAL_PATH = '/tools/mylens/';</script>
+    <script>window.XU_UI_VERSION = 'mylens_v1';</script>
+    <script src="../../js/tools-analytics.js"></script>
+    <script src="../../js/main.js" async></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-JDKGJ1E005');
-    </script>
-    <script>
-        $(function () {
-            $("header").load("../../header.html");
-            $("footer").load("../../footer.html");
-        });
+        if (window.XuAnalytics) {
+            window.XuAnalytics.trackToolEvent({
+                eventName: 'tool_page_init',
+                actionName: 'page_init',
+                actionGroup: 'lifecycle',
+                trigger: 'system',
+                resultStatus: 'success'
+            });
+        }
     </script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- lz-string & html2canvas -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
 <body>
 
-    <header></header>
+    <header id="header"></header>
 
     <div class="app-container">
         <div class="top">
@@ -329,7 +329,7 @@
 
         </main>
     </div>
-    <footer></footer>
+    <footer id="footer"></footer>
     <div id="notification-container"></div>
     <script src="mylens.js"></script>
 </body>

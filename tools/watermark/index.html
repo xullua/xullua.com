@@ -11,33 +11,36 @@
     <meta name="twitter:description" content="写真から自動的に情報を抜き出し、枠をつけたウォーターマーク画像を素早く生成します。">
     <meta name="description" content="写真から自動的に情報を抜き出し、枠をつけたウォーターマーク画像を素早く生成します。">
     <meta name="twitter:image" content="https://xullua.com/img/watermark.webp">
+    <link rel="canonical" href="https://xullua.com/tools/watermark/">
+    <meta property="og:url" content="https://xullua.com/tools/watermark/">
     <title>写真に枠付けデコ</title>
     <link rel="stylesheet" href="../../css/color.css">
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/tools.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <!-- アナリティクス -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
+    <script>window.XU_CANONICAL_PATH = '/tools/watermark/';</script>
+    <script>window.XU_UI_VERSION = 'watermark_v1';</script>
+    <script src="../../js/tools-analytics.js"></script>
+    <script src="../../js/main.js" async></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-JDKGJ1E005');
-    </script>
-    <script>
-        $(function () {
-            $("header").load("../../header.html");
-            $("footer").load("../../footer.html");
-        });
+        if (window.XuAnalytics) {
+            window.XuAnalytics.trackToolEvent({
+                eventName: 'tool_page_init',
+                actionName: 'page_init',
+                actionGroup: 'lifecycle',
+                trigger: 'system',
+                resultStatus: 'success'
+            });
+        }
     </script>
 </head>
 
 <body>
-    <header></header>
+    <header id="header"></header>
 
     <div class="tool-app">
         <div class="tool-workspace">
@@ -421,7 +424,7 @@
         </div>
     </div>
 
-    <footer></footer>
+    <footer id="footer"></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
     <script src="app.js"></script>

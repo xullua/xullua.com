@@ -1,0 +1,69 @@
+# Quote Generator Specification
+
+## Overview
+This tool allows users to generate official-looking quote images (e.g., MFA style) with customizable text, source, date, background color, and layout settings.
+
+## HTML Structure (Unified Design)
+The HTML follows the `tools.css` structure:
+- `.tool-app` > `.tool-workspace` > `.tool-sidebar` & `.tool-preview`
+- Sidebar contains `.control-group` sections.
+- Inputs use standard classes (`input[type="text"]`, `.box-selector`, `.color-options`).
+
+## JavaScript Logic Requirements
+
+### State Management
+- Maintain a `currentState` object with:
+  - `text`: HTML content of the quote.
+  - `source`: Source string.
+  - `date`: Date string.
+  - `template`: Template ID (currently only "mfa").
+  - `bgColor`: "red", "orange", "blue", or "custom".
+  - `customColor`: Hex color string.
+  - `iconData`: Data URI of the icon image.
+  - `lineHeight`, `fontSize`, `padding`, `iconSize`: Layout numbers.
+  - `moyamoyaSeed`: Seed for the background pattern generator.
+
+### Input Handling
+- **Text**: Rich text input (`#quoteInput`). Updates on input and via toolbar buttons (`bold`, `color`).
+- **Source/Date**: Simple text inputs (`#sourceInput`, `#dateInput`).
+- **Template**: Radio buttons (`name="template"`). **FIX REQUIRED**: JS currently expects `#templateSelect`.
+- **Background Color**: Radio buttons (`name="bgColor"`). Custom color input (`#customBgColor`) selects the "custom" radio.
+- **Layout**: Range sliders (`#lineHeightRange`, etc.).
+- **Icon**: File upload (`#iconUpload`), "No Icon" button (`#noIconBtn`), and preset icons.
+
+### Preview Rendering
+- **Container**: `#previewContainer` inside `.tool-preview`.
+- **Layout Behavior**:
+  - **Minimum Aspect Ratio**: 1:1 (Square).
+  - **Vertical Growth**: If text content exceeds the 1:1 height, the container should expand vertically to fit the content.
+  - **Width**: Fixed to the container width (responsive).
+- **Scaling**: The preview must scale responsively.
+  - Calculate `scale = containerWidth / outputWidth`.
+  - Apply CSS variables to `#previewContainer`:
+    - `--preview-font-size`: `currentState.fontSize * scale`
+    - `--preview-padding`: `currentState.padding * scale`
+    - `--preview-icon-size`: `currentState.iconSize * scale`
+- **Background**: Draw on `#bgCanvas` using `drawMoyamoya()` with `currentState.moyamoyaSeed`.
+
+### Export
+- **Download**: Generate a high-resolution image using `html2canvas`.
+  - Clone the preview element.
+  - Set width to `outputWidth`.
+  - Apply raw CSS variables (scale = 1).
+  - Re-draw background on the clone's canvas.
+  - Capture and download.
+
+### History & Share
+- **History**: Save state to `localStorage` and allow restoration.
+- **Share**: Generate URL with LZ-compressed state.
+
+## Known Issues to Fix
+1. **Template Selector**: JS targets `#templateSelect` (select box), but HTML has `input[name="template"]` (radio).
+2. **CSS Syntax**: `style.css` contains malformed code around lines 136-139.
+3. **Preview Scaling**: Ensure `ResizeObserver` correctly triggers re-render and background redraw.
+
+## Implementation Steps
+1. Fix `style.css` syntax errors.
+2. Update `script.js` to listen to `change` on `input[name="template"]` instead of `#templateSelect`.
+3. Update `script.js` `reflectStateToInputs` to handle template radio buttons.
+4. Verify `tools.css` classes are correctly targeted or compatible with existing JS selectors.

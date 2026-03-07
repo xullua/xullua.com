@@ -9,10 +9,10 @@
     <meta name="description"
         content="水抜き音を1タップで再生できるサイトです。iPhone・Androidのスピーカー水抜きを通信量を抑えてすぐ試せます。165Hzを中心に複数周波数と音タイプを選べます。">
     <meta name="robots" content="index,follow,max-image-preview:large">
-    <link rel="canonical" href="https://xullua.com/tools/water-remove.html">
+    <link rel="canonical" href="https://xullua.com/tools/water-remove">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="xullua.com">
-    <meta property="og:url" content="https://xullua.com/tools/water-remove.html">
+    <meta property="og:url" content="https://xullua.com/tools/water-remove">
     <meta property="og:title" content="スマホの水抜き音を流す専門サイト">
     <meta property="og:description" content="iPhone・Androidのスピーカー水抜き音を1タップで再生。通信量を抑えて水抜き音をすぐ流せます。">
     <meta property="og:image" content="https://xullua.com/img/water-remove.webp">
@@ -21,18 +21,13 @@
     <meta name="twitter:title" content="スマホの水抜き音を流す専門サイト">
     <meta name="twitter:description" content="iPhone・Androidのスピーカー水抜き音を1タップで再生。通信量を抑えてすぐ使えます。">
     <meta name="twitter:image" content="https://xullua.com/img/water-remove.webp">
-    <link rel="canonical" href="https://xullua.com/tools/water-remove">
     <link rel="shortcut icon" href="../img/favicon.ico">
     <link rel="stylesheet" href="../css/color.css">
     <link rel="stylesheet" href="../css/base.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDKGJ1E005"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-JDKGJ1E005');
-    </script>
+    <script>window.XU_CANONICAL_PATH = '/tools/water-remove';</script>
+    <script>window.XU_UI_VERSION = 'water_remove_v2';</script>
+    <script src="../js/tools-analytics.js"></script>
     <script src="../js/main.js" async></script>
     <!-- 広告 -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8816279824306037"
@@ -457,7 +452,7 @@
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
     </section>
-    <section id="othertools" style="width: min(100%,1280px); margin: 0 auto;"></section>
+    <section id="othertools" data-common-path="tools/othertools.html" style="width: min(100%,1280px); margin: 0 auto;"></section>
     <footer id="footer"></footer>
     <script>
         var audioContext;
@@ -475,26 +470,6 @@
         var playStatus = document.getElementById('playStatus');
         var frequencyInputs = document.querySelectorAll('input[name="frequency"]');
         var modeInputs = document.querySelectorAll('input[name="soundMode"]');
-
-        function loadOtherTools() {
-            var target = document.getElementById('othertools');
-            if (!target) {
-                return;
-            }
-
-            fetch('othertools.html')
-                .then(function (response) {
-                    if (!response.ok) {
-                        throw new Error('failed');
-                    }
-                    return response.text();
-                })
-                .then(function (html) {
-                    target.innerHTML = html;
-                })
-                .catch(function () {
-                });
-        }
 
         function createAudioContextIfNeeded() {
             if (!audioContext) {
@@ -543,8 +518,51 @@
         }
 
         function trackEvent(eventName, params) {
+            var payload = params || {};
+            if (typeof payload.waterremove_total_seconds === 'number' && typeof payload.waterremove_total_second !== 'number') {
+                payload.waterremove_total_second = payload.waterremove_total_seconds;
+            }
+            var eventConfigMap = {
+                water_remove_play_start: { actionName: 'play_start', actionGroup: 'playback', trigger: 'button' },
+                water_remove_play_stop: { actionName: 'play_stop', actionGroup: 'playback', trigger: 'button' },
+                water_remove_play_segment: { actionName: 'play_segment', actionGroup: 'playback', trigger: 'system' },
+                water_remove_frequency_change: { actionName: 'frequency_change', actionGroup: 'settings', trigger: 'input_change' },
+                water_remove_mode_change: { actionName: 'mode_change', actionGroup: 'settings', trigger: 'input_change' },
+                water_remove_error: { actionName: 'play_error', actionGroup: 'error', trigger: 'system', resultStatus: 'error' }
+            };
+
+            var config = eventConfigMap[eventName] || {
+                actionName: 'custom_action',
+                actionGroup: 'lifecycle',
+                trigger: 'system'
+            };
+
+            if (eventName === 'water_remove_play_stop' && payload.waterremove_segment_reason === 'page_unload') {
+                config.trigger = 'beforeunload';
+            }
+
+            if (window.XuAnalytics) {
+                window.XuAnalytics.trackToolEvent({
+                    eventName: eventName,
+                    actionName: config.actionName,
+                    actionGroup: config.actionGroup,
+                    trigger: config.trigger,
+                    mode: playMode,
+                    resultStatus: config.resultStatus || 'success',
+                    errorCode: payload.waterremove_message || '',
+                    durationSec: typeof payload.waterremove_total_seconds === 'number'
+                        ? payload.waterremove_total_seconds
+                        : payload.waterremove_duration_seconds,
+                    valueNum: typeof payload.waterremove_frequency_hz === 'number'
+                        ? payload.waterremove_frequency_hz
+                        : undefined,
+                    extraParams: payload
+                });
+                return;
+            }
+
             if (typeof gtag === 'function') {
-                gtag('event', eventName, params || {});
+                gtag('event', eventName, payload);
             }
         }
 
@@ -774,8 +792,17 @@
             stopStatusAnimation();
         });
 
-        loadOtherTools();
         updatePlayUi();
+        if (window.XuAnalytics) {
+            window.XuAnalytics.trackToolEvent({
+                eventName: 'tool_page_init',
+                actionName: 'page_init',
+                actionGroup: 'lifecycle',
+                trigger: 'system',
+                resultStatus: 'success',
+                mode: playMode
+            });
+        }
     </script>
 </body>
 </html>
