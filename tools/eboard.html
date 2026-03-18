@@ -240,7 +240,7 @@
             </ul>
         </section>
 
-        <section>
+        <section id="eboard-ad-section" class="eboard-ad-section">
             <script async
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8816279824306037"
                 crossorigin="anonymous"></script>
@@ -1169,8 +1169,29 @@
             width: 100vw;
             height: 100vh;
             overflow: hidden;
-            z-index: 999;
+            z-index: 2147483647;
             padding: 0;
+        }
+
+        #screen:fullscreen {
+            z-index: 2147483647;
+        }
+
+        body.eboard-css-fullscreen #screen {
+            display: flex;
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 2147483647;
+        }
+
+        body.eboard-display-active .eboard-ad-section {
+            opacity: 0;
+            pointer-events: none;
+            max-height: 0;
+            overflow: hidden;
+            margin: 0;
         }
 
         body.no-scroll {
@@ -1273,6 +1294,8 @@
         let lastCloseBtnRevealAt = 0;
         let analyticsSnapshotTimer = null;
         let displayStartedAtMs = null;
+        let activeFullscreenMethod = 'none';
+        let isClosingDisplay = false;
 
         const STORAGE_KEY = 'eboardSettingsV1';
         const CLOSE_BTN_FADE_DELAY = 3000;
@@ -1379,7 +1402,11 @@
                     eboard_settings_snapshot: { actionName: 'settings_snapshot', actionGroup: 'settings', trigger: 'input_change' },
                     eboard_display_start: { actionName: 'display_start', actionGroup: 'playback', trigger: 'button' },
                     eboard_display_close: { actionName: 'display_close', actionGroup: 'playback', trigger: 'button' },
-                    eboard_validation_error: { actionName: 'validation_error', actionGroup: 'error', trigger: 'button', resultStatus: 'error' }
+                    eboard_validation_error: { actionName: 'validation_error', actionGroup: 'error', trigger: 'button', resultStatus: 'error' },
+                    eboard_fullscreen_enter: { actionName: 'fullscreen_enter', actionGroup: 'playback', trigger: 'button' },
+                    eboard_fullscreen_exit: { actionName: 'fullscreen_exit', actionGroup: 'playback', trigger: 'button' },
+                    eboard_fullscreen_fallback_used: { actionName: 'fullscreen_fallback', actionGroup: 'warning', trigger: 'system', resultStatus: 'warning' },
+                    eboard_ad_protection_applied: { actionName: 'ad_protection_applied', actionGroup: 'settings', trigger: 'system' }
                 };
 
                 const config = eventConfigMap[eventName] || {
@@ -1398,7 +1425,7 @@
                     errorCode: payload.error_code || '',
                     durationSec: typeof payload.eboard_display_duration_sec === 'number'
                         ? payload.eboard_display_duration_sec
-                        : (typeof payload.eboard_scroll_speed_sec === 'number' ? payload.eboard_scroll_speed_sec : undefined),
+                        : undefined,
                     valueNum: typeof payload.eboard_scroll_text_length === 'number'
                         ? payload.eboard_scroll_text_length
                         : undefined,
@@ -1934,6 +1961,131 @@
             modeActiveBg.style.height = `${labelRect.height}px`;
         }
 
+        function getFullscreenElement() {
+            return document.fullscreenElement || document.webkitFullscreenElement || null;
+        }
+
+        function isNativeFullscreenActive() {
+            return getFullscreenElement() === screenSection;
+        }
+
+        async function requestDisplayFullscreen() {
+            const requestFullscreen = screenSection.requestFullscreen || screenSection.webkitRequestFullscreen;
+            if (typeof requestFullscreen !== 'function') {
+                return {
+                    method: 'css_fallback',
+                    nativeRequested: false,
+                    errorCode: 'fullscreen_not_supported'
+                };
+            }
+
+            let errorCode = '';
+            try {
+                await Promise.resolve(requestFullscreen.call(screenSection));
+            } catch (error) {
+                errorCode = toSafeAnalyticsText(error?.name || error?.message || 'fullscreen_request_failed', 60);
+            }
+
+            if (isNativeFullscreenActive()) {
+                document.body.classList.remove('eboard-css-fullscreen');
+                return {
+                    method: 'native',
+                    nativeRequested: true,
+                    errorCode
+                };
+            }
+
+            document.body.classList.add('eboard-css-fullscreen');
+            return {
+                method: 'css_fallback',
+                nativeRequested: true,
+                errorCode: errorCode || 'fullscreen_request_denied'
+            };
+        }
+
+        function exitDisplayFullscreen() {
+            if (document.fullscreenElement && typeof document.exitFullscreen === 'function') {
+                return document.exitFullscreen().catch(() => { });
+            }
+            if (document.webkitFullscreenElement && typeof document.webkitExitFullscreen === 'function') {
+                try {
+                    document.webkitExitFullscreen();
+                } catch (error) {
+                    console.warn('全画面解除に失敗しました', error);
+                }
+            }
+            return Promise.resolve();
+        }
+
+        function setAdProtectionState(enabled, trigger = 'system', method = 'none') {
+            document.body.classList.toggle('eboard-display-active', enabled);
+
+            if (!enabled) {
+                return;
+            }
+
+            trackEboardAnalyticsEvent('eboard_ad_protection_applied', {
+                eboard_trigger: trigger,
+                eboard_fullscreen_method: method,
+                eboard_ad_state: 'suppressed_during_fullscreen'
+            });
+        }
+
+        function openDisplaySurface() {
+            screenSection.style.display = 'flex';
+            screenSection.style.alignItems = 'center';
+            screenSection.style.width = '100vw';
+            screenSection.style.height = '100vh';
+
+            document.body.classList.add('no-scroll');
+            textbox.style.width = 'auto';
+            textbox.style.height = 'auto';
+            textbox.style.maxHeight = '100vh';
+        }
+
+        function closeDisplaySurface(trigger = 'close_button') {
+            if (!isScreenOpen() || isClosingDisplay) return;
+            isClosingDisplay = true;
+
+            const closedAtMs = (window.performance && typeof window.performance.now === 'function')
+                ? window.performance.now()
+                : Date.now();
+            const displayDurationSec = displayStartedAtMs
+                ? Number(((closedAtMs - displayStartedAtMs) / 1000).toFixed(2))
+                : 0;
+
+            const usedFullscreenMethod = activeFullscreenMethod;
+
+            stopFlipPlayback();
+            screenSection.style.display = 'none';
+            textbox.style.animation = 'none';
+            textbox.style.color = '';
+            document.body.classList.remove('no-scroll', 'eboard-css-fullscreen');
+            setAdProtectionState(false);
+            closeBtn.classList.remove('is-faded');
+            clearCloseButtonFadeTimer();
+
+            displayStartedAtMs = null;
+            activeFullscreenMethod = 'none';
+
+            trackEboardAnalyticsEvent('eboard_fullscreen_exit', {
+                eboard_trigger: trigger,
+                eboard_fullscreen_method: usedFullscreenMethod,
+                eboard_fullscreen_result: 'closed',
+                eboard_ad_state: 'normal'
+            });
+
+            trackEboardAnalyticsEvent('eboard_display_close', {
+                eboard_trigger: trigger,
+                eboard_display_duration_sec: Math.max(0, displayDurationSec),
+                eboard_fullscreen_method: usedFullscreenMethod,
+                eboard_ad_state: 'normal'
+            });
+
+            void exitDisplayFullscreen();
+            isClosingDisplay = false;
+        }
+
         function isScreenOpen() {
             return screenSection.style.display === 'flex';
         }
@@ -2092,7 +2244,7 @@
             });
         });
 
-        startBtn.addEventListener('click', () => {
+        startBtn.addEventListener('click', async () => {
             if (currentMode === 'scroll') {
                 if (!textInput.value) {
                     trackEboardAnalyticsEvent('eboard_validation_error', {
@@ -2120,16 +2272,30 @@
                 ? window.performance.now()
                 : Date.now();
 
-            screenSection.style.display = 'flex';
-            screenSection.style.alignItems = 'center';
-            screenSection.style.width = '100vw';
-            screenSection.style.height = '100vh';
-
-            document.body.classList.add('no-scroll');
-            textbox.style.width = 'auto';
-            textbox.style.height = 'auto';
-            textbox.style.maxHeight = '100vh';
+            openDisplaySurface();
             showCloseButtonTemporarily();
+
+            const fullscreenState = await requestDisplayFullscreen();
+            activeFullscreenMethod = fullscreenState.method;
+
+            if (fullscreenState.method === 'css_fallback') {
+                trackEboardAnalyticsEvent('eboard_fullscreen_fallback_used', {
+                    eboard_trigger: 'start_button',
+                    eboard_fullscreen_method: fullscreenState.method,
+                    eboard_fullscreen_result: fullscreenState.nativeRequested ? 'native_failed' : 'native_not_supported',
+                    error_code: fullscreenState.errorCode || ''
+                });
+            }
+
+            setAdProtectionState(true, 'start_button', fullscreenState.method);
+
+            trackEboardAnalyticsEvent('eboard_fullscreen_enter', {
+                eboard_trigger: 'start_button',
+                eboard_fullscreen_method: fullscreenState.method,
+                eboard_fullscreen_result: 'success',
+                eboard_ad_state: 'suppressed_during_fullscreen',
+                error_code: fullscreenState.errorCode || ''
+            });
 
             if (currentMode === 'scroll') {
                 updateScreenByMode('scroll');
@@ -2138,7 +2304,9 @@
             }
 
             trackEboardAnalyticsEvent('eboard_display_start', {
-                eboard_trigger: 'start_button'
+                eboard_trigger: 'start_button',
+                eboard_fullscreen_method: fullscreenState.method,
+                eboard_ad_state: 'suppressed_during_fullscreen'
             });
         });
 
@@ -2153,33 +2321,28 @@
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && screenSection.style.display === 'flex') {
-                closeBtn.click();
+                closeDisplaySurface('esc_key');
                 return;
             }
             handleScreenActivity();
         });
 
+        document.addEventListener('fullscreenchange', () => {
+            if (!isScreenOpen() || isClosingDisplay) return;
+            if (activeFullscreenMethod === 'native' && !isNativeFullscreenActive()) {
+                closeDisplaySurface('fullscreen_exit');
+            }
+        });
+
+        document.addEventListener('webkitfullscreenchange', () => {
+            if (!isScreenOpen() || isClosingDisplay) return;
+            if (activeFullscreenMethod === 'native' && !isNativeFullscreenActive()) {
+                closeDisplaySurface('fullscreen_exit');
+            }
+        });
+
         closeBtn.addEventListener('click', () => {
-            stopFlipPlayback();
-            screenSection.style.display = 'none';
-            textbox.style.animation = 'none';
-            textbox.style.color = '';
-            document.body.classList.remove('no-scroll');
-            closeBtn.classList.remove('is-faded');
-            clearCloseButtonFadeTimer();
-
-            const closedAtMs = (window.performance && typeof window.performance.now === 'function')
-                ? window.performance.now()
-                : Date.now();
-            const displayDurationSec = displayStartedAtMs
-                ? Number(((closedAtMs - displayStartedAtMs) / 1000).toFixed(2))
-                : 0;
-            displayStartedAtMs = null;
-
-            trackEboardAnalyticsEvent('eboard_display_close', {
-                eboard_trigger: 'close_button',
-                eboard_display_duration_sec: Math.max(0, displayDurationSec)
-            });
+            closeDisplaySurface('close_button');
         });
 
         const storedSettings = loadSettingsFromStorage();
