@@ -48,6 +48,10 @@
         var match = text.match(/^v?(\d+)(?:\.(\d+))?(?:\.(\d+))?/);
 
         if (!match) {
+            match = text.match(/_v(\d+)(?:\.(\d+))?(?:\.(\d+))?$/);
+        }
+
+        if (!match) {
             return {
                 major: 0,
                 minor: 0,
