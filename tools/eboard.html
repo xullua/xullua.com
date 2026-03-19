@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>カスタム電光掲示板メーカー | Web版</title>
-    <meta name="description" content="無料で使える電光掲示板メーカー。ブラウザだけで流れる文字を作成し、スマホ・PCで全画面表示できます。会話しづらい場面でのメッセージ共有や、イベント・店舗での案内表示に使えるインストール不要の電光掲示板サイトです。">
+    <meta name="description"
+        content="無料で使える電光掲示板メーカー。ブラウザだけで流れる文字を作成し、スマホ・PCで全画面表示できます。会話しづらい場面でのメッセージ共有や、イベント・店舗での案内表示に使えるインストール不要の電光掲示板サイトです。">
     <link rel="canonical" href="https://xullua.com/tools/eboard">
     <meta property="og:url" content="https://xullua.com/tools/eboard">
 
@@ -25,7 +26,7 @@
     <script src="../../js/main.js" async></script>
     <script>window.XU_UI_VERSION = 'eboard_v2';</script>
     <script src="../../js/tools-analytics.js"></script>
-        <script type="application/ld+json">
+    <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -51,7 +52,7 @@
             ]
         }
         </script>
-        <script type="application/ld+json">
+    <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "WebApplication",
@@ -96,8 +97,7 @@
             <div class="mode-switch">
                 <div class="mode-tab-panel">
                     <span class="mode-active-bg" aria-hidden="true"></span>
-                    <input class="mode-input" type="radio" name="display-mode" id="mode-scroll" value="scroll"
-                        checked>
+                    <input class="mode-input" type="radio" name="display-mode" id="mode-scroll" value="scroll" checked>
                     <label class="mode-label" id="mode-label-scroll" for="mode-scroll">スクロール</label>
                     <input class="mode-input" type="radio" name="display-mode" id="mode-flip" value="flip">
                     <label class="mode-label" id="mode-label-flip" for="mode-flip">切替表示</label>
@@ -216,6 +216,7 @@
                         <div id="flip-cards"></div>
                         <div class="flip-add-row">
                             <button type="button" id="add-flip-card">+ カードを追加</button>
+                            <button type="button" id="remove-flip-card" class="secondary" aria-live="polite"></button>
                             <p id="flip-add-limit" aria-live="polite"></p>
                         </div>
                     </div>
@@ -766,6 +767,7 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
+                            gap: 10px;
                             min-height: 56px;
 
                             button {
@@ -776,6 +778,23 @@
                                 padding: 12px 28px;
                                 font-size: 16px;
                                 cursor: pointer;
+                                outline-offset: -2px;
+                                transition: .2s;
+
+                                &:hover {
+                                    background: var(--accentcolor);
+                                }
+
+                                &.secondary {
+                                    background: none;
+                                    outline: 2px solid var(--line);
+
+                                    &:hover {
+                                        background: #f00;
+                                        outline: 2px solid #f00;
+                                        color: #fff;
+                                    }
+                                }
                             }
 
                             p {
@@ -787,7 +806,7 @@
                             }
 
                             &.is-limit {
-                                button {
+                                #add-flip-card {
                                     display: none;
                                 }
 
@@ -1086,6 +1105,7 @@
                     }
 
                     @media (max-width: 760px) {
+
                         &.font-color .color-palette,
                         &.background-color .color-palette {
                             gap: 6px;
@@ -1098,6 +1118,7 @@
                     }
 
                     @media (max-width: 420px) {
+
                         &.font-color .color-palette .swatch,
                         &.background-color .color-palette .swatch {
                             --swatch-size: 30px;
@@ -1194,6 +1215,19 @@
             margin: 0;
         }
 
+        body.eboard-display-active .google-auto-placed,
+        body.eboard-display-active .google-auto-placed iframe,
+        body.eboard-display-active .adsbygoogle-noablate,
+        body.eboard-display-active ins.adsbygoogle[data-anchor-status="displayed"] {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            visibility: hidden !important;
+        }
+
+        .content .google-auto-placed {
+            display: none !important;
+        }
+
         body.no-scroll {
             overflow: hidden;
         }
@@ -1277,6 +1311,7 @@
         const flipModePanel = document.querySelector('#setting > .mode-flip-item');
         const flipCards = document.getElementById('flip-cards');
         const addFlipCardBtn = document.getElementById('add-flip-card');
+        const removeFlipCardBtn = document.getElementById('remove-flip-card');
         const flipAddLimit = document.getElementById('flip-add-limit');
         const flipAddRow = document.querySelector('.flip-add-row');
 
@@ -1301,29 +1336,29 @@
         const CLOSE_BTN_FADE_DELAY = 3000;
         const EBOARD_ANALYTICS_DEBOUNCE = 900;
 
-                /*
-                    GA4 設定メモ
+        /*
+            GA4 設定メモ
 
-                    [A] カスタムディメンション（文字分類用）
-                    - eboard_mode: eboard_表示モード
-                    - eboard_scroll_font: eboard_スクロール_フォント
-                    - eboard_scroll_font_color_mode: eboard_スクロール_文字色モード
-                    - eboard_scroll_font_color_type: eboard_スクロール_文字色タイプ
-                    - eboard_scroll_bg_type: eboard_スクロール_背景色タイプ
-                    - eboard_scroll_font_size: eboard_スクロール_文字サイズ
-                    - eboard_flip_fonts: eboard_切替表示_使用フォント
-                    - eboard_reason: eboard_イベント発生理由
-                    - eboard_mode_selected: eboard_選択モード
-                    - eboard_trigger: eboard_操作トリガー
-                    - eboard_storage_loaded: eboard_保存設定読込有無
+            [A] カスタムディメンション（文字分類用）
+            - eboard_mode: eboard_表示モード
+            - eboard_scroll_font: eboard_スクロール_フォント
+            - eboard_scroll_font_color_mode: eboard_スクロール_文字色モード
+            - eboard_scroll_font_color_type: eboard_スクロール_文字色タイプ
+            - eboard_scroll_bg_type: eboard_スクロール_背景色タイプ
+            - eboard_scroll_font_size: eboard_スクロール_文字サイズ
+            - eboard_flip_fonts: eboard_切替表示_使用フォント
+            - eboard_reason: eboard_イベント発生理由
+            - eboard_mode_selected: eboard_選択モード
+            - eboard_trigger: eboard_操作トリガー
+            - eboard_storage_loaded: eboard_保存設定読込有無
 
-                    [B] カスタム指標（数値分析用）
-                    - eboard_scroll_speed_sec: eboard_スクロール_表示速度(秒)
-                    - eboard_scroll_text_length: eboard_スクロール_文字数
-                    - eboard_flip_total_cards: eboard_切替表示_カード総数
-                    - eboard_flip_filled_cards: eboard_切替表示_入力済みカード数
-                    - eboard_flip_avg_duration_sec: eboard_切替表示_平均表示秒数
-                */
+            [B] カスタム指標（数値分析用）
+            - eboard_scroll_speed_sec: eboard_スクロール_表示速度(秒)
+            - eboard_scroll_text_length: eboard_スクロール_文字数
+            - eboard_flip_total_cards: eboard_切替表示_カード総数
+            - eboard_flip_filled_cards: eboard_切替表示_入力済みカード数
+            - eboard_flip_avg_duration_sec: eboard_切替表示_平均表示秒数
+        */
 
         function toSafeAnalyticsText(value, maxLength = 100) {
             return String(value ?? '').replace(/\s+/g, ' ').trim().slice(0, maxLength);
@@ -1349,7 +1384,7 @@
             const cards = Array.from(flipCards.querySelectorAll('.flip-card'));
             const allCards = cards.map((card) => {
                 const text = card.querySelector('.flip-text')?.value?.trim() || '';
-                const font = card.querySelector('.flip-font-radio:checked')?.value || 'sans-serif';
+                const font = card.querySelector('.flip-font-radio:checked')?.value || 'inherit';
                 const duration = Math.min(30, Math.max(0.5, Number(card.querySelector('.flip-duration-range')?.value || 1.5)));
                 return { text, font, duration };
             });
@@ -1565,7 +1600,7 @@
         function getAllFlipCardsState() {
             return Array.from(flipCards.querySelectorAll('.flip-card')).map((card) => {
                 const text = card.querySelector('.flip-text')?.value || '';
-                const font = card.querySelector('.flip-font-radio:checked')?.value || 'sans-serif';
+                const font = card.querySelector('.flip-font-radio:checked')?.value || 'inherit';
 
                 const textColorSelected = card.querySelector('.flip-text-color-radio:checked');
                 const color = textColorSelected?.value === 'custom'
@@ -1672,15 +1707,15 @@
             flipCardSerial = 0;
 
             if (cards.length === 0) {
-                addFlipCard({ text: 'メッセージ1', font: 'sans-serif', color: '#ffffff', bg: '#000000', duration: 1.5 });
-                addFlipCard({ text: 'メッセージ2', font: 'sans-serif', color: '#ffd400', bg: '#000000', duration: 1.5 });
+                addFlipCard({ text: 'メッセージ1', font: 'inherit', color: '#ffffff', bg: '#000000', duration: 1.5 });
+                addFlipCard({ text: 'メッセージ2', font: 'inherit', color: '#ffd400', bg: '#000000', duration: 1.5 });
                 return;
             }
 
             cards.forEach((card) => {
                 addFlipCard({
                     text: typeof card.text === 'string' ? card.text : '',
-                    font: card.font || 'sans-serif',
+                    font: card.font || 'inherit',
                     color: card.color || '#ffffff',
                     bg: card.bg || '#000000',
                     duration: Math.min(30, Math.max(0.5, Number(card.duration || 1.5)))
@@ -1806,6 +1841,16 @@
             if (!reachedLimit) {
                 addFlipCardBtn.textContent = `+ ${cards.length + 1}枚目を追加`;
             }
+
+            if (cards.length >= 3) {
+                removeFlipCardBtn.style.display = 'inline-flex';
+                removeFlipCardBtn.disabled = false;
+                removeFlipCardBtn.textContent = `${cards.length}枚目を削除`;
+            } else {
+                removeFlipCardBtn.style.display = 'none';
+                removeFlipCardBtn.disabled = true;
+                removeFlipCardBtn.textContent = '';
+            }
         }
 
         function addFlipCard(data) {
@@ -1815,11 +1860,18 @@
             updateFlipCardLabels();
         }
 
+        function removeLastFlipCard() {
+            const cards = flipCards.querySelectorAll('.flip-card');
+            if (cards.length <= 2) return;
+            cards[cards.length - 1].remove();
+            updateFlipCardLabels();
+        }
+
         function getFlipCardsData() {
             return Array.from(flipCards.querySelectorAll('.flip-card'))
                 .map((card) => {
                     const text = card.querySelector('.flip-text').value.trim();
-                    const font = card.querySelector('.flip-font-radio:checked')?.value || 'sans-serif';
+                    const font = card.querySelector('.flip-font-radio:checked')?.value || 'inherit';
 
                     const textColorSelected = card.querySelector('.flip-text-color-radio:checked');
                     const color = textColorSelected?.value === 'custom'
@@ -1858,7 +1910,7 @@
             stopFlipPreviewPlayback();
 
             if (cards.length === 0) {
-                showSingleFlipPreviewCard({ text: 'プレビュー', font: 'sans-serif', color: '#ffffff', bg: '#000000' });
+                showSingleFlipPreviewCard({ text: 'プレビュー', font: 'inherit', color: '#ffffff', bg: '#000000' });
                 return;
             }
 
@@ -2208,11 +2260,19 @@
         });
 
         addFlipCardBtn.addEventListener('click', () => {
-            addFlipCard({ text: '', font: 'sans-serif', color: '#ffffff', bg: '#000000', duration: 1.5 });
+            addFlipCard({ text: '', font: 'inherit', color: '#ffffff', bg: '#000000', duration: 1.5 });
             if (currentMode === 'flip') {
                 showFlipPreview();
             }
             saveSettingsToStorage('flip_add_card');
+        });
+
+        removeFlipCardBtn.addEventListener('click', () => {
+            removeLastFlipCard();
+            if (currentMode === 'flip') {
+                showFlipPreview();
+            }
+            saveSettingsToStorage('flip_remove_card');
         });
 
         flipCards.addEventListener('input', (event) => {
