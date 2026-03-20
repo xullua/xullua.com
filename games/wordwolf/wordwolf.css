@@ -10,6 +10,7 @@ body.is-playing main {
     min-height: 100svh;
     margin: 0 auto;
     padding: 10px 20px;
+    overflow-x: visible;
 }
 
 section {
@@ -115,7 +116,7 @@ select {
         user-select: none;
     }
 
-    input:checked + span {
+    input:checked+span {
         background: var(--btn);
         border-color: var(--btn);
         color: var(--btntext);
@@ -174,58 +175,188 @@ select {
     margin: 0 0 20px;
     width: 100%;
 
-    ol {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        gap: 0;
-        width: 100%;
-        overflow: hidden;
-    }
+    &.progressScene {
+        --step-count: 4;
+        --point-size: 16px;
+        --line-height: 6px;
+        --scene-line-width: 0%;
 
-    li {
-        flex: 1 0 180px;
-        position: relative;
-        background: var(--secondback);
-        border: 1px solid var(--line);
-        padding: 10px 20px 10px 36px;
-        font-size: 13px;
-        font-weight: 700;
-        color: var(--subtext);
-        clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%, 20px 50%);
-        margin-right: -12px;
-        white-space: nowrap;
-    }
+        .progressTexts {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin: 0;
+        }
 
-    li:first-child {
-        clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);
-        padding-left: 20px;
-    }
+        .textItem {
+            width: fit-content;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--subtext);
+            transition: color .2s ease;
+        }
 
-    li:last-child {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 20px 50%);
-        margin-right: 0;
-        padding-right: 14px;
-    }
+        .progressBar {
+            width: calc(100% - 10px);
+            margin: 10px auto 0;
+            position: relative;
+            min-height: var(--point-size);
+        }
 
-    li.current {
-        background: var(--btn);
-        border-color: var(--btnhover);
-        color: var(--btntext);
-        z-index: 2;
-    }
+        .lineWrap,
+        .pointWrap {
+            width: 100%;
+            height: var(--point-size);
+        }
 
-    li.done {
-        border-color: var(--btn);
-        color: var(--btn);
-        background: color-mix(in srgb, var(--btn) 12%, var(--secondback));
+        .lineWrap {
+            position: absolute;
+            inset: 0;
+        }
+
+        .lineTrack {
+            position: absolute;
+            top: 50%;
+            left: calc(var(--point-size) / 2);
+            width: calc(100% - var(--point-size));
+            height: var(--line-height);
+            border-radius: 99px;
+            background: var(--line);
+            transform: translateY(-50%);
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: var(--scene-line-width);
+                height: 100%;
+                border-radius: inherit;
+                background: var(--accentcolor);
+                transition: width .7s ease;
+            }
+        }
+
+        .pointWrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        .pointList {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pointDot {
+            width: var(--point-size);
+            height: var(--point-size);
+            display: block;
+            border-radius: 50%;
+            background: var(--line);
+            outline: 0 solid transparent;
+            outline-offset: 0;
+            transition: background 1s ease, transform .7s .7s cubic-bezier(0.13, 1.52, 0.54, 1.71);
+        }
+
+        &:is(.scene1) {
+            --scene-line-width: 0%;
+
+            .textItem:nth-child(1) {
+                color: var(--accentcolor);
+            }
+
+            .pointItem:nth-child(1) .pointDot {
+                background: var(--accentcolor);
+                transform: scale(1.2);
+                animation: currentDotOutlinePulse 3s 2s infinite;
+            }
+        }
+
+        &:is(.scene2) {
+            --scene-line-width: 33.3333%;
+
+            .textItem:nth-child(2) {
+                color: var(--accentcolor);
+            }
+
+            .pointItem:nth-child(1) .pointDot {
+                background: var(--accentcolor);
+            }
+
+            .pointItem:nth-child(2) .pointDot {
+                background: var(--accentcolor);
+                transform: scale(1.2);
+                animation: currentDotOutlinePulse 3s 2s infinite;
+            }
+        }
+
+        &:is(.scene3) {
+            --scene-line-width: 66.6666%;
+
+            .textItem:nth-child(3) {
+                color: var(--accentcolor);
+            }
+
+            .pointItem:nth-child(-n+2) .pointDot {
+                background: var(--accentcolor);
+            }
+
+            .pointItem:nth-child(3) .pointDot {
+                background: var(--accentcolor);
+                transform: scale(1.2);
+                animation: currentDotOutlinePulse 3s 2s infinite;
+            }
+        }
+
+        &:is(.scene4) {
+            --scene-line-width: 100%;
+
+            .textItem:nth-child(4) {
+                color: var(--accentcolor);
+            }
+
+            .pointItem:nth-child(-n+3) .pointDot {
+                background: var(--accentcolor);
+            }
+
+            .pointItem:nth-child(4) .pointDot {
+                background: var(--accentcolor);
+                transform: scale(1.2);
+                animation: currentDotOutlinePulse 3s 2s infinite;
+            }
+        }
     }
 
     p {
         margin: 8px 0 0;
         font-size: 13px;
         color: var(--subtext);
+    }
+}
+
+@keyframes currentDotOutlinePulse {
+    0% {
+        outline: 2px solid var(--accentcolor);
+        outline-offset: -2px;
+    }
+
+    25% {
+        outline: 2px solid var(--accentcolor);
+        outline-offset: 6px;
+    }
+
+    50% {
+        outline: 2px solid #0000;
+        outline-offset: 10px;
+    }
+
+    100% {
+        outline: 2px solid #0000;
+        outline-offset: 10px;
     }
 }
 
@@ -237,7 +368,9 @@ select {
 }
 
 .setting {
-    h2 {
+    p {
+        color: var(--subtext);
+        font-size: 12px;
         margin: 0 0 20px;
     }
 
@@ -404,7 +537,7 @@ select {
         line-height: 1.1;
         white-space: nowrap;
         font-variant-numeric: tabular-nums;
-            font-weight: 700;
+        font-weight: 700;
 
         .timer-digit {
             display: inline-block;
@@ -438,13 +571,16 @@ select {
     }
 
     .hint {
-        width: 100%;
-        max-width: min(760px, 100%);
+        width: min(760px, 100%);
         min-height: 380px;
         display: grid;
         justify-items: center;
-        align-content: center;
+        align-content: start;
         align-self: center;
+        grid-auto-rows: min-content;
+        row-gap: 10px;
+        padding: 8px 0;
+        overflow: visible;
 
         .hint-intro {
             transition: opacity .35s ease, filter .35s ease;
@@ -461,12 +597,11 @@ select {
         }
 
         .hint-intro.is-hidden {
-            opacity: 0;
-            filter: blur(10px);
+            display: none;
         }
 
         .hint-reveal-btn {
-            margin: 12px 0 10px;
+            margin: 0;
             padding: 8px 16px;
             font-size: 15px;
             position: relative;
@@ -486,9 +621,15 @@ select {
             list-style: none;
             padding: 0;
             position: relative;
-            width: min(760px, 100%);
-            height: 380px;
-            margin: 16px 0 0;
+            width: min(100%, 980px);
+            height: min(52vh, 430px);
+            margin: 0;
+            display: none;
+            overflow: visible;
+
+            &.has-cards {
+                display: block;
+            }
 
             .hint-card {
                 --card-bg: linear-gradient(160deg, #3b82f6 0%, #1d4ed8 100%);
@@ -499,7 +640,7 @@ select {
                 --card-hover-tilt: 0deg;
                 position: absolute;
                 left: 50%;
-                bottom: -20%;
+                bottom: 14px;
                 width: clamp(200px, 31vw, 280px);
                 aspect-ratio: 7 / 10;
                 border-radius: 30px;
@@ -510,10 +651,7 @@ select {
                 transform-origin: center bottom;
                 opacity: 0;
                 transform:
-                    translateX(calc(-50% + var(--card-offset) * var(--card-spread) + var(--card-nudge)))
-                    rotate(calc(var(--card-offset) * var(--card-angle) + var(--card-hover-tilt)))
-                    translateY(-152px)
-                    scale(calc(1 - abs(var(--card-offset)) * .06));
+                    translateX(calc(-50% + var(--card-offset) * var(--card-spread) + var(--card-nudge))) rotate(calc(var(--card-offset) * var(--card-angle) + var(--card-hover-tilt))) scale(calc(1 - abs(var(--card-offset)) * .06));
                 transition: transform .55s cubic-bezier(.2, 1.25, .28, 1), box-shadow .3s ease, filter .25s ease;
                 filter: saturate(.95);
 
@@ -526,15 +664,13 @@ select {
                     filter: saturate(1.12) brightness(1.04);
                     box-shadow: 0 26px 44px rgb(0 0 0 / .28);
                     transform:
-                        translateX(calc(-50% + var(--card-offset) * var(--card-spread) + var(--card-nudge)))
-                        rotate(calc((var(--card-offset) * var(--card-angle) + var(--card-hover-tilt)) * .65))
-                        translateY(-170px)
-                        scale(calc(1.03 - abs(var(--card-offset)) * .03));
+                        translateX(calc(-50% + var(--card-offset) * var(--card-spread) + var(--card-nudge))) rotate(calc((var(--card-offset) * var(--card-angle) + var(--card-hover-tilt)) * .65)) translateY(-10px) scale(calc(1.03 - abs(var(--card-offset)) * .03));
                     z-index: 20;
                 }
             }
 
             &:has(.hint-card:nth-child(1):hover) {
+
                 .hint-card:nth-child(2),
                 .hint-card:nth-child(3),
                 .hint-card:nth-child(n + 4) {
@@ -557,6 +693,7 @@ select {
             }
 
             &:has(.hint-card:nth-child(3):hover) {
+
                 .hint-card:nth-child(1),
                 .hint-card:nth-child(2) {
                     --card-nudge: -42px;
@@ -585,6 +722,42 @@ select {
             line-height: 1.45;
             text-wrap: balance;
             word-break: break-word;
+        }
+
+        @media (max-width: 640px) {
+            .hint-reveal-btn {
+                margin-top: 2px;
+            }
+
+            .hint-hand {
+                width: min(100%, 520px);
+                height: min(46vh, 320px);
+
+                .hint-card {
+                    --card-angle: 12deg;
+                    --card-spread: 34px;
+                    width: clamp(164px, 60vw, 214px);
+                    border-radius: 24px;
+                    padding: 12px 14px;
+                    bottom: 8px;
+                    transform:
+                        translateX(calc(-50% + var(--card-offset) * var(--card-spread) + var(--card-nudge))) rotate(calc(var(--card-offset) * var(--card-angle) + var(--card-hover-tilt))) scale(calc(1 - abs(var(--card-offset)) * .05));
+
+                    &:hover {
+                        transform:
+                            translateX(calc(-50% + var(--card-offset) * var(--card-spread) + var(--card-nudge))) rotate(calc((var(--card-offset) * var(--card-angle) + var(--card-hover-tilt)) * .7)) translateY(-8px) scale(calc(1.02 - abs(var(--card-offset)) * .02));
+                    }
+                }
+            }
+
+            .hint-emoji {
+                margin: 12px 0 20px;
+            }
+
+            .hint-card-text {
+                font-size: clamp(18px, 5.4vw, 26px);
+                line-height: 1.35;
+            }
         }
     }
 
@@ -690,7 +863,8 @@ body.modal-open {
         width: min(100%, 320px);
         transform: scale(.95);
         opacity: 0;
-        transition: .25s;
+        filter: blur(10px);
+        transition: .3s;
 
         button {
             width: 100%;
@@ -719,6 +893,7 @@ body.modal-open {
         .preset-choice-actions {
             transform: scale(1);
             opacity: 1;
+            filter: blur(0);
         }
     }
 }
@@ -746,28 +921,19 @@ body.modal-open {
 @keyframes hintCardAppear {
     0% {
         transform:
-            translateX(calc(-50% + var(--card-offset) * var(--card-spread)))
-            rotate(calc(var(--card-offset) * var(--card-angle) + var(--card-hover-tilt)))
-            translateY(-124px)
-            scale(.65);
+            translateX(calc(-50% + var(--card-offset) * var(--card-spread))) rotate(calc(var(--card-offset) * var(--card-angle) + var(--card-hover-tilt))) translateY(24px) scale(.65);
         opacity: 0;
     }
 
     65% {
         transform:
-            translateX(calc(-50% + var(--card-offset) * var(--card-spread)))
-            rotate(calc(var(--card-offset) * var(--card-angle) + var(--card-hover-tilt)))
-            translateY(-160px)
-            scale(calc(1.05 - abs(var(--card-offset)) * .04));
+            translateX(calc(-50% + var(--card-offset) * var(--card-spread))) rotate(calc(var(--card-offset) * var(--card-angle) + var(--card-hover-tilt))) translateY(-10px) scale(calc(1.05 - abs(var(--card-offset)) * .04));
         opacity: 1;
     }
 
     100% {
         transform:
-            translateX(calc(-50% + var(--card-offset) * var(--card-spread)))
-            rotate(calc(var(--card-offset) * var(--card-angle) + var(--card-hover-tilt)))
-            translateY(-152px)
-            scale(calc(1 - abs(var(--card-offset)) * .06));
+            translateX(calc(-50% + var(--card-offset) * var(--card-spread))) rotate(calc(var(--card-offset) * var(--card-angle) + var(--card-hover-tilt))) scale(calc(1 - abs(var(--card-offset)) * .06));
         opacity: 1;
     }
 }

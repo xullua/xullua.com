@@ -71,13 +71,28 @@
             </ul>
         </section>
 
-        <nav class="progress" id="setup-progress" aria-label="ゲーム開始までの進行" style="display: none;">
-            <ol>
-                <li data-step="setting">設定</li>
-                <li data-step="playername">名前入力</li>
-                <li data-step="playercheck">お題確認</li>
-                <li data-step="gamestart">開始</li>
-            </ol>
+        <nav class="progress progressScene scene1" id="setup-progress" aria-label="ゲーム開始までの進行" style="display: none;">
+            <div class="progressTexts" aria-hidden="true">
+                <div class="textItem">設定</div>
+                <div class="textItem">名前入力</div>
+                <div class="textItem">お題確認</div>
+                <div class="textItem">開始</div>
+            </div>
+
+            <div class="progressBar" aria-hidden="true">
+                <div class="lineWrap">
+                    <div class="lineTrack"></div>
+                </div>
+                <div class="pointWrap">
+                    <div class="pointList">
+                        <div class="pointItem"><span class="pointDot"></span></div>
+                        <div class="pointItem"><span class="pointDot"></span></div>
+                        <div class="pointItem"><span class="pointDot"></span></div>
+                        <div class="pointItem"><span class="pointDot"></span></div>
+                    </div>
+                </div>
+            </div>
+
             <p id="progress-remaining"></p>
         </nav>
 
@@ -89,6 +104,7 @@
 
         <section class="setting" style="display: none;">
             <h2>ゲーム設定</h2>
+            <p>前回の設定の履歴から素早くプレイすることもできます。</p>
             <div class="preset-panel" id="preset-panel" style="display: none;">
                 <div id="preset-list"></div>
             </div>
@@ -135,6 +151,7 @@
                 <h3>時間制限</h3>
                 <input type="number" id="time-limit-m" value="3"><span>分</span>
                 <input type="number" id="time-limit-s" value="0"><span>秒</span>
+                <p>あくまでも目安です。無視してプレイすることもできます。</p>
 
                 <p id="error-msg" style="display: none;"></p>
 

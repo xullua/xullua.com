@@ -142,18 +142,15 @@ function setSetupProgress(stepName, shouldShow = true) {
     progressElement.style.display = shouldShow ? 'block' : 'none';
 
     const currentStepIndex = setupSteps.indexOf(stepName);
-    const stepItems = progressElement.querySelectorAll('li');
-    stepItems.forEach((item, index) => {
-        item.classList.remove('done', 'current');
-        if (currentStepIndex === -1) {
-            return;
-        }
-        if (index < currentStepIndex) {
-            item.classList.add('done');
-        } else if (index === currentStepIndex) {
-            item.classList.add('current');
-        }
+    const sceneClasses = ['scene1', 'scene2', 'scene3', 'scene4'];
+    sceneClasses.forEach((sceneClass) => {
+        progressElement.classList.remove(sceneClass);
     });
+
+    if (currentStepIndex >= 0) {
+        const sceneClass = sceneClasses[Math.min(currentStepIndex, sceneClasses.length - 1)];
+        progressElement.classList.add(sceneClass);
+    }
 
     updateProgressMessage(stepName);
 }
@@ -512,6 +509,7 @@ function displayHints() {
 
         if (revealedCount === 0 && introElement) {
             introElement.classList.add('is-hidden');
+            handElement.classList.add('has-cards');
         }
 
         requestAnimationFrame(() => {
